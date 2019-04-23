@@ -224,6 +224,7 @@ public class GameManager : MonoBehaviour
                 {
                     objectInstantiation = Instantiate(tree, islandParent);
                     objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                     actualNode.isTransitable = false;
                     gridScript.grid[i - 1, j].isTransitable = false;
                     gridScript.grid[i, j - 1].isTransitable = false;

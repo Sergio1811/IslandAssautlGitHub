@@ -141,8 +141,8 @@ MonoBehaviour:
   currentState: 0
   chaseDistance: 800
   attackDistance: 80
-  attackCoolDown: 2
-  repathTime: 0.2
+  attackCoolDown: 1
+  repathTime: 0.5
 --- !u!195 &6523362790070238063
 NavMeshAgent:
   m_ObjectHideFlags: 0

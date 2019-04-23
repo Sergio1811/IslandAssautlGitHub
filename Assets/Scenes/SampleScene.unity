@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16006,7 +16006,7 @@ MonoBehaviour:
   woodText: {fileID: 1515675218}
   rockText: {fileID: 68837874}
   fabricText: {fileID: 1639281450}
-  timeByLevel: 20
+  timeByLevel: 40
   timeText: {fileID: 856911523}
   player: {fileID: 0}
   gridScript: {fileID: 583558308}
@@ -16017,6 +16017,7 @@ MonoBehaviour:
     type: 3}
   village: {fileID: 27376118978638002, guid: ab2ce260c8429ae479e43ccbeda8ae00, type: 3}
   portal: {fileID: 392676522937566284, guid: 21c82e5910a73094192811e6674b8411, type: 3}
+  water: {fileID: 9016246708617481165, guid: 5b58bccb90ac14d42bdce8854c07f855, type: 3}
   islands:
   - {fileID: 121021877}
   - {fileID: 81348862}

@@ -261,7 +261,7 @@ MonoBehaviour:
   actualType: 2
   characterSpeed: 50
   neededPressedTime: 0
-  hitDistance: 5
+  hitDistance: 10
   actionSphere: {fileID: 4210738553931881768}
   inmortalDurationTime: 2
 --- !u!143 &4421477409617885656

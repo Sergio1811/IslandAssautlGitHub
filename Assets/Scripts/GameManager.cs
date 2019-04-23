@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     GameObject portalExit;
 
     public Grid gridScript;
-    public GameObject tree, enemy, rock, decoration, village, portal;
+    public GameObject tree, enemy, rock, decoration, village, portal, water;
     Node startNode, endNode;
     public GameObject[] islands;
     Transform islandParent;
@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
                     startNode = actualNode;
                     actualNode.isTransitable = false;
                 }
-                if (actualNode.isTransitable && actualNode.currentType == Node.Type.exit)
+                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.exit)
                 {
                     endNode = actualNode;
                     objectInstantiation = Instantiate(portal, islandParent);
@@ -272,6 +272,11 @@ public class GameManager : MonoBehaviour
                     objectInstantiation = Instantiate(decoration, islandParent);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     actualNode.isTransitable = false;
+                }
+                else if (actualNode.currentType == Node.Type.water)
+                {
+                    objectInstantiation = Instantiate(water, islandParent);
+                    objectInstantiation.transform.position = actualNode.worldPosition;
                 }
 
             }

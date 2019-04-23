@@ -87,10 +87,8 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Action"))
         {
             Ray ray = new Ray(transform.position, transform.forward);
-            Ray ray2 = new Ray(transform.position, transform.forward + transform.right / 10f);
-            Ray ray3 = new Ray(transform.position, transform.forward - transform.right / 10f);
-            ray2 = new Ray(transform.position + transform.right/10f, transform.forward);
-            ray3 = new Ray(transform.position - transform.right/10f, transform.forward);
+            Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
+            Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
             {
@@ -148,11 +146,11 @@ public class Movement : MonoBehaviour
         {
             case "Rock":
                 if (actualType == playerType.pick)
-                    BreakRock(actionObject);
+                    BreakRock(actionObject.transform.parent.gameObject);
                 break;
             case "Tree":
                 if (actualType == playerType.ace)
-                    CutTree(actionObject);
+                    CutTree(actionObject.transform.parent.gameObject);
                 break;
             case "Chest":
                 if (actualType == playerType.sword)
@@ -196,33 +194,30 @@ public class Movement : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        print(hit.gameObject.tag);
-        if (hit.gameObject.tag == "Enemy" && !inmortal)
+        if (hit.gameObject.tag == "Dead")
+            GameManager.Instance.EndProtoLevel();
+    }
+
+    public void Damage (Vector3 direction)
+    {
+        if (!inmortal)
         {
             inmortal = true;
             inmortalTimer = 0;
-            characterController.Move(-transform.forward * characterSpeed * 6f * Time.deltaTime);
+            characterController.Move(direction * 10f);
             GameManager.Instance.Damage();
         }
-        else if (hit.gameObject.tag == "Dead")
-            GameManager.Instance.EndProtoLevel();
     }
 
 
     private void OnDrawGizmos()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        Ray ray2 = new Ray(transform.position, transform.forward + transform.right / 10f);
-        Ray ray3 = new Ray(transform.position, transform.forward - transform.right / 10f);
-        ray2 = new Ray(transform.position + transform.right/10f, transform.forward);
-        ray3 = new Ray(transform.position - transform.right/10f, transform.forward);
-
         Gizmos.color = Color.green;
-        Gizmos.DrawRay(ray);
+        Gizmos.DrawRay(transform.position, transform.forward * hitDistance);
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(ray2);
+        Gizmos.DrawRay(transform.position + transform.right * 1.5f, transform.forward * hitDistance);
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(ray3);
+        Gizmos.DrawRay(transform.position - transform.right * 1.5f, transform.forward * hitDistance);
 
     }
 }

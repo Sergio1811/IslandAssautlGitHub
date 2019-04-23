@@ -92,18 +92,19 @@ public class GameManager : MonoBehaviour
             case 0:
                 p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
-                woodNeeded = woodNeeded / 3;
+                woodNeeded = woodNeeded - woodNeeded / 5;
                 objectiveText.text = "1: Consigue " + woodNeeded*woodByItem + " maderas.";
                 break;
             case 1:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
-                rockNeeded = rockNeeded / 3;
+                rockNeeded = rockNeeded - rockNeeded / 5;
                 objectiveText.text = "1: Consigue " + rockNeeded*rockByItem + " rocas.";
                 break;
             default:
                 p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 fabricText.gameObject.SetActive(true);
+                enemiesNeeded = enemiesNeeded - 1;
                 objectiveText.text = "1: Consigue " + enemiesNeeded*enemiesByItem + " fabrics.";
                 break;
         }

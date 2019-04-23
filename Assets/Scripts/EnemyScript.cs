@@ -23,11 +23,13 @@ public class EnemyScript : MonoBehaviour
     private float repathTimer = 0;
 
     Vector3 goingPos;
+    Vector3 initialPos;
 
     void Start()
     {
         //player = GameManager.Instance.player;
         agent = GetComponent<NavMeshAgent>();
+        initialPos = transform.position;
     }
 
     void Update()
@@ -49,7 +51,7 @@ public class EnemyScript : MonoBehaviour
 
                     break;
                 case state.chase:
-                    if (GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
+                    if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
                         currentState = state.patrol;
                         break;
@@ -86,7 +88,14 @@ public class EnemyScript : MonoBehaviour
 
     void Patrol()
     {
-        //agent.isStopped = false;
+        agent.isStopped = false;
+
+        agent.SetDestination(initialPos);
+
+        if(Vector3.Distance(transform.position, initialPos) < 0.2f)
+        {
+            agent.isStopped = true;
+        }
 
         //if (patrolPoints.Length > 0)
         //{

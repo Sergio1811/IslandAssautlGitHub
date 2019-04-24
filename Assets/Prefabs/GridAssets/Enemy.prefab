@@ -139,10 +139,10 @@ MonoBehaviour:
   player: {fileID: 0}
   patrolPoints: []
   currentState: 0
-  chaseDistance: 0
-  attackDistance: 0
-  attackCoolDown: 0
-  repathTime: 0
+  chaseDistance: 800
+  attackDistance: 80
+  attackCoolDown: 1
+  repathTime: 0.5
 --- !u!195 &6523362790070238063
 NavMeshAgent:
   m_ObjectHideFlags: 0

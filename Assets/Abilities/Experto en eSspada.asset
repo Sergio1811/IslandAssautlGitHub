@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Experto en eSspada
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  Thumbnail: {fileID: 0}
+  Name: egref
+  Description: hvhjhj
+  Thumbnail: {fileID: 21300000, guid: a53b9010a5fc02e419c16b0daa86e738, type: 3}

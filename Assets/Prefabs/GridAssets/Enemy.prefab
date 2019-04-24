@@ -133,16 +133,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 8798297767836160538}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82b31937a23c8474fae35cf900d8fa84, type: 3}
+  m_Script: {fileID: 11500000, guid: ae7b94b75540ae845bb2fdf800e44592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   patrolPoints: []
   currentState: 0
-  chaseDistance: 800
-  attackDistance: 80
-  attackCoolDown: 1
-  repathTime: 0.5
+  chaseDistance: 0
+  attackDistance: 0
+  attackCoolDown: 0
+  repathTime: 0
 --- !u!195 &6523362790070238063
 NavMeshAgent:
   m_ObjectHideFlags: 0

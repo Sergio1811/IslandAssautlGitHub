@@ -143,6 +143,7 @@ MonoBehaviour:
   attackDistance: 80
   attackCoolDown: 1
   repathTime: 0.5
+  attackMat: {fileID: 2100000, guid: 60c7cc4f69efe9640877cf95e7794d3b, type: 2}
 --- !u!195 &6523362790070238063
 NavMeshAgent:
   m_ObjectHideFlags: 0

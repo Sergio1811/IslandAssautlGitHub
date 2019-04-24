@@ -82,6 +82,9 @@ public class GameManager : MonoBehaviour
             EndProtoLevel();
             remainingTimeInLevel = timeByLevel;
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+            EndProtoLevel();
     }
 
 

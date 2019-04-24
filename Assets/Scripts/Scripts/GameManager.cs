@@ -25,10 +25,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int collectedWood = 0;
     [HideInInspector] public int collectedRock = 0;
     [HideInInspector] public int collectedFabrics = 0;
+    [HideInInspector] public static int totalCoins = 0;
 
     public Text woodText;
     public Text rockText;
     public Text fabricText;
+    public Text coinsText;
 
     public float timeByLevel;
     private float remainingTimeInLevel;
@@ -48,7 +50,6 @@ public class GameManager : MonoBehaviour
     public GameObject livesGroup;
     int livesNumber;
 
-
     private void Awake()
     {
         Instance = this;
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
     
     void Start()
     {
+        coinsText.text = "Coins: " + totalCoins.ToString();
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
         InstantiateObjectInGrid();
@@ -90,12 +92,14 @@ public class GameManager : MonoBehaviour
         switch (protoIsland)
         {
             case 0:
+            case 4:
                 p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded*woodByItem + " maderas.";
                 break;
             case 1:
+            case 5:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
@@ -154,7 +158,9 @@ public class GameManager : MonoBehaviour
     public void PickWood()
     {
         collectedWood += woodByItem;
+        totalCoins += woodByItem;
         woodText.text = "Wood: " + collectedWood.ToString();
+        coinsText.text = "Coins: " + totalCoins.ToString();
         if (collectedWood >= woodNeeded * woodByItem)
             ActivatePortal();
     }
@@ -162,7 +168,9 @@ public class GameManager : MonoBehaviour
     public void PickRock()
     {
         collectedRock += rockByItem;
+        totalCoins += rockByItem;
         rockText.text = "Rock: " + collectedRock.ToString();
+        coinsText.text = "Coins: " + totalCoins.ToString();
         if (collectedRock >= rockNeeded * rockByItem)
             ActivatePortal();
     }
@@ -170,7 +178,9 @@ public class GameManager : MonoBehaviour
     public void PickFabrics()
     {
         collectedFabrics += enemiesByItem;
+        totalCoins += enemiesByItem;
         fabricText.text = "Fabric: " + collectedFabrics.ToString();
+        coinsText.text = "Coins: " + totalCoins.ToString();
         if (collectedFabrics >= enemiesNeeded * enemiesByItem)
             ActivatePortal();
     }

@@ -28,12 +28,18 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int currentCoins = 0;
     [HideInInspector] public static int totalCoins = 0;
+    [HideInInspector] public static int totalWood = 0;
+    [HideInInspector] public static int totalRock = 0;
+    [HideInInspector] public static int totalFabrics = 0;
 
     public Text woodText;
     public Text rockText;
     public Text fabricText;
     public Text currentCoinsText;
     public Text totalCoinsText;
+    public Text totalWoodText;
+    public Text totalRockText;
+    public Text totalFabricsText;
 
     public float timeByLevel;
     private float remainingTimeInLevel;
@@ -65,6 +71,10 @@ public class GameManager : MonoBehaviour
     {
         currentCoinsText.text = "Coins: " + currentCoins.ToString();
         totalCoinsText.text = "Total Coins: " + totalCoins.ToString();
+        totalWoodText.text = "Total Wood: " + totalWood.ToString();
+        totalRockText.text = "Total Rocks: " + totalRock.ToString();
+        totalFabricsText.text = "Total Fabrics: " + totalFabrics.ToString();
+
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
         InstantiateObjectInGrid();
@@ -161,7 +171,12 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
 
         if (livesNumber > 0)
+        {
             totalCoins += currentCoins;
+            totalFabrics += collectedFabrics;
+            totalRock += collectedRock;
+            totalWood += collectedWood;
+        }
 
         currentCoins = 0;
     }

@@ -99,14 +99,14 @@ public class GameManager : MonoBehaviour
         switch (protoIsland)
         {
             case 0:
-            case 4:
+            case 3:
                 p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded*woodByItem + " maderas.";
                 break;
             case 1:
-            case 5:
+            case 4:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;

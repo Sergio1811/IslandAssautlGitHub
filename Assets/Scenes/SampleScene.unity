@@ -3907,8 +3907,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f663917d9d4aa4f86982e7bd2278db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToComplete: 60
+  timeToComplete: 40
   radius: 500
+  startAngle: 45
+  degreesToRotate: 90
 --- !u!1 &176276459
 GameObject:
   m_ObjectHideFlags: 0

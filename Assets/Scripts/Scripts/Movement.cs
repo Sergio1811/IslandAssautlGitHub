@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
 
     void StartAction()
     {
-        if (Input.GetButtonDown("Action"))
+        if (Input.GetAxisRaw("Action")>0.2f)
         {
             Ray ray = new Ray(transform.position, transform.forward);
             Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
@@ -121,7 +121,7 @@ public class Movement : MonoBehaviour
 
     void UpdateAction()
     {
-        if (Input.GetButton("Action"))
+        if (Input.GetAxis("Action")>0.2f)
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
             canMove = false;

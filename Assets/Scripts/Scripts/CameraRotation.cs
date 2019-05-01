@@ -22,9 +22,9 @@ public class CameraRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("CameraMovementX");
-        float vertical = Input.GetAxis("CameraMovementY");
-        float zoom = -Input.GetAxis("CameraZoom");
+        float horizontal = InputManager.Instance.GetAxis("CameraMovementX");
+        float vertical = InputManager.Instance.GetAxis("CameraMovementY");
+        float zoom = -InputManager.Instance.GetAxis("CameraZoom");
 
         pitch += vertical * lateralSpeed * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, -maxYRotationAngle, maxYRotationAngle);

@@ -59,8 +59,8 @@ public class Movement : MonoBehaviour
     void WalkTime()
     {
         Vector3 movement = Vector3.zero;
-        xMovement = Input.GetAxisRaw("Horizontal");
-        zMovement = Input.GetAxisRaw("Vertical");
+        xMovement = InputManager.Instance.GetAxis("Horizontal");
+        zMovement = InputManager.Instance.GetAxis("Vertical");
 
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
@@ -84,7 +84,7 @@ public class Movement : MonoBehaviour
 
     void StartAction()
     {
-        if (Input.GetAxisRaw("Action")>0.2f)
+        if (InputManager.Instance.GetInput("Action"))
         {
             Ray ray = new Ray(transform.position, transform.forward);
             Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
@@ -121,7 +121,7 @@ public class Movement : MonoBehaviour
 
     void UpdateAction()
     {
-        if (Input.GetAxis("Action")>0.2f)
+        if (InputManager.Instance.GetInput("Action"))
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
             canMove = false;

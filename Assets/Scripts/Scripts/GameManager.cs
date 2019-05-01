@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject pickerPrefab;
     public GameObject acerPrefab;
     public GameObject sworderPrefab;
+    int characterNumber;
 
     int woodNeeded;
     int rockNeeded;
@@ -50,21 +51,26 @@ public class GameManager : MonoBehaviour
 
     public Grid gridScript;
     public GameObject tree, enemy, rock, decoration, village, portal, water;
+
     Node startNode, endNode;
+    int protoIsland;
     public GameObject[] islands;
     Transform islandParent;
-
-    static int protoIsland;
-
+    
     public GameObject livesGroup;
     int livesNumber;
 
     private void Awake()
     {
         Instance = this;
+
+        protoIsland = Random.Range(0, islands.Length);
         islands[protoIsland].SetActive(true);
         islandParent = islands[protoIsland].transform.GetChild(0);
-        gridScript.GenerateGrid();
+
+        characterNumber = Random.Range(0, 3);
+        
+        gridScript.GenerateGrid(characterNumber);
     }
     
     void Start()
@@ -78,8 +84,7 @@ public class GameManager : MonoBehaviour
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
         InstantiateObjectInGrid();
-        //player = GetRandomPlayer();
-        player = ProtoPlayer();
+        player = PlayerInstantiation();
 
         livesNumber = livesGroup.transform.childCount;
     }
@@ -102,27 +107,25 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public GameObject ProtoPlayer()
+    public GameObject PlayerInstantiation()
     {
         GameObject p = null;
 
-        switch (protoIsland)
+        switch (characterNumber)
         {
             case 0:
-            case 3:
                 p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded*woodByItem + " maderas.";
                 break;
             case 1:
-            case 4:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
                 objectiveText.text = "1: Consigue " + rockNeeded*rockByItem + " rocas.";
                 break;
-            default:
+            case 2:
                 p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
@@ -133,34 +136,12 @@ public class GameManager : MonoBehaviour
         return p;
     }
     
-    public GameObject GetRandomPlayer()
-    {
-        int rdm = Random.Range(1, 4);
-        GameObject p = null;
-
-        switch (rdm)
-        {
-            case 1:
-                p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
-                woodText.gameObject.SetActive(true);
-                break;
-            case 2:
-                p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
-                rockText.gameObject.SetActive(true);
-                break;
-            case 3:
-                p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
-                fabricText.gameObject.SetActive(true);
-                break;
-        }
-        return p;
-    }
 
 
     public void EndLevel()
     {
         Destroy(player);
-        player = GetRandomPlayer();
+        player = PlayerInstantiation();
     }
 
     public void EndProtoLevel()

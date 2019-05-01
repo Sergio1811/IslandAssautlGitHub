@@ -11,31 +11,229 @@ public class Grid : MonoBehaviour
     [HideInInspector]
     public Node[,] grid;
 
-    private void Awake()
-    {
-        //GenerateGrid();
-    }
+    public int minPrimaryPers, maxPrimaryPers;
+    public int minSecundaryPers, maxSecundaryPers;
+    int numberOfFloor;
 
-    private void Update()
-    {
 
-    }
 
-    public void GenerateGrid()
+    public void GenerateGrid(int characterType)
     {
         grid = new Node[(int)size_x, (int)size_y];
+        numberOfFloor = 0;
+
+        AssaignWaterAndFloor();
+        AssaignShore();
+        AssaignEnter();
+        AssaignExit();
+
+        int randomNumber;
+        switch (characterType)
+        {
+            case 0:
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignRocks(randomNumber);
+                break;
+
+            case 1:
+                randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
+                print("Number of floor nodes: " + numberOfFloor);
+                print("Minimum rock nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max rock nodes: " + maxPrimaryPers * numberOfFloor / 100);
+                print("Number of rock nodes: " + randomNumber);
+                AssaignRocks(randomNumber);
+                break;
+
+            case 2:
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignRocks(randomNumber);
+                break;
+        }
+    }
+
+
+
+
+    //Método que crea la grid a partir de la size dada y además si detecta un collider en ese nodo le cambia le tipo a suelo
+    void AssaignWaterAndFloor()
+    {
+        for (int i = 0; i < size_x; i++)
+        {
+            for (int j = 0; j < size_y; j++)
+            {
+                Vector3 nodePosition = new Vector3(node_size * 0.5f + i * node_size - size_x / 2 * node_size, 0, node_size * 0.5f + j * node_size - size_y / 2 * node_size);
+                Vector3 worldNodePosition = transform.position + nodePosition;
+
+                Collider[] colliders = Physics.OverlapSphere(worldNodePosition, node_size * 0.2f);
+
+                bool isTransitable = false;
+                Node.Type objectType = Node.Type.water;
+
+                for (int k = 0; k < colliders.Length; k++)
+                {
+                    if (colliders[k].tag != "")
+                    {
+                        objectType = Node.Type.floor;
+                        isTransitable = true;
+                        numberOfFloor++;
+                        break;
+                    }
+                }
+
+                grid[i, j] = new Node(i, j, node_size, worldNodePosition, objectType, isTransitable);
+            }
+        }
+    }
+
+    //Método que cambia a tipo shore los nodos que forman parte de la orilla
+    void AssaignShore()
+    {
+        for (int i = 0; i < size_x; i++)
+        {
+            for (int j = 0; j < size_y; j++)
+            {
+                if (grid[i, j].currentType == Node.Type.floor)
+                {
+                    List<Node> neighbourNodes = GetNeighbours(grid[i, j], true);
+
+                    for (int k = 0; k < neighbourNodes.Count; k++)
+                    {
+                        if (neighbourNodes[k].currentType == Node.Type.water)
+                        {
+                            grid[i, j].currentType = Node.Type.shore;
+                            numberOfFloor--;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    void AssaignEnter()
+    {
+        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
+        List<Node> availableShoreNode = new List<Node>();
+        int minYNodes = size_y;
+
+        for (int i = 0; i < shoreNodes.Count; i++)
+        {
+            if (minYNodes > shoreNodes[i].gridPositionY)
+                minYNodes = shoreNodes[i].gridPositionY;
+        }
+        for (int i = 0; i < shoreNodes.Count; i++)
+        {
+            if (minYNodes == shoreNodes[i].gridPositionY)
+                availableShoreNode.Add(shoreNodes[i]);
+        }
+
+        availableShoreNode[Random.Range(0, availableShoreNode.Count)].currentType = Node.Type.entry;
+    }
+    void AssaignExit()
+    {
+        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
+        List<Node> availableShoreNode = new List<Node>();
+        int maxYNodes = 0;
+
+        for (int i = 0; i < shoreNodes.Count; i++)
+        {
+            if (maxYNodes < shoreNodes[i].gridPositionY)
+                maxYNodes = shoreNodes[i].gridPositionY;
+        }
+        for (int i = 0; i < shoreNodes.Count; i++)
+        {
+            if (maxYNodes == shoreNodes[i].gridPositionY)
+                availableShoreNode.Add(shoreNodes[i]);
+        }
+
+        availableShoreNode[Random.Range(0, availableShoreNode.Count)].currentType = Node.Type.exit;
+    }
+
+
+    //Método que a partir del número de celas de rocas que se quieran crear va a cambiar los nodos a tipo roca
+    void AssaignRocks(int cellsNumber)
+    {
+        int bigRocks = cellsNumber / 4;
+        print("Number of big rocks (2x2): " + bigRocks);
+        List<Node> availableNodes;
+
+        for (int i = bigRocks; i > 0; i--)
+        {
+            availableNodes = AvailableNodesType(Node.Type.floor, 2, 2);
+
+            if (availableNodes.Count >= bigRocks)
+            {
+                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
+                selectedNode.currentType = Node.Type.rock;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.rock;
+                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.rock;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.rock;
+                numberOfFloor -= 4;
+                bigRocks--;
+                availableNodes.Clear();
+            }
+            else
+                break;
+        }
+    }
+
+
+    //Método que crea una lista de todos los nodos de un tipo determinado con una medida concreta (sizeX, sizeY)
+    public List<Node> AvailableNodesType(Node.Type nodeType, int sizeX, int sizeY)
+    {
+        List<Node> availableNodes = new List<Node>();
 
         for (int i = 0; i < size_x; i++)
         {
             for (int j = 0; j < size_y; j++)
             {
-                Vector3 nodePosition = new Vector3(node_size * 0.5f + i * node_size - size_x/2 *node_size, 0, node_size * 0.5f + j * node_size - size_y / 2 * node_size);
+                if (grid[i, j].currentType == nodeType)
+                {
+                    bool isAvailable = true;
+                    List<Node> neighbourNodes = GetNeighboursBySize(grid[i, j], sizeX, sizeY);
+
+                    for (int k = 0; k < neighbourNodes.Count; k++)
+                    {
+                        if (neighbourNodes[k] != null)
+                        {
+                            if (neighbourNodes[k].currentType != nodeType)
+                            {
+                                isAvailable = false;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            isAvailable = false;
+                            break;
+                        }
+                    }
+
+                    if (isAvailable)
+                    {
+                        availableNodes.Add(grid[i, j]);
+                    }
+                }
+            }
+        }
+
+        return availableNodes;
+    }
+    
+    
+    //Método que según el tag del collider que detecte cambiara el nodo a un tipo u otro -> Este método ya no lo usamos
+    void AssaignByCollidersTag()
+    {
+        for (int i = 0; i < size_x; i++)
+        {
+            for (int j = 0; j < size_y; j++)
+            {
+                Vector3 nodePosition = new Vector3(node_size * 0.5f + i * node_size - size_x / 2 * node_size, 0, node_size * 0.5f + j * node_size - size_y / 2 * node_size);
                 Vector3 worldNodePosition = transform.position + nodePosition;
 
                 Collider[] colliders = Physics.OverlapSphere(worldNodePosition, node_size * 0.2f);
 
-                Node.Type objectType = Node.Type.water;
                 bool isTransitable = false;
+                Node.Type objectType = Node.Type.water;
 
                 for (int k = 0; k < colliders.Length; k++)
                 {
@@ -44,42 +242,42 @@ public class Grid : MonoBehaviour
                         objectType = Node.Type.floor;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Tree")
+                    else if (colliders[k].tag == "Tree")
                     {
                         objectType = Node.Type.tree;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Rock")
+                    else if (colliders[k].tag == "Rock")
                     {
                         objectType = Node.Type.rock;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Enemy")
+                    else if (colliders[k].tag == "Enemy")
                     {
                         objectType = Node.Type.enemy;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Decoration")
+                    else if (colliders[k].tag == "Decoration")
                     {
                         objectType = Node.Type.decoration;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Village")
+                    else if (colliders[k].tag == "Village")
                     {
                         objectType = Node.Type.village;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Shore")
+                    else if (colliders[k].tag == "Shore")
                     {
                         objectType = Node.Type.shore;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Entry")
+                    else if (colliders[k].tag == "Entry")
                     {
                         objectType = Node.Type.entry;
                         isTransitable = true;
                     }
-                    if (colliders[k].tag == "Exit")
+                    else if (colliders[k].tag == "Exit")
                     {
                         objectType = Node.Type.exit;
                         isTransitable = true;
@@ -92,6 +290,7 @@ public class Grid : MonoBehaviour
     }
 
 
+    //Método para dibujar la grid
     private void OnDrawGizmosSelected()
     {
         if (grid != null)
@@ -101,7 +300,7 @@ public class Grid : MonoBehaviour
             {
                 for (int j = 0; j < grid.GetLength(1); j++)
                 {
-                    switch(grid[i,j].currentType)
+                    switch (grid[i, j].currentType)
                     {
                         case (Node.Type.water):
                             Gizmos.color = new Color(0.2666667f, 0.57f, 0.9254902f, 0.5f);
@@ -145,6 +344,8 @@ public class Grid : MonoBehaviour
 
     }
 
+
+
     public Node GetNode(int x, int y)
     {
         if (x < 0 || y < 0 || x >= size_x || y >= size_y)
@@ -172,6 +373,8 @@ public class Grid : MonoBehaviour
     }
 
 
+
+    //Método que devuelve una lista de los nodos que rodean al nodo enviado, extenden = true para que envie también los que están en diagonal.
     public List<Node> GetNeighbours(Node node, bool extended)
     {
         List<Node> listaNodos = new List<Node>();
@@ -205,13 +408,42 @@ public class Grid : MonoBehaviour
 
         return listaNodos;
     }
+
+    //Método que devuelve una lista con los nodos que hay a distancia x e y, teniendo como referencia el nodo de abajo a la derecha
+    public List<Node> GetNeighboursBySize(Node node, int x, int y)
+    {
+        List<Node> listaNodos = new List<Node>();
+        x--;
+        y--;
+
+        for (int i = 0; i <= x; i++)
+        {
+            for (int j = 0; j <= y; j++)
+            {
+                if (i == 0 && j == 0)
+                    continue;
+
+                Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);
+
+
+                if (vecino != null)
+                    listaNodos.Add(vecino);
+                else
+                    listaNodos.Add(null);
+            }
+        }
+
+        return listaNodos;
+    }
+
+
 }
 
 
 
 public class Node
 {
-    public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit}
+    public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit }
     public Type currentType = Type.water;
     public bool isTransitable = false;
 

@@ -27,6 +27,9 @@ public class Movement : MonoBehaviour
     float inmortalTimer;
     bool inmortal;
 
+    public GameObject bomb;
+    bool bombOn;
+
 
     void Start()
     {
@@ -34,6 +37,7 @@ public class Movement : MonoBehaviour
         cameraAnchor = Camera.main.transform.parent.transform;
         actionSphere.transform.rotation = Camera.main.transform.localRotation;
         inmortal = false;
+        bombOn = false;
     }
 
     void Update()
@@ -41,13 +45,15 @@ public class Movement : MonoBehaviour
         if (canMove)
             WalkTime();
 
-        if (receiveInputAction)
+        if (receiveInputAction && !bombOn)
         {
             StartAction();
 
             if (actionOn)
                 UpdateAction();
         }
+        else if (bombOn)
+            UpdateBomb();
         else
             EndAction();
 
@@ -95,10 +101,6 @@ public class Movement : MonoBehaviour
                 actionObject = hit.collider.gameObject;
                 switch (actionObject.tag)
                 {
-                    case "Rock":
-                        if (actualType == playerType.pick)
-                            actionOn = true;
-                        break;
                     case "Tree":
                         if (actualType == playerType.ace)
                             actionOn = true;
@@ -115,6 +117,16 @@ public class Movement : MonoBehaviour
                         GameManager.Instance.LevelComplete();
                         break;
                 }
+            }
+
+
+            if (actualType == playerType.pick)
+            {
+                bomb.SetActive(true);
+                bomb.transform.SetParent(transform);
+                bomb.transform.localPosition = Vector3.zero;
+                bomb.transform.SetParent(null);
+                bombOn = true;
             }
         }
     }
@@ -137,6 +149,22 @@ public class Movement : MonoBehaviour
             actionSphere.fillAmount = 0;
             pressedTimer = 0.0f;
             canMove = true;
+        }
+    }
+
+
+    void UpdateBomb()
+    {
+        actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
+        pressedTimer += Time.deltaTime;
+        actionSphere.fillAmount = pressedTimer / neededPressedTime;
+
+        if (pressedTimer >= neededPressedTime)
+        {
+            bomb.SendMessage("Explode");
+            bombOn = false;
+            actionSphere.fillAmount = 0;
+            pressedTimer = 0.0f;
         }
     }
 
@@ -196,6 +224,13 @@ public class Movement : MonoBehaviour
     {
         if (hit.gameObject.tag == "Dead")
             GameManager.Instance.EndProtoLevel();
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
+            BreakRock(other.transform.parent.gameObject);
     }
 
     public void Damage (Vector3 direction)

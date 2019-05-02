@@ -245,6 +245,9 @@ public class Grid : MonoBehaviour
         int bigVillages = cellsNumber / 16;
         cellsNumber -= bigVillages * 16;
 
+        if (cellsNumber > 4)
+            smallVillages += 1;
+
         print("Number of big villages (4x4): " + bigVillages);
         List<Node> availableNodes;
 

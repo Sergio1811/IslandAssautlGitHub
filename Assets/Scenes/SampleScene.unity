@@ -32377,8 +32377,6 @@ MonoBehaviour:
   rock2x2: {fileID: 8829530387875484065, guid: b179e0c7996881241b4e9a1d704bc8b4, type: 3}
   rocks1x2: {fileID: 8829530387875484065, guid: 013e97e8fd48942479c57185fd1615db,
     type: 3}
-  decoration: {fileID: 9016246708617481165, guid: 477a9c102640994408bd2d743029e84b,
-    type: 3}
   village2x2: {fileID: 27376118978638002, guid: 1f0fd510c5bdd064f833edd7b5b5012c,
     type: 3}
   village3x3: {fileID: 27376118978638002, guid: 6ee1734a0ee348b4f8e71c1a30e83663,
@@ -32387,6 +32385,20 @@ MonoBehaviour:
     type: 3}
   portal: {fileID: 392676522937566284, guid: 21c82e5910a73094192811e6674b8411, type: 3}
   water: {fileID: 9016246708617481165, guid: 5b58bccb90ac14d42bdce8854c07f855, type: 3}
+  decoration1x1: {fileID: 9016246708617481165, guid: 477a9c102640994408bd2d743029e84b,
+    type: 3}
+  decoration1x2: {fileID: 9016246708617481165, guid: 0df7dfe6984a90e42b3791eca7048992,
+    type: 3}
+  decoration1x3: {fileID: 9016246708617481165, guid: 0018399bb1312c846b08b1431ae8a794,
+    type: 3}
+  decoration1x4: {fileID: 9016246708617481165, guid: da947900df61b464389226b7ed6585c7,
+    type: 3}
+  decoration2x2: {fileID: 9016246708617481165, guid: 6943f5e56cfd3124aa76842920948def,
+    type: 3}
+  decoration2x3: {fileID: 9016246708617481165, guid: 9690e034f7eb45c4dace0a995a20367d,
+    type: 3}
+  decoration2x4: {fileID: 9016246708617481165, guid: d5f97c041e2d892418cec07f7ee37928,
+    type: 3}
   islands:
   - {fileID: 121021877}
   - {fileID: 81348862}

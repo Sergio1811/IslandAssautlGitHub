@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     GameObject portalExit;
 
     public Grid gridScript;
-    public GameObject tree1x1, tree2x2, tree1x2, enemy, rock1x1, rock2x2, rocks1x2, decoration, village2x2, village3x3, village4x4, portal, water;
+    public GameObject tree1x1, tree2x2, tree1x2, enemy, rock1x1, rock2x2, rocks1x2, village2x2, village3x3, village4x4, portal, water;
+    public GameObject decoration1x1, decoration1x2, decoration1x3, decoration1x4, decoration2x2, decoration2x3, decoration2x4;
 
     Node startNode, endNode;
     int protoIsland;
@@ -333,9 +334,60 @@ public class GameManager : MonoBehaviour
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
                 {
-                    objectInstantiation = Instantiate(decoration, islandParent);
+                    switch (actualNode.currentSize)
+                    {
+                        case Node.Size.s1x2:
+                            objectInstantiation = Instantiate(decoration1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 2);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s2x1:
+                            objectInstantiation = Instantiate(decoration1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 1);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
+                            break;
+                        case Node.Size.s1x3:
+                            objectInstantiation = Instantiate(decoration1x3, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 3);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.5f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s3x1:
+                            objectInstantiation = Instantiate(decoration1x3, islandParent);
+                            ChangeTransitable(actualNode, false, 3, 1);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
+                            break;
+                        case Node.Size.s1x4:
+                            objectInstantiation = Instantiate(decoration1x4, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 4);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.75f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s4x1:
+                            objectInstantiation = Instantiate(decoration1x4, islandParent);
+                            ChangeTransitable(actualNode, false, 4, 1);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
+                            break;
+                        default:
+                            objectInstantiation = Instantiate(decoration1x1, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 1);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
+                            break;
+                    }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    actualNode.isTransitable = false;
                 }
                 else if (actualNode.currentType == Node.Type.water)
                 {

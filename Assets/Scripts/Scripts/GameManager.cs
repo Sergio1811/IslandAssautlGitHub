@@ -386,6 +386,36 @@ public class GameManager : MonoBehaviour
                             ChangeTransitable(actualNode, false, 2, 2);
                             objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                             break;
+                        case Node.Size.s2x3:
+                            objectInstantiation = Instantiate(decoration2x3, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 3);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(-0.25f, 0, -0.5f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s3x2:
+                            objectInstantiation = Instantiate(decoration2x3, islandParent);
+                            ChangeTransitable(actualNode, false, 3, 2);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
+                            break;
+                        case Node.Size.s2x4:
+                            objectInstantiation = Instantiate(decoration2x4, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 4);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(-0.25f, 0, -0.75f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s4x2:
+                            objectInstantiation = Instantiate(decoration2x4, islandParent);
+                            ChangeTransitable(actualNode, false, 4, 2);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
+                            break;
                         default:
                             objectInstantiation = Instantiate(decoration1x1, islandParent);
                             ChangeTransitable(actualNode, false, 1, 1);

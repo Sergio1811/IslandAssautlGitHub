@@ -76,6 +76,7 @@ public class Grid : MonoBehaviour
 
 
 
+    //MËTODOS DE ASIGNACIÓN DE TIPOS
 
     //Método que crea la grid a partir de la size dada y además si detecta un collider en ese nodo le cambia le tipo a suelo
     void AssaignWaterAndFloor()
@@ -133,6 +134,7 @@ public class Grid : MonoBehaviour
         }
     }
 
+    //Método que escoge un nodo como entrada
     void AssaignEnter()
     {
         List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
@@ -152,6 +154,7 @@ public class Grid : MonoBehaviour
 
         availableShoreNode[Random.Range(0, availableShoreNode.Count)].currentType = Node.Type.entry;
     }
+    //Método que escoge un nodo como salida
     void AssaignExit()
     {
         List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
@@ -173,6 +176,60 @@ public class Grid : MonoBehaviour
     }
 
 
+    //Método que a partir del número de celas de rocas que se quieran crear va a cambiar los nodos a tipo roca
+    void AssaignRocks(int cellsNumber)
+    {
+        int smallRocks = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
+        cellsNumber -= smallRocks;
+
+        int bigRocks = cellsNumber / 4;
+        cellsNumber -= bigRocks * 4;
+        smallRocks += cellsNumber;
+        
+        print("Number of big rocks (2x2): " + bigRocks);
+
+        ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(smallRocks, Node.Type.floor, Node.Type.rock, Node.Size.s1x1, 1, 1);
+    }
+    //Método que a partir del número de celas de árboles que se quieran crear va a cambiar los nodos a tipo árbol
+    void AssaignTrees(int cellsNumber)
+    {
+        int smallTrees = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
+        cellsNumber -= smallTrees;
+
+        int bigTrees = cellsNumber / 4;
+        cellsNumber -= bigTrees * 4;
+        smallTrees += cellsNumber;
+
+        print("Number of big trees (2x2): " + bigTrees);
+        print("Number of small trees (1x1): " + smallTrees);
+
+        ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(smallTrees, Node.Type.floor, Node.Type.tree, Node.Size.s1x1, 1, 1);
+    }
+    //Método que a partir del número de celas de aldea que se quieran crear va a cambiar los nodos a tipo aldea
+    void AssaignVillages(int cellsNumber)
+    {
+        int smallVillages = Random.Range(10 * (cellsNumber/4) / 100, 20 * (cellsNumber/4) / 100);
+        cellsNumber -= smallVillages * 4;
+
+        int bigVillages = cellsNumber / 16;
+        cellsNumber -= bigVillages * 16;
+
+        if (cellsNumber > 4)
+            smallVillages += 1;
+
+        print("Number of big villages (4x4): " + bigVillages);
+
+        ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
+        ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
+    }
+
+
+
+    //MÉTODOS PARA SIMPLIFICAR PROCESOS DE NODOS
+
+    //Método que cambia el tipo y el tamaño de un nodo
     void ChangeNodeTypeAndSize(Node nodeToChange, Node.Type typeOfNode, Node.Size sizeOfNode, int sizeX, int sizeY)
     {
         for (int i = 0; i < sizeX; i++)
@@ -185,6 +242,7 @@ public class Grid : MonoBehaviour
         }
     }
 
+    //Método que a partir de un número busca si se puede colocar ese objeto y lo coloca tantas veces como número
     void ChangeNodesAvailables(int number, Node.Type nodeAvailableType, Node.Type nodeType, Node.Size nodeSize, int sizeX, int sizeY)
     {
         List<Node> availableNodes;
@@ -205,57 +263,7 @@ public class Grid : MonoBehaviour
                 break;
         }
     }
-
-
-    //Método que a partir del número de celas de rocas que se quieran crear va a cambiar los nodos a tipo roca
-    void AssaignRocks(int cellsNumber)
-    {
-        int smallRocks = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
-        cellsNumber -= smallRocks;
-
-        int bigRocks = cellsNumber / 4;
-        cellsNumber -= bigRocks * 4;
-        smallRocks += cellsNumber;
-        
-        print("Number of big rocks (2x2): " + bigRocks);
-
-        ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
-        ChangeNodesAvailables(smallRocks, Node.Type.floor, Node.Type.rock, Node.Size.s1x1, 1, 1);
-    }
-    void AssaignTrees(int cellsNumber)
-    {
-        int smallTrees = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
-        cellsNumber -= smallTrees;
-
-        int bigTrees = cellsNumber / 4;
-        cellsNumber -= bigTrees * 4;
-        smallTrees += cellsNumber;
-
-        print("Number of big trees (2x2): " + bigTrees);
-        print("Number of small trees (1x1): " + smallTrees);
-
-        ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
-        ChangeNodesAvailables(smallTrees, Node.Type.floor, Node.Type.tree, Node.Size.s1x1, 1, 1);
-    }
-    void AssaignVillages(int cellsNumber)
-    {
-        int smallVillages = Random.Range(10 * (cellsNumber/4) / 100, 20 * (cellsNumber/4) / 100);
-        cellsNumber -= smallVillages * 4;
-
-        int bigVillages = cellsNumber / 16;
-        cellsNumber -= bigVillages * 16;
-
-        if (cellsNumber > 4)
-            smallVillages += 1;
-
-        print("Number of big villages (4x4): " + bigVillages);
-        List<Node> availableNodes;
-
-        ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
-        ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
-    }
-
-
+    
     //Método que crea una lista de todos los nodos de un tipo determinado con una medida concreta (sizeX, sizeY)
     public List<Node> AvailableNodesType(Node.Type nodeType, int sizeX, int sizeY)
     {
@@ -294,9 +302,152 @@ public class Grid : MonoBehaviour
                 }
             }
         }
-
         return availableNodes;
     }
+
+    
+    //Método para dibujar la grid
+    private void OnDrawGizmosSelected()
+    {
+        if (grid != null)
+        {
+
+            for (int i = 0; i < grid.GetLength(0); i++)
+            {
+                for (int j = 0; j < grid.GetLength(1); j++)
+                {
+                    switch (grid[i, j].currentType)
+                    {
+                        case (Node.Type.water):
+                            Gizmos.color = new Color(0.2666667f, 0.57f, 0.9254902f, 0.5f);
+                            break;
+                        case (Node.Type.shore):
+                            Gizmos.color = new Color(0.9254902f, 0.910089f, 0.26666f, 0.5f);
+                            break;
+                        case (Node.Type.floor):
+                            Gizmos.color = new Color(0.9254902f, 0.7990713f, 0.26666f, 0.5f);
+                            break;
+                        case (Node.Type.tree):
+                            Gizmos.color = new Color(0.09024564f, 0.490566f, 0.1355f, 0.5f);
+                            break;
+                        case (Node.Type.rock):
+                            Gizmos.color = new Color(0.6415094f, 0.6415094f, 0.6415094f, 0.5f);
+                            break;
+                        case (Node.Type.enemy):
+                            Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
+                            break;
+                        case (Node.Type.decoration):
+                            Gizmos.color = new Color(1f, 0f, 0.5643387f, 0.5f);
+                            break;
+                        case (Node.Type.village):
+                            Gizmos.color = new Color(0.7991002f, 0.4791296f, 0.9150943f, 0.5f);
+                            break;
+                        case (Node.Type.entry):
+                            Gizmos.color = new Color(0.2666667f, 0.9254902f, 0.3395f, 0.5f);
+                            break;
+                        case (Node.Type.exit):
+                            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
+                            break;
+
+                    }
+
+                    Vector3 scale = new Vector3(node_size, node_size, node_size);
+
+                    Gizmos.DrawCube(grid[i, j].worldPosition, scale);
+                }
+            }
+        }
+
+    }
+
+    
+    public Node GetNode(int x, int y)
+    {
+        if (x < 0 || y < 0 || x >= size_x || y >= size_y)
+        {
+            //Debug.LogWarning("Invalid Node" + x + ", " + y);
+            return null;
+        }
+        return grid[x, y];
+    }
+
+
+    public Node GetNodeContainingPosition(Vector3 worldPosition)
+    {
+        Vector3 localPosition = worldPosition - transform.position;
+        int x = Mathf.FloorToInt(localPosition.x / node_size);
+        int y = Mathf.FloorToInt(localPosition.y / node_size);
+
+
+        if (x < size_x && x >= 0 && y < size_y && y >= 0)
+        {
+            return grid[x, y];
+        }
+
+        return null;
+    }
+
+    
+    //Método que devuelve una lista de los nodos que rodean al nodo enviado, extenden = true para que envie también los que están en diagonal.
+    public List<Node> GetNeighbours(Node node, bool extended)
+    {
+        List<Node> listaNodos = new List<Node>();
+
+        for (int i = -1; i <= 1; i++)
+        {
+            for (int j = -1; j <= 1; j++)
+            {
+
+                if (!extended)
+                {
+                    if (Mathf.Abs(i) == Mathf.Abs(j))
+                        continue;
+                }
+                else
+                {
+                    if (i == 0 && j == 0)
+                        continue;
+                }
+
+
+                Node vecino = GetNode(node.gridPositionX + i, node.gridPositionY + j);
+
+
+                if (vecino != null)
+                {
+                    listaNodos.Add(vecino);
+                }
+            }
+        }
+
+        return listaNodos;
+    }
+
+    //Método que devuelve una lista con los nodos que hay a distancia x e y, teniendo como referencia el nodo de abajo a la derecha
+    public List<Node> GetNeighboursBySize(Node node, int x, int y)
+    {
+        List<Node> listaNodos = new List<Node>();
+
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                if (i == 0 && j == 0)
+                    continue;
+
+                Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);
+
+
+                if (vecino != null)
+                    listaNodos.Add(vecino);
+                else
+                    listaNodos.Add(null);
+            }
+        }
+
+        return listaNodos;
+    }
+
 
 
     //Método que según el tag del collider que detecte cambiara el nodo a un tipo u otro -> Este método ya no lo usamos
@@ -367,153 +518,6 @@ public class Grid : MonoBehaviour
             }
         }
     }
-
-
-    //Método para dibujar la grid
-    private void OnDrawGizmosSelected()
-    {
-        if (grid != null)
-        {
-
-            for (int i = 0; i < grid.GetLength(0); i++)
-            {
-                for (int j = 0; j < grid.GetLength(1); j++)
-                {
-                    switch (grid[i, j].currentType)
-                    {
-                        case (Node.Type.water):
-                            Gizmos.color = new Color(0.2666667f, 0.57f, 0.9254902f, 0.5f);
-                            break;
-                        case (Node.Type.shore):
-                            Gizmos.color = new Color(0.9254902f, 0.910089f, 0.26666f, 0.5f);
-                            break;
-                        case (Node.Type.floor):
-                            Gizmos.color = new Color(0.9254902f, 0.7990713f, 0.26666f, 0.5f);
-                            break;
-                        case (Node.Type.tree):
-                            Gizmos.color = new Color(0.09024564f, 0.490566f, 0.1355f, 0.5f);
-                            break;
-                        case (Node.Type.rock):
-                            Gizmos.color = new Color(0.6415094f, 0.6415094f, 0.6415094f, 0.5f);
-                            break;
-                        case (Node.Type.enemy):
-                            Gizmos.color = new Color(0f, 1f, 1f, 0.5f);
-                            break;
-                        case (Node.Type.decoration):
-                            Gizmos.color = new Color(1f, 0f, 0.5643387f, 0.5f);
-                            break;
-                        case (Node.Type.village):
-                            Gizmos.color = new Color(0.7991002f, 0.4791296f, 0.9150943f, 0.5f);
-                            break;
-                        case (Node.Type.entry):
-                            Gizmos.color = new Color(0.2666667f, 0.9254902f, 0.3395f, 0.5f);
-                            break;
-                        case (Node.Type.exit):
-                            Gizmos.color = new Color(1f, 0f, 0f, 0.5f);
-                            break;
-
-                    }
-
-                    Vector3 scale = new Vector3(node_size, node_size, node_size);
-
-                    Gizmos.DrawCube(grid[i, j].worldPosition, scale);
-                }
-            }
-        }
-
-    }
-
-
-
-    public Node GetNode(int x, int y)
-    {
-        if (x < 0 || y < 0 || x >= size_x || y >= size_y)
-        {
-            //Debug.LogWarning("Invalid Node" + x + ", " + y);
-            return null;
-        }
-        return grid[x, y];
-    }
-
-
-    public Node GetNodeContainingPosition(Vector3 worldPosition)
-    {
-        Vector3 localPosition = worldPosition - transform.position;
-        int x = Mathf.FloorToInt(localPosition.x / node_size);
-        int y = Mathf.FloorToInt(localPosition.y / node_size);
-
-
-        if (x < size_x && x >= 0 && y < size_y && y >= 0)
-        {
-            return grid[x, y];
-        }
-
-        return null;
-    }
-
-
-
-    //Método que devuelve una lista de los nodos que rodean al nodo enviado, extenden = true para que envie también los que están en diagonal.
-    public List<Node> GetNeighbours(Node node, bool extended)
-    {
-        List<Node> listaNodos = new List<Node>();
-
-        for (int i = -1; i <= 1; i++)
-        {
-            for (int j = -1; j <= 1; j++)
-            {
-
-                if (!extended)
-                {
-                    if (Mathf.Abs(i) == Mathf.Abs(j))
-                        continue;
-                }
-                else
-                {
-                    if (i == 0 && j == 0)
-                        continue;
-                }
-
-
-                Node vecino = GetNode(node.gridPositionX + i, node.gridPositionY + j);
-
-
-                if (vecino != null)
-                {
-                    listaNodos.Add(vecino);
-                }
-            }
-        }
-
-        return listaNodos;
-    }
-
-    //Método que devuelve una lista con los nodos que hay a distancia x e y, teniendo como referencia el nodo de abajo a la derecha
-    public List<Node> GetNeighboursBySize(Node node, int x, int y)
-    {
-        List<Node> listaNodos = new List<Node>();
-
-        for (int i = 0; i < x; i++)
-        {
-            for (int j = 0; j < y; j++)
-            {
-                if (i == 0 && j == 0)
-                    continue;
-
-                Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);
-
-
-                if (vecino != null)
-                    listaNodos.Add(vecino);
-                else
-                    listaNodos.Add(null);
-            }
-        }
-
-        return listaNodos;
-    }
-
-
 }
 
 

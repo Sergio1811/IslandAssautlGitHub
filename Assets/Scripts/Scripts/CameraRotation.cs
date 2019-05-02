@@ -10,6 +10,7 @@ public class CameraRotation : MonoBehaviour
     public float lateralSpeed, zoomSpeed;
     public float maxZoom, minZoom;
     public float maxYRotationAngle;
+    public bool cameraRotating;
 
     void Awake()
     {
@@ -19,25 +20,42 @@ public class CameraRotation : MonoBehaviour
         pitch = camera.localRotation.eulerAngles.x;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float horizontal = InputManager.Instance.GetAxis("CameraMovementX");
-        float vertical = InputManager.Instance.GetAxis("CameraMovementY");
-        float zoom = -InputManager.Instance.GetAxis("CameraZoom");
+        if (InputManager.Instance.GetInput("CameraBack") && !cameraRotating) cameraRotating = true; ;
 
-        pitch += vertical * lateralSpeed * Time.deltaTime;
-        pitch = Mathf.Clamp(pitch, -maxYRotationAngle, maxYRotationAngle);
+        if (cameraRotating)
+        {
+            CameraBehindPlayer();
+        }
 
-        yaw += horizontal * lateralSpeed * Time.deltaTime;
+        else
+        {
+            float horizontal = InputManager.Instance.GetAxis("CameraMovementX");
+            float vertical = InputManager.Instance.GetAxis("CameraMovementY");
+            float zoom = -InputManager.Instance.GetAxis("CameraZoom");
 
-        camera.localRotation = Quaternion.Euler(pitch, yaw, 0);
+            pitch += vertical * lateralSpeed * Time.deltaTime;
+            pitch = Mathf.Clamp(pitch, -maxYRotationAngle, maxYRotationAngle);
 
-        //if (horizontal != 0)
-        //    camera.Rotate(new Vector3(0, horizontal * lateralSpeed * Time.deltaTime, 0));
+            yaw += horizontal * lateralSpeed * Time.deltaTime;
 
-        if ((zoom < 0 && mainCamera.fieldOfView > minZoom) || (zoom > 0 && mainCamera.fieldOfView < maxZoom))
-            mainCamera.fieldOfView += zoom * zoomSpeed * Time.deltaTime;
+            camera.localRotation = Quaternion.Euler(pitch, yaw, 0);
 
+            if ((zoom < 0 && mainCamera.fieldOfView > minZoom) || (zoom > 0 && mainCamera.fieldOfView < maxZoom))
+                mainCamera.fieldOfView += zoom * zoomSpeed * Time.deltaTime;
+        }
+
+    }
+
+    public void CameraBehindPlayer()
+    {
+        Vector3 newRotation = new Vector3(transform.eulerAngles.x, GameManager.Instance.player.transform.eulerAngles.y, transform.eulerAngles.z);
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(newRotation), lateralSpeed * Time.deltaTime);
+        yaw = camera.localRotation.eulerAngles.y;
+        pitch = camera.localRotation.eulerAngles.x;
+
+        if (transform.rotation == Quaternion.Euler(newRotation)) cameraRotating = false;
     }
 }

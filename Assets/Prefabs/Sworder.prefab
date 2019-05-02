@@ -264,6 +264,8 @@ MonoBehaviour:
   hitDistance: 10
   actionSphere: {fileID: 4210738553931881768}
   inmortalDurationTime: 2
+  dashDistance: 10
+  bomb: {fileID: 0}
 --- !u!143 &4421477409617885656
 CharacterController:
   m_ObjectHideFlags: 0

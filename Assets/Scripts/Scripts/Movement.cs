@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
     float inmortalTimer;
     bool inmortal;
 
+    public float dashDistance;
+
     public GameObject bomb;
     bool bombOn;
 
@@ -64,29 +66,59 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-        Vector3 movement = Vector3.zero;
-        xMovement = InputManager.Instance.GetAxis("Horizontal");
-        zMovement = InputManager.Instance.GetAxis("Vertical");
+        if (InputManager.Instance.GetInputDown("Dash")) Dash();
 
-        if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
+        else
         {
-            Vector3 forward = cameraAnchor.forward;
-            forward.y = 0;
-            forward.Normalize();
-            Vector3 right = cameraAnchor.right;
-            right.y = 0;
-            right.Normalize();
+            Vector3 movement = Vector3.zero;
+            xMovement = InputManager.Instance.GetAxis("Horizontal");
+            zMovement = InputManager.Instance.GetAxis("Vertical");
 
-            movement = forward * zMovement + right * xMovement;
-            transform.localRotation = Quaternion.LookRotation(movement);
+            if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
+            {
+                GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
+
+                Vector3 forward = cameraAnchor.forward;
+                forward.y = 0;
+                forward.Normalize();
+                Vector3 right = cameraAnchor.right;
+                right.y = 0;
+                right.Normalize();
+
+                movement = forward * zMovement + right * xMovement;
+                transform.localRotation = Quaternion.LookRotation(movement);
+            }
+
+            if (!characterController.isGrounded)
+                movement.y += Physics.gravity.y;
+
+            characterController.Move(movement.normalized * characterSpeed * Time.deltaTime);
         }
-
-        if (!characterController.isGrounded)
-            movement.y += Physics.gravity.y;
-
-        characterController.Move(movement.normalized * characterSpeed * Time.deltaTime);
     }
 
+    void Dash()
+    {
+        characterController.enabled = false;
+
+        Ray ray = new Ray(transform.position, transform.forward);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(ray, out hit, dashDistance))
+        {
+            if (hit.collider.gameObject.name == "DecorationMesh")
+            {
+                Vector3 newPos = hit.point + hit.normal * 2;
+                transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
+            }
+
+            else
+                transform.position += transform.forward * dashDistance;
+        }
+
+        else
+            transform.position += transform.forward * dashDistance;
+
+        characterController.enabled = true;
+    }
 
     void StartAction()
     {
@@ -152,7 +184,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     void UpdateBomb()
     {
         actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
@@ -193,7 +224,6 @@ public class Movement : MonoBehaviour
         canMove = true;
     }
 
-
     public void BreakRock(GameObject rock)
     {
         GameManager.Instance.PickRock();
@@ -212,7 +242,6 @@ public class Movement : MonoBehaviour
         Destroy(chest);
     }
 
-
     void CheckInmortal()
     {
         inmortalTimer += Time.deltaTime;
@@ -225,7 +254,6 @@ public class Movement : MonoBehaviour
         if (hit.gameObject.tag == "Dead")
             GameManager.Instance.EndProtoLevel();
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -243,7 +271,6 @@ public class Movement : MonoBehaviour
             GameManager.Instance.Damage();
         }
     }
-
 
     private void OnDrawGizmos()
     {

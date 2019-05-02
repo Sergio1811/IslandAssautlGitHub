@@ -41,6 +41,17 @@ public class InputManager : MonoBehaviour
         }
     }
 
+        public bool GetInputDown(string input)
+        {
+            if (psController)
+                return Input.GetButtonDown("PS_" + input);
+
+            if (xboxController)
+                return Input.GetButtonDown("XBOX_" + input);
+
+            return false;
+    }
+
     public bool GetInput(string input)
     {
         if (psController)

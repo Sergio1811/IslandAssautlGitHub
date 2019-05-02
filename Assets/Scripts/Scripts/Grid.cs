@@ -31,8 +31,17 @@ public class Grid : MonoBehaviour
         switch (characterType)
         {
             case 0:
+                randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
+                print("Number of floor nodes: " + numberOfFloor);
+                print("Minimum tree nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max tree nodes: " + maxPrimaryPers * numberOfFloor / 100);
+                print("Number of tree nodes: " + randomNumber);
+                AssaignTrees(randomNumber);
+
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignRocks(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignVillages(randomNumber);
                 break;
 
             case 1:
@@ -41,11 +50,26 @@ public class Grid : MonoBehaviour
                 print("Minimum rock nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max rock nodes: " + maxPrimaryPers * numberOfFloor / 100);
                 print("Number of rock nodes: " + randomNumber);
                 AssaignRocks(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignVillages(randomNumber);
+                
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignTrees(randomNumber);
                 break;
 
             case 2:
+                randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
+                print("Number of floor nodes: " + numberOfFloor);
+                print("Minimum village nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max village nodes: " + maxPrimaryPers * numberOfFloor / 100);
+                print("Number of village nodes: " + randomNumber);
+                AssaignVillages(randomNumber);
+
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignRocks(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignTrees(randomNumber);
                 break;
         }
     }
@@ -169,6 +193,68 @@ public class Grid : MonoBehaviour
                 grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.rock;
                 numberOfFloor -= 4;
                 bigRocks--;
+                availableNodes.Clear();
+            }
+            else
+                break;
+        }
+    }
+    void AssaignTrees(int cellsNumber)
+    {
+        int bigTrees = cellsNumber / 4;
+        print("Number of big trees (2x2): " + bigTrees);
+        List<Node> availableNodes;
+
+        for (int i = bigTrees; i > 0; i--)
+        {
+            availableNodes = AvailableNodesType(Node.Type.floor, 2, 2);
+
+            if (availableNodes.Count >= bigTrees)
+            {
+                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
+                selectedNode.currentType = Node.Type.tree;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.tree;
+                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.tree;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.tree;
+                numberOfFloor -= 4;
+                bigTrees--;
+                availableNodes.Clear();
+            }
+            else
+                break;
+        }
+    }
+    void AssaignVillages(int cellsNumber)
+    {
+        int bigVillages = cellsNumber / 16;
+        print("Number of big villages (4x4): " + bigVillages);
+        List<Node> availableNodes;
+
+        for (int i = bigVillages; i > 0; i--)
+        {
+            availableNodes = AvailableNodesType(Node.Type.floor, 4, 4);
+
+            if (availableNodes.Count >= bigVillages)
+            {
+                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
+                selectedNode.currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
+                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
+                numberOfFloor -= 16;
+                bigVillages--;
                 availableNodes.Clear();
             }
             else
@@ -350,7 +436,7 @@ public class Grid : MonoBehaviour
     {
         if (x < 0 || y < 0 || x >= size_x || y >= size_y)
         {
-            Debug.LogWarning("Invalid Node" + x + ", " + y);
+            //Debug.LogWarning("Invalid Node" + x + ", " + y);
             return null;
         }
         return grid[x, y];

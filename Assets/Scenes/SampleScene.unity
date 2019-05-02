@@ -13024,10 +13024,10 @@ MonoBehaviour:
   size_x: 20
   size_y: 20
   node_size: 5
-  minPrimaryPers: 40
-  maxPrimaryPers: 60
-  minSecundaryPers: 0
-  maxSecundaryPers: 10
+  minPrimaryPers: 25
+  maxPrimaryPers: 35
+  minSecundaryPers: 10
+  maxSecundaryPers: 20
 --- !u!4 &583558311
 Transform:
   m_ObjectHideFlags: 0

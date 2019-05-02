@@ -22,7 +22,7 @@ public class CameraRotation : MonoBehaviour
 
     void Update()
     {
-        if (InputManager.Instance.GetInput("CameraBack") && !cameraRotating) cameraRotating = true; ;
+        if (InputManager.Instance.GetInput("CameraBack") && !cameraRotating) cameraRotating = true;
 
         if (cameraRotating)
         {
@@ -52,10 +52,10 @@ public class CameraRotation : MonoBehaviour
     {
         Vector3 newRotation = new Vector3(transform.eulerAngles.x, GameManager.Instance.player.transform.eulerAngles.y, transform.eulerAngles.z);
 
+        if (transform.rotation == Quaternion.Euler(newRotation)) cameraRotating = false;
+
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(newRotation), lateralSpeed * Time.deltaTime);
         yaw = camera.localRotation.eulerAngles.y;
         pitch = camera.localRotation.eulerAngles.x;
-
-        if (transform.rotation == Quaternion.Euler(newRotation)) cameraRotating = false;
     }
 }

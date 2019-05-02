@@ -181,6 +181,10 @@ public class Grid : MonoBehaviour
     {
         int smallRocks = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
         cellsNumber -= smallRocks;
+        int rocks1x2 = Random.Range(0, 15 * cellsNumber / 100);
+        cellsNumber -= rocks1x2;
+        int rocks2x1 = Random.Range(0, 15 * cellsNumber / 100);
+        cellsNumber -= rocks2x1;
 
         int bigRocks = cellsNumber / 4;
         cellsNumber -= bigRocks * 4;
@@ -189,6 +193,8 @@ public class Grid : MonoBehaviour
         print("Number of big rocks (2x2): " + bigRocks);
 
         ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(rocks1x2, Node.Type.floor, Node.Type.rock, Node.Size.s1x2, 1, 2);
+        ChangeNodesAvailables(rocks2x1, Node.Type.floor, Node.Type.rock, Node.Size.s2x1, 2, 1);
         ChangeNodesAvailables(smallRocks, Node.Type.floor, Node.Type.rock, Node.Size.s1x1, 1, 1);
     }
     //Método que a partir del número de celas de árboles que se quieran crear va a cambiar los nodos a tipo árbol
@@ -196,6 +202,10 @@ public class Grid : MonoBehaviour
     {
         int smallTrees = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
         cellsNumber -= smallTrees;
+        int trees1x2 = Random.Range(0, 15 * cellsNumber / 100);
+        cellsNumber -= trees1x2;
+        int trees2x1 = Random.Range(0, 15 * cellsNumber / 100);
+        cellsNumber -= trees2x1;
 
         int bigTrees = cellsNumber / 4;
         cellsNumber -= bigTrees * 4;
@@ -205,6 +215,8 @@ public class Grid : MonoBehaviour
         print("Number of small trees (1x1): " + smallTrees);
 
         ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(trees1x2, Node.Type.floor, Node.Type.tree, Node.Size.s1x2, 1, 2);
+        ChangeNodesAvailables(trees2x1, Node.Type.floor, Node.Type.tree, Node.Size.s2x1, 2, 1);
         ChangeNodesAvailables(smallTrees, Node.Type.floor, Node.Type.tree, Node.Size.s1x1, 1, 1);
     }
     //Método que a partir del número de celas de aldea que se quieran crear va a cambiar los nodos a tipo aldea
@@ -212,6 +224,9 @@ public class Grid : MonoBehaviour
     {
         int smallVillages = Random.Range(10 * (cellsNumber/4) / 100, 20 * (cellsNumber/4) / 100);
         cellsNumber -= smallVillages * 4;
+
+        int mediumVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
+        cellsNumber -= mediumVillages * 9;
 
         int bigVillages = cellsNumber / 16;
         cellsNumber -= bigVillages * 16;
@@ -222,6 +237,7 @@ public class Grid : MonoBehaviour
         print("Number of big villages (4x4): " + bigVillages);
 
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
+        ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);
         ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
     }
 
@@ -527,7 +543,7 @@ public class Node
     public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit }
     public Type currentType = Type.water;
     public bool isTransitable = false;
-    public enum Size { s1x1, s1x2, s1x3, s1x4, s2x2, s2x3, s2x4, s3x3, s4x4 };
+    public enum Size { s1x1, s1x2, s1x3, s1x4, s2x1, s2x2, s2x3, s2x4, s3x1, s3x3, s4x1, s4x4 };
     public Size currentSize = Size.s1x1;
 
     public int gridPositionX;

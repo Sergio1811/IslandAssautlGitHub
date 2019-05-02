@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
     GameObject portalExit;
 
     public Grid gridScript;
-    public GameObject tree1x1, tree2x2, enemy, rock1x1, rock2x2, decoration, village2x2, village4x4, portal, water;
+    public GameObject tree1x1, tree2x2, tree1x2, enemy, rock1x1, rock2x2, rocks1x2, decoration, village2x2, village3x3, village4x4, portal, water;
 
     Node startNode, endNode;
     int protoIsland;
     public GameObject[] islands;
     Transform islandParent;
-    
+
     public GameObject livesGroup;
     int livesNumber;
 
@@ -69,10 +69,10 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
-        
+
         gridScript.GenerateGrid(characterNumber);
     }
-    
+
     void Start()
     {
         currentCoinsText.text = "Coins: " + currentCoins.ToString();
@@ -88,7 +88,7 @@ public class GameManager : MonoBehaviour
 
         livesNumber = livesGroup.transform.childCount;
     }
-    
+
     void Update()
     {
         remainingTimeInLevel -= Time.deltaTime;
@@ -117,25 +117,25 @@ public class GameManager : MonoBehaviour
                 p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
-                objectiveText.text = "1: Consigue " + woodNeeded*woodByItem + " maderas.";
+                objectiveText.text = "1: Consigue " + woodNeeded * woodByItem + " maderas.";
                 break;
             case 1:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
-                objectiveText.text = "1: Consigue " + rockNeeded*rockByItem + " rocas.";
+                objectiveText.text = "1: Consigue " + rockNeeded * rockByItem + " rocas.";
                 break;
             case 2:
                 p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
-                objectiveText.text = "1: Consigue " + enemiesNeeded*enemiesByItem + " pieles.";
+                objectiveText.text = "1: Consigue " + enemiesNeeded * enemiesByItem + " pieles.";
                 break;
         }
-        
+
         return p;
     }
-    
+
 
 
     public void EndLevel()
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         currentCoins = 0;
     }
 
-    
+
     public void PickWood()
     {
         collectedWood += woodByItem;
@@ -192,7 +192,7 @@ public class GameManager : MonoBehaviour
         if (collectedFabrics >= enemiesNeeded * enemiesByItem)
             ActivatePortal();
     }
-    
+
     public void Damage()
     {
         livesNumber--;
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
     }
 
-    public void LevelComplete ()
+    public void LevelComplete()
     {
         EndProtoLevel();
     }
@@ -240,19 +240,35 @@ public class GameManager : MonoBehaviour
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.tree)
                 {
-                    switch(actualNode.currentSize)
+                    switch (actualNode.currentSize)
                     {
                         case Node.Size.s1x1:
                             objectInstantiation = Instantiate(tree1x1, islandParent);
                             ChangeTransitable(actualNode, false, 1, 1);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                            break;
+                        case Node.Size.s1x2:
+                            objectInstantiation = Instantiate(tree1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 2);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.5f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s2x1:
+                            objectInstantiation = Instantiate(tree1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 1);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
                             break;
                         default:
                             objectInstantiation = Instantiate(tree2x2, islandParent);
                             ChangeTransitable(actualNode, false, 2, 2);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                     woodNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.rock)
@@ -262,14 +278,30 @@ public class GameManager : MonoBehaviour
                         case Node.Size.s1x1:
                             objectInstantiation = Instantiate(rock1x1, islandParent);
                             ChangeTransitable(actualNode, false, 1, 1);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+                            break;
+                        case Node.Size.s1x2:
+                            objectInstantiation = Instantiate(rocks1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 2);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
+                            else
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
+                            break;
+                        case Node.Size.s2x1:
+                            objectInstantiation = Instantiate(rocks1x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 1);
+                            if (Random.Range(0, 2) == 1)
+                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
                             break;
                         default:
                             objectInstantiation = Instantiate(rock2x2, islandParent);
                             ChangeTransitable(actualNode, false, 2, 2);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                     rockNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
@@ -280,13 +312,17 @@ public class GameManager : MonoBehaviour
                             objectInstantiation = Instantiate(village2x2, islandParent);
                             ChangeTransitable(actualNode, false, 2, 2);
                             break;
+                        case Node.Size.s3x3:
+                            objectInstantiation = Instantiate(village3x3, islandParent);
+                            ChangeTransitable(actualNode, false, 3, 3);
+                            break;
                         default:
                             objectInstantiation = Instantiate(village4x4, islandParent);
                             ChangeTransitable(actualNode, false, 4, 4);
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0,4), 0);
+                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     enemiesNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)

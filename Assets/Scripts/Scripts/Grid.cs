@@ -42,6 +42,9 @@ public class Grid : MonoBehaviour
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignVillages(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignDecoration(randomNumber);
                 break;
 
             case 1:
@@ -56,6 +59,9 @@ public class Grid : MonoBehaviour
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignTrees(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignDecoration(randomNumber);
                 break;
 
             case 2:
@@ -70,6 +76,9 @@ public class Grid : MonoBehaviour
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignTrees(randomNumber);
+
+                randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
+                AssaignDecoration(randomNumber);
                 break;
         }
     }
@@ -222,7 +231,7 @@ public class Grid : MonoBehaviour
     //Método que a partir del número de celas de aldea que se quieran crear va a cambiar los nodos a tipo aldea
     void AssaignVillages(int cellsNumber)
     {
-        int smallVillages = Random.Range(10 * (cellsNumber/4) / 100, 20 * (cellsNumber/4) / 100);
+        int smallVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
         cellsNumber -= smallVillages * 4;
 
         int mediumVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
@@ -239,6 +248,93 @@ public class Grid : MonoBehaviour
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
         ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);
         ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
+    }
+
+    //Método que a partir del número de celas de decoración crea nodos tipo decoración con distintas formas como posibilidad
+    void AssaignDecoration(int cellsNumber)
+    {
+        int decoration1x1 = 0, decoration1x2 = 0, decoration2x1 = 0, decoration1x3 = 0, decoration3x1 = 0, decoration1x4 = 0, decoration4x1 = 0;
+        int decoration2x2 = 0, decoration2x3 = 0, decoration3x2 = 0, decoration2x4 = 0, decoration4x2 = 0;
+
+        while (cellsNumber > 0)
+        {
+            int randomMax = 12;
+            if (cellsNumber < 2)
+                randomMax = 0;
+            else if (cellsNumber < 3)
+                randomMax = 3;
+            else if (cellsNumber < 4)
+                randomMax = 5;
+            else if (cellsNumber < 6)
+                randomMax = 8;
+            else if (cellsNumber < 8)
+                randomMax = 10;
+
+            switch (Random.Range(0, randomMax))
+            {
+                case 0:
+                    decoration1x1++;
+                    cellsNumber -= 1;
+                    break;
+                case 1:
+                    decoration1x2++;
+                    cellsNumber -= 2;
+                    break;
+                case 2:
+                    decoration2x1++;
+                    cellsNumber -= 2;
+                    break;
+                case 3:
+                    decoration1x3++;
+                    cellsNumber -= 3;
+                    break;
+                case 4:
+                    decoration3x1++;
+                    cellsNumber -= 3;
+                    break;
+                case 5:
+                    decoration4x1++;
+                    cellsNumber -= 4;
+                    break;
+                case 6:
+                    decoration2x2++;
+                    cellsNumber -= 4;
+                    break;
+                case 7:
+                    decoration1x4++;
+                    cellsNumber -= 4;
+                    break;
+                case 8:
+                    decoration3x2++;
+                    cellsNumber -= 6;
+                    break;
+                case 9:
+                    decoration2x3++;
+                    cellsNumber -= 6;
+                    break;
+                case 10:
+                    decoration2x4++;
+                    cellsNumber -= 8;
+                    break;
+                case 11:
+                    decoration4x2++;
+                    cellsNumber -= 8;
+                    break;
+            }
+        }
+
+        ChangeNodesAvailables(decoration2x4, Node.Type.floor, Node.Type.decoration, Node.Size.s2x4, 2, 4);
+        ChangeNodesAvailables(decoration2x3, Node.Type.floor, Node.Type.decoration, Node.Size.s2x3, 2, 3);
+        ChangeNodesAvailables(decoration2x2, Node.Type.floor, Node.Type.decoration, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(decoration1x4, Node.Type.floor, Node.Type.decoration, Node.Size.s1x4, 1, 4);
+        ChangeNodesAvailables(decoration1x3, Node.Type.floor, Node.Type.decoration, Node.Size.s1x3, 1, 3);
+        ChangeNodesAvailables(decoration1x2, Node.Type.floor, Node.Type.decoration, Node.Size.s1x2, 1, 2);
+        ChangeNodesAvailables(decoration1x1, Node.Type.floor, Node.Type.decoration, Node.Size.s1x1, 1, 1);
+        ChangeNodesAvailables(decoration3x2, Node.Type.floor, Node.Type.decoration, Node.Size.s3x2, 3, 2);
+        ChangeNodesAvailables(decoration4x2, Node.Type.floor, Node.Type.decoration, Node.Size.s4x2, 4, 2);
+        ChangeNodesAvailables(decoration2x1, Node.Type.floor, Node.Type.decoration, Node.Size.s2x1, 2, 1);
+        ChangeNodesAvailables(decoration3x1, Node.Type.floor, Node.Type.decoration, Node.Size.s3x1, 3, 1);
+        ChangeNodesAvailables(decoration4x1, Node.Type.floor, Node.Type.decoration, Node.Size.s4x1, 4, 1);
     }
 
 
@@ -271,7 +367,7 @@ public class Grid : MonoBehaviour
             {
                 Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
                 ChangeNodeTypeAndSize(selectedNode, nodeType, nodeSize, sizeX, sizeY);
-                numberOfFloor -= sizeX * sizeY;
+                //numberOfFloor -= sizeX * sizeY;
                 number--;
                 availableNodes.Clear();
             }
@@ -543,7 +639,7 @@ public class Node
     public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit }
     public Type currentType = Type.water;
     public bool isTransitable = false;
-    public enum Size { s1x1, s1x2, s1x3, s1x4, s2x1, s2x2, s2x3, s2x4, s3x1, s3x3, s4x1, s4x4 };
+    public enum Size { s1x1, s1x2, s1x3, s1x4, s2x1, s2x2, s2x3, s2x4, s3x1, s3x2, s3x3, s4x1, s4x2, s4x4 };
     public Size currentSize = Size.s1x1;
 
     public int gridPositionX;

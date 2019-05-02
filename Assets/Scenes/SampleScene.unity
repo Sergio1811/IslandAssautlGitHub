@@ -32330,6 +32330,7 @@ MonoBehaviour:
   maxZoom: 75
   minZoom: 40
   maxYRotationAngle: 20
+  cameraRotating: 0
 --- !u!114 &1362759328
 MonoBehaviour:
   m_ObjectHideFlags: 0

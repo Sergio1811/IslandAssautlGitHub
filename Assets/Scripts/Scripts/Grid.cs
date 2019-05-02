@@ -53,7 +53,7 @@ public class Grid : MonoBehaviour
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignVillages(randomNumber);
-                
+
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignTrees(randomNumber);
                 break;
@@ -173,93 +173,83 @@ public class Grid : MonoBehaviour
     }
 
 
+    void ChangeNodeTypeAndSize(Node nodeToChange, Node.Type typeOfNode, Node.Size sizeOfNode, int sizeX, int sizeY)
+    {
+        for (int i = 0; i < sizeX; i++)
+        {
+            for (int j = 0; j < sizeY; j++)
+            {
+                grid[nodeToChange.gridPositionX - i, nodeToChange.gridPositionY - j].currentType = typeOfNode;
+                grid[nodeToChange.gridPositionX - i, nodeToChange.gridPositionY - j].currentSize = sizeOfNode;
+            }
+        }
+    }
+
+    void ChangeNodesAvailables(int number, Node.Type nodeAvailableType, Node.Type nodeType, Node.Size nodeSize, int sizeX, int sizeY)
+    {
+        List<Node> availableNodes;
+
+        for (int i = number; i > 0; i--)
+        {
+            availableNodes = AvailableNodesType(nodeAvailableType, sizeX, sizeY);
+
+            if (availableNodes.Count >= number)
+            {
+                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
+                ChangeNodeTypeAndSize(selectedNode, nodeType, nodeSize, sizeX, sizeY);
+                numberOfFloor -= sizeX * sizeY;
+                number--;
+                availableNodes.Clear();
+            }
+            else
+                break;
+        }
+    }
+
+
     //Método que a partir del número de celas de rocas que se quieran crear va a cambiar los nodos a tipo roca
     void AssaignRocks(int cellsNumber)
     {
+        int smallRocks = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
+        cellsNumber -= smallRocks;
+
         int bigRocks = cellsNumber / 4;
+        cellsNumber -= bigRocks * 4;
+        smallRocks += cellsNumber;
+        
         print("Number of big rocks (2x2): " + bigRocks);
-        List<Node> availableNodes;
 
-        for (int i = bigRocks; i > 0; i--)
-        {
-            availableNodes = AvailableNodesType(Node.Type.floor, 2, 2);
-
-            if (availableNodes.Count >= bigRocks)
-            {
-                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
-                selectedNode.currentType = Node.Type.rock;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.rock;
-                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.rock;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.rock;
-                numberOfFloor -= 4;
-                bigRocks--;
-                availableNodes.Clear();
-            }
-            else
-                break;
-        }
+        ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(smallRocks, Node.Type.floor, Node.Type.rock, Node.Size.s1x1, 1, 1);
     }
     void AssaignTrees(int cellsNumber)
     {
+        int smallTrees = Random.Range(10 * cellsNumber / 100, 20 * cellsNumber / 100);
+        cellsNumber -= smallTrees;
+
         int bigTrees = cellsNumber / 4;
+        cellsNumber -= bigTrees * 4;
+        smallTrees += cellsNumber;
+
         print("Number of big trees (2x2): " + bigTrees);
-        List<Node> availableNodes;
+        print("Number of small trees (1x1): " + smallTrees);
 
-        for (int i = bigTrees; i > 0; i--)
-        {
-            availableNodes = AvailableNodesType(Node.Type.floor, 2, 2);
-
-            if (availableNodes.Count >= bigTrees)
-            {
-                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
-                selectedNode.currentType = Node.Type.tree;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.tree;
-                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.tree;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.tree;
-                numberOfFloor -= 4;
-                bigTrees--;
-                availableNodes.Clear();
-            }
-            else
-                break;
-        }
+        ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
+        ChangeNodesAvailables(smallTrees, Node.Type.floor, Node.Type.tree, Node.Size.s1x1, 1, 1);
     }
     void AssaignVillages(int cellsNumber)
     {
+        int smallVillages = Random.Range(10 * (cellsNumber/4) / 100, 20 * (cellsNumber/4) / 100);
+        cellsNumber -= smallVillages * 4;
+
         int bigVillages = cellsNumber / 16;
+        cellsNumber -= bigVillages * 16;
+
         print("Number of big villages (4x4): " + bigVillages);
         List<Node> availableNodes;
 
-        for (int i = bigVillages; i > 0; i--)
-        {
-            availableNodes = AvailableNodesType(Node.Type.floor, 4, 4);
-
-            if (availableNodes.Count >= bigVillages)
-            {
-                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
-                selectedNode.currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 1, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 2, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 1].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 2].currentType = Node.Type.village;
-                grid[selectedNode.gridPositionX - 3, selectedNode.gridPositionY - 3].currentType = Node.Type.village;
-                numberOfFloor -= 16;
-                bigVillages--;
-                availableNodes.Clear();
-            }
-            else
-                break;
-        }
+        ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
+        ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
     }
 
 
@@ -304,8 +294,8 @@ public class Grid : MonoBehaviour
 
         return availableNodes;
     }
-    
-    
+
+
     //Método que según el tag del collider que detecte cambiara el nodo a un tipo u otro -> Este método ya no lo usamos
     void AssaignByCollidersTag()
     {
@@ -499,12 +489,10 @@ public class Grid : MonoBehaviour
     public List<Node> GetNeighboursBySize(Node node, int x, int y)
     {
         List<Node> listaNodos = new List<Node>();
-        x--;
-        y--;
 
-        for (int i = 0; i <= x; i++)
+        for (int i = 0; i < x; i++)
         {
-            for (int j = 0; j <= y; j++)
+            for (int j = 0; j < y; j++)
             {
                 if (i == 0 && j == 0)
                     continue;
@@ -532,6 +520,8 @@ public class Node
     public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit }
     public Type currentType = Type.water;
     public bool isTransitable = false;
+    public enum Size { s1x1, s1x2, s1x3, s1x4, s2x2, s2x3, s2x4, s3x3, s4x4 };
+    public Size currentSize = Size.s1x1;
 
     public int gridPositionX;
     public int gridPositionY;

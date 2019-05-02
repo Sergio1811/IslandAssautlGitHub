@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     GameObject portalExit;
 
     public Grid gridScript;
-    public GameObject tree, enemy, rock, decoration, village, portal, water;
+    public GameObject tree1x1, tree2x2, enemy, rock1x1, rock2x2, decoration, village2x2, village4x4, portal, water;
 
     Node startNode, endNode;
     int protoIsland;
@@ -234,51 +234,59 @@ public class GameManager : MonoBehaviour
                 {
                     endNode = actualNode;
                     objectInstantiation = Instantiate(portal, islandParent);
+                    ChangeTransitable(actualNode, false, 1, 1);
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    actualNode.isTransitable = false;
                     portalExit = objectInstantiation;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.tree)
                 {
-                    objectInstantiation = Instantiate(tree, islandParent);
+                    switch(actualNode.currentSize)
+                    {
+                        case Node.Size.s1x1:
+                            objectInstantiation = Instantiate(tree1x1, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 1);
+                            break;
+                        default:
+                            objectInstantiation = Instantiate(tree2x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 2);
+                            break;
+                    }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.transform.localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                    actualNode.isTransitable = false;
-                    gridScript.grid[i - 1, j].isTransitable = false;
-                    gridScript.grid[i, j - 1].isTransitable = false;
-                    gridScript.grid[i - 1, j - 1].isTransitable = false;
+                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                     woodNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.rock)
                 {
-                    objectInstantiation = Instantiate(rock, islandParent);
+                    switch (actualNode.currentSize)
+                    {
+                        case Node.Size.s1x1:
+                            objectInstantiation = Instantiate(rock1x1, islandParent);
+                            ChangeTransitable(actualNode, false, 1, 1);
+                            break;
+                        default:
+                            objectInstantiation = Instantiate(rock2x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 2);
+                            break;
+                    }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    actualNode.isTransitable = false;
-                    gridScript.grid[i - 1, j].isTransitable = false;
-                    gridScript.grid[i, j - 1].isTransitable = false;
-                    gridScript.grid[i - 1, j - 1].isTransitable = false;
+                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                     rockNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
                 {
-                    objectInstantiation = Instantiate(village, islandParent);
+                    switch (actualNode.currentSize)
+                    {
+                        case Node.Size.s2x2:
+                            objectInstantiation = Instantiate(village2x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 2);
+                            break;
+                        default:
+                            objectInstantiation = Instantiate(village4x4, islandParent);
+                            ChangeTransitable(actualNode, false, 4, 4);
+                            break;
+                    }
                     objectInstantiation.transform.position = actualNode.worldPosition;
-                    actualNode.isTransitable = false;
-                    gridScript.grid[i - 1, j].isTransitable = false;
-                    gridScript.grid[i - 2, j].isTransitable = false;
-                    gridScript.grid[i - 3, j].isTransitable = false;
-                    gridScript.grid[i, j - 1].isTransitable = false;
-                    gridScript.grid[i, j - 2].isTransitable = false;
-                    gridScript.grid[i, j - 3].isTransitable = false;
-                    gridScript.grid[i - 1, j - 1].isTransitable = false;
-                    gridScript.grid[i - 2, j - 1].isTransitable = false;
-                    gridScript.grid[i - 3, j - 1].isTransitable = false;
-                    gridScript.grid[i - 1, j - 2].isTransitable = false;
-                    gridScript.grid[i - 1, j - 3].isTransitable = false;
-                    gridScript.grid[i - 2, j - 2].isTransitable = false;
-                    gridScript.grid[i - 3, j - 3].isTransitable = false;
-                    gridScript.grid[i - 2, j - 3].isTransitable = false;
-                    gridScript.grid[i - 3, j - 2].isTransitable = false;
+                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0,4), 0);
                     enemiesNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)
@@ -299,6 +307,18 @@ public class GameManager : MonoBehaviour
                     objectInstantiation.transform.position = actualNode.worldPosition;
                 }
 
+            }
+        }
+    }
+
+
+    void ChangeTransitable(Node nodeToChange, bool _isTransitable, int sizeX, int sizeY)
+    {
+        for (int i = 0; i < sizeX; i++)
+        {
+            for (int j = 0; j < sizeY; j++)
+            {
+                gridScript.grid[nodeToChange.gridPositionX - i, nodeToChange.gridPositionY - j].isTransitable = _isTransitable;
             }
         }
     }

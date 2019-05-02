@@ -381,6 +381,11 @@ public class GameManager : MonoBehaviour
                             if (Random.Range(0, 2) == 1)
                                 objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
                             break;
+                        case Node.Size.s2x2:
+                            objectInstantiation = Instantiate(decoration2x2, islandParent);
+                            ChangeTransitable(actualNode, false, 2, 2);
+                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
+                            break;
                         default:
                             objectInstantiation = Instantiate(decoration1x1, islandParent);
                             ChangeTransitable(actualNode, false, 1, 1);

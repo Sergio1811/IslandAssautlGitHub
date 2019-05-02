@@ -58,8 +58,7 @@ public class InputManager : MonoBehaviour
             return Input.GetAxisRaw("PS_" + input) > 0.2;
 
         if (xboxController)
-            if(input == "CameraBack") return Input.GetAxisRaw("XBOX_" + input) < 0.2;
-            else return Input.GetAxisRaw("XBOX_" + input) > 0.2;
+            return Input.GetAxisRaw("XBOX_" + input) > 0.2;
 
         return false;
     }

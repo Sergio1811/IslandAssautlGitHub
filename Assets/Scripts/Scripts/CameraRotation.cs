@@ -52,7 +52,7 @@ public class CameraRotation : MonoBehaviour
     {
         Vector3 newRotation = new Vector3(transform.eulerAngles.x, GameManager.Instance.player.transform.eulerAngles.y, transform.eulerAngles.z);
 
-        if (transform.rotation == Quaternion.Euler(newRotation)) cameraRotating = false;
+        if (transform.rotation == Quaternion.Euler(newRotation)) cameraRotating = false; if (pitch > maxYRotationAngle) pitch -= 360;
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(newRotation), lateralSpeed * Time.deltaTime);
         yaw = camera.localRotation.eulerAngles.y;

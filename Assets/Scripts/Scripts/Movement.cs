@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         if (Physics.Raycast(ray, out hit, dashDistance))
         {
-            if (hit.collider.gameObject.name == "DecorationMesh")
+            if (hit.collider.gameObject.name == "WaterDecorationMesh")
             {
                 Vector3 newPos = hit.point + hit.normal * 2;
                 transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);

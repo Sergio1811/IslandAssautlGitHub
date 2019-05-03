@@ -205,11 +205,11 @@ public class Movement : MonoBehaviour
         {
             case "Rock":
                 if (actualType == playerType.pick)
-                    BreakRock(actionObject.transform.parent.gameObject);
+                    BreakRock(actionObject.transform.parent.parent.gameObject);
                 break;
             case "Tree":
                 if (actualType == playerType.ace)
-                    CutTree(actionObject.transform.parent.gameObject);
+                    CutTree(actionObject.transform.parent.parent.gameObject);
                 break;
             case "Chest":
                 if (actualType == playerType.sword)

@@ -251,7 +251,7 @@ public class GameManager : MonoBehaviour
                         case Node.Size.s1x2:
                             objectInstantiation = Instantiate(tree1x2, islandParent);
                             ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.5f);
+                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
                             if (Random.Range(0, 2) == 1)
                                 objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
                             else

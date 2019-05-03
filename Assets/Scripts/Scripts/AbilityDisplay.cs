@@ -10,6 +10,7 @@ public class AbilityDisplay : MonoBehaviour
     public Image Icon;
     public Text Name;
     public Text Description;
+    public Button Button;
 
 
     void Start()

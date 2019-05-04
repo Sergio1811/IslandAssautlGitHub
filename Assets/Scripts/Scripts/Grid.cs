@@ -15,6 +15,7 @@ public class Grid : MonoBehaviour
     public int minSecundaryPers, maxSecundaryPers;
     int numberOfFloor;
 
+    Node entryNode;
 
 
     public void GenerateGrid(int characterType)
@@ -146,7 +147,7 @@ public class Grid : MonoBehaviour
     //Método que escoge un nodo como entrada
     void AssaignEnter()
     {
-        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
+        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1, Node.Type.shore);
         List<Node> availableShoreNode = new List<Node>();
         int minYNodes = size_y;
 
@@ -161,12 +162,13 @@ public class Grid : MonoBehaviour
                 availableShoreNode.Add(shoreNodes[i]);
         }
 
-        availableShoreNode[Random.Range(0, availableShoreNode.Count)].currentType = Node.Type.entry;
+        entryNode = availableShoreNode[Random.Range(0, availableShoreNode.Count)];
+        entryNode.currentType = Node.Type.entry;
     }
     //Método que escoge un nodo como salida
     void AssaignExit()
     {
-        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1);
+        List<Node> shoreNodes = AvailableNodesType(Node.Type.shore, 1, 1, Node.Type.shore);
         List<Node> availableShoreNode = new List<Node>();
         int maxYNodes = 0;
 
@@ -198,7 +200,7 @@ public class Grid : MonoBehaviour
         int bigRocks = cellsNumber / 4;
         cellsNumber -= bigRocks * 4;
         smallRocks += cellsNumber;
-        
+
         print("Number of big rocks (2x2): " + bigRocks);
 
         ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
@@ -361,7 +363,7 @@ public class Grid : MonoBehaviour
 
         for (int i = number; i > 0; i--)
         {
-            availableNodes = AvailableNodesType(nodeAvailableType, sizeX, sizeY);
+            availableNodes = AvailableNodesType(nodeAvailableType, sizeX, sizeY, nodeType);
 
             if (availableNodes.Count >= number)
             {
@@ -375,11 +377,12 @@ public class Grid : MonoBehaviour
                 break;
         }
     }
-    
+
     //Método que crea una lista de todos los nodos de un tipo determinado con una medida concreta (sizeX, sizeY)
-    public List<Node> AvailableNodesType(Node.Type nodeType, int sizeX, int sizeY)
+    public List<Node> AvailableNodesType(Node.Type nodeType, int sizeX, int sizeY, Node.Type futureNodeType)
     {
         List<Node> availableNodes = new List<Node>();
+        List<Node> neighbourNodes = new List<Node>();
 
         for (int i = 0; i < size_x; i++)
         {
@@ -388,7 +391,10 @@ public class Grid : MonoBehaviour
                 if (grid[i, j].currentType == nodeType)
                 {
                     bool isAvailable = true;
-                    List<Node> neighbourNodes = GetNeighboursBySize(grid[i, j], sizeX, sizeY);
+                    if (futureNodeType != Node.Type.village)
+                        neighbourNodes = GetNeighboursBySize(grid[i, j], sizeX, sizeY);
+                    else
+                        neighbourNodes = GetNeighboursBySizeFarFromOriginNode(grid[i, j], sizeX, sizeY, entryNode, 3, 3);
 
                     for (int k = 0; k < neighbourNodes.Count; k++)
                     {
@@ -408,16 +414,14 @@ public class Grid : MonoBehaviour
                     }
 
                     if (isAvailable)
-                    {
                         availableNodes.Add(grid[i, j]);
-                    }
                 }
             }
         }
         return availableNodes;
     }
 
-    
+
     //Método para dibujar la grid
     private void OnDrawGizmosSelected()
     {
@@ -472,7 +476,7 @@ public class Grid : MonoBehaviour
 
     }
 
-    
+
     public Node GetNode(int x, int y)
     {
         if (x < 0 || y < 0 || x >= size_x || y >= size_y)
@@ -499,7 +503,7 @@ public class Grid : MonoBehaviour
         return null;
     }
 
-    
+
     //Método que devuelve una lista de los nodos que rodean al nodo enviado, extenden = true para que envie también los que están en diagonal.
     public List<Node> GetNeighbours(Node node, bool extended)
     {
@@ -560,6 +564,40 @@ public class Grid : MonoBehaviour
         return listaNodos;
     }
 
+    public List<Node> GetNeighboursBySizeFarFromOriginNode(Node node, int x, int y, Node originNode, int howFarY, int howFarX)
+    {
+        List<Node> listaNodos = new List<Node>();
+
+        for (int i = 0; i < x; i++)
+        {
+            for (int j = 0; j < y; j++)
+            {
+                if (i == 0 && j == 0)
+                    continue;
+
+                Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);
+
+                if (originNode != null)
+                {
+                    if ((node.gridPositionY - j <= originNode.gridPositionY + howFarY))
+                    {
+                        if (node.gridPositionX - i > originNode.gridPositionX + howFarX)
+                            listaNodos.Add(vecino);
+                        else
+                            listaNodos.Add(null);
+                    }
+                    else
+                        listaNodos.Add(vecino);
+                }
+                else if (vecino != null)
+                    listaNodos.Add(vecino);
+                else
+                    listaNodos.Add(null);
+            }
+        }
+
+        return listaNodos;
+    }
 
 
     //Método que según el tag del collider que detecte cambiara el nodo a un tipo u otro -> Este método ya no lo usamos

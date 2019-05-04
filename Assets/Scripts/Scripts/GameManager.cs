@@ -61,6 +61,23 @@ public class GameManager : MonoBehaviour
     public GameObject livesGroup;
     int livesNumber;
 
+
+    #region
+    bool Titan = false;
+    bool islandTier2 = false;
+    float goldMultiplier = 1.0f;
+    bool Market = false;
+    bool swordTier2 = false;
+    float resourceFabricMultiplier = 1.0f;
+    bool enemyTier2 = false;
+    bool axeTier2 = false;
+    float resourceTreeMultiplier = 1.0f;
+    bool treeTier2 = false;
+    bool bombTier2 = false;
+    float resourceStoneMultiplier = 1.0f;
+    bool rockTier2=false;
+    #endregion
+
     private void Awake()
     {
         Instance = this;
@@ -119,18 +136,21 @@ public class GameManager : MonoBehaviour
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded * woodByItem + " maderas.";
+                ApplyAxerAbilities(p);
                 break;
             case 1:
                 p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
                 objectiveText.text = "1: Consigue " + rockNeeded * rockByItem + " rocas.";
+                ApplyBomberAbilities(p);
                 break;
             case 2:
                 p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
                 objectiveText.text = "1: Consigue " + enemiesNeeded * enemiesByItem + " pieles.";
+                ApplySwordAbilities(p);
                 break;
         }
 
@@ -445,4 +465,61 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+
+    void ApplyAxerAbilities(GameObject charac)
+    {
+        Movement axerAbs = charac.GetComponent<Movement>();
+
+        axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;
+        axerAbs.axePolivalente = AxerAbilities.Polivalente;
+        axerAbs.axeStun = AxerAbilities.axeStunt;
+        axerAbs.treeTier2 = AxerAbilities.treeTier2;
+        axerAbs.resourceTreeMultiplier = AxerAbilities.resourceMultiplier;
+        axerAbs.axeTier2 = AxerAbilities.axerTier2;
+
+        axerAbs.Titan = CharacterAbiliities.Titan;
+        axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+        axerAbs.Market = CharacterAbiliities.market;
+        axerAbs.islandTier2 = CharacterAbiliities.islandTier2;
+        axerAbs.dashActive = CharacterAbiliities.dashActive;
+        axerAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+
+    }
+    void ApplySwordAbilities(GameObject charac)
+    {
+        Movement swordAbs = charac.GetComponent<Movement>();
+
+        swordAbs.attackSpeedCooldown = SwordAbilities.resourceSpeedMultiplier;
+        swordAbs.swordPolivalente = SwordAbilities.Polivalente;
+        swordAbs.swordSeep = SwordAbilities.swordSweep;
+        swordAbs.enemyTier2 = SwordAbilities.enemyTier2;
+        swordAbs.resourceFabricMultiplier = SwordAbilities.resourceMultiplier;
+        swordAbs.swordTier2 = SwordAbilities.swordTier2;
+
+        swordAbs.Titan = CharacterAbiliities.Titan;
+        swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+        swordAbs.Market = CharacterAbiliities.market;
+        swordAbs.islandTier2 = CharacterAbiliities.islandTier2;
+        swordAbs.dashActive = CharacterAbiliities.dashActive;
+        swordAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+    }
+    void ApplyBomberAbilities(GameObject charac)
+    {
+        Movement bomberAbs = charac.GetComponent<Movement>();
+
+        bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;
+        bomberAbs.bombPolivalente = BomberAbilities.Polivalente;
+        bomberAbs.bombKnockback = BomberAbilities.bombKnockBack;
+        bomberAbs.rockTier2 = BomberAbilities.rockTier2;
+        bomberAbs.resourceStoneMultiplier = BomberAbilities.resourceMultiplier;
+        bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
+
+        bomberAbs.Titan = CharacterAbiliities.Titan;
+        bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+        bomberAbs.Market = CharacterAbiliities.market;
+        bomberAbs.islandTier2 = CharacterAbiliities.islandTier2;
+        bomberAbs.dashActive = CharacterAbiliities.dashActive;
+        bomberAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+    }
+   
 }

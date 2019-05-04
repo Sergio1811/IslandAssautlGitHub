@@ -6,15 +6,15 @@ public class AxerAbilities : MonoBehaviour
 {
     public static bool Polivalente = false;
     public static float resourceSpeedMultiplier = 1.0f;
-    public static bool explosiveTier2 = false;
-    public static bool bombKnockBack = false;
+    public static bool axerTier2 = false;
+    public static bool axeStunt = false;
     public static float resourceMultiplier = 1.0f;
 
-    public static bool rockTier2 = false;
+    public static bool treeTier2 = false;
 
-    public void UpgradeRock()
+    public void UpgradeTree()
     {
-        rockTier2 = true;
+        treeTier2 = true;
     }
 
     public void UpgradePolivalente()
@@ -27,14 +27,14 @@ public class AxerAbilities : MonoBehaviour
         resourceSpeedMultiplier = 0.5f;
     }
 
-    public void UpgradeExplosive()
+    public void UpgradeAxe()
     {
-        explosiveTier2 = true;
+        axerTier2 = true;
     }
 
-    public void UpgradeBombKnockBack()
+    public void UpgradeStun()
     {
-        bombKnockBack = true;
+        axeStunt = true;
     }
 
     public void UpgradeResourceMultiplier()

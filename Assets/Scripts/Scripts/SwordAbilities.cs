@@ -6,15 +6,15 @@ public class SwordAbilities : MonoBehaviour
 {
     public static bool Polivalente = false;
     public static float resourceSpeedMultiplier = 1.0f;
-    public static bool explosiveTier2 = false;
-    public static bool bombKnockBack = false;
+    public static bool swordTier2 = false;
+    public static bool swordSweep = false;
     public static float resourceMultiplier = 1.0f;
 
-    public static bool rockTier2 = false;
+    public static bool enemyTier2 = false;
 
-    public void UpgradeRock()
+    public void UpgradeEnemy()
     {
-        rockTier2 = true;
+        enemyTier2 = true;
     }
 
     public void UpgradePolivalente()
@@ -27,14 +27,14 @@ public class SwordAbilities : MonoBehaviour
         resourceSpeedMultiplier = 0.5f;
     }
 
-    public void UpgradeExplosive()
+    public void UpgradeSword()
     {
-        explosiveTier2 = true;
+        swordTier2 = true;
     }
 
-    public void UpgradeBombKnockBack()
+    public void UpgradeSwordSweep()
     {
-        bombKnockBack = true;
+        swordSweep = true;
     }
 
     public void UpgradeResourceMultiplier()

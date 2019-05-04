@@ -122,6 +122,9 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))
             EndProtoLevel();
+
+        if (Input.GetKeyDown(KeyCode.R))
+            SaveManager.Instance.ResetSaving();
     }
 
 
@@ -180,6 +183,8 @@ public class GameManager : MonoBehaviour
         }
 
         currentCoins = 0;
+
+        SaveManager.Instance.Save();
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

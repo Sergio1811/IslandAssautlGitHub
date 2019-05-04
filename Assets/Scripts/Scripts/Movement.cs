@@ -32,10 +32,39 @@ public class Movement : MonoBehaviour
     public GameObject bomb;
     bool bombOn;
 
+    
     [Header("Abilities")]
-    float neededTimeMultiplier = 1.0f;
-    float neededBombMultiplier = 1.0f;
+    #region
+    public float neededTimeMultiplier = 1.0f;
+    public bool axePolivalente = false;
+    public bool axeTier2 = false;
+    public bool axeStun = false;
+    public float resourceTreeMultiplier = 1.0f;
+    public bool treeTier2 = false;
 
+    public float neededBombMultiplier = 1.0f;
+    public bool bombPolivalente = false;
+    public bool bombTier2 = false;
+    public bool bombKnockback = true;
+    public float resourceStoneMultiplier = 1.0f;
+    public bool rockTier2;
+
+    public float attackSpeedCooldown = 1.0f;
+    public bool swordPolivalente = false;
+    public bool swordTier2 = false;
+    public bool swordSeep = false;
+    public float resourceFabricMultiplier = 1.0f;
+    public bool enemyTier2 = false;
+
+    public float bootsMovementSpeed = 1.0f;
+    public bool Titan = false;
+    public bool islandTier2 = false;
+    public bool dashActive = false;
+    public float goldMultiplier = 1.0f;
+    public bool Market = false;
+
+    #endregion
+  
 
     void Start()
     {
@@ -70,7 +99,8 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-        if (InputManager.Instance.GetInputDown("Dash")) Dash();
+        if (InputManager.Instance.GetInputDown("Dash"))
+            Dash();
 
         else
         {

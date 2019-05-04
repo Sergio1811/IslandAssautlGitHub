@@ -9,6 +9,16 @@ public class Bomb : MonoBehaviour
     public GameObject rockPrefab;
     GameObject rock;
 
+    bool canDestroyTrees, canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
+
+    private void Start()
+    {
+        canDestroyTrees = false;
+        canDestroyEnemies = true;
+        canDestroyVillage = false;
+        canDestroyDecoration = false;
+    }
+
     public void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
@@ -21,19 +31,19 @@ public class Bomb : MonoBehaviour
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
-            if (colliders[k].tag == "Enemy")
+            if (colliders[k].tag == "Enemy" && canDestroyEnemies)
             {
                 Destroy(colliders[k].transform.parent.gameObject);
             }
-            if (colliders[k].tag == "Decoration")
+            if (colliders[k].tag == "Decoration" && canDestroyDecoration)
             {
                 Destroy(colliders[k].transform.parent.gameObject);
             }
-            if (colliders[k].tag == "Village")
+            if (colliders[k].tag == "Village" && canDestroyVillage)
             {
                 Destroy(colliders[k].gameObject);
             }
-            if (colliders[k].tag == "Tree")
+            if (colliders[k].tag == "Tree" && canDestroyTrees)
             {
                 Destroy(colliders[k].transform.parent.gameObject);
             }

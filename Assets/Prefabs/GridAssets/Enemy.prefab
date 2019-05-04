@@ -217,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   patrolPoints: []
+  patroler: 0
   currentState: 0
   chaseDistance: 800
   attackDistance: 80

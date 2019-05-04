@@ -15,6 +15,7 @@ TagManager:
   - Exit
   - Chest
   - Dead
+  - PatrolPoint
   layers:
   - Default
   - TransparentFX

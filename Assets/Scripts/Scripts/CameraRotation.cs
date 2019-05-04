@@ -10,7 +10,7 @@ public class CameraRotation : MonoBehaviour
     public float lateralSpeed, zoomSpeed;
     public float maxZoom, minZoom;
     public float maxYRotationAngle;
-    public bool cameraRotating;
+    [HideInInspector] public bool cameraRotating;
 
     void Awake()
     {

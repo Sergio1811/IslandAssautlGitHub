@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿//using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
-    public Transform[] patrolPoints;
+    public GameObject[] patrolPoints; //random points in map
     private int patrolPointID;
     private NavMeshAgent agent;
 
-    public enum state { patrol, chase, attack}
-    public state currentState = state.patrol;
+    public bool patroler = false;
+
+    public enum state { stay, patrol, chase, attack }
+    public state currentState;
 
     public float chaseDistance;
     public float attackDistance;
@@ -30,6 +30,21 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        if (patroler)
+        {
+            patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
+
+            if(patrolPoints.Length>0)
+                currentState = state.patrol;
+            else
+            {
+                print("No patrol points in patroler, changing to non-patroler");
+                patroler = false;
+            }
+        }
+        else
+            currentState = state.stay;
+
         //player = GameManager.Instance.player;
         agent = GetComponent<NavMeshAgent>();
         initialPos = transform.position;
@@ -42,6 +57,7 @@ public class EnemyScript : MonoBehaviour
         {
             switch (currentState)
             {
+                case state.stay:
                 case state.patrol:
                     if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance)
                     {
@@ -50,14 +66,16 @@ public class EnemyScript : MonoBehaviour
                         break;
                     }
 
-                    else
-                        Patrol();
+                    else if (currentState == state.stay) Stay();
+                    else Patrol();
 
                     break;
+
                 case state.chase:
                     if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
-                        currentState = state.patrol;
+                        if(patroler) currentState = state.patrol;
+                        else currentState = state.stay;
                         break;
                     }
 
@@ -92,32 +110,29 @@ public class EnemyScript : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
     }
 
-
-    void Patrol()
+    void Stay()
     {
         agent.isStopped = false;
 
         agent.SetDestination(initialPos);
 
-        if(Vector3.Distance(transform.position, initialPos) < 0.2f)
+        if (Vector3.Distance(transform.position, initialPos) < 0.2f)
         {
             agent.isStopped = true;
         }
+    }
 
-        //if (patrolPoints.Length > 0)
-        //{
-        //    agent.SetDestination(patrolPoints[patrolPointID].position);
+    void Patrol()
+    {
+        if (patrolPoints.Length > 0)
+        {
+            agent.SetDestination(patrolPoints[patrolPointID].transform.position);
 
-        //    if (transform.position == patrolPoints[patrolPointID].position || Vector3.Distance(transform.position, patrolPoints[patrolPointID].position) < 0.2f)
-        //    {
-        //        patrolPointID++;
-        //    }
-
-        //    if (patrolPointID >= patrolPoints.Length)
-        //    {
-        //        patrolPointID = 0;
-        //    }
-        //}
+            if (transform.position == patrolPoints[patrolPointID].transform.position || Vector3.Distance(transform.position, patrolPoints[patrolPointID].transform.position) < 10.0f)
+            {
+                patrolPointID = Random.Range(0, patrolPoints.Length);
+            }
+        }
     }
 
     void Chase()
@@ -128,7 +143,7 @@ public class EnemyScript : MonoBehaviour
 
         repathTimer += Time.deltaTime;
 
-        if(repathTimer>=repathTime)
+        if (repathTimer >= repathTime)
         {
             goingPos = player.transform.position;
             repathTimer = 0;
@@ -151,13 +166,11 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-
-
     private float GetSqrDistanceXZToPosition(Vector3 position)
     {
         Vector3 vector = position - transform.position;
         vector.y = 0;
-        
+
         return vector.sqrMagnitude;
     }
 }

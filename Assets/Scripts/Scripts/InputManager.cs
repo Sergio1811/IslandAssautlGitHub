@@ -24,7 +24,6 @@ public class InputManager : MonoBehaviour
         string[] names = Input.GetJoystickNames();
         for (int x = 0; x < names.Length; x++)
         {
-            print(names[x].Length);
             if (names[x].Length == 19)
             {
                 print("PS4 CONTROLLER CONNECTED");

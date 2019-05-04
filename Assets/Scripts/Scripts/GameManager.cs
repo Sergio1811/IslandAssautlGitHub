@@ -14,10 +14,16 @@ public class GameManager : MonoBehaviour
     public GameObject sworderPrefab;
     int characterNumber;
 
+    int woodInMap = 0;
+    int rockInMap = 0;
+    int fabricInMap = 0;
+
     int woodNeeded;
     int rockNeeded;
     int enemiesNeeded;
     public Text objectiveText;
+    public Text secondaryObjectiveText;
+    public string[] secondaryObjectives;
 
     public int rockByItem;
     public int woodByItem;
@@ -61,6 +67,7 @@ public class GameManager : MonoBehaviour
     public GameObject livesGroup;
     int livesNumber;
 
+    int secondaryObjectiveID;
 
     #region
     bool Titan = false;
@@ -75,7 +82,7 @@ public class GameManager : MonoBehaviour
     bool treeTier2 = false;
     bool bombTier2 = false;
     float resourceStoneMultiplier = 1.0f;
-    bool rockTier2=false;
+    bool rockTier2 = false;
     #endregion
 
     private void Awake()
@@ -89,6 +96,7 @@ public class GameManager : MonoBehaviour
         characterNumber = Random.Range(0, 3);
 
         gridScript.GenerateGrid(characterNumber);
+
     }
 
     void Start()
@@ -104,7 +112,18 @@ public class GameManager : MonoBehaviour
         InstantiateObjectInGrid();
         player = PlayerInstantiation();
 
+        secondaryObjectives = new string[4];
+        secondaryObjectives[0] = "Abandona la isla con 20 segundos restantes";
+        secondaryObjectives[1] = "Abandona la isla con 10 segundos restantes";
+        if (player.GetComponent<Movement>().actualType == Movement.playerType.ace) secondaryObjectives[2] = "Abandona la isla con un mínimo de " + (70 * woodInMap / 100) + " de tu recurso";
+        else if (player.GetComponent<Movement>().actualType == Movement.playerType.pick) secondaryObjectives[2] = "Abandona la isla con un mínimo de " + (70 * rockInMap / 100) + " de tu recurso";
+        else secondaryObjectives[2] = "Abandona la isla con un mínimo de " + (70 * fabricInMap / 100) + " de tu recurso";
+        secondaryObjectives[3] = "Abandona la isla sin recibir daño";
+
+        secondaryObjectiveID = RandomSecondaryObjective();
         livesNumber = livesGroup.transform.childCount;
+
+        secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
     }
 
     void Update()
@@ -183,6 +202,9 @@ public class GameManager : MonoBehaviour
         }
 
         currentCoins = 0;
+
+        print(CheckSecondaryObjective());
+        if (CheckSecondaryObjective()) totalCoins += 50;
 
         SaveManager.Instance.Save();
 
@@ -296,6 +318,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
+                    woodInMap += woodByItem;
                     woodNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.rock)
@@ -329,6 +352,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
+                    rockInMap += rockByItem;
                     rockNeeded += 1;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
@@ -357,6 +381,7 @@ public class GameManager : MonoBehaviour
                     objectInstantiation = Instantiate(enemy, islandParent);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     actualNode.isTransitable = false;
+                    fabricInMap += enemiesByItem;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
                 {
@@ -527,5 +552,29 @@ public class GameManager : MonoBehaviour
         bomberAbs.dashActive = CharacterAbiliities.dashActive;
         bomberAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
     }
-   
+
+    int RandomSecondaryObjective()
+    {
+        return Random.Range(0, secondaryObjectives.Length);
+    }
+
+    bool CheckSecondaryObjective()
+    {
+        switch (secondaryObjectiveID)
+        {
+            case 0:
+                return remainingTimeInLevel >= 20.0f;
+            case 1:
+                return remainingTimeInLevel >= 10.0f;
+            case 2:
+                if (player.GetComponent<Movement>().actualType == Movement.playerType.ace) return collectedWood >= 70 * woodInMap / 100;
+                else if (player.GetComponent<Movement>().actualType == Movement.playerType.pick) return collectedRock >= 70 * rockInMap / 100;
+                else return collectedFabrics >= 70 * fabricInMap / 100;
+            case 3:
+                return livesNumber == 3; //habrá que modificarlo si cambiamos el numero maximo de vidas
+            default:
+                return false;
+        }
+    }
+
 }

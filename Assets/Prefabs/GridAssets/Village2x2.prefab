@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5273393451506932712}
   m_LocalRotation: {x: -0.35608977, y: -0.6109012, z: -0.610901, w: 0.35608977}
-  m_LocalPosition: {x: -0.2, y: 0, z: 0.25}
+  m_LocalPosition: {x: -0.11, y: -0, z: 0.07}
   m_LocalScale: {x: 0.043217376, y: 0.043217376, z: 0.043217376}
   m_Children: []
   m_Father: {fileID: 7545794851937470842}
@@ -353,13 +353,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7105702260702440481}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.346, y: 0.058, z: -0.208}
+  m_LocalRotation: {x: 0, y: 0.48938248, z: 0, w: 0.8720693}
+  m_LocalPosition: {x: 0.283, y: 0.058, z: -0.305}
   m_LocalScale: {x: 0.1447, y: 0.3076437, z: 0.25}
   m_Children: []
   m_Father: {fileID: 7021212530856720022}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 58.6, z: 0}
 --- !u!33 &7559356679556786433
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -425,15 +425,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5263923407249009141}
     m_Modifications:
-    - target: {fileID: 8798297767836160538, guid: a993a499a144f834a8d00a2cbff63f26,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 56025380232434618, guid: a993a499a144f834a8d00a2cbff63f26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.027
+      value: -0.029
       objectReference: {fileID: 0}
     - target: {fileID: 56025380232434618, guid: a993a499a144f834a8d00a2cbff63f26,
         type: 3}
@@ -443,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 56025380232434618, guid: a993a499a144f834a8d00a2cbff63f26,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.504
+      value: -0.586
       objectReference: {fileID: 0}
     - target: {fileID: 56025380232434618, guid: a993a499a144f834a8d00a2cbff63f26,
         type: 3}
@@ -499,6 +494,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8798297767836160538, guid: a993a499a144f834a8d00a2cbff63f26,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a993a499a144f834a8d00a2cbff63f26, type: 3}

@@ -170,7 +170,6 @@ public class GameManager : MonoBehaviour
         protoIsland++;
         if (protoIsland >= islands.Length)
             protoIsland = 0;
-        SceneManager.LoadScene(0);
 
         if (livesNumber > 0)
         {
@@ -181,6 +180,8 @@ public class GameManager : MonoBehaviour
         }
 
         currentCoins = 0;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 

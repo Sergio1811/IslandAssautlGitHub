@@ -81,6 +81,7 @@ public class EnemyScript : MonoBehaviour
 
                     else if (GetSqrDistanceXZToPosition(player.transform.position) <= attackDistance)
                     {
+                        attackTimer = 0;
                         currentState = state.attack;
                         if (attackMat != null) transform.GetComponentInChildren<Renderer>().material = attackMat;
                         else print("No attack material attached in inspector");

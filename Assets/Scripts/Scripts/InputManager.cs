@@ -63,6 +63,17 @@ public class InputManager : MonoBehaviour
         return false;
     }
 
+    public bool GetInputUp(string input)
+    {
+        if (psController)
+            return Input.GetAxisRaw("PS_" + input) < 0.2;
+
+        if (xboxController)
+            return Input.GetAxisRaw("XBOX_" + input) < 0.2;
+
+        return false;
+    }
+
     public float GetAxis(string input)
     {
         if (psController)

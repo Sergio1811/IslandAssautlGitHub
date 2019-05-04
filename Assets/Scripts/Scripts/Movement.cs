@@ -32,7 +32,8 @@ public class Movement : MonoBehaviour
     public GameObject bomb;
     bool bombOn;
 
-    
+    bool lastActionButtonReleased = true;
+
     [Header("Abilities")]
     #region
     public float neededTimeMultiplier = 1.0f;
@@ -64,7 +65,6 @@ public class Movement : MonoBehaviour
     public bool Market = false;
 
     #endregion
-  
 
     void Start()
     {
@@ -80,9 +80,11 @@ public class Movement : MonoBehaviour
         if (canMove)
             WalkTime();
 
+        if (lastActionButtonReleased == false && InputManager.Instance.GetInputUp("Action")) lastActionButtonReleased = true;
+
         if (receiveInputAction && !bombOn)
         {
-            StartAction();
+            if (lastActionButtonReleased) StartAction();
 
             if (actionOn)
                 UpdateAction();
@@ -158,6 +160,8 @@ public class Movement : MonoBehaviour
     {
         if (InputManager.Instance.GetInput("Action"))
         {
+            lastActionButtonReleased = false;
+
             Ray ray = new Ray(transform.position, transform.forward);
             Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
             Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
@@ -206,7 +210,7 @@ public class Movement : MonoBehaviour
             pressedTimer += Time.deltaTime;
             actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededTimeMultiplier);
 
-            if (pressedTimer >= (neededPressedTime*neededTimeMultiplier))
+            if (pressedTimer >= (neededPressedTime * neededTimeMultiplier))
                 receiveInputAction = false;
         }
         else
@@ -295,7 +299,7 @@ public class Movement : MonoBehaviour
             BreakRock(other.transform.parent.gameObject);
     }
 
-    public void Damage (Vector3 direction)
+    public void Damage(Vector3 direction)
     {
         if (!inmortal)
         {

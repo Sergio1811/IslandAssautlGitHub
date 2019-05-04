@@ -32,6 +32,10 @@ public class Movement : MonoBehaviour
     public GameObject bomb;
     bool bombOn;
 
+    [Header("Abilities")]
+    float neededTimeMultiplier = 1.0f;
+    float neededBombMultiplier = 1.0f;
+
 
     void Start()
     {
@@ -170,9 +174,9 @@ public class Movement : MonoBehaviour
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
             canMove = false;
             pressedTimer += Time.deltaTime;
-            actionSphere.fillAmount = pressedTimer / neededPressedTime;
+            actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededTimeMultiplier);
 
-            if (pressedTimer >= neededPressedTime)
+            if (pressedTimer >= (neededPressedTime*neededTimeMultiplier))
                 receiveInputAction = false;
         }
         else
@@ -188,9 +192,9 @@ public class Movement : MonoBehaviour
     {
         actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
         pressedTimer += Time.deltaTime;
-        actionSphere.fillAmount = pressedTimer / neededPressedTime;
+        actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededBombMultiplier);
 
-        if (pressedTimer >= neededPressedTime)
+        if (pressedTimer >= (neededPressedTime * neededBombMultiplier))
         {
             bomb.SendMessage("Explode");
             bombOn = false;

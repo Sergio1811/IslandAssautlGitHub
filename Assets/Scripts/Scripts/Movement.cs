@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     public float neededPressedTime;
     private bool receiveInputAction = true; //si el jugador ha mantenido pulsado "neededPressedTime", se vuelve false para no seguir recibiendo el input
     public float hitDistance; //distancia a la que se considera que el jugador da al objeto al que apunta
+    public float hitDistanceUpgradeMultiplier;
     public Image actionSphere;
     GameObject actionObject;
     bool actionOn = false;
@@ -36,36 +37,29 @@ public class Movement : MonoBehaviour
 
     [Header("Abilities")]
     #region
-    public float neededTimeMultiplier = 1.0f;
-    public bool axePolivalente = false;
-    public bool axeTier2 = false;
+    public float neededTimeMultiplier = 1.0f;//applied
+    public bool axePolivalente = false;//applied
     public bool axeStun = false;
-    public float resourceTreeMultiplier = 1.0f;
-    public bool treeTier2 = false;
+    public bool axeTier2 = false;//applied
 
-    public float neededBombMultiplier = 1.0f;
-    public bool bombPolivalente = false;
+    public float neededBombMultiplier = 1.0f;//applied
+    public bool bombPolivalente = false;//applied NOT Working
     public bool bombTier2 = false;
     public bool bombKnockback = true;
-    public float resourceStoneMultiplier = 1.0f;
-    public bool rockTier2;
 
     public float attackSpeedCooldown = 1.0f;
-    public bool swordPolivalente = false;
-    public bool swordTier2 = false;
+    public bool swordPolivalente = false;//applied
     public bool swordSeep = false;
-    public float resourceFabricMultiplier = 1.0f;
-    public bool enemyTier2 = false;
+    public bool swordTier2 = false;//applied
 
-    public float bootsMovementSpeed = 1.0f;
-    public bool Titan = false;
-    public bool islandTier2 = false;
-    public bool dashActive = false;
-    public float goldMultiplier = 1.0f;
-    public bool Market = false;
+    public float bootsMovementSpeed = 1.0f;//applied
+    public bool dashActive = false;//applied
+
 
     #endregion
 
+    float iniPressedTime;
+    float iniBombTime;
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -73,6 +67,15 @@ public class Movement : MonoBehaviour
         actionSphere.transform.rotation = Camera.main.transform.localRotation;
         inmortal = false;
         bombOn = false;
+
+        iniPressedTime = neededPressedTime;
+
+        if (actualType == playerType.ace && axeTier2)
+            hitDistance *= hitDistanceUpgradeMultiplier;
+        if (actualType == playerType.sword && swordTier2)
+            hitDistance *= hitDistanceUpgradeMultiplier;
+        //if (actualType == playerType.pick && bombTier2)
+           //change bomb to C4
     }
 
     void Update()
@@ -101,7 +104,7 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-        if (InputManager.Instance.GetInputDown("Dash"))
+        if (InputManager.Instance.GetInputDown("Dash")&& dashActive)
             Dash();
 
         else
@@ -128,7 +131,7 @@ public class Movement : MonoBehaviour
             if (!characterController.isGrounded)
                 movement.y += Physics.gravity.y;
 
-            characterController.Move(movement.normalized * characterSpeed * Time.deltaTime);
+            characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed* Time.deltaTime);
         }
     }
 
@@ -173,15 +176,41 @@ public class Movement : MonoBehaviour
                 {
                     case "Tree":
                         if (actualType == playerType.ace)
+                        {
+                            neededPressedTime = iniPressedTime;
                             actionOn = true;
+                        }
+                        
+                        if (actualType == playerType.sword && swordPolivalente)
+                        {
+                            neededPressedTime = 2;
+                            actionOn = true;
+                        }
                         break;
                     case "Enemy":
                         if (actualType == playerType.sword)
                             Destroy(actionObject.transform.parent.gameObject);
+                        
+                        if (actualType == playerType.ace && axePolivalente)
+                            Destroy(actionObject.transform.parent.gameObject);
                         break;
+
                     case "Chest":
                         if (actualType == playerType.sword)
                             actionOn = true;
+                       
+                        break;
+                    case "Rock":
+                        if (actualType == playerType.ace && axePolivalente)
+                        {
+                            neededPressedTime *= 2;
+                            actionOn = true;
+                        }
+                        if (actualType == playerType.sword && swordPolivalente)
+                        {
+                            neededPressedTime = 2;
+                            actionOn = true;
+                        }
                         break;
                     case "Exit":
                         GameManager.Instance.LevelComplete();
@@ -196,6 +225,7 @@ public class Movement : MonoBehaviour
                 bomb.transform.SetParent(transform);
                 bomb.transform.localPosition = Vector3.zero;
                 bomb.transform.SetParent(null);
+                
                 bombOn = true;
             }
         }
@@ -244,9 +274,17 @@ public class Movement : MonoBehaviour
             case "Rock":
                 if (actualType == playerType.pick)
                     BreakRock(actionObject.transform.parent.parent.gameObject);
+                if (actualType == playerType.ace && axePolivalente)
+                    BreakRock(actionObject.transform.parent.parent.gameObject);
+                if (actualType == playerType.sword && swordPolivalente)
+                    BreakRock(actionObject.transform.parent.parent.gameObject);
                 break;
             case "Tree":
                 if (actualType == playerType.ace)
+                    CutTree(actionObject.transform.parent.parent.gameObject);
+                if (actualType == playerType.pick && bombPolivalente)
+                    CutTree(actionObject.transform.parent.parent.gameObject);
+                if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject);
                 break;
             case "Chest":

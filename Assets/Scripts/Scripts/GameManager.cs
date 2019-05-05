@@ -72,16 +72,13 @@ public class GameManager : MonoBehaviour
     #region
     bool Titan = false;
     bool islandTier2 = false;
-    float goldMultiplier = 1.0f;
+    float goldMultiplier = 1.0f;//applied
     bool Market = false;
-    bool swordTier2 = false;
-    float resourceFabricMultiplier = 1.0f;
+    float resourceFabricMultiplier = 1.0f;//applied
     bool enemyTier2 = false;
-    bool axeTier2 = false;
-    float resourceTreeMultiplier = 1.0f;
+    float resourceTreeMultiplier = 1.0f;//aaplied
     bool treeTier2 = false;
-    bool bombTier2 = false;
-    float resourceStoneMultiplier = 1.0f;
+    float resourceStoneMultiplier = 1.0f;//applied
     bool rockTier2 = false;
     #endregion
 
@@ -214,8 +211,8 @@ public class GameManager : MonoBehaviour
 
     public void PickWood()
     {
-        collectedWood += woodByItem;
-        currentCoins += woodByItem;
+        collectedWood += (int)(woodByItem*resourceTreeMultiplier);
+        currentCoins += (int)(woodByItem * goldMultiplier);
         woodText.text = "Wood: " + collectedWood.ToString();
         currentCoinsText.text = "Coins: " + currentCoins.ToString();
         if (collectedWood >= woodNeeded * woodByItem)
@@ -224,8 +221,8 @@ public class GameManager : MonoBehaviour
 
     public void PickRock()
     {
-        collectedRock += rockByItem;
-        currentCoins += rockByItem;
+        collectedRock += (int)(rockByItem*resourceStoneMultiplier);
+        currentCoins += (int)(rockByItem*goldMultiplier);
         rockText.text = "Rock: " + collectedRock.ToString();
         currentCoinsText.text = "Coins: " + currentCoins.ToString();
         if (collectedRock >= rockNeeded * rockByItem)
@@ -234,8 +231,8 @@ public class GameManager : MonoBehaviour
 
     public void PickFabrics()
     {
-        collectedFabrics += enemiesByItem;
-        currentCoins += enemiesByItem;
+        collectedFabrics += (int)(enemiesByItem*resourceFabricMultiplier);
+        currentCoins += (int)(enemiesByItem * goldMultiplier);
         fabricText.text = "Fabric: " + collectedFabrics.ToString();
         currentCoinsText.text = "Coins: " + currentCoins.ToString();
         if (collectedFabrics >= enemiesNeeded * enemiesByItem)
@@ -501,19 +498,20 @@ public class GameManager : MonoBehaviour
     {
         Movement axerAbs = charac.GetComponent<Movement>();
 
-        axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;
-        axerAbs.axePolivalente = AxerAbilities.Polivalente;
+        axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;//apply
+        axerAbs.axePolivalente = AxerAbilities.Polivalente;//apply
         axerAbs.axeStun = AxerAbilities.axeStunt;
-        axerAbs.treeTier2 = AxerAbilities.treeTier2;
-        axerAbs.resourceTreeMultiplier = AxerAbilities.resourceMultiplier;
-        axerAbs.axeTier2 = AxerAbilities.axerTier2;
+        treeTier2 = AxerAbilities.treeTier2;
+        resourceTreeMultiplier = AxerAbilities.resourceMultiplier;//apply
+        axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied
+       
 
-        axerAbs.Titan = CharacterAbiliities.Titan;
-        axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
-        axerAbs.Market = CharacterAbiliities.market;
-        axerAbs.islandTier2 = CharacterAbiliities.islandTier2;
-        axerAbs.dashActive = CharacterAbiliities.dashActive;
-        axerAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+        Titan = CharacterAbiliities.Titan;
+        axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        Market = CharacterAbiliities.market;
+        islandTier2 = CharacterAbiliities.islandTier2;
+        axerAbs.dashActive = CharacterAbiliities.dashActive;//applied
+        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
 
     }
     void ApplySwordAbilities(GameObject charac)
@@ -521,36 +519,38 @@ public class GameManager : MonoBehaviour
         Movement swordAbs = charac.GetComponent<Movement>();
 
         swordAbs.attackSpeedCooldown = SwordAbilities.resourceSpeedMultiplier;
-        swordAbs.swordPolivalente = SwordAbilities.Polivalente;
+        swordAbs.swordPolivalente = SwordAbilities.Polivalente;//apply
         swordAbs.swordSeep = SwordAbilities.swordSweep;
-        swordAbs.enemyTier2 = SwordAbilities.enemyTier2;
-        swordAbs.resourceFabricMultiplier = SwordAbilities.resourceMultiplier;
-        swordAbs.swordTier2 = SwordAbilities.swordTier2;
+        enemyTier2 = SwordAbilities.enemyTier2;
+        resourceFabricMultiplier = SwordAbilities.resourceMultiplier;//applied
+        swordAbs.swordTier2 = SwordAbilities.swordTier2;//applied
+        
 
-        swordAbs.Titan = CharacterAbiliities.Titan;
-        swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
-        swordAbs.Market = CharacterAbiliities.market;
-        swordAbs.islandTier2 = CharacterAbiliities.islandTier2;
-        swordAbs.dashActive = CharacterAbiliities.dashActive;
-        swordAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+        Titan = CharacterAbiliities.Titan;
+        swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        Market = CharacterAbiliities.market;
+        islandTier2 = CharacterAbiliities.islandTier2;
+        swordAbs.dashActive = CharacterAbiliities.dashActive;//applied
+        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
     }
     void ApplyBomberAbilities(GameObject charac)
     {
         Movement bomberAbs = charac.GetComponent<Movement>();
 
-        bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;
-        bomberAbs.bombPolivalente = BomberAbilities.Polivalente;
+        bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;//apply
+        bomberAbs.bombPolivalente = BomberAbilities.Polivalente;//apply
         bomberAbs.bombKnockback = BomberAbilities.bombKnockBack;
-        bomberAbs.rockTier2 = BomberAbilities.rockTier2;
-        bomberAbs.resourceStoneMultiplier = BomberAbilities.resourceMultiplier;
+        rockTier2 = BomberAbilities.rockTier2;
+        resourceStoneMultiplier = BomberAbilities.resourceMultiplier;//applied
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
+        
 
-        bomberAbs.Titan = CharacterAbiliities.Titan;
-        bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
-        bomberAbs.Market = CharacterAbiliities.market;
-        bomberAbs.islandTier2 = CharacterAbiliities.islandTier2;
-        bomberAbs.dashActive = CharacterAbiliities.dashActive;
-        bomberAbs.goldMultiplier = CharacterAbiliities.goldMultiplier;
+        Titan = CharacterAbiliities.Titan;
+        bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        Market = CharacterAbiliities.market;
+        islandTier2 = CharacterAbiliities.islandTier2;
+        bomberAbs.dashActive = CharacterAbiliities.dashActive;//applied
+        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
     }
 
     int RandomSecondaryObjective()

@@ -31,6 +31,8 @@ public class Movement : MonoBehaviour
     public float dashDistance;
 
     public GameObject bomb;
+    public GameObject sword;
+    public GameObject axe;
     bool bombOn;
 
     bool lastActionButtonReleased = true;
@@ -177,6 +179,7 @@ public class Movement : MonoBehaviour
                     case "Tree":
                         if (actualType == playerType.ace)
                         {
+                            axe.GetComponent<Animation>().Play();
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -189,8 +192,10 @@ public class Movement : MonoBehaviour
                         break;
                     case "Enemy":
                         if (actualType == playerType.sword)
+                        {
+                            sword.GetComponent<Animation>().Play();
                             Destroy(actionObject.transform.parent.gameObject);
-                        
+                        }
                         if (actualType == playerType.ace && axePolivalente)
                             Destroy(actionObject.transform.parent.gameObject);
                         break;

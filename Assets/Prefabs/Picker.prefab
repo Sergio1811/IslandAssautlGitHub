@@ -31,7 +31,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
-  - {fileID: 2781279395078424936}
+  - {fileID: 400000}
   - {fileID: 2600837556728652573}
   - {fileID: 4148747355165162583}
   m_Father: {fileID: 0}
@@ -98,10 +98,26 @@ MonoBehaviour:
   characterSpeed: 50
   neededPressedTime: 0.5
   hitDistance: 2
+  hitDistanceUpgradeMultiplier: 0
   actionSphere: {fileID: 252851172306718823}
   inmortalDurationTime: 2
   dashDistance: 10
   bomb: {fileID: 0}
+  sword: {fileID: 0}
+  neededTimeMultiplier: 1
+  axePolivalente: 0
+  axeStun: 0
+  axeTier2: 0
+  neededBombMultiplier: 1
+  bombPolivalente: 0
+  bombTier2: 0
+  bombKnockback: 1
+  attackSpeedCooldown: 1
+  swordPolivalente: 0
+  swordSeep: 0
+  swordTier2: 0
+  bootsMovementSpeed: 1
+  dashActive: 0
 --- !u!143 &3225420765675762107
 CharacterController:
   m_ObjectHideFlags: 0
@@ -211,37 +227,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &4389637771920306964
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 4780880377676451136}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 400000}
-  m_Layer: 0
-  m_Name: Missing Prefab (Dummy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &400000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4780880377676451136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4389637771920306964}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2781279395078424936}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5323544842019497236
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,37 +326,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &6727179847656900196
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 4780880377676451136}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2781279395078424936}
-  m_Layer: 0
-  m_Name: Character_Model_M_Low (Missing Prefab)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2781279395078424936
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 4780880377676451136}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6727179847656900196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 400000}
-  m_Father: {fileID: 2600837555911353103}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8900215545127893892
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,3 +474,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a2a2bfbe6d67d164c95757abf42823a8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19e8cbd971beb1749a0ca64ebc72e3f1, type: 3}
+--- !u!4 &400000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4780880377676451136}
+  m_PrefabAsset: {fileID: 0}

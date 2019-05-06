@@ -29,6 +29,14 @@ public class EnemyScript : MonoBehaviour
     Material initMat;
     public Material attackMat;
 
+    
+    float iniSpeed;
+    float iniAngSpeed;
+    float stunnedTimer = 0;
+    public float maxStunnedTimer = 2;
+    bool stunned = false;
+    bool canAttack = true;
+
     void Start()
     {
         if (patroler)
@@ -51,6 +59,9 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         initialPos = transform.position;
         initMat = transform.GetComponentInChildren<Renderer>().material;
+
+        iniSpeed = agent.speed;
+        iniAngSpeed = agent.angularSpeed;
     }
 
     void Update()
@@ -103,7 +114,7 @@ public class EnemyScript : MonoBehaviour
                         break;
                     }
 
-                    else
+                    else if (canAttack)
                         Attack();
 
                     break;
@@ -111,6 +122,13 @@ public class EnemyScript : MonoBehaviour
         }
         else
             player = GameObject.FindGameObjectWithTag("Player");
+
+        if (stunned)
+        {
+            stunnedTimer += Time.deltaTime;
+            if (stunnedTimer >= maxStunnedTimer)
+                OffStun();
+        }
     }
 
     void Stay()
@@ -168,6 +186,24 @@ public class EnemyScript : MonoBehaviour
             //GameManager.Instance.Damage();
         }
     }
+
+    public void Stun()
+    {
+        agent.speed = 0;
+        agent.angularSpeed = 0;
+        canAttack = false;
+        stunned = true;
+        stunnedTimer = 0;
+    }
+
+    public void OffStun()
+    {
+        agent.speed = iniSpeed;
+        agent.angularSpeed = iniAngSpeed;
+        canAttack = true;
+        stunned = false;
+    }
+
 
     private float GetSqrDistanceXZToPosition(Vector3 position)
     {

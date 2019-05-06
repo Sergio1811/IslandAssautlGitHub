@@ -118,7 +118,23 @@ public class GameManager : MonoBehaviour
         secondaryObjectives[3] = "Abandona la isla sin recibir daño";
 
         secondaryObjectiveID = RandomSecondaryObjective();
-        livesNumber = livesGroup.transform.childCount;
+
+        switch (characterNumber)
+        {
+            case 0:
+                livesNumber = 3;
+                break;
+            case 1:
+                livesNumber = 2;
+                break;
+            case 2:
+                livesNumber = 4;
+                break;
+        }
+        if (CharacterAbiliities.Titan)
+            livesNumber++;
+        for (int i = 0; i < livesNumber; i++)
+            livesGroup.transform.GetChild(i).gameObject.SetActive(true);
 
         secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
     }

@@ -69,8 +69,8 @@ public class GameManager : MonoBehaviour
 
     int secondaryObjectiveID;
 
+    public bool titan = false;
     #region
-    bool titan = false;
     bool islandTier2 = false;
     float goldMultiplier = 1.0f;//applied
     bool Market = false;

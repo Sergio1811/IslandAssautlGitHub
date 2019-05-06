@@ -200,8 +200,6 @@ public class GameManager : MonoBehaviour
 
         currentCoins = 0;
 
-        print(CheckSecondaryObjective());
-        if (CheckSecondaryObjective()) totalCoins += 50;
 
         SaveManager.Instance.Save();
 
@@ -257,6 +255,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete()
     {
+        if (CheckSecondaryObjective()) totalCoins += 50;
         EndProtoLevel();
     }
 
@@ -372,13 +371,13 @@ public class GameManager : MonoBehaviour
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     enemiesNeeded += 1;
+                    fabricInMap += enemiesByItem;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)
                 {
                     objectInstantiation = Instantiate(enemy, islandParent);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     actualNode.isTransitable = false;
-                    fabricInMap += enemiesByItem;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
                 {

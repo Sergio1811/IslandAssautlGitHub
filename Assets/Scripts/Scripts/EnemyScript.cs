@@ -1,5 +1,6 @@
 ﻿//using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -39,6 +40,11 @@ public class EnemyScript : MonoBehaviour
 
     int lives = 2;
 
+    float knockBackDistance = 8;
+    bool knockBack = false;
+    Vector3 direction;
+    float iniAcc;
+
     void Start()
     {
         if (patroler)
@@ -65,6 +71,7 @@ public class EnemyScript : MonoBehaviour
 
         iniSpeed = agent.speed;
         iniAngSpeed = agent.angularSpeed;
+        iniAcc = agent.acceleration;
     }
 
     void Update()
@@ -135,6 +142,15 @@ public class EnemyScript : MonoBehaviour
                 OffStun();
         }
     }
+
+    void FixedUpdate()
+    {
+        if (knockBack)
+        {
+            agent.velocity = direction * knockBackDistance;//Knocks the enemy back when appropriate
+        }
+    }
+
 
     void Stay()
     {
@@ -207,6 +223,30 @@ public class EnemyScript : MonoBehaviour
         agent.angularSpeed = iniAngSpeed;
         canAttack = true;
         stunned = false;
+    }
+
+    IEnumerator KnockBack()
+    {
+        knockBack = true;
+        agent.speed = iniSpeed * 1.5f;
+        agent.angularSpeed = 0;//Keeps the enemy facing forwad rther than spinning
+        agent.acceleration = iniAcc * 1.5f;
+        agent.baseOffset += 0.1f;
+
+        yield return new WaitForSeconds(0.2f); //Only knock the enemy back for a short time    
+
+        //Reset to default values
+        knockBack = false;
+        agent.speed = iniSpeed;
+        agent.angularSpeed = iniAngSpeed;
+        agent.acceleration = iniAcc;
+        agent.baseOffset = 0;
+    }
+
+    public void KnockBackActivated(Transform bomb)
+    {
+        direction = bomb.position - this.gameObject.transform.position;
+        StartCoroutine(KnockBack());
     }
 
 

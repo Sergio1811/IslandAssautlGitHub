@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
     int secondaryObjectiveID;
 
     #region
-    bool Titan = false;
+    bool titan = false;
     bool islandTier2 = false;
     float goldMultiplier = 1.0f;//applied
     bool Market = false;
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour
                 livesNumber = 4;
                 break;
         }
-        if (CharacterAbiliities.Titan)
+        if (titan)
             livesNumber++;
         for (int i = 0; i < livesNumber; i++)
             livesGroup.transform.GetChild(i).gameObject.SetActive(true);
@@ -523,7 +523,7 @@ public class GameManager : MonoBehaviour
         axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied
        
 
-        Titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;
         axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
@@ -543,7 +543,7 @@ public class GameManager : MonoBehaviour
         swordAbs.swordTier2 = SwordAbilities.swordTier2;//applied
         
 
-        Titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;
         swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
@@ -562,7 +562,7 @@ public class GameManager : MonoBehaviour
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
         
 
-        Titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;
         bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;

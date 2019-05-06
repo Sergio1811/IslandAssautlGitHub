@@ -98,11 +98,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        currentCoinsText.text = "Coins: " + currentCoins.ToString();
-        totalCoinsText.text = "Total Coins: " + totalCoins.ToString();
-        totalWoodText.text = "Total Wood: " + totalWood.ToString();
-        totalRockText.text = "Total Rocks: " + totalRock.ToString();
-        totalFabricsText.text = "Total Fabrics: " + totalFabrics.ToString();
+        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
+        totalCoinsText.text = "Monedas totales: " + totalCoins.ToString();
+        totalWoodText.text = "Madera total: " + totalWood.ToString();
+        totalRockText.text = "Rocas totales: " + totalRock.ToString();
+        totalFabricsText.text = "Pieles totales: " + totalFabrics.ToString();
 
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
@@ -211,8 +211,8 @@ public class GameManager : MonoBehaviour
     {
         collectedWood += (int)(woodByItem*resourceTreeMultiplier);
         currentCoins += (int)(woodByItem * goldMultiplier);
-        woodText.text = "Wood: " + collectedWood.ToString();
-        currentCoinsText.text = "Coins: " + currentCoins.ToString();
+        woodText.text = "Madera: " + collectedWood.ToString();
+        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
         if (collectedWood >= woodNeeded * woodByItem)
             ActivatePortal();
     }
@@ -221,8 +221,8 @@ public class GameManager : MonoBehaviour
     {
         collectedRock += (int)(rockByItem*resourceStoneMultiplier);
         currentCoins += (int)(rockByItem*goldMultiplier);
-        rockText.text = "Rock: " + collectedRock.ToString();
-        currentCoinsText.text = "Coins: " + currentCoins.ToString();
+        rockText.text = "Rocas: " + collectedRock.ToString();
+        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
         if (collectedRock >= rockNeeded * rockByItem)
             ActivatePortal();
     }
@@ -231,8 +231,8 @@ public class GameManager : MonoBehaviour
     {
         collectedFabrics += (int)(enemiesByItem*resourceFabricMultiplier);
         currentCoins += (int)(enemiesByItem * goldMultiplier);
-        fabricText.text = "Fabric: " + collectedFabrics.ToString();
-        currentCoinsText.text = "Coins: " + currentCoins.ToString();
+        fabricText.text = "Pieles: " + collectedFabrics.ToString();
+        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
         if (collectedFabrics >= enemiesNeeded * enemiesByItem)
             ActivatePortal();
     }

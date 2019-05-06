@@ -8,7 +8,7 @@ public class Bomb : MonoBehaviour
     public GameObject player;
     public GameObject rockPrefab;
     GameObject rock;
-
+    public bool knockback = false;
     bool canDestroyTrees, canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
 
     private void Start()
@@ -33,8 +33,9 @@ public class Bomb : MonoBehaviour
             }
             if (colliders[k].tag == "Enemy" && canDestroyEnemies)
             {
+                if(knockback)
                 colliders[k].transform.parent.GetComponent<EnemyScript>().KnockBackActivated(this.gameObject.transform);
-                Destroy(colliders[k].transform.parent.gameObject);
+               Destroy(colliders[k].transform.parent.gameObject);
             }
             if (colliders[k].tag == "Decoration" && canDestroyDecoration)
             {

@@ -556,7 +556,7 @@ public class GameManager : MonoBehaviour
 
         bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;//apply
         bomberAbs.bombPolivalente = BomberAbilities.Polivalente;//apply
-        bomberAbs.bombKnockback = BomberAbilities.bombKnockBack;
+        bomberAbs.bomb.GetComponent<Bomb>().knockback = BomberAbilities.bombKnockBack; //applied
         rockTier2 = BomberAbilities.rockTier2;
         resourceStoneMultiplier = BomberAbilities.resourceMultiplier;//applied
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;

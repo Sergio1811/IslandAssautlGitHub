@@ -219,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 3380901957251514670}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7945183403750587372}
   - {fileID: 4800044441419415904}
@@ -409,11 +409,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4206165551823840254}
     m_Modifications:
-    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_Model_M_Low
-      objectReference: {fileID: 0}
     - target: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -468,6 +463,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_Model_M_Low
       objectReference: {fileID: 0}
     - target: {fileID: 2621560350149802611, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}

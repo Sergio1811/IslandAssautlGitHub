@@ -104,6 +104,7 @@ public class EnemyScript : MonoBehaviour
 
                     else if (GetSqrDistanceXZToPosition(player.transform.position) <= attackDistance)
                     {
+                        print(GetSqrDistanceXZToPosition(player.transform.position));
                         attackTimer = 0;
                         currentState = state.attack;
                         if (attackMat != null) transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = attackMat;

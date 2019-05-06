@@ -33048,7 +33048,12 @@ MonoBehaviour:
   decoration2x4: {fileID: 9016246708617481165, guid: 5b6c897589454354dbc7b599de611b39,
     type: 3}
   islands:
+  - {fileID: 121021877}
+  - {fileID: 81348862}
   - {fileID: 872645844}
+  - {fileID: 989807306}
+  - {fileID: 1558856778}
+  - {fileID: 1685608368}
   livesGroup: {fileID: 1136441766}
   titan: 0
 --- !u!114 &1362759329

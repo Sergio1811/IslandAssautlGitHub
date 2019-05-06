@@ -104,6 +104,7 @@ MonoBehaviour:
   dashDistance: 10
   bomb: {fileID: 0}
   sword: {fileID: 0}
+  axe: {fileID: 0}
   neededTimeMultiplier: 1
   axePolivalente: 0
   axeStun: 0
@@ -130,7 +131,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1.8
-  m_Radius: 0.5
+  m_Radius: 0.35
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -407,11 +408,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2600837555911353103}
     m_Modifications:
-    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_Model_M_Low
-      objectReference: {fileID: 0}
     - target: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -466,6 +462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_Model_M_Low
       objectReference: {fileID: 0}
     - target: {fileID: 2621560350149802611, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}

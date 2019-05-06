@@ -223,9 +223,9 @@ public class Movement : MonoBehaviour
                             actionOn = true;
                         }
                         break;
-                    case "Exit":
-                        GameManager.Instance.LevelComplete();
-                        break;
+                    //case "Exit":
+                    //    GameManager.Instance.LevelComplete();
+                    //    break;
                 }
             }
 
@@ -362,6 +362,8 @@ public class Movement : MonoBehaviour
     {
         if (hit.gameObject.tag == "Dead")
             GameManager.Instance.EndProtoLevel();
+        if (hit.gameObject.tag == "Exit")
+            GameManager.Instance.LevelComplete();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -36,6 +36,7 @@ public class Movement : MonoBehaviour
     bool bombOn;
 
     bool lastActionButtonReleased = true;
+    bool lastStunButtonReleased = true;
 
     [Header("Abilities")]
     #region
@@ -77,7 +78,7 @@ public class Movement : MonoBehaviour
         if (actualType == playerType.sword && swordTier2)
             hitDistance *= hitDistanceUpgradeMultiplier;
         //if (actualType == playerType.pick && bombTier2)
-           //change bomb to C4
+        //change bomb to C4
     }
 
     void Update()
@@ -85,7 +86,10 @@ public class Movement : MonoBehaviour
         if (canMove)
             WalkTime();
 
+        //Mirar si ha soltado el trigger antes de volver a hacer la accion
         if (lastActionButtonReleased == false && InputManager.Instance.GetInputUp("Action")) lastActionButtonReleased = true;
+
+        if (lastStunButtonReleased == false && InputManager.Instance.GetInputUp("Stun")) lastStunButtonReleased = true;
 
         if (receiveInputAction && !bombOn)
         {
@@ -99,6 +103,8 @@ public class Movement : MonoBehaviour
         else
             EndAction();
 
+        if (lastStunButtonReleased) Stun();
+
         if (inmortal)
             CheckInmortal();
     }
@@ -106,7 +112,7 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-        if (InputManager.Instance.GetInputDown("Dash")&& dashActive)
+        if (InputManager.Instance.GetInputDown("Dash") && dashActive)
             Dash();
 
         else
@@ -133,7 +139,7 @@ public class Movement : MonoBehaviour
             if (!characterController.isGrounded)
                 movement.y += Physics.gravity.y;
 
-            characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed* Time.deltaTime);
+            characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
         }
     }
 
@@ -183,7 +189,7 @@ public class Movement : MonoBehaviour
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
-                        
+
                         if (actualType == playerType.sword && swordPolivalente)
                         {
                             neededPressedTime = 2;
@@ -194,16 +200,16 @@ public class Movement : MonoBehaviour
                         if (actualType == playerType.sword)
                         {
                             sword.GetComponent<Animation>().Play();
-                            Destroy(actionObject.transform.parent.gameObject);
+                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked();
                         }
                         if (actualType == playerType.ace && axePolivalente)
-                            Destroy(actionObject.transform.parent.gameObject);
+                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked();
                         break;
 
                     case "Chest":
                         if (actualType == playerType.sword)
                             actionOn = true;
-                       
+
                         break;
                     case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
@@ -217,11 +223,9 @@ public class Movement : MonoBehaviour
                             actionOn = true;
                         }
                         break;
-                        /*
                     case "Exit":
                         GameManager.Instance.LevelComplete();
                         break;
-                        */
                 }
             }
 
@@ -232,7 +236,7 @@ public class Movement : MonoBehaviour
                 bomb.transform.SetParent(transform);
                 bomb.transform.localPosition = Vector3.zero;
                 bomb.transform.SetParent(null);
-                
+
                 bombOn = true;
             }
         }
@@ -319,6 +323,28 @@ public class Movement : MonoBehaviour
         Destroy(tree);
     }
 
+    void Stun()
+    {
+        if (InputManager.Instance.GetInput("Stun"))
+        {
+            lastStunButtonReleased = false;
+
+            Ray ray = new Ray(transform.position, transform.forward);
+            Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
+            Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
+            {
+                actionObject = hit.collider.gameObject;
+                if (actionObject.tag == "Enemy")
+                {
+                    if (actualType == playerType.ace && axeStun)
+                        actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
+                }
+            }
+        }
+    }
+
     public void PickFabrics(GameObject chest)
     {
         GameManager.Instance.PickFabrics();
@@ -336,8 +362,6 @@ public class Movement : MonoBehaviour
     {
         if (hit.gameObject.tag == "Dead")
             GameManager.Instance.EndProtoLevel();
-        else if (hit.gameObject.tag == "Exit")
-            GameManager.Instance.LevelComplete();
     }
 
     private void OnTriggerEnter(Collider other)

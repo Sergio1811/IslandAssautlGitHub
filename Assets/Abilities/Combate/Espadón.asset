@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "Espad\xF3n"
   Description: Mejoras la espada y debloqueas nuevos enemigos
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 21300000, guid: fe5df847f7562d0429af4611466b8d1c, type: 3}

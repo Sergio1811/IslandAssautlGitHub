@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Remo
   Description: Debloqueas Pieza de Barco
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 21300000, guid: 902ed5e2a3efcd24cb42caba51c85f39, type: 3}

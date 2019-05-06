@@ -167,21 +167,21 @@ public class GameManager : MonoBehaviour
         switch (characterNumber)
         {
             case 0:
-                p = Instantiate(acerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
+                p = Instantiate(acerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded * woodByItem + " maderas.";
                 ApplyAxerAbilities(p);
                 break;
             case 1:
-                p = Instantiate(pickerPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
+                p = Instantiate(pickerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
                 objectiveText.text = "1: Consigue " + rockNeeded * rockByItem + " rocas.";
                 ApplyBomberAbilities(p);
                 break;
             case 2:
-                p = Instantiate(sworderPrefab, startNode.worldPosition, Quaternion.LookRotation(transform.forward));
+                p = Instantiate(sworderPrefab, startNode.worldPosition + (Vector3.up*2), Quaternion.LookRotation(transform.forward));
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
                 objectiveText.text = "1: Consigue " + enemiesNeeded * enemiesByItem + " pieles.";

@@ -129,15 +129,13 @@ public class EnemyScript : MonoBehaviour
     {
         if (patrolPoint != null)
             agent.SetDestination(patrolPoint.worldPosition);
-        else if (transform.position == patrolPoint.worldPosition || Vector3.Distance(transform.position, patrolPoint.worldPosition) < 10.0f || patrolPoint == null)
+
+        if (transform.position == patrolPoint.worldPosition || Vector3.Distance(transform.position, patrolPoint.worldPosition) < 10.0f || patrolPoint == null)
         {
-            print("AHHHHHH");
             availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
             patrolPoint = availableNodes[Random.Range(0, availableNodes.Count)];
             availableNodes.Clear();
         }
-
-        print(transform.position + "      " + patrolPoint.worldPosition);
     }
 
     void Chase()

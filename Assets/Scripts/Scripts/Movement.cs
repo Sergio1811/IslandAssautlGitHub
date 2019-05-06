@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
     #region
     public float neededTimeMultiplier = 1.0f;//applied
     public bool axePolivalente = false;//applied
-    public bool axeStun = false;
+    public bool axeStun = false;//applied
     public bool axeTier2 = false;//applied
 
     public float neededBombMultiplier = 1.0f;//applied
@@ -102,7 +102,7 @@ public class Movement : MonoBehaviour
         else
             EndAction();
 
-        if (lastStunButtonReleased) Stun();
+        if (lastStunButtonReleased && axeStun) Stun();
 
         if (inmortal)
             CheckInmortal();

@@ -517,7 +517,7 @@ public class GameManager : MonoBehaviour
 
         axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;//apply
         axerAbs.axePolivalente = AxerAbilities.Polivalente;//apply
-        axerAbs.axeStun = AxerAbilities.axeStunt;
+        axerAbs.axeStun = AxerAbilities.axeStunt;//applied
         treeTier2 = AxerAbilities.treeTier2;
         resourceTreeMultiplier = AxerAbilities.resourceMultiplier;//apply
         axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied

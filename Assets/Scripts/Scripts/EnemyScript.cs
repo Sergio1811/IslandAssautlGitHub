@@ -37,6 +37,8 @@ public class EnemyScript : MonoBehaviour
     bool stunned = false;
     bool canAttack = true;
 
+    int lives = 2;
+
     void Start()
     {
         if (patroler)
@@ -108,6 +110,8 @@ public class EnemyScript : MonoBehaviour
                     break;
 
                 case state.attack:
+                    transform.LookAt(new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z));
+
                     if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
                     {
                         currentState = state.chase;
@@ -212,5 +216,12 @@ public class EnemyScript : MonoBehaviour
         vector.y = 0;
 
         return vector.sqrMagnitude;
+    }
+
+    public void GetAttacked()
+    {
+        lives--;
+        if(lives < 1)
+            Destroy(this.gameObject);
     }
 }

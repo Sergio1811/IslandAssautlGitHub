@@ -22,7 +22,7 @@ public class CameraRotation : MonoBehaviour
 
     void Update()
     {
-        if (InputManager.Instance.GetInput("CameraBack") && !cameraRotating) cameraRotating = true;
+        if (InputManager.Instance.GetInputDown("CameraBack") && !cameraRotating) cameraRotating = true;
 
         if (cameraRotating)
         {

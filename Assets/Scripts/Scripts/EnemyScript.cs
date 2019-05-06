@@ -50,7 +50,7 @@ public class EnemyScript : MonoBehaviour
         //player = GameManager.Instance.player;
         agent = GetComponent<NavMeshAgent>();
         initialPos = transform.position;
-        initMat = transform.GetComponentInChildren<Renderer>().material;
+        initMat = transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
     }
 
     void Update()
@@ -85,7 +85,7 @@ public class EnemyScript : MonoBehaviour
                     {
                         attackTimer = 0;
                         currentState = state.attack;
-                        if (attackMat != null) transform.GetComponentInChildren<Renderer>().material = attackMat;
+                        if (attackMat != null) transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = attackMat;
                         else print("No attack material attached in inspector");
                         break;
                     }
@@ -99,7 +99,7 @@ public class EnemyScript : MonoBehaviour
                     if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
                     {
                         currentState = state.chase;
-                        transform.GetComponentInChildren<Renderer>().material = initMat;
+                        transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = initMat;
                         break;
                     }
 

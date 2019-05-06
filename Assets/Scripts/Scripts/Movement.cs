@@ -48,7 +48,6 @@ public class Movement : MonoBehaviour
     public float neededBombMultiplier = 1.0f;//applied
     public bool bombPolivalente = false;//applied NOT Working
     public bool bombTier2 = false;
-    public bool bombKnockback = true;
 
     public float attackSpeedCooldown = 1.0f;
     public bool swordPolivalente = false;//applied

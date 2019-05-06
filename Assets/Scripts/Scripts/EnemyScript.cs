@@ -125,6 +125,26 @@ public class EnemyScript : MonoBehaviour
 
     void Patrol()
     {
+        /*List<Node> availableNodes;
+
+        for (int i = number; i > 0; i--)
+        {
+            availableNodes = AvailableNodesType(nodeAvailableType, sizeX, sizeY, nodeType);
+
+            if (availableNodes.Count >= number)
+            {
+                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
+                ChangeNodeTypeAndSize(selectedNode, nodeType, nodeSize, sizeX, sizeY);
+                //numberOfFloor -= sizeX * sizeY;
+                number--;
+                availableNodes.Clear();
+            }
+            else
+                break;
+        }
+        */
+
+
         if (patrolPoints.Length > 0)
         {
             agent.SetDestination(patrolPoints[patrolPointID].transform.position);

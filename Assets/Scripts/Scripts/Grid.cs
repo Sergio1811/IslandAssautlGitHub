@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-
+    public static Grid instance { set; get; }
     public int size_x;
     public int size_y;
     public float node_size;
@@ -20,6 +20,7 @@ public class Grid : MonoBehaviour
 
     public void GenerateGrid(int characterType)
     {
+        instance = this;
         grid = new Node[(int)size_x, (int)size_y];
         numberOfFloor = 0;
 
@@ -42,7 +43,7 @@ public class Grid : MonoBehaviour
                 AssaignRocks(randomNumber);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
-                AssaignVillages(randomNumber);
+                AssaignVillages(randomNumber, false);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignDecoration(randomNumber);
@@ -56,7 +57,7 @@ public class Grid : MonoBehaviour
                 AssaignRocks(randomNumber);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
-                AssaignVillages(randomNumber);
+                AssaignVillages(randomNumber, false);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignTrees(randomNumber);
@@ -70,7 +71,7 @@ public class Grid : MonoBehaviour
                 print("Number of floor nodes: " + numberOfFloor);
                 print("Minimum village nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max village nodes: " + maxPrimaryPers * numberOfFloor / 100);
                 print("Number of village nodes: " + randomNumber);
-                AssaignVillages(randomNumber);
+                AssaignVillages(randomNumber, true);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
                 AssaignRocks(randomNumber);
@@ -231,7 +232,7 @@ public class Grid : MonoBehaviour
         ChangeNodesAvailables(smallTrees, Node.Type.floor, Node.Type.tree, Node.Size.s1x1, 1, 1);
     }
     //Método que a partir del número de celas de aldea que se quieran crear va a cambiar los nodos a tipo aldea
-    void AssaignVillages(int cellsNumber)
+    void AssaignVillages(int cellsNumber, bool isSworder)
     {
         int smallVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
         cellsNumber -= smallVillages * 4;
@@ -250,6 +251,9 @@ public class Grid : MonoBehaviour
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
         ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);
         ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
+
+        if (isSworder)
+            ChangeNodesAvailables(bigVillages+mediumVillages+smallVillages, Node.Type.floor, Node.Type.enemy, Node.Size.s1x1, 1, 1);
     }
 
     //Método que a partir del número de celas de decoración crea nodos tipo decoración con distintas formas como posibilidad

@@ -32848,9 +32848,9 @@ MonoBehaviour:
   objectiveText: {fileID: 1139657947}
   secondaryObjectiveText: {fileID: 1551705180}
   secondaryObjectives: []
-  rockByItem: 5
-  woodByItem: 3
-  enemiesByItem: 10
+  rockByItem: 2
+  woodByItem: 2
+  enemiesByItem: 3
   collectedWood: 0
   collectedRock: 0
   collectedFabrics: 0
@@ -35466,7 +35466,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453233500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.28, y: 0.3, z: -4.75}
+  m_LocalPosition: {x: -5.28, y: 2, z: -4.75}
   m_LocalScale: {x: 1000, y: 0.2, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}

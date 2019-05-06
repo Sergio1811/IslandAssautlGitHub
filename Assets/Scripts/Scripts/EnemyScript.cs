@@ -1,12 +1,13 @@
 ﻿//using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
-    public GameObject[] patrolPoints; //random points in map
-    private int patrolPointID;
+    public Node patrolPoint;
+    List<Node> availableNodes;
     private NavMeshAgent agent;
 
     public bool patroler = false;
@@ -32,9 +33,10 @@ public class EnemyScript : MonoBehaviour
     {
         if (patroler)
         {
-            patrolPoints = GameObject.FindGameObjectsWithTag("PatrolPoint");
+            availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
+            patrolPoint = availableNodes[Random.Range(0, availableNodes.Count)];
 
-            if(patrolPoints.Length>0)
+            if (patrolPoint != null)
                 currentState = state.patrol;
             else
             {
@@ -74,7 +76,7 @@ public class EnemyScript : MonoBehaviour
                 case state.chase:
                     if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
-                        if(patroler) currentState = state.patrol;
+                        if (patroler) currentState = state.patrol;
                         else currentState = state.stay;
                         break;
                     }
@@ -125,35 +127,17 @@ public class EnemyScript : MonoBehaviour
 
     void Patrol()
     {
-        /*List<Node> availableNodes;
-
-        for (int i = number; i > 0; i--)
+        if (patrolPoint != null)
+            agent.SetDestination(patrolPoint.worldPosition);
+        else if (transform.position == patrolPoint.worldPosition || Vector3.Distance(transform.position, patrolPoint.worldPosition) < 10.0f || patrolPoint == null)
         {
-            availableNodes = AvailableNodesType(nodeAvailableType, sizeX, sizeY, nodeType);
-
-            if (availableNodes.Count >= number)
-            {
-                Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
-                ChangeNodeTypeAndSize(selectedNode, nodeType, nodeSize, sizeX, sizeY);
-                //numberOfFloor -= sizeX * sizeY;
-                number--;
-                availableNodes.Clear();
-            }
-            else
-                break;
+            print("AHHHHHH");
+            availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
+            patrolPoint = availableNodes[Random.Range(0, availableNodes.Count)];
+            availableNodes.Clear();
         }
-        */
 
-
-        if (patrolPoints.Length > 0)
-        {
-            agent.SetDestination(patrolPoints[patrolPointID].transform.position);
-
-            if (transform.position == patrolPoints[patrolPointID].transform.position || Vector3.Distance(transform.position, patrolPoints[patrolPointID].transform.position) < 10.0f)
-            {
-                patrolPointID = Random.Range(0, patrolPoints.Length);
-            }
-        }
+        print(transform.position + "      " + patrolPoint.worldPosition);
     }
 
     void Chase()

@@ -68,8 +68,8 @@ public class GameManager : MonoBehaviour
     int livesNumber;
 
     int secondaryObjectiveID;
-
-    public bool titan = false;
+   
+    public bool titan = false;//applied
     #region
     bool islandTier2 = false;
     float goldMultiplier = 1.0f;//applied
@@ -523,7 +523,7 @@ public class GameManager : MonoBehaviour
         axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied
        
 
-        titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;//applied
         axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
@@ -543,7 +543,7 @@ public class GameManager : MonoBehaviour
         swordAbs.swordTier2 = SwordAbilities.swordTier2;//applied
         
 
-        titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;//applied
         swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
@@ -562,7 +562,7 @@ public class GameManager : MonoBehaviour
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
         
 
-        titan = CharacterAbiliities.Titan;
+        titan = CharacterAbiliities.Titan;//applied
         bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;

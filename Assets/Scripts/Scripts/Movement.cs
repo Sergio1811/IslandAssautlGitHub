@@ -224,11 +224,11 @@ public class Movement : MonoBehaviour
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                         break;
 
-                    case "Chest":
-                        if (actualType == playerType.sword)
+                    /*case "Chest":
+                        if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
                             actionOn = true;
 
-                        break;
+                        break;*/
                     case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
                         {
@@ -317,7 +317,7 @@ public class Movement : MonoBehaviour
                     CutTree(actionObject.transform.parent.parent.gameObject);
                 break;
             case "Chest":
-                if (actualType == playerType.sword)
+                if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
                     PickFabrics(actionObject);
                 break;
         }
@@ -380,8 +380,10 @@ public class Movement : MonoBehaviour
     {
         if (hit.gameObject.tag == "Dead")
             GameManager.Instance.EndProtoLevel();
-        if (hit.gameObject.tag == "Exit")
+        else if (hit.gameObject.tag == "Exit")
             GameManager.Instance.LevelComplete();
+        else if (hit.gameObject.tag == "Chest" || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
+            PickFabrics(hit.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

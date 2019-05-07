@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour
     public Text totalRockText;
     public Text totalFabricsText;
 
+    public Image woodImage, rockImage, fabricImage;
+    public Image sworderImage, bomberImage, axerImage;
+
     public float timeByLevel;
     private float remainingTimeInLevel;
     public Text timeText;
@@ -98,11 +101,11 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
-        totalCoinsText.text = "Monedas totales: " + totalCoins.ToString();
-        totalWoodText.text = "Madera total: " + totalWood.ToString();
-        totalRockText.text = "Rocas totales: " + totalRock.ToString();
-        totalFabricsText.text = "Pieles totales: " + totalFabrics.ToString();
+        currentCoinsText.text = "" + currentCoins.ToString();
+        totalCoinsText.text = "" + totalCoins.ToString();
+        totalWoodText.text = "" + totalWood.ToString();
+        totalRockText.text = "" + totalRock.ToString();
+        totalFabricsText.text = "" + totalFabrics.ToString();
 
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
@@ -171,6 +174,8 @@ public class GameManager : MonoBehaviour
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 objectiveText.text = "1: Consigue " + woodNeeded * woodByItem + " maderas.";
+                woodImage.enabled = true;
+                axerImage.enabled = true;
                 ApplyAxerAbilities(p);
                 break;
             case 1:
@@ -178,6 +183,8 @@ public class GameManager : MonoBehaviour
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
                 objectiveText.text = "1: Consigue " + rockNeeded * rockByItem + " rocas.";
+                rockImage.enabled = true;
+                bomberImage.enabled = true;
                 ApplyBomberAbilities(p);
                 break;
             case 2:
@@ -185,6 +192,8 @@ public class GameManager : MonoBehaviour
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
                 objectiveText.text = "1: Consigue " + enemiesNeeded * enemiesByItem + " pieles.";
+                fabricImage.enabled = true;
+                sworderImage.enabled = true;
                 ApplySwordAbilities(p);
                 break;
         }
@@ -227,8 +236,8 @@ public class GameManager : MonoBehaviour
     {
         collectedWood += (int)(woodByItem*resourceTreeMultiplier);
         currentCoins += (int)(woodByItem * goldMultiplier);
-        woodText.text = "Madera: " + collectedWood.ToString();
-        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
+        woodText.text = "" + collectedWood.ToString();
+        currentCoinsText.text = "" + currentCoins.ToString();
         if (collectedWood >= woodNeeded * woodByItem)
             ActivatePortal();
     }
@@ -237,8 +246,8 @@ public class GameManager : MonoBehaviour
     {
         collectedRock += (int)(rockByItem*resourceStoneMultiplier);
         currentCoins += (int)(rockByItem*goldMultiplier);
-        rockText.text = "Rocas: " + collectedRock.ToString();
-        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
+        rockText.text = "" + collectedRock.ToString();
+        currentCoinsText.text = "" + currentCoins.ToString();
         if (collectedRock >= rockNeeded * rockByItem)
             ActivatePortal();
     }
@@ -247,8 +256,8 @@ public class GameManager : MonoBehaviour
     {
         collectedFabrics += (int)(enemiesByItem*resourceFabricMultiplier);
         currentCoins += (int)(enemiesByItem * goldMultiplier);
-        fabricText.text = "Pieles: " + collectedFabrics.ToString();
-        currentCoinsText.text = "Monedas: " + currentCoins.ToString();
+        fabricText.text = "" + collectedFabrics.ToString();
+        currentCoinsText.text = "" + currentCoins.ToString();
         if (collectedFabrics >= enemiesNeeded * enemiesByItem)
             ActivatePortal();
     }

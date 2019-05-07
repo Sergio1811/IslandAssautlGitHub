@@ -400,6 +400,8 @@ public class Movement : MonoBehaviour
     {
         if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
             BreakRock(other.transform.parent.gameObject);
+        else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
+            CutTree(other.transform.parent.gameObject);
     }
 
     public void Damage(Vector3 direction)

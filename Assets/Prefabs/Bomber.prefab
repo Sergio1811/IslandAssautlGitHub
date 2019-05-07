@@ -106,6 +106,8 @@ MonoBehaviour:
   bomb: {fileID: 751660026628800781}
   sword: {fileID: 0}
   axe: {fileID: 0}
+  angleAttack: 0
+  swordCooldown: 0
   neededTimeMultiplier: 1
   axePolivalente: 0
   axeStun: 0
@@ -113,7 +115,6 @@ MonoBehaviour:
   neededBombMultiplier: 1
   bombPolivalente: 0
   bombTier2: 0
-  bombKnockback: 1
   attackSpeedCooldown: 1
   swordPolivalente: 0
   swordSeep: 0
@@ -409,6 +410,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2600837555911353103}
     m_Modifications:
+    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_Model_M_Low
+      objectReference: {fileID: 0}
     - target: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,11 +469,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_Model_M_Low
       objectReference: {fileID: 0}
     - target: {fileID: 2621560350149802611, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
@@ -569,6 +570,12 @@ PrefabInstance:
       propertyPath: rockPrefab
       value: 
       objectReference: {fileID: 8829530387875484065, guid: 118cbce6273b70848becad2eab2cff88,
+        type: 3}
+    - target: {fileID: 6820466987917899642, guid: c7f76dd464486c848be0a0480cec3a6c,
+        type: 3}
+      propertyPath: treePrefab
+      value: 
+      objectReference: {fileID: 8829530387875484065, guid: bd7801c5f5eeb8f4b9d7b92c340c07af,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f76dd464486c848be0a0480cec3a6c, type: 3}

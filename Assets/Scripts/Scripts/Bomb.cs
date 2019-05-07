@@ -6,8 +6,8 @@ public class Bomb : MonoBehaviour
 {
     public float range;
     public GameObject player;
-    public GameObject rockPrefab;
-    GameObject rock;
+    public GameObject rockPrefab, treePrefab;
+    GameObject rock, tree;
     public bool knockback = false;
     bool canDestroyTrees, canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
 
@@ -47,6 +47,8 @@ public class Bomb : MonoBehaviour
             }
             if (colliders[k].tag == "Tree" && canDestroyTrees)
             {
+                tree = Instantiate(treePrefab);
+                tree.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
             if (colliders[k].tag == "Player")

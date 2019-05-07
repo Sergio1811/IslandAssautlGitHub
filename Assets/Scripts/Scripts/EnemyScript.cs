@@ -44,6 +44,7 @@ public class EnemyScript : MonoBehaviour
     bool knockBack = false;
     Vector3 direction;
     float iniAcc;
+    float knokBackIniDisctance;
 
     void Start()
     {
@@ -72,6 +73,7 @@ public class EnemyScript : MonoBehaviour
         iniSpeed = agent.speed;
         iniAngSpeed = agent.angularSpeed;
         iniAcc = agent.acceleration;
+        knokBackIniDisctance = knockBackDistance;
     }
 
     void Update()
@@ -241,6 +243,7 @@ public class EnemyScript : MonoBehaviour
         agent.angularSpeed = iniAngSpeed;
         agent.acceleration = iniAcc;
         agent.baseOffset = 0;
+        knockBackDistance = knokBackIniDisctance;
     }
 
     public void KnockBackActivated(Transform bomb)
@@ -258,9 +261,11 @@ public class EnemyScript : MonoBehaviour
         return vector.sqrMagnitude;
     }
 
-    public void GetAttacked()
+    public void GetAttacked(Transform player)
     {
         lives--;
+        KnockBackActivated(player);
+        knockBackDistance *= 0.5f;
         if(lives < 1)
             Destroy(this.gameObject);
     }

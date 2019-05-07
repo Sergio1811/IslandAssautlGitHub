@@ -38,6 +38,13 @@ public class Movement : MonoBehaviour
     bool lastActionButtonReleased = true;
     bool lastStunButtonReleased = true;
 
+    [Header("Sword")]
+    [Range(min:-1,max:0)]
+    public float angleAttack;
+    public float swordCooldown;
+    float currentCD;
+    bool canAttack;
+
     [Header("Abilities")]
     #region
     public float neededTimeMultiplier = 1.0f;//applied
@@ -70,6 +77,7 @@ public class Movement : MonoBehaviour
         inmortal = false;
         bombOn = false;
 
+        currentCD = swordCooldown;
         iniPressedTime = neededPressedTime;
 
         if (actualType == playerType.ace && axeTier2)
@@ -106,6 +114,12 @@ public class Movement : MonoBehaviour
 
         if (inmortal)
             CheckInmortal();
+
+        if (currentCD >= swordCooldown)
+            canAttack = true;
+        if (!canAttack)
+            currentCD += Time.deltaTime;
+        
     }
 
 
@@ -168,7 +182,12 @@ public class Movement : MonoBehaviour
 
     void StartAction()
     {
-        if (InputManager.Instance.GetInput("Action"))
+        if(InputManager.Instance.GetInput("Action")&& actualType ==playerType.sword && canAttack)
+        {
+            Debug.Log("ENTROALINPUT");
+            SwordAttack();
+        }
+        else if (InputManager.Instance.GetInput("Action"))
         {
             lastActionButtonReleased = false;
 
@@ -196,13 +215,13 @@ public class Movement : MonoBehaviour
                         }
                         break;
                     case "Enemy":
-                        if (actualType == playerType.sword)
+                       /* if (actualType == playerType.sword)
                         {
                             sword.GetComponent<Animation>().Play();
-                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked();
-                        }
+                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                        }*/
                         if (actualType == playerType.ace && axePolivalente)
-                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked();
+                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                         break;
 
                     case "Chest":
@@ -380,6 +399,28 @@ public class Movement : MonoBehaviour
             characterController.Move(direction * 10f);
             GameManager.Instance.Damage();
         }
+    }
+
+    public void SwordAttack()
+    {
+        sword.GetComponent<Animation>().Play();
+        currentCD = 0;
+        Collider[] enemies = Physics.OverlapSphere(this.transform.position, hitDistance);
+       
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (enemies[i].tag == "Enemy")
+            {
+                if (Vector3.Dot(-this.gameObject.transform.GetChild(0).right, -enemies[i].transform.GetChild(0).forward)>=angleAttack)
+                {
+                    enemies[i].transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                   
+                    if (!swordSeep)
+                        break;
+                }
+            }
+        }
+       
     }
 
     private void OnDrawGizmos()

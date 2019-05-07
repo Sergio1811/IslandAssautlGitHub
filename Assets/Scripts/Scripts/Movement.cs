@@ -283,11 +283,21 @@ public class Movement : MonoBehaviour
 
     void UpdateBomb()
     {
-        actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
-        pressedTimer += Time.deltaTime;
-        actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededBombMultiplier);
+        if (!bombPolivalente)
+        {
+            actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
+            pressedTimer += Time.deltaTime;
+            actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededBombMultiplier);
 
-        if (pressedTimer >= (neededPressedTime * neededBombMultiplier))
+            if (pressedTimer >= (neededPressedTime * neededBombMultiplier))
+            {
+                bomb.SendMessage("Explode");
+                bombOn = false;
+                actionSphere.fillAmount = 0;
+                pressedTimer = 0.0f;
+            }
+        }
+        else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f)
         {
             bomb.SendMessage("Explode");
             bombOn = false;

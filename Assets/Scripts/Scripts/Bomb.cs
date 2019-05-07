@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        canDestroyTrees = false;
+        canDestroyTrees = BomberAbilities.Polivalente;
         canDestroyEnemies = true;
         canDestroyVillage = false;
         canDestroyDecoration = false;

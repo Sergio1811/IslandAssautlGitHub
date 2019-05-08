@@ -395,7 +395,7 @@ public class Grid : MonoBehaviour
                 if (grid[i, j].currentType == nodeType)
                 {
                     bool isAvailable = true;
-                    if (futureNodeType != Node.Type.village)
+                    if (futureNodeType != Node.Type.village && futureNodeType != Node.Type.enemy)
                         neighbourNodes = GetNeighboursBySize(grid[i, j], sizeX, sizeY);
                     else
                         neighbourNodes = GetNeighboursBySizeFarFromOriginNode(grid[i, j], sizeX, sizeY, entryNode, 3, 3);

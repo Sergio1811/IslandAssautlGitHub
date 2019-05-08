@@ -14,6 +14,6 @@ public class RotateTurnTable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.transform.Rotate(this.gameObject.transform.up, 10 *Time.deltaTime); 
+        this.gameObject.transform.Rotate(this.gameObject.transform.up, 15 *Time.deltaTime); 
     }
 }

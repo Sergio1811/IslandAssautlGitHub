@@ -248,7 +248,7 @@ public class EnemyScript : MonoBehaviour
 
     public void KnockBackActivated(Transform bomb)
     {
-        direction = bomb.position - this.gameObject.transform.position;
+        direction = -(bomb.position - this.gameObject.transform.position);
         StartCoroutine(KnockBack());
     }
 

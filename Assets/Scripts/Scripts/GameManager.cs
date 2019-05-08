@@ -74,6 +74,9 @@ public class GameManager : MonoBehaviour
 
     int secondaryObjectiveID;
 
+
+    List<MeshRenderer> meshList = new List<MeshRenderer>();
+
     #region
     public bool titan = false;//applied
     bool islandTier2 = false;
@@ -381,6 +384,8 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+
     void InstantiateObjectInGrid()
     {
         GameObject objectInstantiation;
@@ -471,6 +476,7 @@ public class GameManager : MonoBehaviour
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     rockInMap += rockByItem;
                     rockNeeded += 1;
+                    AddMeshes(objectInstantiation);
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
                 {
@@ -491,7 +497,12 @@ public class GameManager : MonoBehaviour
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
-                    objectInstantiation.transform.GetChild(0).GetChild(2).gameObject.SetActive(true);
+                    GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
+                    enemiesGroup.SetActive(true);
+                    for (int enemy = 0; enemy < enemiesGroup.transform.childCount; enemy++)
+                    {
+                        AddMeshes(enemiesGroup.transform.GetChild(enemy).gameObject);
+                    }
                     enemiesNeeded += 1;
                     fabricInMap += enemiesByItem;
                 }
@@ -501,6 +512,7 @@ public class GameManager : MonoBehaviour
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.SetActive(true);
                     actualNode.isTransitable = false;
+                    AddMeshes(objectInstantiation);
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
                 {
@@ -593,6 +605,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = actualNode.worldPosition;
+                    AddMeshes(objectInstantiation);
                 }
                 else if (actualNode.currentType == Node.Type.water)
                 {
@@ -601,6 +614,16 @@ public class GameManager : MonoBehaviour
                 }
 
             }
+        }
+    }
+
+    void AddMeshes(GameObject o)
+    {
+        MeshRenderer[] meshesToAdd = o.GetComponent<meshesArray>().meshArray;
+
+        for (int i = 0; i < meshesToAdd.Length; i++)
+        {
+            meshList.Add(meshesToAdd[i]);
         }
     }
 

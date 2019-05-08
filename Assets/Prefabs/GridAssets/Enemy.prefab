@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 56025380232434618}
   - component: {fileID: 4575627556205135864}
   - component: {fileID: 6523362790070238063}
+  - component: {fileID: 5195513386264657032}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -246,6 +247,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5195513386264657032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8798297767836160538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc189fce4b3a7894cb7fe99e1403fcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshArray:
+  - {fileID: 5438746108157737284}
 --- !u!1001 &5438746108159631652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -322,6 +337,12 @@ PrefabInstance:
 --- !u!4 &5438746108159507364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0f41a5f11cf65b64ca491312522858f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5438746108159631652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5438746108157737284 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 0f41a5f11cf65b64ca491312522858f3,
     type: 3}
   m_PrefabInstance: {fileID: 5438746108159631652}
   m_PrefabAsset: {fileID: 0}

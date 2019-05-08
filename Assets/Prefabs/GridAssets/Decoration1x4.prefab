@@ -367,6 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 576174198573730413}
+  - component: {fileID: 3190769980463687923}
   m_Layer: 0
   m_Name: Decoration1x4
   m_TagString: Decoration
@@ -389,6 +390,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3190769980463687923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9016246708617481165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc189fce4b3a7894cb7fe99e1403fcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshArray:
+  - {fileID: 329904851964848011}
+  - {fileID: 8726379615754204623}
+  - {fileID: 5165170078390890071}
 --- !u!1 &9176197544821494867
 GameObject:
   m_ObjectHideFlags: 0

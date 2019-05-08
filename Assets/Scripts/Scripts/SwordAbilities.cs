@@ -15,30 +15,42 @@ public class SwordAbilities : MonoBehaviour
     public void UpgradeEnemy()
     {
         enemyTier2 = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradePolivalente()
     {
         Polivalente = true;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceSpeedMultiplier()
     {
         resourceSpeedMultiplier = 0.5f;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeSword()
     {
         swordTier2 = true;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeSwordSweep()
     {
         swordSweep = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceMultiplier()
     {
         resourceMultiplier = 1.5f;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 }

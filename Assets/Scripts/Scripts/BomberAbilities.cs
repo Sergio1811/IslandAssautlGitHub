@@ -15,31 +15,43 @@ public class BomberAbilities : MonoBehaviour
     public void UpgradeRock ()
     {
         rockTier2 = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradePolivalente()
     {
         Polivalente = true;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceSpeedMultiplier()
     {
         resourceSpeedMultiplier = 0.5f;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeExplosive()
     {
         explosiveTier2 = true;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeBombKnockBack()
     {
         bombKnockBack = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceMultiplier()
     {
         resourceMultiplier = 1.5f;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 
 }

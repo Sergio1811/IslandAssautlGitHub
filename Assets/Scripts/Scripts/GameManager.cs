@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject pickerPrefab;
     public GameObject acerPrefab;
     public GameObject sworderPrefab;
+    public GameObject entreIslasCanvas;
+    public GameObject abilitiesCanvas;
+
     int characterNumber;
 
     int woodInMap = 0;
@@ -100,6 +103,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+        entreIslasCanvas.SetActive(false);
+        abilitiesCanvas.SetActive(false);
+
         cointsText.text = "" + currentCoins.ToString();
         /*totalCoinsText.text = "" + totalCoins.ToString();
         totalWoodText.text = "" + totalWood.ToString();
@@ -277,7 +284,10 @@ public class GameManager : MonoBehaviour
 
         SaveManager.Instance.Save();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        entreIslasCanvas.SetActive(true);
+        Time.timeScale = 0;
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 
@@ -689,4 +699,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ButtonNextIsland()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void ButtonQuit()
+    {
+        Application.Quit();
+    }
 }

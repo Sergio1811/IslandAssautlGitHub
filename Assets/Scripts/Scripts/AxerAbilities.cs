@@ -15,30 +15,42 @@ public class AxerAbilities : MonoBehaviour
     public void UpgradeTree()
     {
         treeTier2 = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradePolivalente()
     {
         Polivalente = true;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceSpeedMultiplier()
     {
         resourceSpeedMultiplier = 0.5f;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeAxe()
     {
         axerTier2 = true;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeStun()
     {
         axeStunt = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceMultiplier()
     {
         resourceMultiplier = 1.5f;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 }

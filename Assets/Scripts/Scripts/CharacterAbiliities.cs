@@ -15,30 +15,42 @@ public class CharacterAbiliities : MonoBehaviour
     public void UpgradeRock()
     {
         islandTier2 = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeTitan()
     {
         Titan = true;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeResourceSpeedMultiplier()
     {
         bootsMovementMultiplier = 1.25f;
+        GameManager.totalCoins -= 50;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeCharacter()
     {
         dashActive = true;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 
     public void UnlockMarket()
     {
         market = true;
+        GameManager.totalCoins -= 100;
+        SaveManager.Instance.Save();
     }
 
     public void UpgradeGoldMultiplier()
     {
         goldMultiplier = 2.0f;
+        GameManager.totalCoins -= 150;
+        SaveManager.Instance.Save();
     }
 }

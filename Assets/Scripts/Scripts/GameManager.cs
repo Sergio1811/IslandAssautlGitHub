@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public Image sworderImage, bomberImage, axerImage;
     public GameObject woodObjectiveImage, rockObjectiveImage, timeObjectiveImage, fabricObjectiveImage, livesObjectiveImage;
+    public Text secondaryObjectiveText;
     GameObject [] objectiveImage;
 
     public float timeByLevel;

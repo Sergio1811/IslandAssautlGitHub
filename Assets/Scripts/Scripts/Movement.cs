@@ -185,6 +185,8 @@ public class Movement : MonoBehaviour
         if(InputManager.Instance.GetInput("Action")&& actualType ==playerType.sword && canAttack)
         {
             Debug.Log("ENTROALINPUT");
+            canAttack = false;
+            lastActionButtonReleased = false;
             SwordAttack();
         }
         else if (InputManager.Instance.GetInput("Action"))

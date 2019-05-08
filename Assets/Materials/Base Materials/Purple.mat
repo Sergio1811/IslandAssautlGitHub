@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Purple
   m_Shader: {fileID: 4800000, guid: 6ec198ca97de3df468ffaf9b85e404b5, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: DOWN_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -58,7 +58,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
-    - _DOWN: 0
+    - _DOWN: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1

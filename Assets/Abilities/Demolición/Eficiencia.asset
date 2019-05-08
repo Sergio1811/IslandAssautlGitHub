@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Eficiencia
   m_EditorClassIdentifier: 
   Name: Eficiencia
-  Description: "Recoges tus recursos un 50% m\xE1s r\xE1pido"
+  Description: "Explosi\xF3n -50% tiempo"
   Thumbnail: {fileID: 0}

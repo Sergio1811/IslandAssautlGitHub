@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Polivalente
   m_EditorClassIdentifier: 
   Name: Polivalente
-  Description: Puedes recoger todos los recursos con las bombas
+  Description: Recoge todos los recursos
   Thumbnail: {fileID: 0}

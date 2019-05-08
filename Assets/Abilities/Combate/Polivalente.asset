@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Polivalente
   m_EditorClassIdentifier: 
   Name: Polivalente
-  Description: Puedes recoger todos los recursos con la espada
+  Description: Recoge todos los Recursos
   Thumbnail: {fileID: 21300000, guid: 0190df9d0af1de943a15588c2235c0af, type: 3}

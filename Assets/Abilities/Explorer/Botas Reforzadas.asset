@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Botas Reforzadas
   m_EditorClassIdentifier: 
   Name: Botas Reforzadas
-  Description: "Movimiento 25% m\xE1s r\xE1pido"
+  Description: +25% movimiento
   Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}

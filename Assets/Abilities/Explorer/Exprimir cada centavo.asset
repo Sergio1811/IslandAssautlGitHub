@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Exprimir cada centavo
   m_EditorClassIdentifier: 
   Name: Exprimir cada centavo
-  Description: +100% de oro al conseguir recursos
+  Description: Doble de oro en recursos
   Thumbnail: {fileID: 0}

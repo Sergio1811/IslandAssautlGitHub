@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Eficacia
   m_EditorClassIdentifier: 
   Name: Eficacia
-  Description: "Recoges un 50% m\xE1s de tus recursos"
+  Description: +50% de pieles
   Thumbnail: {fileID: 21300000, guid: caf3c5a6a391aec4496a8adc14589ce3, type: 3}

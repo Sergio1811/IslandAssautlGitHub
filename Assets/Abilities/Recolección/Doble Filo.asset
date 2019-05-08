@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Doble Filo
   m_EditorClassIdentifier: 
   Name: Doble Filo
-  Description: Mejoras el hacha
+  Description: +Rando en hacha
   Thumbnail: {fileID: 0}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Eficacia
   m_EditorClassIdentifier: 
   Name: Eficacia
-  Description: "Recoges un 50% m\xE1s de tus recursos"
+  Description: +50% madera
   Thumbnail: {fileID: 0}

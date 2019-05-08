@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "Conmoci\xF3n"
   m_EditorClassIdentifier: 
   Name: "Conmoci\xF3n"
-  Description: "Desbloqueas la habilidad Conmoci\xF3n"
+  Description: Desbloqueas Stun
   Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}

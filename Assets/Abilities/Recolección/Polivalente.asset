@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Polivalente
   m_EditorClassIdentifier: 
   Name: Polivalente
-  Description: Puedes recoger todos los recursos con tu hacha
+  Description: Recoger todos los recursos
   Thumbnail: {fileID: 0}

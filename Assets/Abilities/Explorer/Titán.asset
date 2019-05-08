@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: "Tit\xE1n"
   m_EditorClassIdentifier: 
   Name: "Tit\xE1n"
-  Description: "Un punto m\xE1s de Salud"
+  Description: +1 Salud
   Thumbnail: {fileID: 0}

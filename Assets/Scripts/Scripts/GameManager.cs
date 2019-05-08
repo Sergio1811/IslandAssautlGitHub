@@ -76,9 +76,12 @@ public class GameManager : MonoBehaviour
 
 
     List<MeshRenderer> meshList = new List<MeshRenderer>();
+
     public float waitToStartTime;
     float waitTimer;
     bool startGame;
+
+    ShaderValuesObjects shaderValues;
 
     #region
     public bool titan = false;//applied
@@ -105,6 +108,7 @@ public class GameManager : MonoBehaviour
         characterNumber = Random.Range(0, 3);
 
         gridScript.GenerateGrid(characterNumber);
+        shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
 
     }
 
@@ -309,7 +313,7 @@ public class GameManager : MonoBehaviour
 
         currentCoins = 0;
 
-
+        meshList.Clear();
         SaveManager.Instance.Save();
 
         entreIslasCanvas.SetActive(true);
@@ -650,6 +654,7 @@ public class GameManager : MonoBehaviour
         {
             meshList.Add(meshesToAdd[i]);
         }
+        shaderValues.objects = meshList;
     }
 
 

@@ -66,7 +66,7 @@ public class EnemyScript : MonoBehaviour
 
         //player = GameManager.Instance.player;
         agent = GetComponent<NavMeshAgent>();
-        initialPos = transform.position;
+        initialPos = new Vector3(transform.position.x, 0, transform.position.z);
 
         initMat = transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material;
 

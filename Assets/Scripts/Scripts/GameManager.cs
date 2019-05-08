@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviour
     public Text secondaryObjectiveText;
     GameObject [] objectiveImage;
 
+    public GameObject rightPanel, rightPanelSecundaries, leftPanel;
+    public Transform positionRight, positionLeft;
+    public float speedPanels;
+
     public float timeByLevel;
     private float remainingTimeInLevel;
     public Text timeText;
@@ -77,9 +81,10 @@ public class GameManager : MonoBehaviour
 
     List<MeshRenderer> meshList = new List<MeshRenderer>();
 
-    public float waitToStartTime;
+    public float waitToStartTime, initialPanelPositionsTime;
     float waitTimer;
     bool startGame;
+    public float instantiationHeight;
 
     ShaderValuesObjects shaderValues;
 
@@ -128,13 +133,13 @@ public class GameManager : MonoBehaviour
         remainingTimeInLevel = timeByLevel;
 
         InstantiateObjectInGrid();
-        player = PlayerInstantiation();
-        //player.SetActive(false);
+        //player = PlayerInstantiation();
+        ////player.SetActive(false);
 
-        shaderValues.objects = meshList;
-        shaderValues.target = player.transform;
-        shaderValues.enabled = true;
-        
+        //shaderValues.objects = meshList;
+        //shaderValues.target = player.transform;
+        //shaderValues.enabled = true;
+
 
         switch (characterNumber)
         {
@@ -257,11 +262,22 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+
             waitTimer += Time.deltaTime;
+
             if (waitTimer >= waitToStartTime)
+            {
+                rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * Time.deltaTime);
+                leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
+            }
+
+            if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
             {
                 waitTimer = 0;
                 startGame = true;
+
+                rightPanelSecundaries.SetActive(true);
+                player = PlayerInstantiation();
             }
         }
     }
@@ -436,7 +452,7 @@ public class GameManager : MonoBehaviour
                     endNode = actualNode;
                     objectInstantiation = Instantiate(portal, islandParent);
                     ChangeTransitable(actualNode, false, 1, 1);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     portalExit = objectInstantiation;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.tree)
@@ -469,7 +485,7 @@ public class GameManager : MonoBehaviour
                             objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                             break;
                     }
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     woodInMap += woodByItem;
                     woodNeeded += 1;
                 }
@@ -503,10 +519,9 @@ public class GameManager : MonoBehaviour
                             objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
                             break;
                     }
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     rockInMap += rockByItem;
                     rockNeeded += 1;
-                    AddMeshes(objectInstantiation);
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
                 {
@@ -525,24 +540,21 @@ public class GameManager : MonoBehaviour
                             ChangeTransitable(actualNode, false, 4, 4);
                             break;
                     }
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
-                    for (int enemy = 0; enemy < enemiesGroup.transform.childCount; enemy++)
-                    {
-                        AddMeshes(enemiesGroup.transform.GetChild(enemy).gameObject);
-                    }
                     enemiesNeeded += 1;
                     fabricInMap += enemiesByItem;
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)
                 {
                     objectInstantiation = Instantiate(enemy, islandParent);
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.SetActive(true);
                     actualNode.isTransitable = false;
-                    AddMeshes(objectInstantiation);
                 }
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
                 {
@@ -634,8 +646,7 @@ public class GameManager : MonoBehaviour
                             objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                             break;
                     }
-                    objectInstantiation.transform.position = actualNode.worldPosition;
-                    AddMeshes(objectInstantiation);
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                 }
                 else if (actualNode.currentType == Node.Type.water)
                 {

@@ -76,6 +76,9 @@ public class GameManager : MonoBehaviour
 
 
     List<MeshRenderer> meshList = new List<MeshRenderer>();
+    public float waitToStartTime;
+    float waitTimer;
+    bool startGame;
 
     #region
     public bool titan = false;//applied
@@ -93,6 +96,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        startGame = false;
 
         protoIsland = Random.Range(0, islands.Length);
         islands[protoIsland].SetActive(true);
@@ -119,18 +123,74 @@ public class GameManager : MonoBehaviour
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
         InstantiateObjectInGrid();
-        player = PlayerInstantiation();
+
+
+        //ACTIVAR SHADER
+
+
+        //player = PlayerInstantiation();
 
         switch (characterNumber)
         {
             case 0:
                 livesNumber = 3;
+                
+                woodText.gameObject.SetActive(true);
+                woodNeeded = woodNeeded - woodNeeded / 2;
+                recursoPrincipalText.text = "0/" + (woodNeeded * woodByItem).ToString();
+                principalWoodImage.SetActive(true);
+                fabricSecundary.SetActive(true);
+                rockSecundary.SetActive(true);
+                if (treeTier2)
+                {
+                    fabricSecundaryTier2.SetActive(true);
+                    rockSecundaryTier2.SetActive(true);
+                    principalWoodImageTier2.SetActive(true);
+                    recursoPrincipalTier2.SetActive(true);
+                    recursoPrincipalTextTier2.text = "0/" + (woodNeeded * woodByItem).ToString();
+                }
+                cointsText.text = currentCoins.ToString();
+                axerImage.enabled = true;
                 break;
             case 1:
                 livesNumber = 2;
+
+                rockText.gameObject.SetActive(true);
+                rockNeeded = rockNeeded - rockNeeded / 2;
+                recursoPrincipalText.text = "0/" + (rockNeeded * rockByItem).ToString();
+                principalRockImage.SetActive(true);
+                fabricSecundary.SetActive(true);
+                woodSecundary.SetActive(true);
+                if (rockTier2)
+                {
+                    fabricSecundaryTier2.SetActive(true);
+                    woodSecundaryTier2.SetActive(true);
+                    principalRockImageTier2.SetActive(true);
+                    recursoPrincipalTier2.SetActive(true);
+                    recursoPrincipalTextTier2.text = "0/" + (rockNeeded * rockByItem).ToString();
+                }
+                cointsText.text = currentCoins.ToString();
+                bomberImage.enabled = true;
                 break;
             case 2:
                 livesNumber = 4;
+
+                fabricText.gameObject.SetActive(true);
+                enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
+                recursoPrincipalText.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
+                principalFabricImage.SetActive(true);
+                rockSecundary.SetActive(true);
+                woodSecundary.SetActive(true);
+                if (enemyTier2)
+                {
+                    rockSecundaryTier2.SetActive(true);
+                    woodSecundaryTier2.SetActive(true);
+                    principalFabricImageTier2.SetActive(true);
+                    recursoPrincipalTier2.SetActive(true);
+                    recursoPrincipalTextTier2.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
+                }
+                cointsText.text = currentCoins.ToString();
+                sworderImage.enabled = true;
                 break;
         }
         if (titan)
@@ -170,22 +230,35 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        remainingTimeInLevel -= Time.deltaTime;
-
-        timeText.text = remainingTimeInLevel.ToString("0");
-
-        if (remainingTimeInLevel <= 0f)
+        if (startGame)
         {
-            //EndLevel();
-            EndProtoLevel();
-            remainingTimeInLevel = timeByLevel;
+            remainingTimeInLevel -= Time.deltaTime;
+
+            timeText.text = remainingTimeInLevel.ToString("0");
+
+            if (remainingTimeInLevel <= 0f)
+            {
+                //EndLevel();
+                EndProtoLevel();
+                remainingTimeInLevel = timeByLevel;
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+                EndProtoLevel();
+
+            if (Input.GetKeyDown(KeyCode.R))
+                SaveManager.Instance.ResetSaving();
         }
-
-        if (Input.GetKeyDown(KeyCode.N))
-            EndProtoLevel();
-
-        if (Input.GetKeyDown(KeyCode.R))
-            SaveManager.Instance.ResetSaving();
+        else
+        {
+            waitTimer += Time.deltaTime;
+            if (waitTimer >= waitToStartTime)
+            {
+                waitTimer = 0;
+                player = PlayerInstantiation();
+                startGame = true;
+            }
+        }
     }
 
 
@@ -197,62 +270,14 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 p = Instantiate(acerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
-                woodText.gameObject.SetActive(true);
-                woodNeeded = woodNeeded - woodNeeded / 2;
-                recursoPrincipalText.text = "0/"+ (woodNeeded * woodByItem).ToString();
-                principalWoodImage.SetActive(true);
-                fabricSecundary.SetActive(true);
-                rockSecundary.SetActive(true);
-                if (treeTier2)
-                {
-                    fabricSecundaryTier2.SetActive(true);
-                    rockSecundaryTier2.SetActive(true);
-                    principalWoodImageTier2.SetActive(true);
-                    recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (woodNeeded * woodByItem).ToString();
-                }
-                cointsText.text = currentCoins.ToString();
-                axerImage.enabled = true;
                 ApplyAxerAbilities(p);
                 break;
             case 1:
                 p = Instantiate(pickerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
-                rockText.gameObject.SetActive(true);
-                rockNeeded = rockNeeded - rockNeeded / 2;
-                recursoPrincipalText.text = "0/" + (rockNeeded * rockByItem).ToString();
-                principalRockImage.SetActive(true);
-                fabricSecundary.SetActive(true);
-                woodSecundary.SetActive(true);
-                if (rockTier2)
-                {
-                    fabricSecundaryTier2.SetActive(true);
-                    woodSecundaryTier2.SetActive(true);
-                    principalRockImageTier2.SetActive(true);
-                    recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (rockNeeded * rockByItem).ToString();
-                }
-                cointsText.text = currentCoins.ToString();
-                bomberImage.enabled = true;
                 ApplyBomberAbilities(p);
                 break;
             case 2:
                 p = Instantiate(sworderPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
-                fabricText.gameObject.SetActive(true);
-                enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
-                recursoPrincipalText.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
-                principalFabricImage.SetActive(true);
-                rockSecundary.SetActive(true);
-                woodSecundary.SetActive(true);
-                if (enemyTier2)
-                {
-                    rockSecundaryTier2.SetActive(true);
-                    woodSecundaryTier2.SetActive(true);
-                    principalFabricImageTier2.SetActive(true);
-                    recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
-                }
-                cointsText.text = currentCoins.ToString();
-                sworderImage.enabled = true;
                 ApplySwordAbilities(p);
                 break;
         }
@@ -712,8 +737,8 @@ public class GameManager : MonoBehaviour
             case 1:
                 return remainingTimeInLevel >= 10.0f;
             case 2:
-                if (player.GetComponent<Movement>().actualType == Movement.playerType.ace) return collectedWood >= 70 * woodInMap / 100;
-                else if (player.GetComponent<Movement>().actualType == Movement.playerType.pick) return collectedRock >= 70 * rockInMap / 100;
+                if (characterNumber == 0) return collectedWood >= 70 * woodInMap / 100;
+                else if (characterNumber == 1) return collectedRock >= 70 * rockInMap / 100;
                 else return collectedFabrics >= 70 * fabricInMap / 100;
             case 3:
                 return livesNumber == initialLiveNumber;

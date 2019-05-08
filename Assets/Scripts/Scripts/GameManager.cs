@@ -126,13 +126,15 @@ public class GameManager : MonoBehaviour
 
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
+
         InstantiateObjectInGrid();
+        player = PlayerInstantiation();
+        //player.SetActive(false);
 
-
-        //ACTIVAR SHADER
-
-
-        //player = PlayerInstantiation();
+        shaderValues.objects = meshList;
+        shaderValues.target = player.transform;
+        shaderValues.enabled = true;
+        
 
         switch (characterNumber)
         {
@@ -259,7 +261,6 @@ public class GameManager : MonoBehaviour
             if (waitTimer >= waitToStartTime)
             {
                 waitTimer = 0;
-                player = PlayerInstantiation();
                 startGame = true;
             }
         }
@@ -654,7 +655,6 @@ public class GameManager : MonoBehaviour
         {
             meshList.Add(meshesToAdd[i]);
         }
-        shaderValues.objects = meshList;
     }
 
 

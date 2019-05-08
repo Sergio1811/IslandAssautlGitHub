@@ -34,9 +34,6 @@ public class Grid : MonoBehaviour
         {
             case 0:
                 randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
-                print("Number of floor nodes: " + numberOfFloor);
-                print("Minimum tree nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max tree nodes: " + maxPrimaryPers * numberOfFloor / 100);
-                print("Number of tree nodes: " + randomNumber);
                 AssaignTrees(randomNumber);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
@@ -51,9 +48,6 @@ public class Grid : MonoBehaviour
 
             case 1:
                 randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
-                print("Number of floor nodes: " + numberOfFloor);
-                print("Minimum rock nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max rock nodes: " + maxPrimaryPers * numberOfFloor / 100);
-                print("Number of rock nodes: " + randomNumber);
                 AssaignRocks(randomNumber);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
@@ -68,9 +62,6 @@ public class Grid : MonoBehaviour
 
             case 2:
                 randomNumber = Random.Range(minPrimaryPers * numberOfFloor / 100, maxPrimaryPers * numberOfFloor / 100);
-                print("Number of floor nodes: " + numberOfFloor);
-                print("Minimum village nodes: " + minPrimaryPers * numberOfFloor / 100 + "       Max village nodes: " + maxPrimaryPers * numberOfFloor / 100);
-                print("Number of village nodes: " + randomNumber);
                 AssaignVillages(randomNumber, true);
 
                 randomNumber = Random.Range(minSecundaryPers * numberOfFloor / 100, maxSecundaryPers * numberOfFloor / 100);
@@ -202,8 +193,6 @@ public class Grid : MonoBehaviour
         cellsNumber -= bigRocks * 4;
         smallRocks += cellsNumber;
 
-        print("Number of big rocks (2x2): " + bigRocks);
-
         ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
         ChangeNodesAvailables(rocks1x2, Node.Type.floor, Node.Type.rock, Node.Size.s1x2, 1, 2);
         ChangeNodesAvailables(rocks2x1, Node.Type.floor, Node.Type.rock, Node.Size.s2x1, 2, 1);
@@ -222,9 +211,6 @@ public class Grid : MonoBehaviour
         int bigTrees = cellsNumber / 4;
         cellsNumber -= bigTrees * 4;
         smallTrees += cellsNumber;
-
-        print("Number of big trees (2x2): " + bigTrees);
-        print("Number of small trees (1x1): " + smallTrees);
 
         ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
         ChangeNodesAvailables(trees1x2, Node.Type.floor, Node.Type.tree, Node.Size.s1x2, 1, 2);
@@ -245,8 +231,6 @@ public class Grid : MonoBehaviour
 
         if (cellsNumber > 4)
             smallVillages += 1;
-
-        print("Number of big villages (4x4): " + bigVillages);
 
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
         ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);

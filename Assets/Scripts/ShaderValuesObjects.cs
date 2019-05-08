@@ -6,7 +6,7 @@ public class ShaderValuesObjects : MonoBehaviour {
 
     MaterialPropertyBlock props;
     [SerializeField]
-    Transform target;
+    public Transform target;
     float value = 0;
     [SerializeField]
     float appearSpeed = 10f;
@@ -18,25 +18,25 @@ public class ShaderValuesObjects : MonoBehaviour {
     bool keep = false;
 
     [SerializeField]
-    public MeshRenderer[] objects;
+    public List<MeshRenderer> objects = new List<MeshRenderer>();
     [SerializeField]
     public float[] values;
     // Start is called before the first frame update
     void Start()
     {
         props = new MaterialPropertyBlock();
-        for (int i = 0; i < objects.Length; i++)
+        for (int i = 0; i < objects.Count; i++)
         {
             objects[i].SetPropertyBlock(props);
         }
-        values = new float[objects.Length];
+        values = new float[objects.Count];
 
     }
 
     // Update is called once per frame
     void Update()
-    {
-        for (int i = 0; i < objects.Length; i++)
+    { 
+        for (int i = 0; i < objects.Count; i++)
         {
             if (Vector3.Distance(objects[i].transform.position, target.position) < radius)
             {

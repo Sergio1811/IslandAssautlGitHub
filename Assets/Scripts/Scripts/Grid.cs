@@ -560,7 +560,7 @@ public class Grid : MonoBehaviour
         {
             for (int j = 0; j < y; j++)
             {
-                if (i == 0 && j == 0)
+                if ((i == 0 && j == 0) && !(x==1 && y == 1))
                     continue;
 
                 Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);

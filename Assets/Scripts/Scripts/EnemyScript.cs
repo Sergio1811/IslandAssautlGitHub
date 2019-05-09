@@ -41,7 +41,7 @@ public class EnemyScript : MonoBehaviour
 
     int lives = 2;
 
-    float knockBackDistance = 8;
+    float knockBackDistance = 15;
     bool knockBack = false;
     Vector3 direction;
     float iniAcc;

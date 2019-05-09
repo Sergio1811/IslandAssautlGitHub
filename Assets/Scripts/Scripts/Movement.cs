@@ -38,6 +38,9 @@ public class Movement : MonoBehaviour
     bool lastActionButtonReleased = true;
     bool lastStunButtonReleased = true;
 
+    bool knockBack;
+    Vector3 knockDirection;
+
     [Header("Sword")]
     [Range(min: -1, max: 0)]
     public float angleAttack;
@@ -261,6 +264,15 @@ public class Movement : MonoBehaviour
         }
     }
 
+    
+    void FixedUpdate()
+    {
+        if (knockBack)
+        {
+            characterController.Move(knockDirection * 50f * Time.deltaTime);
+        }
+    }
+
     void UpdateAction()
     {
         if (InputManager.Instance.GetInput("Action"))
@@ -412,7 +424,8 @@ public class Movement : MonoBehaviour
         {
             inmortal = true;
             inmortalTimer = 0;
-            characterController.Move(direction * 10f);
+            knockDirection = direction;
+            StartCoroutine(KnockBack());
             GameManager.Instance.Damage();
         }
     }
@@ -494,6 +507,15 @@ public class Movement : MonoBehaviour
             }
         }*/
 
+    }
+
+    IEnumerator KnockBack()
+    {
+        knockBack = true;
+
+        yield return new WaitForSeconds(0.2f); //Only knock the enemy back for a short time    
+        
+        knockBack = false;
     }
 
 

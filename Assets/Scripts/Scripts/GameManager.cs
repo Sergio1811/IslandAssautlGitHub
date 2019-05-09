@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
-        characterNumber = 2;
+        //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         gridScript.GenerateGrid(characterNumber);
 
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();

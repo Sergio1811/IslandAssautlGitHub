@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2292,11 +2292,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficaciaBomba
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2416,6 +2411,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficaciaBomba
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -2956,16 +2956,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityTimon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3085,6 +3075,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityTimon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -3824,11 +3824,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEspadon
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3948,6 +3943,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEspadon
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -5395,16 +5395,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityCanon
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5524,6 +5514,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityCanon
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -9112,11 +9112,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityComerciante
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9236,6 +9231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityComerciante
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -12328,11 +12328,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityPolivalenteBomba
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12452,6 +12447,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityPolivalenteBomba
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -14798,16 +14798,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityVela
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14927,6 +14917,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityVela
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -16148,11 +16148,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityTitan
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16272,6 +16267,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityTitan
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -17754,11 +17754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityBotasReforzadas
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17878,6 +17873,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityBotasReforzadas
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -19684,11 +19684,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficaciaEspada
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19808,6 +19803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficaciaEspada
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -21499,16 +21499,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityAhorrador
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21628,6 +21618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityAhorrador
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -22004,11 +22004,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityExprimirCadaCentavo
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22128,6 +22123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityExprimirCadaCentavo
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -23099,16 +23099,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityExpertoEnDemoliciones
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23228,6 +23218,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityExpertoEnDemoliciones
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -26730,11 +26730,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficienciaBomba
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26854,6 +26849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficienciaBomba
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -27846,11 +27846,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityBarrido
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27970,6 +27965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityBarrido
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -29243,11 +29243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityArtificiero
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29367,6 +29362,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityArtificiero
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -32150,16 +32150,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityRemo
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -32279,6 +32269,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityRemo
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -37866,11 +37866,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityAtrapameSiPuedes
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37990,6 +37985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityAtrapameSiPuedes
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -41356,11 +41356,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEmpujon
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -41480,6 +41475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEmpujon
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -43075,11 +43075,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityExplorador
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43199,6 +43194,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityExplorador
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -44944,11 +44944,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityGladiador
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -45068,6 +45063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityGladiador
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -46905,16 +46905,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityBrujula
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -47034,6 +47024,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityBrujula
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -49335,11 +49335,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1148708499}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityC4
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -49459,6 +49454,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityC4
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -51855,11 +51855,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityPolivalenteEspada
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -51979,6 +51974,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityPolivalenteEspada
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -53034,11 +53034,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficienciaEspada
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -53158,6 +53153,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficienciaEspada
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -54036,16 +54036,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1354493872}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityMapa
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -54165,6 +54155,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityMapa
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -57590,16 +57590,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1868554118}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityMaestroArmero
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -57719,6 +57709,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityMaestroArmero
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -59725,11 +59725,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityDobleFilo
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -59849,6 +59844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityDobleFilo
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -60004,11 +60004,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficienciaHacha
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60129,6 +60124,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficienciaHacha
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -60204,11 +60204,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityPolivalenteHacha
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60329,6 +60324,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityPolivalenteHacha
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -60404,11 +60404,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityEficaciaHacha
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60529,6 +60524,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityEficaciaHacha
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -60604,16 +60604,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: "AbilityM\xE1stil"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60734,6 +60724,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: "AbilityM\xE1stil"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -60799,16 +60799,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityCasco
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -60929,6 +60919,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityCasco
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -60994,16 +60994,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityLenadorJefe
-      objectReference: {fileID: 0}
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61124,6 +61114,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityLenadorJefe
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: Ability
@@ -61189,11 +61189,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityMaestroDelHacha
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61313,6 +61308,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityMaestroDelHacha
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
@@ -61781,11 +61781,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7146663376254898351}
     m_Modifications:
-    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
-        type: 3}
-      propertyPath: m_Name
-      value: AbilityConmocion
-      objectReference: {fileID: 0}
     - target: {fileID: 2487861994003241052, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -61905,6 +61900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735877110681849493, guid: eb483532b6844c24a8851fc79393ab33,
+        type: 3}
+      propertyPath: m_Name
+      value: AbilityConmocion
       objectReference: {fileID: 0}
     - target: {fileID: 7890406224730914009, guid: eb483532b6844c24a8851fc79393ab33,
         type: 3}

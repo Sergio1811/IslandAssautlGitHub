@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     public Image sworderImage, bomberImage, axerImage;
     public GameObject woodObjectiveImage, rockObjectiveImage, timeObjectiveImage, fabricObjectiveImage, livesObjectiveImage;
     public Text secondaryObjectiveText;
-    GameObject [] objectiveImage;
+    GameObject[] objectiveImage;
 
     public GameObject rightPanel, rightPanelSecundaries, leftPanel;
     public Transform positionRight, positionLeft;
@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         entreIslasCanvas.SetActive(false);
         abilitiesCanvas.SetActive(false);
-        
+
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
 
@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 livesNumber = 3;
-                
+
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
                 recursoPrincipalText.text = "0/" + (woodNeeded * woodByItem).ToString();
@@ -262,7 +262,9 @@ public class GameManager : MonoBehaviour
                 leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
             }
 
-            if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
+            if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
+                GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
+            //if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
             {
                 waitTimer = 0;
                 startGame = true;
@@ -762,5 +764,14 @@ public class GameManager : MonoBehaviour
     public void ButtonQuit()
     {
         Application.Quit();
+    }
+
+
+    private float GetSqrDistanceXZToPosition(Vector3 initialPosition, Vector3 finalPosition)
+    {
+        Vector3 vector = finalPosition - initialPosition;
+        vector.y = 0;
+
+        return vector.sqrMagnitude;
     }
 }

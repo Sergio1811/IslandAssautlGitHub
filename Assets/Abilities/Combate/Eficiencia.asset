@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Eficiencia
   Description: "50% m\xE1s de da\xF1o"
-  Thumbnail: {fileID: 21300000, guid: 30dc15dbaf036ae49ad8e8e75e000acf, type: 3}
+  Thumbnail: {fileID: 21300000, guid: 671f130e12b96984d98626164d5d381e, type: 3}

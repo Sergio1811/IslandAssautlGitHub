@@ -39,7 +39,7 @@ public class Movement : MonoBehaviour
     bool lastStunButtonReleased = true;
 
     [Header("Sword")]
-    [Range(min:-1,max:0)]
+    [Range(min: -1, max: 0)]
     public float angleAttack;
     public float swordCooldown;
     float currentCD;
@@ -119,7 +119,7 @@ public class Movement : MonoBehaviour
             canAttack = true;
         if (!canAttack)
             currentCD += Time.deltaTime;
-        
+
     }
 
 
@@ -182,7 +182,7 @@ public class Movement : MonoBehaviour
 
     void StartAction()
     {
-        if(InputManager.Instance.GetInput("Action")&& actualType ==playerType.sword && canAttack)
+        if (InputManager.Instance.GetInput("Action") && actualType == playerType.sword && canAttack)
         {
             canAttack = false;
             lastActionButtonReleased = false;
@@ -216,11 +216,11 @@ public class Movement : MonoBehaviour
                         }
                         break;
                     case "Enemy":
-                       /* if (actualType == playerType.sword)
-                        {
-                            sword.GetComponent<Animation>().Play();
-                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
-                        }*/
+                        /* if (actualType == playerType.sword)
+                         {
+                             sword.GetComponent<Animation>().Play();
+                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                         }*/
                         if (actualType == playerType.ace && axePolivalente)
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                         break;
@@ -242,9 +242,9 @@ public class Movement : MonoBehaviour
                             actionOn = true;
                         }
                         break;
-                    //case "Exit":
-                    //    GameManager.Instance.LevelComplete();
-                    //    break;
+                        //case "Exit":
+                        //    GameManager.Instance.LevelComplete();
+                        //    break;
                 }
             }
 
@@ -419,15 +419,72 @@ public class Movement : MonoBehaviour
 
     public void SwordAttack()
     {
+        bool foundEnemy = false;
+
         sword.GetComponent<Animation>().Play();
         currentCD = 0;
         Collider[] enemies = Physics.OverlapSphere(this.transform.position, hitDistance);
-       
+
+        RaycastHit[] RaycastAllRay1 = Physics.RaycastAll(transform.position, transform.forward, hitDistance);
+        RaycastHit[] RaycastAllRay2 = Physics.RaycastAll(transform.position + transform.right * 1.5f, transform.forward, hitDistance);
+        RaycastHit[] RaycastAllRay3 = Physics.RaycastAll(transform.position - transform.right * 1.5f, transform.forward, hitDistance);
+
+        for (int i = 0; i < RaycastAllRay1.Length; i++)
+        {
+            actionObject = RaycastAllRay1[i].collider.gameObject;
+
+            if (actionObject.tag == "Enemy")
+            {
+                actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                foundEnemy = true;
+            }
+
+            if (!swordSeep)
+                break;
+        }
+
+        if (foundEnemy == false || swordSeep)
+        {
+            for (int i = 0; i < RaycastAllRay2.Length; i++)
+            {
+                actionObject = RaycastAllRay2[i].collider.gameObject;
+
+                if (actionObject.tag == "Enemy")
+                {
+                    actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                    foundEnemy = true;
+                }
+
+                if (!swordSeep)
+                    break;
+            }
+        }
+
+        if (foundEnemy == false || swordSeep)
+        {
+            for (int i = 0; i < RaycastAllRay3.Length; i++)
+            {
+                actionObject = RaycastAllRay3[i].collider.gameObject;
+
+                if (actionObject.tag == "Enemy")
+                {
+                    actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                    foundEnemy = true;
+                }
+
+                if (!swordSeep)
+                    break;
+            }
+        }
+
+
+
+        /*
         for (int i = 0; i < enemies.Length; i++)
         {
             if (enemies[i].tag == "Enemy")
             {
-                if (Vector3.Dot(-this.gameObject.transform.GetChild(0).right, -enemies[i].transform.GetChild(0).forward)>=angleAttack)
+                if (Vector3.Dot(this.gameObject.transform.GetChild(0).forward, enemies[i].transform.forward) >= angleAttack)
                 {
                     enemies[i].transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                    
@@ -435,9 +492,11 @@ public class Movement : MonoBehaviour
                         break;
                 }
             }
-        }
-       
+        }*/
+
     }
+
+
 
     private void OnDrawGizmos()
     {

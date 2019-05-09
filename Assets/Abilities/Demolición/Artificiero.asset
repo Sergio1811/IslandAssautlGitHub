@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Artificero
   Description: Debloquea Rocas T2
-  Thumbnail: {fileID: 21300000, guid: a53b9010a5fc02e419c16b0daa86e738, type: 3}
+  Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}

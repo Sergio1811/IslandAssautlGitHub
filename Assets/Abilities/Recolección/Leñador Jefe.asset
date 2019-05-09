@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "Le\xF1ador Jefe"
   Description: Desbloquea el hacha
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 21300000, guid: e7d0a65eb8817be40bd03180fdc38cbb, type: 3}

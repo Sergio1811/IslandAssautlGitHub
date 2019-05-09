@@ -111,6 +111,7 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
+        characterNumber = 2;
         gridScript.GenerateGrid(characterNumber);
 
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();

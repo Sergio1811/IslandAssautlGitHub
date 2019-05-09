@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Comerciante
   Description: Debloqueas Mercado
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 21300000, guid: 50503018f926eb24dbe4434f04573a89, type: 3}

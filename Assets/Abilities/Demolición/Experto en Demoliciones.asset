@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Experto en Demoliciones
   m_EditorClassIdentifier: 
   Name: Experto en Demoliciones
-  Description: Desbloqueas Dinamita y sabes explotar cosas
+  Description: Desbloqueas Dinamita
   Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}

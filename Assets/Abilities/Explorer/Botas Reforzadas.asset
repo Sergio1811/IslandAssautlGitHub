@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Botas Reforzadas
   Description: +25% movimiento
-  Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}
+  Thumbnail: {fileID: 21300000, guid: 671f130e12b96984d98626164d5d381e, type: 3}

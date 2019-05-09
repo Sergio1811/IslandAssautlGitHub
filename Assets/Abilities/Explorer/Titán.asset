@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "Tit\xE1n"
   Description: +1 Salud
-  Thumbnail: {fileID: 0}
+  Thumbnail: {fileID: 21300000, guid: a53b9010a5fc02e419c16b0daa86e738, type: 3}

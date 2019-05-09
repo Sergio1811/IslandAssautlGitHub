@@ -10,7 +10,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 1
-  m_Extents: {x: 12.479001, y: 13.734, z: 9.458}
+  m_Extents: {x: 10.22393, y: 11.069145, z: 9.457515}
   m_MoveThreshold: 0.1
   m_Carve: 1
   m_CarveOnlyStationary: 1
@@ -27,8 +27,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 24.958138, y: 27.468554, z: 18.915035}
-  m_Center: {x: -0.40821362, y: 0.57061636, z: 9.457519}
+  m_Size: {x: 20.447863, y: 22.13829, z: 18.915033}
+  m_Center: {x: -0.40821406, y: 0.5706032, z: 9.45752}
 --- !u!1 &3806215038219618819
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 4
+  isEnemy: 0
 --- !u!1 &8902116046550850394
 GameObject:
   m_ObjectHideFlags: 0

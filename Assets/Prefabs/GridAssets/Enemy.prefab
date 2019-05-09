@@ -313,7 +313,7 @@ MonoBehaviour:
   currentState: 0
   chaseDistance: 200
   attackDistance: 40
-  attackCoolDown: 1
+  attackCoolDown: 0.5
   repathTime: 0.5
   attackMat: {fileID: 2100000, guid: f2eb74c8da59c4143863893a6427003f, type: 2}
   maxStunnedTimer: 2

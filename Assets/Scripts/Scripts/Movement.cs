@@ -284,10 +284,10 @@ public class Movement : MonoBehaviour
 
     void UpdateBomb()
     {
-        if (!bombPolivalente)
+        pressedTimer += Time.deltaTime;
+        if (!bombTier2)
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
-            pressedTimer += Time.deltaTime;
             actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededBombMultiplier);
 
             if (pressedTimer >= (neededPressedTime * neededBombMultiplier))
@@ -298,12 +298,13 @@ public class Movement : MonoBehaviour
                 pressedTimer = 0.0f;
             }
         }
-        else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f)
+        else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
         {
             bomb.SendMessage("Explode");
             bombOn = false;
             actionSphere.fillAmount = 0;
             pressedTimer = 0.0f;
+            lastActionButtonReleased = false;
         }
     }
 

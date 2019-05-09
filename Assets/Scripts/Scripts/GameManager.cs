@@ -111,8 +111,8 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
-
         gridScript.GenerateGrid(characterNumber);
+
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
 
     }
@@ -122,23 +122,13 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         entreIslasCanvas.SetActive(false);
         abilitiesCanvas.SetActive(false);
-
-        cointsText.text = "" + currentCoins.ToString();
-        /*totalCoinsText.text = "" + totalCoins.ToString();
-        totalWoodText.text = "" + totalWood.ToString();
-        totalRockText.text = "" + totalRock.ToString();
-        totalFabricsText.text = "" + totalFabrics.ToString();^*/
-
+        
         islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
         remainingTimeInLevel = timeByLevel;
 
         InstantiateObjectInGrid();
-        //player = PlayerInstantiation();
-        ////player.SetActive(false);
-
-        //shaderValues.objects = meshList;
-        //shaderValues.target = player.transform;
-        //shaderValues.enabled = true;
+        player = PlayerInstantiation();
+        player.SetActive(false);
 
 
         switch (characterNumber)
@@ -277,7 +267,7 @@ public class GameManager : MonoBehaviour
                 startGame = true;
 
                 rightPanelSecundaries.SetActive(true);
-                player = PlayerInstantiation();
+                player.SetActive(true);
             }
         }
     }

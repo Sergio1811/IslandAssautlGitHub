@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
-        characterNumber = 1; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
+        //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         gridScript.GenerateGrid(characterNumber);
 
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
@@ -361,6 +361,10 @@ public class GameManager : MonoBehaviour
             recursoPrincipalText.text = collectedWood.ToString() + "/" + (woodNeeded * woodByItem).ToString();
             if (treeTier2)
                 recursoPrincipalTextTier2.text = collectedWood.ToString() + "/" + (woodNeeded * woodByItem).ToString();
+
+
+            if (collectedWood >= woodNeeded * woodByItem)
+                ActivatePortal();
         }
         else
         {
@@ -368,9 +372,6 @@ public class GameManager : MonoBehaviour
             if (treeTier2)
                 woodTextTier2.text = collectedWood.ToString();
         }
-
-        if (collectedWood >= woodNeeded * woodByItem)
-            ActivatePortal();
     }
 
     public void PickRock()
@@ -384,6 +385,9 @@ public class GameManager : MonoBehaviour
             recursoPrincipalText.text = collectedRock.ToString() + "/" + (rockNeeded * rockByItem).ToString();
             if (rockTier2)
                 recursoPrincipalTextTier2.text = collectedRock.ToString() + "/" + (rockNeeded * rockByItem).ToString();
+
+            if (collectedRock >= rockNeeded * rockByItem)
+                ActivatePortal();
         }
         else
         {
@@ -391,8 +395,6 @@ public class GameManager : MonoBehaviour
             if (rockTier2)
                 rockTextTier2.text = collectedRock.ToString();
         }
-        if (collectedRock >= rockNeeded * rockByItem)
-            ActivatePortal();
     }
 
     public void PickFabrics()
@@ -406,6 +408,9 @@ public class GameManager : MonoBehaviour
             recursoPrincipalText.text = collectedFabrics.ToString() + "/" + (enemiesNeeded * enemiesByItem).ToString();
             if (enemyTier2)
                 recursoPrincipalTextTier2.text = collectedFabrics.ToString() + "/" + (enemiesNeeded * enemiesByItem).ToString();
+
+            if (collectedFabrics >= enemiesNeeded * enemiesByItem)
+                ActivatePortal();
         }
         else
         {
@@ -413,8 +418,6 @@ public class GameManager : MonoBehaviour
             if (enemyTier2)
                 fabricTextTier2.text = collectedFabrics.ToString();
         }
-        if (collectedFabrics >= enemiesNeeded * enemiesByItem)
-            ActivatePortal();
     }
 
     public void Damage()
@@ -555,6 +558,13 @@ public class GameManager : MonoBehaviour
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
+                    if (characterNumber == 0)
+                    {
+                        for (int k = 0; k < enemiesGroup.transform.childCount; k++)
+                        {
+                            enemiesGroup.transform.GetChild(k).GetComponent<EnemyScript>().lives = 3;
+                        }
+                    }
                     enemiesNeeded += 1;
                     fabricInMap += enemiesByItem;
                 }

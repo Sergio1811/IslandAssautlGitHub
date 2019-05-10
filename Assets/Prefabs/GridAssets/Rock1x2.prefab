@@ -169,8 +169,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8907002, y: 1.6566225, z: 1.0442624}
-  m_Center: {x: -0.07769299, y: 0.017686307, z: 0.36083078}
+  m_Size: {x: 0.8907003, y: 1.6566225, z: 1.9457939}
+  m_Center: {x: -0.077693015, y: 0.01768631, z: 0.8115964}
 --- !u!1 &6648493266178775680
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 4
+  isEnemy: 0
 --- !u!1001 &5642157201062322501
 PrefabInstance:
   m_ObjectHideFlags: 0

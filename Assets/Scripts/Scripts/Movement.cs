@@ -407,7 +407,7 @@ public class Movement : MonoBehaviour
             GameManager.Instance.EndProtoLevel();
         else if (hit.gameObject.tag == "Exit")
             GameManager.Instance.LevelComplete();
-        else if ((hit.gameObject.tag == "Chest") && ((AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
+        else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
             PickFabrics(hit.gameObject);
     }
 

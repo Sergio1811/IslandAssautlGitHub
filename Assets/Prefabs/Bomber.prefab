@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualType: 0
   characterSpeed: 50
-  neededPressedTime: 1
+  neededPressedTime: 2
   hitDistance: 5
   hitDistanceUpgradeMultiplier: 0
   actionSphere: {fileID: 3311315575684690553}
@@ -116,6 +116,7 @@ MonoBehaviour:
   neededBombMultiplier: 1
   bombPolivalente: 0
   bombTier2: 0
+  bomberKnockBack: 0
   attackSpeedCooldown: 1
   swordPolivalente: 0
   swordSeep: 0

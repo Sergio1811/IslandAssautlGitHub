@@ -434,6 +434,7 @@ MonoBehaviour:
   neededBombMultiplier: 1
   bombPolivalente: 0
   bombTier2: 0
+  bomberKnockBack: 0
   attackSpeedCooldown: 1
   swordPolivalente: 0
   swordSeep: 0
@@ -453,7 +454,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1.75
   m_Radius: 0.35
-  m_SlopeLimit: 45
+  m_SlopeLimit: 30
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -618,6 +619,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4206165551823840254}
     m_Modifications:
+    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Character_Model_M_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -671,16 +682,6 @@ PrefabInstance:
     - target: {fileID: 4780880377676584896, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Character_Model_M_Low
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787982915865133714, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2621560350149802611, guid: 19e8cbd971beb1749a0ca64ebc72e3f1,
@@ -799,14 +800,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green_Bomb_Model_Testing
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -868,6 +861,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 12343b36b2d251f4c8d9cca2076da4e4, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}

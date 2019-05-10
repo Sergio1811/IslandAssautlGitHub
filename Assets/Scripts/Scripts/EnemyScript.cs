@@ -39,7 +39,7 @@ public class EnemyScript : MonoBehaviour
     bool stunned = false;
     bool canAttack = true;
 
-    int lives = 2;
+    public int lives = 2;
 
     float knockBackDistance = 15;
     bool knockBack = false;

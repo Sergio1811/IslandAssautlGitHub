@@ -192,7 +192,8 @@ public class Movement : MonoBehaviour
             lastActionButtonReleased = false;
             SwordAttack();
         }
-        else if (InputManager.Instance.GetInput("Action"))
+
+        if (InputManager.Instance.GetInput("Action") && (actualType != playerType.sword || (actualType == playerType.sword && swordPolivalente)))
         {
             lastActionButtonReleased = false;
 

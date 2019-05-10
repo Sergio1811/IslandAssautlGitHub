@@ -265,7 +265,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    
+
     void FixedUpdate()
     {
         if (knockBack)
@@ -337,7 +337,7 @@ public class Movement : MonoBehaviour
                 if (actualType == playerType.ace)
                     CutTree(actionObject.transform.parent.parent.gameObject);
                 //if (actualType == playerType.pick && bombPolivalente)
-                    //CutTree(actionObject.transform.parent.parent.gameObject);
+                //CutTree(actionObject.transform.parent.parent.gameObject);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject);
                 break;
@@ -434,6 +434,7 @@ public class Movement : MonoBehaviour
     public void SwordAttack()
     {
         bool foundEnemy = false;
+        bool repeatedEnemy = false;
 
         sword.GetComponent<Animation>().Play();
         currentCD = 0;
@@ -443,14 +444,20 @@ public class Movement : MonoBehaviour
         RaycastHit[] RaycastAllRay2 = Physics.RaycastAll(transform.position + transform.right * 1.5f, transform.forward, hitDistance);
         RaycastHit[] RaycastAllRay3 = Physics.RaycastAll(transform.position - transform.right * 1.5f, transform.forward, hitDistance);
 
+        List<GameObject> enemiesList = new List<GameObject>();
+
         for (int i = 0; i < RaycastAllRay1.Length; i++)
         {
             actionObject = RaycastAllRay1[i].collider.gameObject;
 
             if (actionObject.tag == "Enemy")
             {
-                actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
+                enemyScript.GetAttacked(this.gameObject.transform);
                 foundEnemy = true;
+                if (swordTier2)
+                    enemyScript.GetAttackedByBomb();
+                enemiesList.Add(actionObject);
             }
 
             if (!swordSeep)
@@ -463,14 +470,29 @@ public class Movement : MonoBehaviour
             {
                 actionObject = RaycastAllRay2[i].collider.gameObject;
 
-                if (actionObject.tag == "Enemy")
+                for (int j = 0; j < enemiesList.Count; j++)
                 {
-                    actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                    if (enemiesList[j] == actionObject)
+                    {
+                        repeatedEnemy = true;
+                        break;
+                    }
+                }
+
+                if (actionObject.tag == "Enemy" && !repeatedEnemy)
+                {
+                    EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
+                    enemyScript.GetAttacked(this.gameObject.transform);
                     foundEnemy = true;
+                    if (swordTier2)
+                        enemyScript.GetAttackedByBomb();
+                    enemiesList.Add(actionObject);
                 }
 
                 if (!swordSeep)
                     break;
+
+                repeatedEnemy = false;
             }
         }
 
@@ -480,33 +502,31 @@ public class Movement : MonoBehaviour
             {
                 actionObject = RaycastAllRay3[i].collider.gameObject;
 
-                if (actionObject.tag == "Enemy")
+                for (int j = 0; j < enemiesList.Count; j++)
                 {
-                    actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                    if (enemiesList[j] == actionObject)
+                    {
+                        repeatedEnemy = true;
+                        break;
+                    }
+                }
+
+                if (actionObject.tag == "Enemy" && !repeatedEnemy)
+                {
+                    EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
+                    enemyScript.GetAttacked(this.gameObject.transform);
                     foundEnemy = true;
+                    if (swordTier2)
+                        enemyScript.GetAttackedByBomb();
+                    enemiesList.Add(actionObject);
                 }
 
                 if (!swordSeep)
                     break;
+
+                repeatedEnemy = false;
             }
         }
-
-
-
-        /*
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            if (enemies[i].tag == "Enemy")
-            {
-                if (Vector3.Dot(this.gameObject.transform.GetChild(0).forward, enemies[i].transform.forward) >= angleAttack)
-                {
-                    enemies[i].transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
-                   
-                    if (!swordSeep)
-                        break;
-                }
-            }
-        }*/
 
     }
 
@@ -515,7 +535,7 @@ public class Movement : MonoBehaviour
         knockBack = true;
 
         yield return new WaitForSeconds(0.2f); //Only knock the enemy back for a short time    
-        
+
         knockBack = false;
     }
 

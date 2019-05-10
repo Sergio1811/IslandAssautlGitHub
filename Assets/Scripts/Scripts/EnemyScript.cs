@@ -268,7 +268,14 @@ public class EnemyScript : MonoBehaviour
         lives--;
         KnockBackActivated(player);
         knockBackDistance *= 0.5f;
-        if(lives < 1)
+        if (lives < 1)
+            Destroy(this.gameObject);
+    }
+
+    public void GetAttackedByBomb()
+    {
+        lives--;
+        if (lives < 1)
             Destroy(this.gameObject);
     }
 }

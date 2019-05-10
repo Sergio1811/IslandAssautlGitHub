@@ -58,6 +58,7 @@ public class Movement : MonoBehaviour
     public float neededBombMultiplier = 1.0f;//applied
     public bool bombPolivalente = false;//applied NOT Working
     public bool bombTier2 = false;
+    public bool bomberKnockBack = false;
 
     public float attackSpeedCooldown = 1.0f;
     public bool swordPolivalente = false;//applied
@@ -335,8 +336,8 @@ public class Movement : MonoBehaviour
             case "Tree":
                 if (actualType == playerType.ace)
                     CutTree(actionObject.transform.parent.parent.gameObject);
-                if (actualType == playerType.pick && bombPolivalente)
-                    CutTree(actionObject.transform.parent.parent.gameObject);
+                //if (actualType == playerType.pick && bombPolivalente)
+                    //CutTree(actionObject.transform.parent.parent.gameObject);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject);
                 break;
@@ -406,7 +407,7 @@ public class Movement : MonoBehaviour
             GameManager.Instance.EndProtoLevel();
         else if (hit.gameObject.tag == "Exit")
             GameManager.Instance.LevelComplete();
-        else if (hit.gameObject.tag == "Chest" || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
+        else if ((hit.gameObject.tag == "Chest") && ((AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
             PickFabrics(hit.gameObject);
     }
 

@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
     ShaderValuesObjects shaderValues;
 
     public Text abilitesCoinsText;
+    public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTextTier2, totalEndRockTextTier2, totalEndFabricTextTier2;
+    public GameObject totalWoodTier2, totalRockTier2, totalFabricsTier2;
 
     #region
     public bool titan = false;//applied
@@ -113,7 +115,7 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
         characterNumber = Random.Range(0, 3);
-        //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
+        characterNumber = 1; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         gridScript.GenerateGrid(characterNumber);
 
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
@@ -285,15 +287,15 @@ public class GameManager : MonoBehaviour
         switch (characterNumber)
         {
             case 0:
-                p = Instantiate(acerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
+                p = Instantiate(acerPrefab, startNode.worldPosition + (Vector3.up * 3), Quaternion.LookRotation(transform.forward));
                 ApplyAxerAbilities(p);
                 break;
             case 1:
-                p = Instantiate(pickerPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
+                p = Instantiate(pickerPrefab, startNode.worldPosition + (Vector3.up * 3), Quaternion.LookRotation(transform.forward));
                 ApplyBomberAbilities(p);
                 break;
             case 2:
-                p = Instantiate(sworderPrefab, startNode.worldPosition + (Vector3.up * 2), Quaternion.LookRotation(transform.forward));
+                p = Instantiate(sworderPrefab, startNode.worldPosition + (Vector3.up * 3), Quaternion.LookRotation(transform.forward));
                 ApplySwordAbilities(p);
                 break;
         }
@@ -327,6 +329,18 @@ public class GameManager : MonoBehaviour
 
         meshList.Clear();
         SaveManager.Instance.Save();
+
+
+        totalEndCoinsText.text = totalCoins.ToString();
+        totalEndWoodText.text = totalWood.ToString();
+        totalEndRockText.text = totalRock.ToString();
+        totalEndFabricText.text = totalFabrics.ToString();
+        if (BomberAbilities.rockTier2)
+            totalRockTier2.SetActive(true);
+        if (SwordAbilities.enemyTier2)
+            totalFabricsTier2.SetActive(true);
+        if (AxerAbilities.treeTier2)
+            totalWoodTier2.SetActive(true);
 
         entreIslasCanvas.SetActive(true);
         AbilitesCoinsUpdate();
@@ -721,7 +735,7 @@ public class GameManager : MonoBehaviour
 
         bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;//apply
         bomberAbs.bombPolivalente = BomberAbilities.Polivalente;//apply
-        bomberAbs.bomb.GetComponent<Bomb>().knockback = BomberAbilities.bombKnockBack; //applied
+        bomberAbs.bomberKnockBack = BomberAbilities.bombKnockBack; //applied
         rockTier2 = BomberAbilities.rockTier2;
         resourceStoneMultiplier = BomberAbilities.resourceMultiplier;//applied
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;

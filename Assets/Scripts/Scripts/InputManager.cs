@@ -24,13 +24,13 @@ public class InputManager : MonoBehaviour
         string[] names = Input.GetJoystickNames();
         for (int x = 0; x < names.Length; x++)
         {
-            if (names[x].Length == 19)
+            if (names[x].Length <= 19)
             {
                 print("PS4 CONTROLLER CONNECTED");
                 psController = true;
                 xboxController = false;
             }
-            if (names[x].Length == 33)
+            if (names[x].Length >= 25)
             {
                 print("XBOX ONE CONTROLLER CONNECTED");
                 psController = false;

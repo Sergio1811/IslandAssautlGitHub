@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
 
     #region
     public bool titan = false;//applied
-    bool islandTier2 = false;
+    public bool islandTier2 = false;
     float goldMultiplier = 1.0f;//applied
     bool Market = false;
     float resourceFabricMultiplier = 1.0f;//applied
@@ -785,7 +785,11 @@ public class GameManager : MonoBehaviour
 
     public void ButtonNextIsland()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        print(islandTier2 + "     " + SceneManager.GetActiveScene().buildIndex);
+         if (islandTier2)
+            SceneManager.LoadScene(1);
+        else
+            SceneManager.LoadScene(0);
     }
 
     public void ButtonQuit()

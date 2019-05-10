@@ -16,6 +16,7 @@ public class CharacterAbiliities : MonoBehaviour
     public void UpgradeRock(GameObject g)
     {
         islandTier2 = true;
+        GameManager.Instance.islandTier2 = true;
         GameManager.totalCoins -= 150;
         GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();

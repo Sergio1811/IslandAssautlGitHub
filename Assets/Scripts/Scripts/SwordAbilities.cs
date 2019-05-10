@@ -16,6 +16,7 @@ public class SwordAbilities : MonoBehaviour
     {
         enemyTier2 = true;
         GameManager.totalCoins -= 150;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -23,6 +24,7 @@ public class SwordAbilities : MonoBehaviour
     {
         Polivalente = true;
         GameManager.totalCoins -= 50;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -30,6 +32,7 @@ public class SwordAbilities : MonoBehaviour
     {
         resourceSpeedMultiplier = 0.5f;
         GameManager.totalCoins -= 50;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -37,6 +40,7 @@ public class SwordAbilities : MonoBehaviour
     {
         swordTier2 = true;
         GameManager.totalCoins -= 100;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -44,6 +48,7 @@ public class SwordAbilities : MonoBehaviour
     {
         swordSweep = true;
         GameManager.totalCoins -= 150;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -51,6 +56,7 @@ public class SwordAbilities : MonoBehaviour
     {
         resourceMultiplier = 1.5f;
         GameManager.totalCoins -= 100;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 }

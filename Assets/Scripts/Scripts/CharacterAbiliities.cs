@@ -16,6 +16,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         islandTier2 = true;
         GameManager.totalCoins -= 150;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -23,6 +24,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         Titan = true;
         GameManager.totalCoins -= 50;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -30,6 +32,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         bootsMovementMultiplier = 1.25f;
         GameManager.totalCoins -= 50;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -37,6 +40,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         dashActive = true;
         GameManager.totalCoins -= 150;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -44,6 +48,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         market = true;
         GameManager.totalCoins -= 100;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 
@@ -51,6 +56,7 @@ public class CharacterAbiliities : MonoBehaviour
     {
         goldMultiplier = 2.0f;
         GameManager.totalCoins -= 150;
+        GameManager.Instance.AbilitesCoinsUpdate();
         SaveManager.Instance.Save();
     }
 }

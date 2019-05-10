@@ -88,6 +88,8 @@ public class GameManager : MonoBehaviour
 
     ShaderValuesObjects shaderValues;
 
+    public Text abilitesCoinsText;
+
     #region
     public bool titan = false;//applied
     bool islandTier2 = false;
@@ -327,6 +329,7 @@ public class GameManager : MonoBehaviour
         SaveManager.Instance.Save();
 
         entreIslasCanvas.SetActive(true);
+        AbilitesCoinsUpdate();
         Time.timeScale = 0;
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -773,5 +776,10 @@ public class GameManager : MonoBehaviour
         vector.y = 0;
 
         return vector.sqrMagnitude;
+    }
+
+    public void AbilitesCoinsUpdate()
+    {
+        abilitesCoinsText.text = totalCoins.ToString();
     }
 }

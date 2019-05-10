@@ -6,14 +6,16 @@ public class Bomb : MonoBehaviour
 {
     public float range;
     public GameObject player;
+    Movement playerMovement;
     public GameObject rockPrefab, treePrefab;
     GameObject rock, tree;
     public bool knockback = false;
-    bool canDestroyTrees, canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
+    bool canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
 
     private void Start()
     {
-        canDestroyTrees = BomberAbilities.Polivalente;
+        playerMovement = player.GetComponent<Movement>();
+
         canDestroyEnemies = true;
         canDestroyVillage = false;
         canDestroyDecoration = false;
@@ -33,9 +35,10 @@ public class Bomb : MonoBehaviour
             }
             if (colliders[k].tag == "Enemy" && canDestroyEnemies)
             {
-                if(knockback)
-                colliders[k].transform.parent.GetComponent<EnemyScript>().KnockBackActivated(this.gameObject.transform);
-               Destroy(colliders[k].transform.parent.gameObject);
+                EnemyScript enemyScript = colliders[k].transform.parent.GetComponent<EnemyScript>();
+                if (playerMovement.bomberKnockBack)
+                    enemyScript.KnockBackActivated(this.gameObject.transform);
+                enemyScript.GetAttackedByBomb();
             }
             if (colliders[k].tag == "Decoration" && canDestroyDecoration)
             {
@@ -45,10 +48,11 @@ public class Bomb : MonoBehaviour
             {
                 Destroy(colliders[k].gameObject);
             }
-            if (colliders[k].tag == "Tree" && canDestroyTrees)
+            if (colliders[k].tag == "Tree" && playerMovement.bombPolivalente)
             {
                 tree = Instantiate(treePrefab);
                 tree.transform.position = colliders[k].transform.position;
+                tree.transform.position = new Vector3(tree.transform.position.x, 5f, tree.transform.position.z);
                 Destroy(colliders[k].transform.parent.gameObject);
             }
             if (colliders[k].tag == "Player")

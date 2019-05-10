@@ -62,6 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 4
+  isEnemy: 0
 --- !u!1 &3163596248429718171
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,6 +292,10 @@ PrefabInstance:
     - target: {fileID: 100004, guid: 789d47a778d40ed46b0d43dc6f72a910, type: 3}
       propertyPath: m_Name
       value: Tree_Model_1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 789d47a778d40ed46b0d43dc6f72a910, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 789d47a778d40ed46b0d43dc6f72a910, type: 3}
       propertyPath: m_LocalPosition.x

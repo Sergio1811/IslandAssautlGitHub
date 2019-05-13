@@ -192,6 +192,26 @@ public class Grid : MonoBehaviour
         int bigRocks = cellsNumber / 4;
         cellsNumber -= bigRocks * 4;
         smallRocks += cellsNumber;
+        
+        if (GameManager.Instance.rockTier2)
+        {
+            int smallRocks_T2 = Random.Range(30 * smallRocks / 100, 40 * smallRocks / 100);
+            smallRocks -= smallRocks_T2;
+
+            int rocks1x2_T2 = Random.Range(30 * rocks1x2 / 100, 40 * rocks1x2 / 100);
+            rocks1x2 -= rocks1x2_T2;
+
+            int rocks2x1_T2 = Random.Range(30 * rocks2x1 / 100, 40 * rocks2x1 / 100);
+            rocks2x1 -= rocks2x1_T2;
+
+            int bigRocks_T2 = Random.Range(30 * bigRocks / 100, 40 * bigRocks / 100);
+            bigRocks -= bigRocks_T2;
+
+            ChangeNodesAvailables(bigRocks_T2, Node.Type.floor, Node.Type.rock2, Node.Size.s2x2, 2, 2);
+            ChangeNodesAvailables(rocks1x2_T2, Node.Type.floor, Node.Type.rock2, Node.Size.s1x2, 1, 2);
+            ChangeNodesAvailables(rocks2x1_T2, Node.Type.floor, Node.Type.rock2, Node.Size.s2x1, 2, 1);
+            ChangeNodesAvailables(smallRocks_T2, Node.Type.floor, Node.Type.rock2, Node.Size.s1x1, 1, 1);
+        }
 
         ChangeNodesAvailables(bigRocks, Node.Type.floor, Node.Type.rock, Node.Size.s2x2, 2, 2);
         ChangeNodesAvailables(rocks1x2, Node.Type.floor, Node.Type.rock, Node.Size.s1x2, 1, 2);
@@ -212,6 +232,26 @@ public class Grid : MonoBehaviour
         cellsNumber -= bigTrees * 4;
         smallTrees += cellsNumber;
 
+        if (GameManager.Instance.treeTier2)
+        {
+            int smallTrees_T2 = Random.Range(30 * smallTrees / 100, 40 * smallTrees / 100);
+            smallTrees -= smallTrees_T2;
+
+            int trees1x2_T2 = Random.Range(30 * trees1x2 / 100, 40 * trees1x2 / 100);
+            trees1x2 -= trees1x2_T2;
+
+            int trees2x1_T2 = Random.Range(30 * trees2x1 / 100, 40 * trees2x1 / 100);
+            trees2x1 -= trees2x1_T2;
+
+            int bigTrees_T2 = Random.Range(30 * bigTrees / 100, 40 * bigTrees / 100);
+            bigTrees -= bigTrees_T2;
+
+            ChangeNodesAvailables(bigTrees_T2, Node.Type.floor, Node.Type.tree2, Node.Size.s2x2, 2, 2);
+            ChangeNodesAvailables(trees1x2_T2, Node.Type.floor, Node.Type.tree2, Node.Size.s1x2, 1, 2);
+            ChangeNodesAvailables(trees2x1, Node.Type.floor, Node.Type.tree2, Node.Size.s2x1, 2, 1);
+            ChangeNodesAvailables(smallTrees_T2, Node.Type.floor, Node.Type.tree2, Node.Size.s1x1, 1, 1);
+        }
+
         ChangeNodesAvailables(bigTrees, Node.Type.floor, Node.Type.tree, Node.Size.s2x2, 2, 2);
         ChangeNodesAvailables(trees1x2, Node.Type.floor, Node.Type.tree, Node.Size.s1x2, 1, 2);
         ChangeNodesAvailables(trees2x1, Node.Type.floor, Node.Type.tree, Node.Size.s2x1, 2, 1);
@@ -223,7 +263,7 @@ public class Grid : MonoBehaviour
         int smallVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
         cellsNumber -= smallVillages * 4;
 
-        int mediumVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
+        int mediumVillages = Random.Range(10 * (cellsNumber / 9) / 100, 20 * (cellsNumber / 9) / 100);
         cellsNumber -= mediumVillages * 9;
 
         int bigVillages = cellsNumber / 16;
@@ -232,12 +272,31 @@ public class Grid : MonoBehaviour
         if (cellsNumber > 4)
             smallVillages += 1;
 
+        //if(GameManager.Instance.enemyTier2)
+        //{
+        //    int smallVillages_T2 = Random.Range(30 * smallVillages / 100, 40 * smallVillages / 100);
+        //    smallVillages -= smallVillages_T2;
+
+        //    int mediumVillages_T2 = Random.Range(30 * mediumVillages / 100, 40 * mediumVillages / 100);
+        //    mediumVillages -= mediumVillages_T2;
+
+        //    int bigVillages_T2 = Random.Range(30 * bigVillages / 100, 40 * bigVillages / 100);
+        //    bigVillages -= bigVillages_T2;
+
+        //    ChangeNodesAvailables(bigVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s4x4, 4, 4);
+        //    ChangeNodesAvailables(mediumVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s3x3, 3, 3);
+        //    ChangeNodesAvailables(smallVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s2x2, 2, 2);
+
+        //    if(isSworder)
+        //        ChangeNodesAvailables(bigVillages_T2 + mediumVillages_T2 + smallVillages_T2, Node.Type.floor, Node.Type.enemy2, Node.Size.s1x1, 1, 1);
+        //}
+
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
         ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);
         ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
 
-        if (isSworder)
-            ChangeNodesAvailables(bigVillages+mediumVillages+smallVillages, Node.Type.floor, Node.Type.enemy, Node.Size.s1x1, 1, 1);
+        if (isSworder/* && !GameManager.Instance.enemyTier2*/)
+            ChangeNodesAvailables(bigVillages + mediumVillages + smallVillages, Node.Type.floor, Node.Type.enemy, Node.Size.s1x1, 1, 1);
     }
 
     //Método que a partir del número de celas de decoración crea nodos tipo decoración con distintas formas como posibilidad
@@ -560,7 +619,7 @@ public class Grid : MonoBehaviour
         {
             for (int j = 0; j < y; j++)
             {
-                if ((i == 0 && j == 0) && !(x==1 && y == 1))
+                if ((i == 0 && j == 0) && !(x == 1 && y == 1))
                     continue;
 
                 Node vecino = GetNode(node.gridPositionX - i, node.gridPositionY - j);
@@ -662,7 +721,7 @@ public class Grid : MonoBehaviour
 
 public class Node
 {
-    public enum Type { water, rock, tree, village, enemy, decoration, shore, floor, entry, exit }
+    public enum Type { water, rock, rock2, tree, tree2, village, village2, enemy, enemy2, decoration, shore, floor, entry, exit }
     public Type currentType = Type.water;
     public bool isTransitable = false;
     public enum Size { s1x1, s1x2, s1x3, s1x4, s2x1, s2x2, s2x3, s2x4, s3x1, s3x2, s3x3, s4x1, s4x2, s4x4 };

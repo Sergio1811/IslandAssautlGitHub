@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class SwordAbilities : MonoBehaviour
 {
+    public static SwordAbilities Instance { get; set; }
+
     public static bool Polivalente = false;
     public static float resourceSpeedMultiplier = 1.0f;
     public static bool swordTier2 = false;
@@ -13,81 +15,31 @@ public class SwordAbilities : MonoBehaviour
 
     public static bool enemyTier2 = false;
 
-    public void UpgradeEnemy(GameObject g)
+    public static bool initialized = false;
+
+    private void Awake()
     {
-        if (GameManager.totalCoins - 500 >= 0)
-        {
-            enemyTier2 = true;
-            GameManager.totalCoins -= 500;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
+        Instance = this;
+        if (!initialized)
+            PlayerPrefsInitialization();
     }
 
-    public void UpgradePolivalente(GameObject g)
+    void PlayerPrefsInitialization()
     {
-        if (GameManager.totalCoins - 50 >= 0)
-        {
-            Polivalente = true;
-            GameManager.totalCoins -= 50;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeResourceSpeedMultiplier(GameObject g)
-    {
-        if (GameManager.totalCoins - 50 >= 0)
-        {
-            resourceSpeedMultiplier = 0.5f;
-            GameManager.totalCoins -= 50;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeSword(GameObject g)
-    {
-        if (GameManager.totalCoins - 150 >= 0)
-        {
-            swordTier2 = true;
-            GameManager.totalCoins -= 150;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeSwordSweep(GameObject g)
-    {
-        if (GameManager.totalCoins - 250 >= 0)
-        {
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "barrido") == 1)
             swordSweep = true;
-            GameManager.totalCoins -= 250;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeResourceMultiplier(GameObject g)
-    {
-        if (GameManager.totalCoins - 250 >= 0)
-        {
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "espadon") == 1)
+            swordTier2 = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "eficaciaataque") == 1)
             resourceMultiplier = 1.5f;
-            GameManager.totalCoins -= 250;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "eficienciaataque") == 1)
+            resourceSpeedMultiplier = 0.5f;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "gladiador") == 1)
+            enemyTier2 = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "polivalenteataque") == 1)
+            Polivalente = true;
+
+        initialized = true;
     }
+    
 }

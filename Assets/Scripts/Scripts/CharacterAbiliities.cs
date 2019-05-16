@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CharacterAbiliities : MonoBehaviour
 {
+    public static CharacterAbiliities Instance { get; set; }
+
     public static bool Titan = false;
     public static float bootsMovementMultiplier = 1.0f;
     public static bool market = false;
@@ -13,82 +15,31 @@ public class CharacterAbiliities : MonoBehaviour
 
     public static bool islandTier2 = false;
 
-    public void UpgradeRock(GameObject g)
+    public static bool initialized = false;
+
+    private void Awake()
     {
-        if (GameManager.totalCoins - 500 >= 0)
-        {
-            islandTier2 = true;
-            GameManager.Instance.islandTier2 = true;
-            GameManager.totalCoins -= 500;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
+        Instance = this;
+        if (!initialized)
+            PlayerPrefsInitialization();
     }
 
-    public void UpgradeTitan(GameObject g)
+    void PlayerPrefsInitialization()
     {
-        if (GameManager.totalCoins - 50 >= 0)
-        {
-            Titan = true;
-            GameManager.totalCoins -= 50;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeResourceSpeedMultiplier(GameObject g)
-    {
-        if (GameManager.totalCoins - 50 >= 0)
-        {
-            bootsMovementMultiplier = 1.25f;
-            GameManager.totalCoins -= 50;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeCharacter(GameObject g)
-    {
-        if (GameManager.totalCoins - 250 >= 0)
-        {
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "dash") == 1)
             dashActive = true;
-            GameManager.totalCoins -= 250;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UnlockMarket(GameObject g)
-    {
-        if (GameManager.totalCoins - 150 >= 0)
-        {
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "comerciante") == 1)
             market = true;
-            GameManager.totalCoins -= 150;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
-    }
-
-    public void UpgradeGoldMultiplier(GameObject g)
-    {
-        if (GameManager.totalCoins - 250 >= 0)
-        {
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "botas") == 1)
+            bootsMovementMultiplier = 1.25f;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "exprimir") == 1)
             goldMultiplier = 2.0f;
-            GameManager.totalCoins -= 250;
-            GameManager.Instance.AbilitesCoinsUpdate();
-            SaveManager.Instance.Save();
-            g.GetComponentInChildren<Button>().interactable = false;
-            ButtonManager.disabledButtonsList.Add(g.name);
-        }
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "explorador") == 1)
+            islandTier2 = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "titan") == 1)
+            Titan = true;
+
+        initialized = true;
     }
+    
 }

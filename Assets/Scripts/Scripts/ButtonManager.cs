@@ -100,8 +100,6 @@ public class ButtonManager : MonoBehaviour
 
         if (vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved)
             hasMoved = false;
-
-
     }
 
 
@@ -126,20 +124,22 @@ public class ButtonManager : MonoBehaviour
             }
         }
 
+        if (!PlayerPrefs.HasKey(boughtString + abilitiesMatrix[3, 3].saverString))
+        {
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 3].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 2].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 2].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 3].saverString, 1);
 
-        PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 3].saverString, 1);
-        PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 2].saverString, 1);
-        PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 2].saverString, 1);
-        PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 3].saverString, 1);
-
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 4].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 3].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 2].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 1].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 1].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 2].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 4].saverString, 1);
-        PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 3].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 4].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 3].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 2].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 1].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 1].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 2].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 4].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 3].saverString, 1);
+        }
     }
 
     void IconsInitialization()
@@ -202,32 +202,37 @@ public class ButtonManager : MonoBehaviour
                 buyWithMaterialSquare.SetActive(true);
                 buyWithCoinsSquare.SetActive(false);
                 buywithMaterials_Price.text = actualAbility.price.ToString();
-                buyWithMaterials_MaterialPrice.text = actualAbility.materialPrice.ToString();
 
                 switch (actualAbility.materialType)
                 {
                     case Node.Type.tree:
-                        if (actualAbility.materialPrice >= GameManager.totalWood && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalWood.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalWood && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.tree2:
-                        if (actualAbility.materialPrice >= GameManager.totalWood2 && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalWood2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalWood2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.rock:
-                        if (actualAbility.materialPrice >= GameManager.totalRock && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalRock.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalRock && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.rock2:
-                        if (actualAbility.materialPrice >= GameManager.totalRock2 && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalRock2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalRock2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.enemy:
-                        if (actualAbility.materialPrice >= GameManager.totalFabrics && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalFabrics.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalFabrics && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.enemy2:
-                        if (actualAbility.materialPrice >= GameManager.totalFabrics2 && actualAbility.price >= GameManager.totalCoins)
+                        buyWithMaterials_MaterialPrice.text = GameManager.totalFabrics2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        if (actualAbility.materialPrice <= GameManager.totalFabrics2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                 }
@@ -245,7 +250,7 @@ public class ButtonManager : MonoBehaviour
                 buyWithCoinsSquare.SetActive(true);
                 buyWithCoins_Price.text = actualAbility.price.ToString();
 
-                if (actualAbility.price >= GameManager.totalCoins)
+                if (actualAbility.price <= GameManager.totalCoins)
                     canBuy = true;
             }
         }
@@ -281,8 +286,6 @@ public class ButtonManager : MonoBehaviour
         if (actualAbility.materialNeeded)
         {
             buyWithMaterialSquare.SetActive(false);
-            buywithMaterials_Price.text = actualAbility.price.ToString();
-            buyWithMaterials_MaterialPrice.text = actualAbility.materialPrice.ToString();
 
             switch (actualAbility.materialType)
             {
@@ -308,7 +311,14 @@ public class ButtonManager : MonoBehaviour
         }
 
         GameManager.totalCoins -= (int)actualAbility.price;
+        totalCoins.text = totalCoins.ToString();
         PlayerPrefs.SetInt(boughtString + actualAbility.saverString, 1);
+        imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childBNImageNumber).gameObject.SetActive(false);
+        imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childImageNumber).gameObject.SetActive(true);
+
+        CallUpdateMethods(actualAbility.saverString);
+
+
         Abilities unlockNeighbour;
 
         if (arrayPositionX < 3)
@@ -371,6 +381,123 @@ public class ButtonManager : MonoBehaviour
                     PlayerPrefs.SetInt(unlockedString + unlockNeighbour.saverString, 1);
                 }
             }
+        }
+
+        PlayerPrefs.Save();
+    }
+
+
+
+    void CallUpdateMethods(string ability)
+    {
+        switch(ability)
+        {
+            case "casco":
+                //desbloquear casco
+                break;
+            case "mastil":
+                //desbloquear mastil
+                break;
+
+            case "conmocion":
+                AxerAbilities.axeStunt = true;
+                break;
+            case "doblefilo":
+                AxerAbilities.axerTier2 = true;
+                break;
+            case "eficaciamadera":
+                AxerAbilities.resourceMultiplier = 1.5f;
+                break;
+            case "eficienciamadera":
+                AxerAbilities.resourceSpeedMultiplier = 0.5f;
+                break;
+            case "maestrodelhacha":
+                AxerAbilities.treeTier2 = true;
+                break;
+            case "polivalentemadera":
+                AxerAbilities.Polivalente = true;
+                break;
+
+
+            case "cañon":
+                //desbloquear cañón
+                break;
+            case "timon":
+                //desbloquear timón
+                break;
+
+            case "empujon":
+                BomberAbilities.bombKnockBack = true;
+                break;
+            case "c4":
+                BomberAbilities.explosiveTier2 = true;
+                break;
+            case "eficaciarocas":
+                BomberAbilities.resourceMultiplier = 1.5f;
+                break;
+            case "eficienciarocas":
+                BomberAbilities.resourceSpeedMultiplier = 0.5f;
+                break;
+            case "artificiero":
+                BomberAbilities.rockTier2 = true;
+                break;
+            case "polivalenterocas":
+                BomberAbilities.Polivalente = true;
+                break;
+
+
+            case "remos":
+                //desbloquear remo
+                break;
+            case "vela":
+                //desbloquear vela
+                break;
+
+            case "barrido":
+                SwordAbilities.swordSweep = true;
+                break;
+            case "espadon":
+                SwordAbilities.swordTier2 = true;
+                break;
+            case "eficaciaataque":
+                SwordAbilities.resourceMultiplier = 1.5f;
+                break;
+            case "eficienciaataque":
+                SwordAbilities.resourceSpeedMultiplier = 0.5f;
+                break;
+            case "gladiador":
+                SwordAbilities.enemyTier2 = true;
+                break;
+            case "polivalenteataque":
+                SwordAbilities.Polivalente = true;
+                break;
+
+
+            case "brujula":
+                //desbloquear brujula
+                break;
+            case "mapa":
+                //desbloquear mapa
+                break;
+
+            case "dash":
+                CharacterAbiliities.dashActive = true;
+                break;
+            case "comerciante":
+                CharacterAbiliities.market = true;
+                break;
+            case "botas":
+                CharacterAbiliities.bootsMovementMultiplier = 1.25f;
+                break;
+            case "exprimir":
+                CharacterAbiliities.goldMultiplier = 2.0f;
+                break;
+            case "explorador":
+                CharacterAbiliities.islandTier2 = true;
+                break;
+            case "titan":
+                CharacterAbiliities.Titan = true;
+                break;
         }
     }
 }

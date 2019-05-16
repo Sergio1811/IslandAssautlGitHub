@@ -78542,8 +78542,8 @@ MonoBehaviour:
   buyY: {fileID: 1861805154}
   buyWithCoinsSquare: {fileID: 695491593}
   buyWithMaterialSquare: {fileID: 1113073744}
-  buyWithCoins_Price: {fileID: 951766429}
-  buywithMaterials_Price: {fileID: 1471122135}
+  buyWithCoins_Price: {fileID: 1357911961}
+  buywithMaterials_Price: {fileID: 1589063971}
   buyWithMaterials_MaterialPrice: {fileID: 1381466817}
   arraySword:
   - {fileID: 519078542}
@@ -80227,7 +80227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &8934052174992916594

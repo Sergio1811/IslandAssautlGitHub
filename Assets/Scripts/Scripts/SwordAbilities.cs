@@ -15,61 +15,79 @@ public class SwordAbilities : MonoBehaviour
 
     public void UpgradeEnemy(GameObject g)
     {
-        enemyTier2 = true;
-        GameManager.totalCoins -= 150;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 500 >= 0)
+        {
+            enemyTier2 = true;
+            GameManager.totalCoins -= 500;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradePolivalente(GameObject g)
     {
-        Polivalente = true;
-        GameManager.totalCoins -= 50;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 50 >= 0)
+        {
+            Polivalente = true;
+            GameManager.totalCoins -= 50;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeResourceSpeedMultiplier(GameObject g)
     {
-        resourceSpeedMultiplier = 0.5f;
-        GameManager.totalCoins -= 50;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 50 >= 0)
+        {
+            resourceSpeedMultiplier = 0.5f;
+            GameManager.totalCoins -= 50;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeSword(GameObject g)
     {
-        swordTier2 = true;
-        GameManager.totalCoins -= 100;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 150 >= 0)
+        {
+            swordTier2 = true;
+            GameManager.totalCoins -= 150;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeSwordSweep(GameObject g)
     {
-        swordSweep = true;
-        GameManager.totalCoins -= 150;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 250 >= 0)
+        {
+            swordSweep = true;
+            GameManager.totalCoins -= 250;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeResourceMultiplier(GameObject g)
     {
-        resourceMultiplier = 1.5f;
-        GameManager.totalCoins -= 100;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 250 >= 0)
+        {
+            resourceMultiplier = 1.5f;
+            GameManager.totalCoins -= 250;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 }

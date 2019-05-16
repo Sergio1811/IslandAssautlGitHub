@@ -15,62 +15,80 @@ public class CharacterAbiliities : MonoBehaviour
 
     public void UpgradeRock(GameObject g)
     {
-        islandTier2 = true;
-        GameManager.Instance.islandTier2 = true;
-        GameManager.totalCoins -= 150;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 500 >= 0)
+        {
+            islandTier2 = true;
+            GameManager.Instance.islandTier2 = true;
+            GameManager.totalCoins -= 500;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeTitan(GameObject g)
     {
-        Titan = true;
-        GameManager.totalCoins -= 50;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 50 >= 0)
+        {
+            Titan = true;
+            GameManager.totalCoins -= 50;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeResourceSpeedMultiplier(GameObject g)
     {
-        bootsMovementMultiplier = 1.25f;
-        GameManager.totalCoins -= 50;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 50 >= 0)
+        {
+            bootsMovementMultiplier = 1.25f;
+            GameManager.totalCoins -= 50;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeCharacter(GameObject g)
     {
-        dashActive = true;
-        GameManager.totalCoins -= 150;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 250 >= 0)
+        {
+            dashActive = true;
+            GameManager.totalCoins -= 250;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UnlockMarket(GameObject g)
     {
-        market = true;
-        GameManager.totalCoins -= 100;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 150 >= 0)
+        {
+            market = true;
+            GameManager.totalCoins -= 150;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 
     public void UpgradeGoldMultiplier(GameObject g)
     {
-        goldMultiplier = 2.0f;
-        GameManager.totalCoins -= 150;
-        GameManager.Instance.AbilitesCoinsUpdate();
-        SaveManager.Instance.Save();
-        g.GetComponentInChildren<Button>().interactable = false;
-        ButtonManager.disabledButtonsList.Add(g.name);
+        if (GameManager.totalCoins - 250 >= 0)
+        {
+            goldMultiplier = 2.0f;
+            GameManager.totalCoins -= 250;
+            GameManager.Instance.AbilitesCoinsUpdate();
+            SaveManager.Instance.Save();
+            g.GetComponentInChildren<Button>().interactable = false;
+            ButtonManager.disabledButtonsList.Add(g.name);
+        }
     }
 }

@@ -258,6 +258,14 @@ public class GameManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.R))
                 SaveManager.Instance.ResetSaving();
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                totalCoins += 500;
+                SaveManager.Instance.Save();
+                AbilitesCoinsUpdate();
+                
+            }
         }
         else
         {

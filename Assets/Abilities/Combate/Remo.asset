@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Remo
   m_EditorClassIdentifier: 
-  Name: Remo
-  Description: Debloqueas Pieza de Barco
-  Thumbnail: {fileID: 21300000, guid: 902ed5e2a3efcd24cb42caba51c85f39, type: 3}
+  nameAbility: REMO
+  description: Pieza del barco.
+  price: 500
+  materialNeeded: 1
+  materialType: 8
+  materialPrice: 100
+  icono: {fileID: 21300006, guid: 88181c85eab855743895238adc43ed59, type: 3}
+  iconoByN: {fileID: 21300006, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
+  saverString: remos
+  isBought: 0
+  isUnlocked: 0

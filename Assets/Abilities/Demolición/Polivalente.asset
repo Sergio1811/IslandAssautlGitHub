@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Polivalente
   m_EditorClassIdentifier: 
-  Name: Polivalente
-  Description: Recoge todos los recursos
-  Thumbnail: {fileID: 21300000, guid: 0190df9d0af1de943a15588c2235c0af, type: 3}
+  nameAbility: POLIVALENTE
+  description: "Puedes recoger todos los recursos con las bombas un 25% m\xE1s lento."
+  price: 50
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300004, guid: 88181c85eab855743895238adc43ed59, type: 3}
+  iconoByN: {fileID: 21300004, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
+  saverString: polivalenterocas
+  isBought: 0
+  isUnlocked: 0

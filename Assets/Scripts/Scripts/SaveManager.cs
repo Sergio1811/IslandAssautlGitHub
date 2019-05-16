@@ -22,6 +22,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("TotalWood", GameManager.totalWood);
         PlayerPrefs.SetInt("TotalRock", GameManager.totalRock);
         PlayerPrefs.SetInt("TotalFabric", GameManager.totalFabrics);
+        PlayerPrefs.Save();
     }
 
     public void Load()
@@ -35,5 +36,6 @@ public class SaveManager : MonoBehaviour
     public void ResetSaving()
     {
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
 }

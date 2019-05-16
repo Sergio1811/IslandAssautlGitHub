@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Experto en Demoliciones
   m_EditorClassIdentifier: 
-  Name: Experto en Demoliciones
-  Description: Desbloqueas Dinamita
-  Thumbnail: {fileID: 21300000, guid: 3f84676e1c073b54789068a33689c02d, type: 3}
+  nameAbility: EXPERTO EN DEMOLICIONES
+  description: Desbloqueas las bombas y sabes demoler.
+  price: 0
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300000, guid: 88181c85eab855743895238adc43ed59, type: 3}
+  iconoByN: {fileID: 21300000, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
+  saverString: expertodemolicion
+  isBought: 1
+  isUnlocked: 0

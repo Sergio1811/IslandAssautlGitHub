@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Maestro Armero
   m_EditorClassIdentifier: 
-  Name: Experto en Espada
-  Description: Debloquea Espada
-  Thumbnail: {fileID: 21300000, guid: ed3c05555d08a664cbc44fe43b1f9b71, type: 3}
+  nameAbility: MAESTRO ARMERO
+  description: Desbloqueas la espada y sabes atacar.
+  price: 0
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300002, guid: 88181c85eab855743895238adc43ed59, type: 3}
+  iconoByN: {fileID: 21300002, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
+  saverString: maestroarmero
+  isBought: 1
+  isUnlocked: 0

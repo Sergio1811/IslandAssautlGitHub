@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Comerciante
   m_EditorClassIdentifier: 
-  Name: Comerciante
-  Description: Debloqueas Mercado
-  Thumbnail: {fileID: 21300000, guid: 50503018f926eb24dbe4434f04573a89, type: 3}
+  nameAbility: COMERCIANTE
+  description: Desbloqueas el Mercado, donde intercambiar recursos por dinero.
+  price: 150
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300002, guid: 525c83d6607180245a02c6c360b51e26, type: 3}
+  iconoByN: {fileID: 21300002, guid: 57ef97553af13cc4586da06c73801ae4, type: 3}
+  saverString: comerciante
+  isBought: 0
+  isUnlocked: 0

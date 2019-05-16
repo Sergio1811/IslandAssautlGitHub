@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Doble Filo
   m_EditorClassIdentifier: 
-  Name: Doble Filo
-  Description: +Rando en hacha
-  Thumbnail: {fileID: 21300000, guid: e7d0a65eb8817be40bd03180fdc38cbb, type: 3}
+  nameAbility: DOBLE FILO
+  description: Mejoras el hacha, aumenta el rango un 25%.
+  price: 150
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300010, guid: c308f9680c06833458a3cc1ecea63d84, type: 3}
+  iconoByN: {fileID: 21300010, guid: d997f18876978774fae3e5b4ef316ea8, type: 3}
+  saverString: doblefilo
+  isBought: 0
+  isUnlocked: 0

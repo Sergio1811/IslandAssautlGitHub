@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: "Ca\xF1\xF3n"
   m_EditorClassIdentifier: 
-  Name: "Ca\xF1\xF3n"
-  Description: Pieza de Barco
-  Thumbnail: {fileID: 21300000, guid: e829b12ba1af52343a5a82867fbf1eb0, type: 3}
+  nameAbility: "CA\xD1\xD3N"
+  description: Pieza del barco
+  price: 500
+  materialNeeded: 1
+  materialType: 2
+  materialPrice: 100
+  icono: {fileID: 21300030, guid: c308f9680c06833458a3cc1ecea63d84, type: 3}
+  iconoByN: {fileID: 21300030, guid: d997f18876978774fae3e5b4ef316ea8, type: 3}
+  saverString: "ca\xF1on"
+  isBought: 0
+  isUnlocked: 0

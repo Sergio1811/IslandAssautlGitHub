@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Eficiencia
   m_EditorClassIdentifier: 
-  Name: Eficiencia
-  Description: "Explosi\xF3n -50% tiempo"
-  Thumbnail: {fileID: 21300000, guid: 671f130e12b96984d98626164d5d381e, type: 3}
+  nameAbility: EFICIENCIA
+  description: "Recoges tus recursos un 50% m\xE1s r\xE1pido."
+  price: 50
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300028, guid: c308f9680c06833458a3cc1ecea63d84, type: 3}
+  iconoByN: {fileID: 21300028, guid: d997f18876978774fae3e5b4ef316ea8, type: 3}
+  saverString: eficienciarocas
+  isBought: 0
+  isUnlocked: 0

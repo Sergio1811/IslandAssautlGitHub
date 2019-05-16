@@ -6,8 +6,10 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { set; get; }
 
-    bool psController = false;
-    bool xboxController = false;
+    [HideInInspector]
+    public bool psController = false;
+    [HideInInspector]
+    public bool xboxController = false;
 
     private void Awake()
     {

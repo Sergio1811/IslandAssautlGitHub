@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae0056bde219d941b3ff7397e72b4f1, type: 3}
   m_Name: Exprimir cada centavo
   m_EditorClassIdentifier: 
-  Name: Exprimir cada centavo
-  Description: Doble de oro en recursos
-  Thumbnail: {fileID: 21300000, guid: 50503018f926eb24dbe4434f04573a89, type: 3}
+  nameAbility: EXPRIMIR CADA CENTAVO
+  description: "Consigues un 100% m\xE1s de dinero al relizar una acci\xF3n."
+  price: 250
+  materialNeeded: 0
+  materialType: 0
+  materialPrice: 0
+  icono: {fileID: 21300004, guid: 525c83d6607180245a02c6c360b51e26, type: 3}
+  iconoByN: {fileID: 21300004, guid: 57ef97553af13cc4586da06c73801ae4, type: 3}
+  saverString: exprimir
+  isBought: 0
+  isUnlocked: 0

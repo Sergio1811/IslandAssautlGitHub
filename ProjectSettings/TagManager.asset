@@ -16,6 +16,9 @@ TagManager:
   - Chest
   - Dead
   - PatrolPoint
+  - Rock2
+  - Enemy2
+  - Tree2
   layers:
   - Default
   - TransparentFX

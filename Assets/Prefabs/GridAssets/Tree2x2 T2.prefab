@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 2448148626927529646}
   m_Layer: 0
   m_Name: Tree
-  m_TagString: Tree
+  m_TagString: Tree2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -653,6 +653,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7827459655084518732}
     m_Modifications:
+    - target: {fileID: 100008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
+      propertyPath: m_Name
+      value: Tree_Model_2x2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.27
@@ -708,14 +716,6 @@ PrefabInstance:
     - target: {fileID: 400008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.02278771
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
-      propertyPath: m_Name
-      value: Tree_Model_2x2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 5381fd82a9eb5654bb7a152b2b7565a9, type: 3}
       propertyPath: m_Materials.Array.data[0]

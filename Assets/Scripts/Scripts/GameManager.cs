@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         player.SetActive(false);
 
         gridScript.GenerateGrid(characterNumber);
-        
+
         shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
 
     }
@@ -223,6 +223,7 @@ public class GameManager : MonoBehaviour
         objectiveImage[0] = timeObjectiveImage;
         secondaryObjectives[1] = "10s";
         objectiveImage[1] = timeObjectiveImage;
+
         if (characterNumber == 0)
         {
             secondaryObjectives[2] = "" + (70 * woodInMap / 100) + "";
@@ -272,7 +273,7 @@ public class GameManager : MonoBehaviour
                 totalCoins += 500;
                 SaveManager.Instance.Save();
                 AbilitesCoinsUpdate();
-                
+
             }
         }
         else
@@ -354,7 +355,7 @@ public class GameManager : MonoBehaviour
         else if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
         {
             totalFabrics -= totalFabrics * 10 / 100;
-            if (totalFabrics < 0) totalFabrics = 0; 
+            if (totalFabrics < 0) totalFabrics = 0;
 
             totalRock -= totalRock * 10 / 100;
             if (totalRock < 0) totalRock = 0;
@@ -401,9 +402,13 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void PickWood()
+    public void PickWood(int woodTier)
     {
-        collectedWood += (int)(woodByItem * resourceTreeMultiplier);
+        if (woodTier == 1)
+            collectedWood += (int)(woodByItem * resourceTreeMultiplier);
+        else
+            collectedWood2 += (int)(woodByItem * resourceTreeMultiplier);
+
         currentCoins += (int)(woodByItem * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
@@ -425,9 +430,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PickRock()
+    public void PickRock(int rockTier)
     {
-        collectedRock += (int)(rockByItem * resourceStoneMultiplier);
+        if (rockTier == 1)
+            collectedRock += (int)(rockByItem * resourceStoneMultiplier);
+        else
+            collectedWood2 += (int)(woodByItem * resourceStoneMultiplier);
+
         currentCoins += (int)(rockByItem * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
@@ -448,9 +457,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PickFabrics()
+    public void PickFabrics(int fabricTier)
     {
-        collectedFabrics += (int)(enemiesByItem * resourceFabricMultiplier);
+        if (fabricTier == 1)
+            collectedFabrics += (int)(enemiesByItem * resourceFabricMultiplier);
+        else
+            collectedFabrics2 += (int)(enemiesByItem * resourceFabricMultiplier);
+
         currentCoins += (int)(enemiesByItem * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
@@ -493,9 +506,6 @@ public class GameManager : MonoBehaviour
         if (CheckSecondaryObjective()) totalCoins += 50;
         EndProtoLevel();
     }
-
-
-
 
     void InstantiateObjectInGrid()
     {
@@ -969,7 +979,7 @@ public class GameManager : MonoBehaviour
 
     public void ButtonNextIsland()
     {
-         if (islandTier2)
+        if (islandTier2)
             SceneManager.LoadScene(1);
         else
             SceneManager.LoadScene(0);

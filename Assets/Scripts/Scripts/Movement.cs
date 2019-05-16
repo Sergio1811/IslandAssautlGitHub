@@ -206,7 +206,9 @@ public class Movement : MonoBehaviour
                 actionObject = hit.collider.gameObject;
                 switch (actionObject.tag)
                 {
+                    case "Tree2":
                     case "Tree":
+                        transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)
                         {
                             axe.GetComponent<Animation>().Play();
@@ -220,6 +222,8 @@ public class Movement : MonoBehaviour
                             actionOn = true;
                         }
                         break;
+
+                    case "Enemy2":
                     case "Enemy":
                         /* if (actualType == playerType.sword)
                          {
@@ -235,6 +239,7 @@ public class Movement : MonoBehaviour
                             actionOn = true;
 
                         break;*/
+                    case "Rock2":
                     case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
                         {
@@ -328,20 +333,39 @@ public class Movement : MonoBehaviour
         {
             case "Rock":
                 if (actualType == playerType.pick)
-                    BreakRock(actionObject.transform.parent.parent.gameObject);
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 1);
                 if (actualType == playerType.ace && axePolivalente)
-                    BreakRock(actionObject.transform.parent.parent.gameObject);
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 1);
                 if (actualType == playerType.sword && swordPolivalente)
-                    BreakRock(actionObject.transform.parent.parent.gameObject);
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 1);
                 break;
+
+            case "Rock2":
+                if (actualType == playerType.pick)
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 2);
+                if (actualType == playerType.ace && axePolivalente)
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 2);
+                if (actualType == playerType.sword && swordPolivalente)
+                    BreakRock(actionObject.transform.parent.parent.gameObject, 2);
+                break;
+
             case "Tree":
                 if (actualType == playerType.ace)
-                    CutTree(actionObject.transform.parent.parent.gameObject);
+                    CutTree(actionObject.transform.parent.parent.gameObject, 1);
                 //if (actualType == playerType.pick && bombPolivalente)
                 //CutTree(actionObject.transform.parent.parent.gameObject);
                 if (actualType == playerType.sword && swordPolivalente)
-                    CutTree(actionObject.transform.parent.parent.gameObject);
+                    CutTree(actionObject.transform.parent.parent.gameObject, 1);
                 break;
+            case "Tree2":
+                if (actualType == playerType.ace)
+                    CutTree(actionObject.transform.parent.parent.gameObject, 2);
+                //if (actualType == playerType.pick && bombPolivalente)
+                //CutTree(actionObject.transform.parent.parent.gameObject);
+                if (actualType == playerType.sword && swordPolivalente)
+                    CutTree(actionObject.transform.parent.parent.gameObject, 2);
+                break;
+
             case "Chest":
                 if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
                     PickFabrics(actionObject);
@@ -355,15 +379,15 @@ public class Movement : MonoBehaviour
         canMove = true;
     }
 
-    public void BreakRock(GameObject rock)
+    public void BreakRock(GameObject rock, int rockTier)
     {
-        GameManager.Instance.PickRock();
+        GameManager.Instance.PickRock(rockTier);
         Destroy(rock);
     }
 
-    public void CutTree(GameObject tree)
+    public void CutTree(GameObject tree, int woodTier)
     {
-        GameManager.Instance.PickWood();
+        GameManager.Instance.PickWood(woodTier);
         Destroy(tree);
     }
 
@@ -391,7 +415,7 @@ public class Movement : MonoBehaviour
 
     public void PickFabrics(GameObject chest)
     {
-        GameManager.Instance.PickFabrics();
+        GameManager.Instance.PickFabrics(1);
         Destroy(chest);
     }
 
@@ -415,9 +439,13 @@ public class Movement : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
-            BreakRock(other.transform.parent.gameObject);
+            BreakRock(other.transform.parent.gameObject, 1);
         else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
-            CutTree(other.transform.parent.gameObject);
+            CutTree(other.transform.parent.gameObject, 1);
+        else if (other.gameObject.tag == "Rock2" && actualType == playerType.pick)
+            BreakRock(other.transform.parent.gameObject, 2);
+        else if (other.gameObject.tag == "Tree2" && actualType == playerType.pick)
+            CutTree(other.transform.parent.gameObject, 2);
     }
 
     public void Damage(Vector3 direction)

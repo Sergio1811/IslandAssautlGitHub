@@ -401,7 +401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 1682567d7217c2b43a84c6a6cbf7b426, type: 3}
       propertyPath: m_TagString
-      value: Rock
+      value: Rock2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1682567d7217c2b43a84c6a6cbf7b426, type: 3}
       propertyPath: m_LocalPosition.x

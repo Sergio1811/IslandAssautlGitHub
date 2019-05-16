@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int collectedWood = 0;
     [HideInInspector] public int collectedRock = 0;
     [HideInInspector] public int collectedFabrics = 0;
+    [HideInInspector] public int collectedWood2 = 0;
+    [HideInInspector] public int collectedRock2 = 0;
+    [HideInInspector] public int collectedFabrics2 = 0;
 
     [HideInInspector] public int currentCoins = 0;
     [HideInInspector] public static int totalCoins = 0;
@@ -95,6 +98,8 @@ public class GameManager : MonoBehaviour
     public Text abilitesCoinsText;
     public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTextTier2, totalEndRockTextTier2, totalEndFabricTextTier2;
     public GameObject totalWoodTier2, totalRockTier2, totalFabricsTier2;
+
+    bool portalActivated = false;
 
     #region
     public bool titan = false;//applied
@@ -336,13 +341,40 @@ public class GameManager : MonoBehaviour
         if (protoIsland >= islands.Length)
             protoIsland = 0;
 
-        if (livesNumber > 0)
+        if (livesNumber > 0) //si se pasa el nivel
         {
-            totalCoins += currentCoins;
             totalFabrics += collectedFabrics;
             totalRock += collectedRock;
             totalWood += collectedWood;
+            totalFabrics2 += collectedFabrics2;
+            totalRock2 += collectedRock2;
+            totalWood2 += collectedWood2;
         }
+
+        else if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
+        {
+            totalFabrics -= totalFabrics * 10 / 100;
+            if (totalFabrics < 0) totalFabrics = 0; 
+
+            totalRock -= totalRock * 10 / 100;
+            if (totalRock < 0) totalRock = 0;
+
+            totalWood -= totalWood * 10 / 100;
+            if (totalWood < 0) totalWood = 0;
+
+            totalFabrics2 -= totalFabrics2 * 10 / 100;
+            if (totalFabrics2 < 0) totalFabrics2 = 0;
+
+            totalRock2 -= totalRock2 * 10 / 100;
+            if (totalRock2 < 0) totalRock2 = 0;
+
+            totalWood2 -= totalWood2 * 10 / 100;
+            if (totalWood2 < 0) totalWood2 = 0;
+        }
+
+        //si muere y habia activado el portal, no pierde ni gana nada, solo las monedas
+
+        totalCoins += currentCoins; //las monedas las gana siempre
 
         currentCoins = 0;
 
@@ -453,6 +485,7 @@ public class GameManager : MonoBehaviour
     {
         portalExit.transform.GetChild(0).gameObject.SetActive(false);
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
+        portalActivated = true;
     }
 
     public void LevelComplete()

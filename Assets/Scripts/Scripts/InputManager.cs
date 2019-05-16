@@ -24,23 +24,38 @@ public class InputManager : MonoBehaviour
     void CheckConnectedController()
     {
         string[] names = Input.GetJoystickNames();
-        for (int x = 0; x < names.Length; x++)
-        {
-            print(names[x]);
-            if (names[x].Length <= 19)
-            {
-                //print("PS4 CONTROLLER CONNECTED");
-                psController = true;
-                xboxController = false;
-            }
-            if (names[x].Length >= 20)
-            {
-                //print("XBOX ONE CONTROLLER CONNECTED");
-                psController = false;
-                xboxController = true;
+        //for (int x = 0; x < names.Length; x++)
+        //{
+        //    if (names[x].Length <= 19)
+        //    {
+        //        //print("PS4 CONTROLLER CONNECTED");
+        //        psController = true;
+        //        xboxController = false;
+        //    }
+        //    if (names[x].Length >= 20)
+        //    {
+        //        //print("XBOX ONE CONTROLLER CONNECTED");
+        //        psController = false;
+        //        xboxController = true;
 
-            }
+        //    }
+        //}
+
+
+        if (names[0].ToUpper().Contains("XBOX"))
+        {
+            //print("XBOX ONE CONTROLLER CONNECTED");
+            psController = false;
+            xboxController = true;
+
         }
+        else
+        {
+            //print("PS4 CONTROLLER CONNECTED");
+            psController = true;
+            xboxController = false;
+        }
+
     }
 
     public bool GetInputDown(string input)

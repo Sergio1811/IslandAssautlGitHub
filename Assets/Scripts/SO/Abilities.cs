@@ -14,6 +14,8 @@ public class Abilities : ScriptableObject
     public Sprite icono;
     public Sprite iconoByN;
     public string saverString;
+    [HideInInspector]
     public bool isBought;
+    [HideInInspector]
     public bool isUnlocked;
 }

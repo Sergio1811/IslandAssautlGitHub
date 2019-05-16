@@ -20,6 +20,6 @@ MonoBehaviour:
   materialPrice: 0
   icono: {fileID: 21300012, guid: c308f9680c06833458a3cc1ecea63d84, type: 3}
   iconoByN: {fileID: 21300012, guid: d997f18876978774fae3e5b4ef316ea8, type: 3}
-  saverString: eficienciamadera
+  saverString: eficaciamadera
   isBought: 0
-  isUnlocked: 0
+  isUnlocked: 1

@@ -22,4 +22,4 @@ MonoBehaviour:
   iconoByN: {fileID: 21300024, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
   saverString: ahorrador
   isBought: 1
-  isUnlocked: 0
+  isUnlocked: 1

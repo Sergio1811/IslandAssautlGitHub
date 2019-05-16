@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public static int totalWood = 0;
     [HideInInspector] public static int totalRock = 0;
     [HideInInspector] public static int totalFabrics = 0;
+    [HideInInspector] public static int totalWood2 = 0;
+    [HideInInspector] public static int totalRock2 = 0;
+    [HideInInspector] public static int totalFabrics2 = 0;
 
     public GameObject recursoPrincipal, recursoPrincipalTier2;
     public GameObject principalRockImage, principalWoodImage, principalFabricImage;

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+    public GameObject backMenu;
+
     public Text totalCoins;
     public GameObject backCircle, backB;
     public Image selectedAbility_Image;
@@ -28,13 +30,41 @@ public class ButtonManager : MonoBehaviour
     public static string unlockedString = "unlocked";
     public Sprite lockedAbilitySprite;
 
-    public static List<string> disabledButtonsList = new List<string>();
+    float timerMovement;
+    bool movementOn = false;
 
 
     void Awake()
+    { 
+    //    Time.timeScale = 1;
+        
+    //    MatrixInitialization();
+    //    IconsInitialization();
+
+    //    arrayPositionX = 3;
+    //    arrayPositionY = 3;
+
+    //    totalCoins.text = GameManager.totalCoins.ToString();
+    //    if (InputManager.Instance.psController)
+    //    {
+    //        backCircle.SetActive(true);
+    //        buyTriangle.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        backB.SetActive(true);
+    //        buyY.SetActive(true);
+    //    }
+
+    //    UpdateComponents();
+    //    canBuy = false;
+    }
+
+
+    private void OnEnable()
     {
         Time.timeScale = 1;
-        
+
         MatrixInitialization();
         IconsInitialization();
 
@@ -57,14 +87,25 @@ public class ButtonManager : MonoBehaviour
         canBuy = false;
     }
 
+
     private void Update()
     {
+        if (InputManager.Instance.GetInputDown("Cancel"))
+        {
+            backMenu.SetActive(true);
+            gameObject.SetActive(false);
+        }
+
         if (canBuy && InputManager.Instance.GetInputDown("Buy"))
             BuyAbility();
 
 
-        float horizontal = InputManager.Instance.GetAxis("CameraMovementX");
-        float vertical = InputManager.Instance.GetAxis("CameraMovementY");
+        float horizontal = InputManager.Instance.GetAxis("Horizontal");
+        if (horizontal == 0)
+            horizontal = InputManager.Instance.GetAxis("CameraMovementX");
+        float vertical = -InputManager.Instance.GetAxis("Vertical");
+        if (vertical == 0)
+            vertical = InputManager.Instance.GetAxis("CameraMovementY");
 
         if (!hasMoved)
         {
@@ -93,13 +134,23 @@ public class ButtonManager : MonoBehaviour
                 arrayPositionY--;
                 hasMoved = true;
             }
-            
+
             if (hasMoved)
+            {
+                movementOn = true;
                 UpdateComponents();
+            }
         }
 
-        if (vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved)
+        if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
+        {
             hasMoved = false;
+            timerMovement = 0;
+            movementOn = false;
+        }
+
+        if (movementOn)
+            timerMovement += Time.deltaTime;
     }
 
 
@@ -311,10 +362,15 @@ public class ButtonManager : MonoBehaviour
         }
 
         GameManager.totalCoins -= (int)actualAbility.price;
-        totalCoins.text = totalCoins.ToString();
+        totalCoins.text = GameManager.totalCoins.ToString();
         PlayerPrefs.SetInt(boughtString + actualAbility.saverString, 1);
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childBNImageNumber).gameObject.SetActive(false);
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childImageNumber).gameObject.SetActive(true);
+        selectedAbility_Image.sprite = actualAbility.icono;
+        buyWithMaterialSquare.SetActive(false);
+        buyWithCoinsSquare.SetActive(false);
+        buyText.gameObject.SetActive(false);
+        insufficientText.gameObject.SetActive(false);
 
         CallUpdateMethods(actualAbility.saverString);
 

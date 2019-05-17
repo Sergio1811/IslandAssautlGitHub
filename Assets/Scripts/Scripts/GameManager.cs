@@ -425,7 +425,7 @@ public class GameManager : MonoBehaviour
         else
             collectedWood2 += (int)(woodByItem * resourceTreeMultiplier);
 
-        currentCoins += (int)(woodByItem * goldMultiplier);
+        currentCoins += (int)(woodByItem * resourceTreeMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 0)
@@ -453,7 +453,7 @@ public class GameManager : MonoBehaviour
         else
             collectedWood2 += (int)(woodByItem * resourceStoneMultiplier);
 
-        currentCoins += (int)(rockByItem * goldMultiplier);
+        currentCoins += (int)(rockByItem * resourceStoneMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 1)
@@ -480,7 +480,7 @@ public class GameManager : MonoBehaviour
         else
             collectedFabrics2 += (int)(enemiesByItem * resourceFabricMultiplier);
 
-        currentCoins += (int)(enemiesByItem * goldMultiplier);
+        currentCoins += (int)(enemiesByItem * resourceFabricMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 2)

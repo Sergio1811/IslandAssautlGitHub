@@ -41,19 +41,26 @@ public class InputManager : MonoBehaviour
         //    }
         //}
 
-
-        if (names[0].ToUpper().Contains("XBOX"))
+        if(names.Length <= 0)
         {
-            //print("XBOX ONE CONTROLLER CONNECTED");
-            psController = false;
-            xboxController = true;
-
+            print("CONNECT A CONTROLLER");
         }
+
         else
         {
-            //print("PS4 CONTROLLER CONNECTED");
-            psController = true;
-            xboxController = false;
+            if (names[0].ToUpper().Contains("XBOX"))
+            {
+                //print("XBOX ONE CONTROLLER CONNECTED");
+                psController = false;
+                xboxController = true;
+
+            }
+            else
+            {
+                //print("PS4 CONTROLLER CONNECTED");
+                psController = true;
+                xboxController = false;
+            }
         }
 
     }

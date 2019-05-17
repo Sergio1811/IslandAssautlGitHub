@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -76511,6 +76511,30 @@ PrefabInstance:
       propertyPath: mainCanvas
       value: 
       objectReference: {fileID: 8934052174480988392}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: enemy_T2
+      value: 
+      objectReference: {fileID: 8798297767836160538, guid: a67f939a40fcd8f4697622c03608b2b1,
+        type: 3}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: village4x4_T2
+      value: 
+      objectReference: {fileID: 27376118978638002, guid: 58b9ebc4c8d491e4eb37c8b9c570b59c,
+        type: 3}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: village3x3_T2
+      value: 
+      objectReference: {fileID: 27376118978638002, guid: f95186232d939e147bc9c78a0d5ba1b8,
+        type: 3}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: village2x2_T2
+      value: 
+      objectReference: {fileID: 27376118978638002, guid: d0bfc755f1fd8714785c7aabd7cae12b,
+        type: 3}
     - target: {fileID: 2858636337169680342, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80233,7 +80257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 135.315, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &8934052174992916594

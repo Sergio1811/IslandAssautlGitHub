@@ -272,30 +272,30 @@ public class Grid : MonoBehaviour
         if (cellsNumber > 4)
             smallVillages += 1;
 
-        //if(GameManager.Instance.enemyTier2)
-        //{
-        //    int smallVillages_T2 = Random.Range(30 * smallVillages / 100, 40 * smallVillages / 100);
-        //    smallVillages -= smallVillages_T2;
+        if (GameManager.Instance.enemyTier2)
+        {
+            int smallVillages_T2 = Random.Range(50 * smallVillages / 100, 70 * smallVillages / 100);
+            smallVillages -= smallVillages_T2;
 
-        //    int mediumVillages_T2 = Random.Range(30 * mediumVillages / 100, 40 * mediumVillages / 100);
-        //    mediumVillages -= mediumVillages_T2;
+            int mediumVillages_T2 = Random.Range(50 * mediumVillages / 100, 70 * mediumVillages / 100);
+            mediumVillages -= mediumVillages_T2;
 
-        //    int bigVillages_T2 = Random.Range(30 * bigVillages / 100, 40 * bigVillages / 100);
-        //    bigVillages -= bigVillages_T2;
+            int bigVillages_T2 = Random.Range(50 * bigVillages / 100, 70 * bigVillages / 100);
+            bigVillages -= bigVillages_T2;
 
-        //    ChangeNodesAvailables(bigVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s4x4, 4, 4);
-        //    ChangeNodesAvailables(mediumVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s3x3, 3, 3);
-        //    ChangeNodesAvailables(smallVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s2x2, 2, 2);
+            ChangeNodesAvailables(bigVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s4x4, 4, 4);
+            ChangeNodesAvailables(mediumVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s3x3, 3, 3);
+            ChangeNodesAvailables(smallVillages_T2, Node.Type.floor, Node.Type.village2, Node.Size.s2x2, 2, 2);
 
-        //    if(isSworder)
-        //        ChangeNodesAvailables(bigVillages_T2 + mediumVillages_T2 + smallVillages_T2, Node.Type.floor, Node.Type.enemy2, Node.Size.s1x1, 1, 1);
-        //}
+            if (isSworder)
+                ChangeNodesAvailables(bigVillages_T2 + mediumVillages_T2 + smallVillages_T2, Node.Type.floor, Node.Type.enemy2, Node.Size.s1x1, 1, 1);
+        }
 
         ChangeNodesAvailables(bigVillages, Node.Type.floor, Node.Type.village, Node.Size.s4x4, 4, 4);
         ChangeNodesAvailables(mediumVillages, Node.Type.floor, Node.Type.village, Node.Size.s3x3, 3, 3);
         ChangeNodesAvailables(smallVillages, Node.Type.floor, Node.Type.village, Node.Size.s2x2, 2, 2);
 
-        if (isSworder/* && !GameManager.Instance.enemyTier2*/)
+        if (isSworder && !GameManager.Instance.enemyTier2)
             ChangeNodesAvailables(bigVillages + mediumVillages + smallVillages, Node.Type.floor, Node.Type.enemy, Node.Size.s1x1, 1, 1);
     }
 

@@ -207,6 +207,20 @@ public class Movement : MonoBehaviour
                 switch (actionObject.tag)
                 {
                     case "Tree2":
+                        transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
+                        if (actualType == playerType.ace)
+                        {
+                            axe.GetComponent<Animation>().Play();
+                            neededPressedTime = iniPressedTime * 2;
+                            actionOn = true;
+                        }
+
+                        if (actualType == playerType.sword && swordPolivalente)
+                        {
+                            neededPressedTime = 2 * 2;
+                            actionOn = true;
+                        }
+                        break;
                     case "Tree":
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)

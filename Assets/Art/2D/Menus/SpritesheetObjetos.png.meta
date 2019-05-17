@@ -24,6 +24,8 @@ TextureImporter:
     21300038: SpritesheetObjetos_19
     21300040: SpritesheetObjetos_20
     21300042: SpritesheetObjetos_21
+    21300044: SpritesheetObjetos_22
+    21300046: SpritesheetObjetos_23
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -574,6 +576,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 75fe86f14531b5b4e9a40130896af732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesheetObjetos_22
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1625
+        width: 59
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38ce1df5b3e6ef74aba85c05366ef48d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpritesheetObjetos_23
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 1624
+        width: 79
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f29ed42b995da045a3f7843adc12c05
       vertices: []
       indices: 
       edges: []

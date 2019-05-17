@@ -217,7 +217,7 @@ public class Movement : MonoBehaviour
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
-                            neededPressedTime = 2 * 2;
+                            neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
                         break;
@@ -232,7 +232,7 @@ public class Movement : MonoBehaviour
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
-                            neededPressedTime = 2;
+                            neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
                         break;
@@ -245,7 +245,10 @@ public class Movement : MonoBehaviour
                              actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                          }*/
                         if (actualType == playerType.ace && axePolivalente)
+                        {
+                            axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                        }
                         break;
 
                     /*case "Chest":
@@ -254,15 +257,29 @@ public class Movement : MonoBehaviour
 
                         break;*/
                     case "Rock2":
-                    case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
                         {
-                            neededPressedTime *= 2;
+                            axe.GetComponent<Animation>().Play();
+                            neededPressedTime = iniPressedTime * 4;
                             actionOn = true;
                         }
                         if (actualType == playerType.sword && swordPolivalente)
                         {
-                            neededPressedTime = 2;
+                            neededPressedTime = iniPressedTime * 2;
+                            actionOn = true;
+                        }
+                        break;
+
+                    case "Rock":
+                        if (actualType == playerType.ace && axePolivalente)
+                        {
+                            axe.GetComponent<Animation>().Play();
+                            neededPressedTime = iniPressedTime * 2;
+                            actionOn = true;
+                        }
+                        if (actualType == playerType.sword && swordPolivalente)
+                        {
+                            neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
                         break;

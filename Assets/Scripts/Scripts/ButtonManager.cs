@@ -363,6 +363,8 @@ public class ButtonManager : MonoBehaviour
 
         GameManager.totalCoins -= (int)actualAbility.price;
         totalCoins.text = GameManager.totalCoins.ToString();
+        SaveManager.Instance.Save();
+        GameManager.Instance.totalEndCoinsText.text = GameManager.totalCoins.ToString();
         PlayerPrefs.SetInt(boughtString + actualAbility.saverString, 1);
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childBNImageNumber).gameObject.SetActive(false);
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childImageNumber).gameObject.SetActive(true);

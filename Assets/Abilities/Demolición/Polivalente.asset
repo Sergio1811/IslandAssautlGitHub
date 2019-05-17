@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Polivalente
   m_EditorClassIdentifier: 
   nameAbility: POLIVALENTE
-  description: "Puedes recoger todos los recursos con las bombas un 25% m\xE1s lento."
+  description: Puedes recoger todos los recursos con las bombas.
   price: 50
   materialNeeded: 0
   materialType: 0

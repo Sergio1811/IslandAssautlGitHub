@@ -343,7 +343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actualType: 2
   characterSpeed: 50
-  neededPressedTime: 0
+  neededPressedTime: 1
   hitDistance: 5
   hitDistanceUpgradeMultiplier: 1.25
   actionSphere: {fileID: 4210738553931881768}

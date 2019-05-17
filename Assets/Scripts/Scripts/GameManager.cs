@@ -50,12 +50,12 @@ public class GameManager : MonoBehaviour
     public GameObject recursoPrincipal, recursoPrincipalTier2;
     public GameObject principalRockImage, principalWoodImage, principalFabricImage;
     public GameObject principalRockImageTier2, principalWoodImageTier2, principalFabricImageTier2;
-    public Text recursoPrincipalText, recursoPrincipalTextTier2, cointsText;
+    public Text recursoPrincipalText, recursoPrincipalTextTier2, cointsText, recursoPrincipalCaughtText, recursoPrincipalCaughtTier2;
 
     public GameObject rockSecundary, rockSecundaryTier2, woodSecundary, woodSecundaryTier2, fabricSecundary, fabricSecundaryTier2;
     public Text woodText, woodTextTier2, rockText, rockTextTier2, fabricText, fabricTextTier2;
 
-    public Image sworderImage, bomberImage, axerImage;
+    public Image sworderImage, bomberImage, axerImage, bomberTier2Image;
     public GameObject woodObjectiveImage, rockObjectiveImage, timeObjectiveImage, fabricObjectiveImage, livesObjectiveImage;
     public Text secondaryObjectiveText;
     GameObject[] objectiveImage;
@@ -156,18 +156,21 @@ public class GameManager : MonoBehaviour
 
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodNeeded - woodNeeded / 2;
-                recursoPrincipalText.text = "0/" + (woodNeeded * woodByItem).ToString();
+                recursoPrincipalText.text = (woodNeeded * woodByItem).ToString();
                 principalWoodImage.SetActive(true);
                 fabricSecundary.SetActive(true);
                 rockSecundary.SetActive(true);
                 if (treeTier2)
                 {
-                    fabricSecundaryTier2.SetActive(true);
-                    rockSecundaryTier2.SetActive(true);
                     principalWoodImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (woodNeeded * woodByItem).ToString();
+                    recursoPrincipalTextTier2.text = (woodNeeded * woodByItem).ToString();
                 }
+                if (rockTier2)
+                    rockSecundaryTier2.SetActive(true);
+                if (enemyTier2)
+                    fabricSecundaryTier2.SetActive(true);
+
                 cointsText.text = currentCoins.ToString();
                 axerImage.enabled = true;
                 break;
@@ -176,38 +179,46 @@ public class GameManager : MonoBehaviour
 
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockNeeded - rockNeeded / 2;
-                recursoPrincipalText.text = "0/" + (rockNeeded * rockByItem).ToString();
+                recursoPrincipalText.text =(rockNeeded * rockByItem).ToString();
                 principalRockImage.SetActive(true);
                 fabricSecundary.SetActive(true);
                 woodSecundary.SetActive(true);
                 if (rockTier2)
                 {
-                    fabricSecundaryTier2.SetActive(true);
-                    woodSecundaryTier2.SetActive(true);
                     principalRockImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (rockNeeded * rockByItem).ToString();
+                    recursoPrincipalTextTier2.text =(rockNeeded * rockByItem).ToString();
+                    bomberTier2Image.enabled = true;
                 }
+                else
+                    bomberImage.enabled = true;
+                if (treeTier2)
+                    woodSecundaryTier2.SetActive(true);
+                if (enemyTier2)
+                    fabricSecundaryTier2.SetActive(true);
+
                 cointsText.text = currentCoins.ToString();
-                bomberImage.enabled = true;
                 break;
             case 2:
                 livesNumber = 4;
 
                 fabricText.gameObject.SetActive(true);
                 enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
-                recursoPrincipalText.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
+                recursoPrincipalText.text = (enemiesNeeded * enemiesByItem).ToString();
                 principalFabricImage.SetActive(true);
                 rockSecundary.SetActive(true);
                 woodSecundary.SetActive(true);
                 if (enemyTier2)
                 {
-                    rockSecundaryTier2.SetActive(true);
-                    woodSecundaryTier2.SetActive(true);
                     principalFabricImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = "0/" + (enemiesNeeded * enemiesByItem).ToString();
+                    recursoPrincipalTextTier2.text = (enemiesNeeded * enemiesByItem).ToString();
                 }
+                if (rockTier2)
+                    rockSecundaryTier2.SetActive(true);
+                if (treeTier2)
+                    woodSecundaryTier2.SetActive(true);
+
                 cointsText.text = currentCoins.ToString();
                 sworderImage.enabled = true;
                 break;
@@ -416,14 +427,14 @@ public class GameManager : MonoBehaviour
         else
             collectedWood2 += (int)(woodByItem * resourceTreeMultiplier);
 
-        currentCoins += (int)(woodByItem * goldMultiplier);
+        currentCoins += (int)(woodByItem * resourceTreeMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 0)
         {
-            recursoPrincipalText.text = collectedWood.ToString() + "/" + (woodNeeded * woodByItem).ToString();
+            recursoPrincipalCaughtText.text = collectedWood.ToString();
             if (treeTier2)
-                recursoPrincipalTextTier2.text = collectedWood.ToString() + "/" + (woodNeeded * woodByItem).ToString();
+                recursoPrincipalCaughtTier2.text = collectedWood2.ToString();
 
 
             if (collectedWood >= woodNeeded * woodByItem)
@@ -444,14 +455,14 @@ public class GameManager : MonoBehaviour
         else
             collectedWood2 += (int)(woodByItem * resourceStoneMultiplier);
 
-        currentCoins += (int)(rockByItem * goldMultiplier);
+        currentCoins += (int)(rockByItem * resourceStoneMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 1)
         {
-            recursoPrincipalText.text = collectedRock.ToString() + "/" + (rockNeeded * rockByItem).ToString();
+            recursoPrincipalCaughtText.text = collectedRock.ToString();
             if (rockTier2)
-                recursoPrincipalTextTier2.text = collectedRock.ToString() + "/" + (rockNeeded * rockByItem).ToString();
+                recursoPrincipalCaughtTier2.text = collectedRock2.ToString();
 
             if (collectedRock >= rockNeeded * rockByItem)
                 ActivatePortal();
@@ -471,14 +482,14 @@ public class GameManager : MonoBehaviour
         else
             collectedFabrics2 += (int)(enemiesByItem * resourceFabricMultiplier);
 
-        currentCoins += (int)(enemiesByItem * goldMultiplier);
+        currentCoins += (int)(enemiesByItem * resourceFabricMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
 
         if (characterNumber == 2)
         {
-            recursoPrincipalText.text = collectedFabrics.ToString() + "/" + (enemiesNeeded * enemiesByItem).ToString();
+            recursoPrincipalCaughtText.text = collectedFabrics.ToString();
             if (enemyTier2)
-                recursoPrincipalTextTier2.text = collectedFabrics.ToString() + "/" + (enemiesNeeded * enemiesByItem).ToString();
+                recursoPrincipalCaughtTier2.text = collectedFabrics2.ToString();
 
             if (collectedFabrics >= enemiesNeeded * enemiesByItem)
                 ActivatePortal();

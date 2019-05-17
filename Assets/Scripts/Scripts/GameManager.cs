@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject sworderPrefab;
     public GameObject entreIslasCanvas;
     public GameObject abilitiesCanvas;
+    public GameObject mainCanvas;
 
     int characterNumber;
 
@@ -285,22 +286,28 @@ public class GameManager : MonoBehaviour
             {
                 rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * Time.deltaTime);
                 leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
-            }
+                
+                if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
+                    GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
+                //if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
+                {
+                    waitTimer = 0;
+                    startGame = true;
 
-            if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
-                GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
-            //if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
+                    rightPanelSecundaries.SetActive(true);
+
+                    player.transform.position = (startNode.worldPosition + (Vector3.up * 3));
+                    player.transform.rotation = Quaternion.LookRotation(transform.forward);
+
+                    player.SetActive(true);
+                }
+            }
+            else if (waitTimer >= waitToStartTime - 0.2f && leftPanel.transform.parent != mainCanvas.transform)
             {
-                waitTimer = 0;
-                startGame = true;
-
-                rightPanelSecundaries.SetActive(true);
-
-                player.transform.position = (startNode.worldPosition + (Vector3.up * 3));
-                player.transform.rotation = Quaternion.LookRotation(transform.forward);
-
-                player.SetActive(true);
+                leftPanel.transform.SetParent(mainCanvas.transform);
+                rightPanel.GetComponent<VerticalLayoutGroup>().childAlignment = UnityEngine.TextAnchor.UpperRight;
             }
+
         }
     }
 

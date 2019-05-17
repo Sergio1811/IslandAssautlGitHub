@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     public GameObject rockSecundary, rockSecundaryTier2, woodSecundary, woodSecundaryTier2, fabricSecundary, fabricSecundaryTier2;
     public Text woodText, woodTextTier2, rockText, rockTextTier2, fabricText, fabricTextTier2;
 
-    public Image sworderImage, bomberImage, axerImage;
+    public Image sworderImage, bomberImage, axerImage, bomberTier2Image;
     public GameObject woodObjectiveImage, rockObjectiveImage, timeObjectiveImage, fabricObjectiveImage, livesObjectiveImage;
     public Text secondaryObjectiveText;
     GameObject[] objectiveImage;
@@ -188,14 +188,16 @@ public class GameManager : MonoBehaviour
                     principalRockImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
                     recursoPrincipalTextTier2.text =(rockNeeded * rockByItem).ToString();
+                    bomberTier2Image.enabled = true;
                 }
+                else
+                    bomberImage.enabled = true;
                 if (treeTier2)
                     woodSecundaryTier2.SetActive(true);
                 if (enemyTier2)
                     fabricSecundaryTier2.SetActive(true);
 
                 cointsText.text = currentCoins.ToString();
-                bomberImage.enabled = true;
                 break;
             case 2:
                 livesNumber = 4;

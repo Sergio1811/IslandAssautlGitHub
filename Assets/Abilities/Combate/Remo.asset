@@ -17,7 +17,7 @@ MonoBehaviour:
   price: 500
   materialNeeded: 1
   materialType: 8
-  materialPrice: 100
+  materialPrice: 50
   icono: {fileID: 21300006, guid: 88181c85eab855743895238adc43ed59, type: 3}
   iconoByN: {fileID: 21300006, guid: 21b8fb8d0f86e1f48b95a1d8cb16bfdb, type: 3}
   saverString: remos

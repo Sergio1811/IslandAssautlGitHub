@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: MAPA
   description: Pieza del barco.
-  price: 500
+  price: 600
   materialNeeded: 0
   materialType: 0
   materialPrice: 0

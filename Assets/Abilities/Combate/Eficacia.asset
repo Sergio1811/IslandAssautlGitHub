@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameAbility: EFICACIA
   description: "Recoges un 50% m\xE1s de tus recursos."
-  price: 50
+  price: 250
   materialNeeded: 0
   materialType: 0
   materialPrice: 0

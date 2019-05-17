@@ -33,6 +33,14 @@ public class Bomb : MonoBehaviour
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
+
+            if (colliders[k].tag == "Rock2")
+            {
+                rock = Instantiate(rockPrefab);
+                rock.transform.position = colliders[k].transform.position;
+                Destroy(colliders[k].transform.parent.gameObject);
+            }
+
             if (colliders[k].tag == "Enemy" && canDestroyEnemies)
             {
                 EnemyScript enemyScript = colliders[k].transform.parent.GetComponent<EnemyScript>();

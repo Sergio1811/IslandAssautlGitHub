@@ -125,8 +125,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 0
   player: {fileID: 0}
-  rockPrefab: {fileID: 0}
-  treePrefab: {fileID: 0}
+  rockPrefab: {fileID: 8829530387875484065, guid: 118cbce6273b70848becad2eab2cff88,
+    type: 3}
+  treePrefab: {fileID: 8829530387875484065, guid: bd7801c5f5eeb8f4b9d7b92c340c07af,
+    type: 3}
+  rock2Prefab: {fileID: 8829530387875484065, guid: df13d4afd39c34f40b2325b0dd9ce2f9,
+    type: 3}
+  tree2Prefab: {fileID: 8829530387875484065, guid: 713c9daef9b62a74bb99cb1018405792,
+    type: 3}
   knockback: 0
 --- !u!1 &5323544842019497236
 GameObject:

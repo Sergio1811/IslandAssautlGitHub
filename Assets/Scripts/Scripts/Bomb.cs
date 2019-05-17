@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
     public float range;
     public GameObject player;
     Movement playerMovement;
-    public GameObject rockPrefab, treePrefab;
+    public GameObject rockPrefab, treePrefab, rock2Prefab, tree2Prefab;
     GameObject rock, tree;
     public bool knockback = false;
     bool canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
@@ -36,7 +36,7 @@ public class Bomb : MonoBehaviour
 
             if (colliders[k].tag == "Rock2")
             {
-                rock = Instantiate(rockPrefab);
+                rock = Instantiate(rock2Prefab);
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
@@ -63,6 +63,15 @@ public class Bomb : MonoBehaviour
                 tree.transform.position = new Vector3(tree.transform.position.x, 5f, tree.transform.position.z);
                 Destroy(colliders[k].transform.parent.gameObject);
             }
+
+            if (colliders[k].tag == "Tree2" && playerMovement.bombPolivalente)
+            {
+                tree = Instantiate(tree2Prefab);
+                tree.transform.position = colliders[k].transform.position;
+                tree.transform.position = new Vector3(tree.transform.position.x, 5f, tree.transform.position.z);
+                Destroy(colliders[k].transform.parent.gameObject);
+            }
+
             if (colliders[k].tag == "Player")
             {
                 player.GetComponent<Movement>().Damage(player.transform.forward - transform.position.normalized);

@@ -401,10 +401,10 @@ public class Movement : MonoBehaviour
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
                 break;
 
-            case "Chest":
-                if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
-                    PickFabrics(actionObject);
-                break;
+            //case "Chest":
+            //    if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
+            //        PickFabrics(actionObject);
+            //    break;
         }
 
         actionOn = false;
@@ -449,9 +449,9 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void PickFabrics(GameObject chest)
+    public void PickFabrics(GameObject chest, int tier)
     {
-        GameManager.Instance.PickFabrics(1);
+        GameManager.Instance.PickFabrics(tier);
         Destroy(chest);
     }
 
@@ -469,7 +469,9 @@ public class Movement : MonoBehaviour
         else if (hit.gameObject.tag == "Exit")
             GameManager.Instance.LevelComplete();
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
-            PickFabrics(hit.gameObject);
+            PickFabrics(hit.gameObject, 1);
+        else if ((hit.gameObject.tag == "Chest2") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
+            PickFabrics(hit.gameObject, 2);
     }
 
     private void OnTriggerEnter(Collider other)

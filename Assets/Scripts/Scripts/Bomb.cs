@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(psExplosion, this.gameObject.transform);
+        Instantiate(psExplosion, this.gameObject.transform.position, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
         for (int k = 0; k < colliders.Length; k++)
@@ -31,7 +31,7 @@ public class Bomb : MonoBehaviour
             if (colliders[k].tag == "Rock")
             {
                 rock = Instantiate(rockPrefab);
-                Instantiate(psRockHit, colliders[k].transform);
+                Instantiate(psRockHit, colliders[k].transform.position, Quaternion.identity);
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }

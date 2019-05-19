@@ -424,7 +424,7 @@ public class Movement : MonoBehaviour
     public void CutTree(GameObject tree, int woodTier)
     {
         GameManager.Instance.PickWood(woodTier);
-        Instantiate(psWood, tree.transform);
+        Instantiate(psWood, this.transform.position + this.transform.forward.normalized, Quaternion.identity);
         Debug.Log("Instantiated");
         Destroy(tree);
     }

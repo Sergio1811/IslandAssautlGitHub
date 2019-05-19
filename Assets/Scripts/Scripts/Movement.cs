@@ -73,6 +73,10 @@ public class Movement : MonoBehaviour
 
     float iniPressedTime;
     float iniBombTime;
+
+    public GameObject psWood;
+    //public GameObject psRock;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -413,12 +417,15 @@ public class Movement : MonoBehaviour
     public void BreakRock(GameObject rock, int rockTier)
     {
         GameManager.Instance.PickRock(rockTier);
+       // Instantiate(psRock, rock.transform);
         Destroy(rock);
     }
 
     public void CutTree(GameObject tree, int woodTier)
     {
         GameManager.Instance.PickWood(woodTier);
+        Instantiate(psWood, tree.transform);
+        Debug.Log("Instantiated");
         Destroy(tree);
     }
 

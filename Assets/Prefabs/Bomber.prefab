@@ -123,6 +123,8 @@ MonoBehaviour:
   swordTier2: 0
   bootsMovementSpeed: 1
   dashActive: 0
+  psWood: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
+  psRock: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
 --- !u!143 &3225420765675762107
 CharacterController:
   m_ObjectHideFlags: 0

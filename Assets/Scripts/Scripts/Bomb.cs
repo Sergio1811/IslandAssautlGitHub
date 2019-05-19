@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public float range;
-    public GameObject player;
+    public GameObject player, psRockHit, psExplosion;
     Movement playerMovement;
     public GameObject rockPrefab, treePrefab, rock2Prefab, tree2Prefab;
     GameObject rock, tree;
@@ -23,6 +23,7 @@ public class Bomb : MonoBehaviour
 
     public void Explode()
     {
+        Instantiate(psExplosion, this.gameObject.transform);
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 
         for (int k = 0; k < colliders.Length; k++)
@@ -30,6 +31,7 @@ public class Bomb : MonoBehaviour
             if (colliders[k].tag == "Rock")
             {
                 rock = Instantiate(rockPrefab);
+                Instantiate(psRockHit, colliders[k].transform);
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
@@ -37,6 +39,7 @@ public class Bomb : MonoBehaviour
             if (colliders[k].tag == "Rock2")
             {
                 rock = Instantiate(rock2Prefab);
+                Instantiate(psRockHit, colliders[k].transform);
                 rock.transform.position = colliders[k].transform.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }

@@ -417,7 +417,6 @@ public class Movement : MonoBehaviour
     public void BreakRock(GameObject rock, int rockTier)
     {
         GameManager.Instance.PickRock(rockTier);
-       // Instantiate(psRock, rock.transform);
         Destroy(rock);
     }
 
@@ -425,7 +424,6 @@ public class Movement : MonoBehaviour
     {
         GameManager.Instance.PickWood(woodTier);
         Instantiate(psWood, this.transform.position + this.transform.forward.normalized, Quaternion.identity);
-        Debug.Log("Instantiated");
         Destroy(tree);
     }
 

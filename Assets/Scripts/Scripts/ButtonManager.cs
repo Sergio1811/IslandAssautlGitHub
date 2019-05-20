@@ -16,6 +16,8 @@ public class ButtonManager : MonoBehaviour
     public GameObject buyTriangle, buyY;
     public GameObject buyWithCoinsSquare, buyWithMaterialSquare;
     public Text buyWithCoins_Price, buywithMaterials_Price, buyWithMaterials_MaterialPrice;
+    GameObject actualIcono;
+    public GameObject iconoMadera, iconoMaderaT2, iconoRoca, iconoRocaT2, iconoPieles, iconoPielesT2;
 
     int arrayPositionX, arrayPositionY;
     public GameObject[] arraySword, arrayBomb, arrayAxe, arrayGeneral;
@@ -34,30 +36,31 @@ public class ButtonManager : MonoBehaviour
     bool movementOn = false;
 
 
+
     void Awake()
-    { 
-    //    Time.timeScale = 1;
-        
-    //    MatrixInitialization();
-    //    IconsInitialization();
+    {
+        //    Time.timeScale = 1;
 
-    //    arrayPositionX = 3;
-    //    arrayPositionY = 3;
+        //    MatrixInitialization();
+        //    IconsInitialization();
 
-    //    totalCoins.text = GameManager.totalCoins.ToString();
-    //    if (InputManager.Instance.psController)
-    //    {
-    //        backCircle.SetActive(true);
-    //        buyTriangle.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        backB.SetActive(true);
-    //        buyY.SetActive(true);
-    //    }
+        //    arrayPositionX = 3;
+        //    arrayPositionY = 3;
 
-    //    UpdateComponents();
-    //    canBuy = false;
+        //    totalCoins.text = GameManager.totalCoins.ToString();
+        //    if (InputManager.Instance.psController)
+        //    {
+        //        backCircle.SetActive(true);
+        //        buyTriangle.SetActive(true);
+        //    }
+        //    else
+        //    {
+        //        backB.SetActive(true);
+        //        buyY.SetActive(true);
+        //    }
+
+        //    UpdateComponents();
+        //    canBuy = false;
     }
 
 
@@ -253,40 +256,49 @@ public class ButtonManager : MonoBehaviour
                 buyWithMaterialSquare.SetActive(true);
                 buyWithCoinsSquare.SetActive(false);
                 buywithMaterials_Price.text = actualAbility.price.ToString();
+                if (actualIcono != null)
+                    actualIcono.SetActive(false);
 
                 switch (actualAbility.materialType)
                 {
                     case Node.Type.tree:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalWood.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoMadera;
                         if (actualAbility.materialPrice <= GameManager.totalWood && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.tree2:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalWood2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoMaderaT2;
                         if (actualAbility.materialPrice <= GameManager.totalWood2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.rock:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalRock.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoRoca;
                         if (actualAbility.materialPrice <= GameManager.totalRock && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.rock2:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalRock2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoRocaT2;
                         if (actualAbility.materialPrice <= GameManager.totalRock2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.enemy:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalFabrics.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoPieles;
                         if (actualAbility.materialPrice <= GameManager.totalFabrics && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                     case Node.Type.enemy2:
                         buyWithMaterials_MaterialPrice.text = GameManager.totalFabrics2.ToString() + "/" + actualAbility.materialPrice.ToString();
+                        actualIcono = iconoPielesT2;
                         if (actualAbility.materialPrice <= GameManager.totalFabrics2 && actualAbility.price <= GameManager.totalCoins)
                             canBuy = true;
                         break;
                 }
+                actualIcono.SetActive(true);
             }
         }
         else
@@ -448,7 +460,7 @@ public class ButtonManager : MonoBehaviour
 
     void CallUpdateMethods(string ability)
     {
-        switch(ability)
+        switch (ability)
         {
             case "casco":
                 //desbloquear casco

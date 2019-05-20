@@ -121,6 +121,10 @@ public class GameManager : MonoBehaviour
     public bool rockTier2 = false;
     #endregion
 
+    static int lastCharacter = -1;
+    List<int> last5Characters = new List<int>();
+    bool gameOver = false;
+
     private void Awake()
     {
         Instance = this;
@@ -130,7 +134,36 @@ public class GameManager : MonoBehaviour
         islands[protoIsland].SetActive(true);
         islandParent = islands[protoIsland].transform.GetChild(0);
 
-        characterNumber = Random.Range(0, 3);
+        if (last5Characters.Count >= 4)
+        {
+            if (!last5Characters.Contains(0))
+                characterNumber = 0;
+
+            else if (!last5Characters.Contains(1))
+                characterNumber = 1;
+
+            else if (!last5Characters.Contains(2))
+                characterNumber = 2;
+
+            else
+                characterNumber = Random.Range(0, 3);
+        }
+
+        else
+        {
+            characterNumber = Random.Range(0, 3);
+
+            while (characterNumber == lastCharacter)
+            {
+                characterNumber = Random.Range(0, 3);
+                
+            }
+        }
+
+        last5Characters.Remove(0);
+        last5Characters.Add(characterNumber);
+        lastCharacter = characterNumber;
+
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
         player.SetActive(false);
@@ -143,7 +176,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
         entreIslasCanvas.SetActive(false);
         abilitiesCanvas.SetActive(false);
 
@@ -272,7 +304,7 @@ public class GameManager : MonoBehaviour
     {
         if (startGame)
         {
-            remainingTimeInLevel -= Time.deltaTime;
+            if(!gameOver) remainingTimeInLevel -= Time.deltaTime;
 
             timeText.text = remainingTimeInLevel.ToString("0");
 
@@ -294,7 +326,7 @@ public class GameManager : MonoBehaviour
                 totalCoins += 500;
                 SaveManager.Instance.Save();
                 AbilitesCoinsUpdate();
-
+                gameOver = true;
             }
         }
         else
@@ -365,6 +397,8 @@ public class GameManager : MonoBehaviour
 
     public void EndProtoLevel()
     {
+        gameOver = true;
+
         protoIsland++;
         if (protoIsland >= islands.Length)
             protoIsland = 0;
@@ -423,7 +457,6 @@ public class GameManager : MonoBehaviour
 
         entreIslasCanvas.SetActive(true);
         AbilitesCoinsUpdate();
-        Time.timeScale = 0;
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -532,11 +565,14 @@ public class GameManager : MonoBehaviour
 
     public void Damage()
     {
-        livesNumber--;
-        livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
+        if (!gameOver)
+        {
+            livesNumber--;
+            livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
 
-        if (livesNumber <= 0)
-            EndProtoLevel();
+            if (livesNumber <= 0)
+                EndProtoLevel();
+        }
     }
 
 

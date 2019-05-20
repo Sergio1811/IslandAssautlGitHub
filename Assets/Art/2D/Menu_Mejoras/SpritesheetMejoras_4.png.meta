@@ -137,9 +137,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 13
-        y: 1633
-        width: 402
-        height: 402
+        y: 1630
+        width: 406
+        height: 406
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 428f5322e718c724483301a92e58cc0b
+      spriteID: af3309661d95fa34c8b0992fc101f761
       vertices: []
       indices: 
       edges: []
@@ -156,10 +156,10 @@ TextureImporter:
       name: SpritesheetMejoras_4_1
       rect:
         serializedVersion: 2
-        x: 441
-        y: 1633
-        width: 402
-        height: 402
+        x: 438
+        y: 1630
+        width: 406
+        height: 406
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,7 +167,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1cf0b1716aef5b45ad3c7673c3b1f19
+      spriteID: 45555437ae02f0348970770561b17476
       vertices: []
       indices: 
       edges: []
@@ -187,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09b0d5511876d2344bd2364d00fc25de
+      spriteID: 524c9ccf9eff74044b4195430177061e
       vertices: []
       indices: 
       edges: []
@@ -207,7 +207,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44dd16b671774924787e1718e214e383
+      spriteID: cd02390f5916ae44e8d708cff247dc0b
       vertices: []
       indices: 
       edges: []
@@ -227,7 +227,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7477a7cc33555cc40abac70546793031
+      spriteID: 622356775c2bd7c479f80f701213b0a5
       vertices: []
       indices: 
       edges: []
@@ -236,10 +236,10 @@ TextureImporter:
       name: SpritesheetMejoras_4_5
       rect:
         serializedVersion: 2
-        x: 441
-        y: 1205
-        width: 402
-        height: 402
+        x: 438
+        y: 1203
+        width: 406
+        height: 406
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,7 +247,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcc48453bac28d247b415d41bb5cddea
+      spriteID: 9c8468be64eae854293eda70c46c81f0
       vertices: []
       indices: 
       edges: []
@@ -267,7 +267,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e2acc94dec762f4f87547c429d7694d
+      spriteID: 6c6011eac8a640344a775540b34165bf
       vertices: []
       indices: 
       edges: []
@@ -287,7 +287,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e3bc7ad745405244b47ca6e1f32b38b
+      spriteID: 81abe1aef495a2444a6681146f00636a
       vertices: []
       indices: 
       edges: []
@@ -307,7 +307,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45b489b6df92186409729d77e04ec8f2
+      spriteID: 8bcc15510a0677e4e91956386e20ccf8
       vertices: []
       indices: 
       edges: []
@@ -316,10 +316,10 @@ TextureImporter:
       name: SpritesheetMejoras_4_9
       rect:
         serializedVersion: 2
-        x: 441
+        x: 438
         y: 777
-        width: 402
-        height: 402
+        width: 406
+        height: 406
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -327,7 +327,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e970d8e50262c5142b17c71592de495d
+      spriteID: 34c9f4d6c00177349ae7bd4f4eead55b
       vertices: []
       indices: 
       edges: []
@@ -347,7 +347,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1114117decd268409a7063b98e98270
+      spriteID: f055655c82c8eae4a93b83541806dadb
       vertices: []
       indices: 
       edges: []
@@ -367,7 +367,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cedebcb94517434180c724834a2f242
+      spriteID: d6d9d21950df2a645be05c3e79ec00b0
       vertices: []
       indices: 
       edges: []
@@ -376,10 +376,10 @@ TextureImporter:
       name: SpritesheetMejoras_4_12
       rect:
         serializedVersion: 2
-        x: 13
-        y: 355
-        width: 402
-        height: 402
+        x: 12
+        y: 354
+        width: 406
+        height: 406
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,7 +387,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15fc22a0f3d5df541b7699c25621e824
+      spriteID: 9e2145c78b173914abb6805b54c79d1b
       vertices: []
       indices: 
       edges: []
@@ -407,7 +407,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e957c1c964180624c80d6e5ae44d2347
+      spriteID: 808fb68d912b32647ab85eda51fcdc4d
       vertices: []
       indices: 
       edges: []
@@ -427,7 +427,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea9b5d02b4a14c649a9586c64153a662
+      spriteID: 598b6efe923068d429cf1625db7ea1de
       vertices: []
       indices: 
       edges: []
@@ -447,7 +447,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7f09d8b3360c2644afd0a3c71f8e4e8
+      spriteID: 2687bec5af0ee4b4abed0505d1cb3039
       vertices: []
       indices: 
       edges: []

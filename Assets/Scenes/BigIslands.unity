@@ -7014,7 +7014,7 @@ MonoBehaviour:
     type: 3}
   entreIslasCanvas: {fileID: 3898891411317375531}
   abilitiesCanvas: {fileID: 1797379724}
-  mainCanvas: {fileID: 0}
+  mainCanvas: {fileID: 5613600642669398073}
   secondaryObjectives: []
   rockByItem: 2
   woodByItem: 2
@@ -7037,6 +7037,8 @@ MonoBehaviour:
   recursoPrincipalText: {fileID: 5613600642303123993}
   recursoPrincipalTextTier2: {fileID: 3898891410139346727}
   cointsText: {fileID: 5613600641522955301}
+  recursoPrincipalCaughtText: {fileID: 0}
+  recursoPrincipalCaughtTier2: {fileID: 0}
   rockSecundary: {fileID: 3898891411958987596}
   rockSecundaryTier2: {fileID: 3898891411453608603}
   woodSecundary: {fileID: 3898891412013335951}
@@ -7052,6 +7054,7 @@ MonoBehaviour:
   sworderImage: {fileID: 3898891410531405995}
   bomberImage: {fileID: 3898891411682325140}
   axerImage: {fileID: 3898891411013971576}
+  bomberTier2Image: {fileID: 0}
   woodObjectiveImage: {fileID: 3898891410011277311}
   rockObjectiveImage: {fileID: 3898891410556677935}
   timeObjectiveImage: {fileID: 3898891409995447648}
@@ -7125,7 +7128,7 @@ MonoBehaviour:
   waitToStartTime: 3
   initialPanelPositionsTime: 1
   instantiationHeight: 100
-  abilitesCoinsText: {fileID: 0}
+  abilitesCoinsText: {fileID: 3898891410229292734}
   totalEndCoinsText: {fileID: 3898891410229292734}
   totalEndWoodText: {fileID: 3898891411425252532}
   totalEndRockText: {fileID: 3898891410817867229}
@@ -17107,7 +17110,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1797379724}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:

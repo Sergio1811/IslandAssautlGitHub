@@ -444,7 +444,7 @@ public class GameManager : MonoBehaviour
         {
             woodText.text = collectedWood.ToString();
             if (treeTier2)
-                woodTextTier2.text = collectedWood.ToString();
+                woodTextTier2.text = collectedWood2.ToString();
         }
     }
 
@@ -453,7 +453,7 @@ public class GameManager : MonoBehaviour
         if (rockTier == 1)
             collectedRock += (int)(rockByItem * resourceStoneMultiplier);
         else
-            collectedWood2 += (int)(woodByItem * resourceStoneMultiplier);
+            collectedRock2 += (int)(rockByItem * resourceStoneMultiplier);
 
         currentCoins += (int)(rockByItem * resourceStoneMultiplier * goldMultiplier);
         cointsText.text = currentCoins.ToString();
@@ -471,7 +471,7 @@ public class GameManager : MonoBehaviour
         {
             rockText.text = collectedRock.ToString();
             if (rockTier2)
-                rockTextTier2.text = collectedRock.ToString();
+                rockTextTier2.text = collectedRock2.ToString();
         }
     }
 
@@ -498,7 +498,7 @@ public class GameManager : MonoBehaviour
         {
             fabricText.text = collectedFabrics.ToString();
             if (enemyTier2)
-                fabricTextTier2.text = collectedFabrics.ToString();
+                fabricTextTier2.text = collectedFabrics2.ToString();
         }
     }
 

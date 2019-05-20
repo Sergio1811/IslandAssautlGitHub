@@ -253,6 +253,12 @@ public class Movement : MonoBehaviour
                             axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                         }
+
+                        if (actualType == playerType.ace && axeStun)
+                        {
+                            axe.GetComponent<Animation>().Play();
+                            actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
+                        }
                         break;
 
                     /*case "Chest":
@@ -429,24 +435,24 @@ public class Movement : MonoBehaviour
 
     void Stun()
     {
-        if (InputManager.Instance.GetInput("Stun"))
-        {
-            lastStunButtonReleased = false;
+        //if (InputManager.Instance.GetInput("Stun"))
+        //{
+        //    lastStunButtonReleased = false;
 
-            Ray ray = new Ray(transform.position, transform.forward);
-            Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
-            Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
-            RaycastHit hit = new RaycastHit();
-            if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
-            {
-                actionObject = hit.collider.gameObject;
-                if (actionObject.tag == "Enemy")
-                {
-                    if (actualType == playerType.ace && axeStun)
-                        actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
-                }
-            }
-        }
+        //    Ray ray = new Ray(transform.position, transform.forward);
+        //    Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
+        //    Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
+        //    RaycastHit hit = new RaycastHit();
+        //    if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
+        //    {
+        //        actionObject = hit.collider.gameObject;
+        //        if (actionObject.tag == "Enemy")
+        //        {
+        //            if (actualType == playerType.ace && axeStun)
+        //                actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
+        //        }
+        //    }
+        //}
     }
 
     public void PickFabrics(GameObject chest, int tier)

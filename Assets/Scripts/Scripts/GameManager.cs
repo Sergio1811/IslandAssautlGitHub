@@ -21,10 +21,16 @@ public class GameManager : MonoBehaviour
     int woodInMap = 0;
     int rockInMap = 0;
     int fabricInMap = 0;
+    int wood2InMap = 0;
+    int rock2InMap = 0;
+    int fabric2InMap = 0;
 
     int woodNeeded;
     int rockNeeded;
-    int enemiesNeeded;
+    int fabricNeeded;
+    int wood2Needed;
+    int rock2Needed;
+    int fabric2Needed;
     public string[] secondaryObjectives;
 
     public int rockByItem;
@@ -148,23 +154,24 @@ public class GameManager : MonoBehaviour
         player = PlayerInstantiation();
         player.SetActive(false);
 
-
         switch (characterNumber)
         {
             case 0:
                 livesNumber = 3;
 
                 woodText.gameObject.SetActive(true);
-                woodNeeded = woodNeeded - woodNeeded / 2;
-                recursoPrincipalText.text = (woodNeeded * woodByItem).ToString();
+                woodNeeded = woodInMap / 2;
+                recursoPrincipalText.text = woodNeeded.ToString();
                 principalWoodImage.SetActive(true);
                 fabricSecundary.SetActive(true);
                 rockSecundary.SetActive(true);
+
                 if (treeTier2)
                 {
+                    wood2Needed = wood2InMap / 2;
                     principalWoodImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = (woodNeeded * woodByItem).ToString();
+                    recursoPrincipalTextTier2.text = wood2Needed.ToString();
                 }
                 if (rockTier2)
                     rockSecundaryTier2.SetActive(true);
@@ -178,16 +185,17 @@ public class GameManager : MonoBehaviour
                 livesNumber = 2;
 
                 rockText.gameObject.SetActive(true);
-                rockNeeded = rockNeeded - rockNeeded / 2;
-                recursoPrincipalText.text =(rockNeeded * rockByItem).ToString();
+                rockNeeded = rockInMap / 2;
+                recursoPrincipalText.text = rockNeeded.ToString();
                 principalRockImage.SetActive(true);
                 fabricSecundary.SetActive(true);
                 woodSecundary.SetActive(true);
                 if (rockTier2)
                 {
+                    rock2Needed = rock2InMap / 2;
                     principalRockImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text =(rockNeeded * rockByItem).ToString();
+                    recursoPrincipalTextTier2.text = rock2Needed.ToString();
                     bomberTier2Image.enabled = true;
                 }
                 else
@@ -203,16 +211,17 @@ public class GameManager : MonoBehaviour
                 livesNumber = 4;
 
                 fabricText.gameObject.SetActive(true);
-                enemiesNeeded = enemiesNeeded - enemiesNeeded / 2;
-                recursoPrincipalText.text = (enemiesNeeded * enemiesByItem).ToString();
+                fabricNeeded = fabricInMap / 2;
+                recursoPrincipalText.text = fabricNeeded.ToString();
                 principalFabricImage.SetActive(true);
                 rockSecundary.SetActive(true);
                 woodSecundary.SetActive(true);
                 if (enemyTier2)
                 {
+                    fabric2Needed = fabric2InMap / 2;
                     principalFabricImageTier2.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
-                    recursoPrincipalTextTier2.text = (enemiesNeeded * enemiesByItem).ToString();
+                    recursoPrincipalTextTier2.text = fabric2Needed.ToString();
                 }
                 if (rockTier2)
                     rockSecundaryTier2.SetActive(true);
@@ -437,8 +446,18 @@ public class GameManager : MonoBehaviour
                 recursoPrincipalCaughtTier2.text = collectedWood2.ToString();
 
 
-            if (collectedWood >= woodNeeded * woodByItem)
-                ActivatePortal();
+            if (collectedWood >= woodNeeded)
+            {
+                if (treeTier2)
+                {
+                    if (collectedWood2 >= wood2Needed)
+                        ActivatePortal();
+                }
+
+                else
+                    ActivatePortal();
+            }
+           
         }
         else
         {
@@ -464,8 +483,17 @@ public class GameManager : MonoBehaviour
             if (rockTier2)
                 recursoPrincipalCaughtTier2.text = collectedRock2.ToString();
 
-            if (collectedRock >= rockNeeded * rockByItem)
-                ActivatePortal();
+            if (collectedRock >= rockNeeded)
+            {
+                if (rockTier2)
+                {
+                    if (collectedRock2 >= rock2Needed)
+                        ActivatePortal();
+                }
+
+                else
+                    ActivatePortal();
+            }
         }
         else
         {
@@ -491,7 +519,7 @@ public class GameManager : MonoBehaviour
             if (enemyTier2)
                 recursoPrincipalCaughtTier2.text = collectedFabrics2.ToString();
 
-            if (collectedFabrics >= enemiesNeeded * enemiesByItem)
+            if (collectedFabrics >= fabricNeeded * enemiesByItem)
                 ActivatePortal();
         }
         else
@@ -583,7 +611,7 @@ public class GameManager : MonoBehaviour
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     woodInMap += woodByItem;
-                    woodNeeded += 1;
+                    //woodNeeded += 1;
                 }
 
                 //TREES T2
@@ -618,8 +646,8 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    woodInMap += woodByItem;
-                    woodNeeded += 1;
+                    wood2InMap += woodByItem;
+                    //woodNeeded += 1;
                 }
 
                 //ROCKS T1
@@ -655,7 +683,7 @@ public class GameManager : MonoBehaviour
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     rockInMap += rockByItem;
-                    rockNeeded += 1;
+                    //rockNeeded += 1;
 
 
                 }
@@ -692,8 +720,8 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    rockInMap += rockByItem;
-                    rockNeeded += 1;
+                    rock2InMap += rockByItem;
+                    //rockNeeded += 1;
                 }
 
                 //VILLAGES T1
@@ -726,7 +754,7 @@ public class GameManager : MonoBehaviour
                             enemiesGroup.transform.GetChild(k).GetComponent<EnemyScript>().lives = 3;
                         }
                     }
-                    enemiesNeeded += 1;
+                    //enemiesNeeded += 1;
                     fabricInMap += enemiesByItem;
                 }
 
@@ -760,8 +788,8 @@ public class GameManager : MonoBehaviour
                             enemiesGroup.transform.GetChild(k).GetComponent<EnemyScript>().lives = 3;
                         }
                     }
-                    enemiesNeeded += 1;
-                    fabricInMap += enemiesByItem;
+                    //enemiesNeeded += 1;
+                    fabric2InMap += enemiesByItem;
                 }
 
                 //ENEMIES T1

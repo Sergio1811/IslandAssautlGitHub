@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class objectFall : MonoBehaviour
 {
     Rigidbody myRigidbody;
-    public float velocity;
+    float velocity = 4;
     bool moving;
     public bool isEnemy;
 

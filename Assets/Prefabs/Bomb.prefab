@@ -125,6 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 0
   player: {fileID: 0}
+  psRockHit: {fileID: 1040608886635896, guid: a97415c6b57076f41a6621a7b51d63a3, type: 3}
+  psExplosion: {fileID: 1134129239631916, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
+    type: 3}
   rockPrefab: {fileID: 8829530387875484065, guid: 118cbce6273b70848becad2eab2cff88,
     type: 3}
   treePrefab: {fileID: 8829530387875484065, guid: bd7801c5f5eeb8f4b9d7b92c340c07af,

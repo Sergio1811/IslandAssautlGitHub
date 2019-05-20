@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     static int lastCharacter = -1;
-    List<int> last5Characters = new List<int>();
+    static List<int> last5Characters = new List<int>();
     bool gameOver = false;
 
     private void Awake()
@@ -134,35 +134,14 @@ public class GameManager : MonoBehaviour
         islands[protoIsland].SetActive(true);
         islandParent = islands[protoIsland].transform.GetChild(0);
 
-        if (last5Characters.Count >= 4)
-        {
-            if (!last5Characters.Contains(0))
-                characterNumber = 0;
 
-            else if (!last5Characters.Contains(1))
-                characterNumber = 1;
+        characterNumber = Random.Range(0, 3);
 
-            else if (!last5Characters.Contains(2))
-                characterNumber = 2;
-
-            else
-                characterNumber = Random.Range(0, 3);
-        }
-
-        else
+        while (characterNumber == lastCharacter)
         {
             characterNumber = Random.Range(0, 3);
 
-            while (characterNumber == lastCharacter)
-            {
-                characterNumber = Random.Range(0, 3);
-                
-            }
         }
-
-        last5Characters.Remove(0);
-        last5Characters.Add(characterNumber);
-        lastCharacter = characterNumber;
 
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
@@ -304,7 +283,7 @@ public class GameManager : MonoBehaviour
     {
         if (startGame)
         {
-            if(!gameOver) remainingTimeInLevel -= Time.deltaTime;
+            if (!gameOver) remainingTimeInLevel -= Time.deltaTime;
 
             timeText.text = remainingTimeInLevel.ToString("0");
 
@@ -338,7 +317,7 @@ public class GameManager : MonoBehaviour
             {
                 rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * Time.deltaTime);
                 leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
-                
+
                 if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
                     GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
                 //if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
@@ -490,7 +469,7 @@ public class GameManager : MonoBehaviour
                 else
                     ActivatePortal();
             }
-           
+
         }
         else
         {

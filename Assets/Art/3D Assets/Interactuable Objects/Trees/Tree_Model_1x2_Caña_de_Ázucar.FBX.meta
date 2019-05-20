@@ -1,31 +1,14 @@
 fileFormatVersion: 2
-guid: 5381fd82a9eb5654bb7a152b2b7565a9
+guid: 261185d6748a8b14a8a1180b4d415c06
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Object002
-    100002: Object003
-    100004: Tree_Basic_Model001
-    100006: Tree_Basic_Model002
-    100008: //RootNode
-    400000: Object002
-    400002: Object003
-    400004: Tree_Basic_Model001
-    400006: Tree_Basic_Model002
-    400008: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: No Name
-    2300000: Object002
-    2300002: Object003
-    2300004: Tree_Basic_Model001
-    2300006: Tree_Basic_Model002
-    3300000: Object002
-    3300002: Object003
-    3300004: Tree_Basic_Model001
-    3300006: Tree_Basic_Model002
-    4300000: Object002
-    4300002: Tree_Basic_Model001
-    4300004: Object003
-    4300006: Tree_Basic_Model002
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: "Ca\xF1a de bambu 007"
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     public GameObject rightPanel, rightPanelSecundaries, leftPanel;
     public Transform positionRight, positionLeft;
     public float speedPanels;
+    float initialSpeedPanels;
 
     public float timeByLevel;
     private float remainingTimeInLevel;
@@ -100,8 +101,6 @@ public class GameManager : MonoBehaviour
     bool startGame;
     public float instantiationHeight;
 
-    ShaderValuesObjects shaderValues;
-
     public Text abilitesCoinsText;
     public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTextTier2, totalEndRockTextTier2, totalEndFabricTextTier2;
     public GameObject totalWoodTier2, totalRockTier2, totalFabricsTier2;
@@ -111,7 +110,19 @@ public class GameManager : MonoBehaviour
     bool movingCamera;
     public GameObject endCameraPosition;
     public Camera mainCamera;
-    public float cameraSpeed;
+    public float initialCameraSpeed;
+    float cameraSpeed;
+    GameObject cameraAnchor;
+
+    public GameObject[] buttonsArray;
+    public GameObject buttonExit;
+    public GameObject buttonMarket;
+    int menuArrayNumber;
+    public Color buttonSelectedColor;
+    GameObject selectedButton;
+    bool hasMoved, movementOn;
+    float timerMovement;
+    int numberOfButtons;
 
     #region
     public bool titan = false;//applied
@@ -154,8 +165,7 @@ public class GameManager : MonoBehaviour
 
         gridScript.GenerateGrid(characterNumber);
 
-        shaderValues = this.gameObject.GetComponent<ShaderValuesObjects>();
-
+        cameraAnchor = mainCamera.transform.parent.gameObject;
     }
 
     void Start()
@@ -282,6 +292,8 @@ public class GameManager : MonoBehaviour
         secondaryObjectiveID = RandomSecondaryObjective();
         objectiveImage[secondaryObjectiveID].SetActive(true);
         secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
+
+        initialSpeedPanels = speedPanels;
     }
 
     void Update()
@@ -292,15 +304,103 @@ public class GameManager : MonoBehaviour
 
             else if (movingCamera)
             {
+                if (cameraSpeed > initialCameraSpeed / 5)
+                    cameraSpeed -= Time.deltaTime * initialCameraSpeed / 2f;
                 mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
-                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime);
+                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f );
+                cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
+                entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.3f);
+                if (mainCamera.orthographicSize < 80)
+                    mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
 
 
                 if (GetSqrDistanceXZToPosition(mainCamera.transform.localPosition, endCameraPosition.transform.position) <= 0.1)
                 {
                     movingCamera = false;
-                    entreIslasCanvas.SetActive(true);
+                    menuArrayNumber = 0;
+                    selectedButton = buttonsArray[0];
+                    selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                    numberOfButtons = buttonsArray.Length;
+
+                    if (Market)
+                    {
+                        buttonMarket.SetActive(true);
+                        numberOfButtons++;
+                    }
                 }
+            }
+            else
+            {
+                cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
+
+
+                float horizontal = InputManager.Instance.GetAxis("Horizontal");
+                float vertical = InputManager.Instance.GetAxis("Vertical");
+
+                if (!hasMoved)
+                {
+                    if (vertical < -0.2f)
+                    {
+                        menuArrayNumber++;
+                        selectedButton.GetComponent<Image>().color = Color.white;
+
+                        if (menuArrayNumber >= numberOfButtons)
+                            menuArrayNumber = 0;
+
+                        if (menuArrayNumber == numberOfButtons - 1 && Market)
+                            selectedButton = buttonMarket;
+                        else
+                            selectedButton = buttonsArray[menuArrayNumber];
+
+                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                        hasMoved = true;
+                    }
+                    else if (vertical > 0.2f)
+                    {
+                        menuArrayNumber--;
+                        selectedButton.GetComponent<Image>().color = Color.white;
+
+                        if (menuArrayNumber < 0)
+                            menuArrayNumber = numberOfButtons - 1;
+
+                        if (menuArrayNumber == numberOfButtons - 1 && Market)
+                            selectedButton = buttonMarket;
+                        else
+                            selectedButton = buttonsArray[menuArrayNumber];
+
+                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                        hasMoved = true;
+                    }
+                    else if (horizontal > 0.2f && menuArrayNumber == 1)
+                    {
+                        selectedButton.GetComponent<Image>().color = Color.white;
+                        selectedButton = buttonExit;
+                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                        hasMoved = true;
+                    }
+                    else if (horizontal < -0.2f && menuArrayNumber == 1)
+                    {
+                        selectedButton.GetComponent<Image>().color = Color.white;
+                        selectedButton = buttonsArray[1];
+                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                        hasMoved = true;
+                    }
+                    else if (InputManager.Instance.GetInputDown("Submit"))
+                        selectedButton.GetComponent<Button>().onClick.Invoke();
+                }
+
+                if (hasMoved)
+                    movementOn = true;
+
+                if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
+                {
+                    hasMoved = false;
+                    timerMovement = 0;
+                    movementOn = false;
+                }
+
+                if (movementOn)
+                    timerMovement += Time.deltaTime;
             }
 
             timeText.text = remainingTimeInLevel.ToString("0");
@@ -333,7 +433,9 @@ public class GameManager : MonoBehaviour
 
             if (waitTimer >= waitToStartTime)
             {
-                rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * Time.deltaTime);
+                if (speedPanels > initialSpeedPanels / 4)
+                    speedPanels -= Time.deltaTime * initialSpeedPanels / 3f;
+                rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * 1.5f * Time.deltaTime);
                 leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
 
                 if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
@@ -456,6 +558,12 @@ public class GameManager : MonoBehaviour
         AbilitesCoinsUpdate();
         mainCanvas.SetActive(false);
         movingCamera = true;
+        cameraAnchor.GetComponent<CameraRotation>().enabled = false;
+        player.GetComponent<Movement>().enabled = false;
+        entreIslasCanvas.SetActive(true);
+        cameraSpeed = initialCameraSpeed;
+        //mainCamera.orthographic = true;
+        //mainCamera.orthographicSize = 77;
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

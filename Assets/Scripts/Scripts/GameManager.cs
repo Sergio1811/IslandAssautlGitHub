@@ -108,6 +108,11 @@ public class GameManager : MonoBehaviour
 
     bool portalActivated = false;
 
+    bool movingCamera;
+    public GameObject endCameraPosition;
+    public Camera mainCamera;
+    public float cameraSpeed;
+
     #region
     public bool titan = false;//applied
     public bool islandTier2 = false;
@@ -285,6 +290,19 @@ public class GameManager : MonoBehaviour
         {
             if (!gameOver) remainingTimeInLevel -= Time.deltaTime;
 
+            else if (movingCamera)
+            {
+                mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
+                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime);
+
+
+                if (GetSqrDistanceXZToPosition(mainCamera.transform.localPosition, endCameraPosition.transform.position) <= 0.1)
+                {
+                    movingCamera = false;
+                    entreIslasCanvas.SetActive(true);
+                }
+            }
+
             timeText.text = remainingTimeInLevel.ToString("0");
 
             if (remainingTimeInLevel <= 0f)
@@ -434,8 +452,10 @@ public class GameManager : MonoBehaviour
         if (AxerAbilities.treeTier2)
             totalWoodTier2.SetActive(true);
 
-        entreIslasCanvas.SetActive(true);
+        //entreIslasCanvas.SetActive(true);
         AbilitesCoinsUpdate();
+        mainCanvas.SetActive(false);
+        movingCamera = true;
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }

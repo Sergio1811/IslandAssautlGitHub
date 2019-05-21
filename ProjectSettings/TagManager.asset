@@ -19,6 +19,7 @@ TagManager:
   - Rock2
   - Enemy2
   - Tree2
+  - IslandCollision
   layers:
   - Default
   - TransparentFX

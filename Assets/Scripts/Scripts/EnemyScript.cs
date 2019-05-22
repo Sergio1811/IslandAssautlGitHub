@@ -263,11 +263,15 @@ public class EnemyScript : MonoBehaviour
         return vector.sqrMagnitude;
     }
 
-    public void GetAttacked(Transform player)
+    public void GetAttacked(Transform player, bool knockBack)
     {
         lives--;
-        KnockBackActivated(player);
-        knockBackDistance *= 0.5f;
+        if(knockBack)
+        {
+            KnockBackActivated(player);
+            knockBackDistance *= 0.5f;
+        }
+
         if (lives < 1)
             Destroy(this.gameObject);
     }

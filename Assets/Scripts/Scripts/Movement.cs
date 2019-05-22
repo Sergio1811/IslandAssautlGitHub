@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
     bool bombOn;
 
     bool lastActionButtonReleased = true;
-    bool lastStunButtonReleased = true;
+    bool lastDashButtonReleased = true;
 
     bool knockBack;
     Vector3 knockDirection;
@@ -104,7 +104,7 @@ public class Movement : MonoBehaviour
         //Mirar si ha soltado el trigger antes de volver a hacer la accion
         if (lastActionButtonReleased == false && InputManager.Instance.GetInputUp("Action")) lastActionButtonReleased = true;
 
-        if (lastStunButtonReleased == false && InputManager.Instance.GetInputUp("Stun")) lastStunButtonReleased = true;
+        if (lastDashButtonReleased == false && InputManager.Instance.GetInputUp("Dash")) lastDashButtonReleased = true;
 
         if (receiveInputAction && !bombOn)
         {
@@ -118,7 +118,7 @@ public class Movement : MonoBehaviour
         else
             EndAction();
 
-        if (lastStunButtonReleased && axeStun) Stun();
+        if (lastDashButtonReleased && dashActive) Dash();
 
         if (inmortal)
             CheckInmortal();
@@ -166,26 +166,29 @@ public class Movement : MonoBehaviour
 
     void Dash()
     {
-        characterController.enabled = false;
-
-        Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(ray, out hit, dashDistance))
+        if (InputManager.Instance.GetInput("Dash"))
         {
-            if (hit.collider.gameObject.name == "WaterDecorationMesh")
+            characterController.enabled = false;
+
+            Ray ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit = new RaycastHit();
+            if (Physics.Raycast(ray, out hit, dashDistance))
             {
-                Vector3 newPos = hit.point + hit.normal * 2;
-                transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
+                if (hit.collider.gameObject.name == "WaterDecorationMesh")
+                {
+                    Vector3 newPos = hit.point + hit.normal * 2;
+                    transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
+                }
+
+                else
+                    transform.position += transform.forward * dashDistance;
             }
 
             else
                 transform.position += transform.forward * dashDistance;
+
+            characterController.enabled = true;
         }
-
-        else
-            transform.position += transform.forward * dashDistance;
-
-        characterController.enabled = true;
     }
 
     void StartAction()
@@ -251,7 +254,7 @@ public class Movement : MonoBehaviour
                         if (actualType == playerType.ace && axePolivalente)
                         {
                             axe.GetComponent<Animation>().Play();
-                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
+                            actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
                         if (actualType == playerType.ace && axeStun)
@@ -526,7 +529,7 @@ public class Movement : MonoBehaviour
             if (actionObject.tag == "Enemy")
             {
                 EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
-                enemyScript.GetAttacked(this.gameObject.transform);
+                enemyScript.GetAttacked(this.gameObject.transform, true);
                 foundEnemy = true;
                 if (swordTier2)
                     enemyScript.GetAttackedByBomb();
@@ -555,7 +558,7 @@ public class Movement : MonoBehaviour
                 if (actionObject.tag == "Enemy" && !repeatedEnemy)
                 {
                     EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
-                    enemyScript.GetAttacked(this.gameObject.transform);
+                    enemyScript.GetAttacked(this.gameObject.transform, true);
                     foundEnemy = true;
                     if (swordTier2)
                         enemyScript.GetAttackedByBomb();
@@ -587,7 +590,7 @@ public class Movement : MonoBehaviour
                 if (actionObject.tag == "Enemy" && !repeatedEnemy)
                 {
                     EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
-                    enemyScript.GetAttacked(this.gameObject.transform);
+                    enemyScript.GetAttacked(this.gameObject.transform, true);
                     foundEnemy = true;
                     if (swordTier2)
                         enemyScript.GetAttackedByBomb();

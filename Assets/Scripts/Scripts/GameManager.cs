@@ -151,13 +151,7 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
 
-        characterNumber = Random.Range(0, 3);
-
-        while (characterNumber == lastCharacter)
-        {
-            characterNumber = Random.Range(0, 3);
-
-        }
+        RandomCharacter();
 
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
@@ -462,6 +456,43 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+    void RandomCharacter()
+    {
+        if(last5Characters.Count == 4)
+        {
+            if (!last5Characters.Contains(0)) characterNumber = 0;
+            else if (!last5Characters.Contains(1)) characterNumber = 1;
+            else if (!last5Characters.Contains(2)) characterNumber = 2;
+
+            else
+            {
+                characterNumber = Random.Range(0, 3);
+
+                while (characterNumber == lastCharacter)
+                {
+                    characterNumber = Random.Range(0, 3);
+
+                }
+            }
+
+            last5Characters.RemoveAt(0);
+        }
+
+        else
+        {
+            characterNumber = Random.Range(0, 3);
+
+            while (characterNumber == lastCharacter)
+            {
+                characterNumber = Random.Range(0, 3);
+
+            }
+        }
+
+        last5Characters.Add(characterNumber);
+        lastCharacter = characterNumber;
+    }
 
     public GameObject PlayerInstantiation()
     {

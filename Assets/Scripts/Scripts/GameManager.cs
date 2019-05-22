@@ -101,9 +101,11 @@ public class GameManager : MonoBehaviour
     bool startGame;
     public float instantiationHeight;
 
+    //Menu entre islas cantidades de recursos
     public Text abilitesCoinsText;
-    public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTextTier2, totalEndRockTextTier2, totalEndFabricTextTier2;
-    public GameObject totalWoodTier2, totalRockTier2, totalFabricsTier2;
+    public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTier2Text, totalEndRockTier2Text, totalEndFabricTier2Text;
+    public Text resultEndCoinsText, resultEndWoodText, resultEndRocksText, resultEndFabricText, resultEndWoodTier2Text, resultEndRockTier2Text, resultEndFabricsTier2Text;
+    public Color positiveColor, negativeColor;
 
     bool portalActivated = false;
 
@@ -115,7 +117,6 @@ public class GameManager : MonoBehaviour
     GameObject cameraAnchor;
 
     public GameObject[] buttonsArray;
-    public GameObject buttonExit;
     public GameObject buttonMarket;
     int menuArrayNumber;
     public Color buttonSelectedColor;
@@ -125,15 +126,21 @@ public class GameManager : MonoBehaviour
     int numberOfButtons;
 
     #region
+    [HideInInspector]
     public bool titan = false;//applied
+    [HideInInspector]
     public bool islandTier2 = false;
     float goldMultiplier = 1.0f;//applied
-    bool Market = false;
+    [HideInInspector]
+    public bool Market = false;
     float resourceFabricMultiplier = 1.0f;//applied
+    [HideInInspector]
     public bool enemyTier2 = false;
     float resourceTreeMultiplier = 1.0f;//aaplied
+    [HideInInspector]
     public bool treeTier2 = false;
     float resourceStoneMultiplier = 1.0f;//applied
+    [HideInInspector]
     public bool rockTier2 = false;
     #endregion
 
@@ -151,7 +158,13 @@ public class GameManager : MonoBehaviour
         islandParent = islands[protoIsland].transform.GetChild(0);
 
 
-        RandomCharacter();
+        characterNumber = Random.Range(0, 3);
+
+        while (characterNumber == lastCharacter)
+        {
+            characterNumber = Random.Range(0, 3);
+
+        }
 
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
@@ -300,27 +313,23 @@ public class GameManager : MonoBehaviour
             {
                 if (cameraSpeed > initialCameraSpeed / 5)
                     cameraSpeed -= Time.deltaTime * initialCameraSpeed / 2f;
+
                 mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
-                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f );
+                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f);
+
                 cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
-                entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.3f);
+                entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.5f);
                 if (mainCamera.orthographicSize < 80)
                     mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
 
 
-                if (GetSqrDistanceXZToPosition(mainCamera.transform.localPosition, endCameraPosition.transform.position) <= 0.1)
+                if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
                 {
                     movingCamera = false;
                     menuArrayNumber = 0;
                     selectedButton = buttonsArray[0];
                     selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                    numberOfButtons = buttonsArray.Length;
-
-                    if (Market)
-                    {
-                        buttonMarket.SetActive(true);
-                        numberOfButtons++;
-                    }
+                    numberOfButtons = buttonsArray.Length - 1;
                 }
             }
             else
@@ -338,10 +347,10 @@ public class GameManager : MonoBehaviour
                         menuArrayNumber++;
                         selectedButton.GetComponent<Image>().color = Color.white;
 
-                        if (menuArrayNumber >= numberOfButtons)
+                        if (menuArrayNumber > numberOfButtons)
                             menuArrayNumber = 0;
 
-                        if (menuArrayNumber == numberOfButtons - 1 && Market)
+                        if (menuArrayNumber == numberOfButtons && Market)
                             selectedButton = buttonMarket;
                         else
                             selectedButton = buttonsArray[menuArrayNumber];
@@ -355,9 +364,9 @@ public class GameManager : MonoBehaviour
                         selectedButton.GetComponent<Image>().color = Color.white;
 
                         if (menuArrayNumber < 0)
-                            menuArrayNumber = numberOfButtons - 1;
+                            menuArrayNumber = numberOfButtons;
 
-                        if (menuArrayNumber == numberOfButtons - 1 && Market)
+                        if (menuArrayNumber == numberOfButtons && Market)
                             selectedButton = buttonMarket;
                         else
                             selectedButton = buttonsArray[menuArrayNumber];
@@ -365,17 +374,17 @@ public class GameManager : MonoBehaviour
                         selectedButton.GetComponent<Image>().color = buttonSelectedColor;
                         hasMoved = true;
                     }
-                    else if (horizontal > 0.2f && menuArrayNumber == 1)
+                    else if (horizontal > 0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonsArray[menuArrayNumber] && Market)
                     {
                         selectedButton.GetComponent<Image>().color = Color.white;
-                        selectedButton = buttonExit;
+                        selectedButton = buttonsArray[menuArrayNumber];
                         selectedButton.GetComponent<Image>().color = buttonSelectedColor;
                         hasMoved = true;
                     }
-                    else if (horizontal < -0.2f && menuArrayNumber == 1)
+                    else if (horizontal < -0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && Market)
                     {
                         selectedButton.GetComponent<Image>().color = Color.white;
-                        selectedButton = buttonsArray[1];
+                        selectedButton = buttonMarket;
                         selectedButton.GetComponent<Image>().color = buttonSelectedColor;
                         hasMoved = true;
                     }
@@ -416,7 +425,8 @@ public class GameManager : MonoBehaviour
             {
                 totalCoins += 500;
                 SaveManager.Instance.Save();
-                AbilitesCoinsUpdate();
+                totalEndCoinsText.text = totalCoins.ToString();
+                abilitesCoinsText.text = totalCoins.ToString();
                 gameOver = true;
             }
         }
@@ -456,43 +466,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    void RandomCharacter()
-    {
-        if(last5Characters.Count == 4)
-        {
-            if (!last5Characters.Contains(0)) characterNumber = 0;
-            else if (!last5Characters.Contains(1)) characterNumber = 1;
-            else if (!last5Characters.Contains(2)) characterNumber = 2;
-
-            else
-            {
-                characterNumber = Random.Range(0, 3);
-
-                while (characterNumber == lastCharacter)
-                {
-                    characterNumber = Random.Range(0, 3);
-
-                }
-            }
-
-            last5Characters.RemoveAt(0);
-        }
-
-        else
-        {
-            characterNumber = Random.Range(0, 3);
-
-            while (characterNumber == lastCharacter)
-            {
-                characterNumber = Random.Range(0, 3);
-
-            }
-        }
-
-        last5Characters.Add(characterNumber);
-        lastCharacter = characterNumber;
-    }
 
     public GameObject PlayerInstantiation()
     {
@@ -541,31 +514,105 @@ public class GameManager : MonoBehaviour
             totalFabrics2 += collectedFabrics2;
             totalRock2 += collectedRock2;
             totalWood2 += collectedWood2;
+
+            if (collectedFabrics > 0)
+            {
+                resultEndFabricText.text = "+" + collectedFabrics.ToString();
+                resultEndFabricText.color = positiveColor;
+            }
+            if (collectedRock > 0)
+            {
+                resultEndRocksText.text = "+" + collectedRock.ToString();
+                resultEndRocksText.color = positiveColor;
+            }
+            if (collectedWood > 0)
+            {
+                resultEndWoodText.text = "+" + collectedWood.ToString();
+                resultEndWoodText.color = positiveColor;
+            }
+            if (collectedFabrics2 > 0)
+            {
+                resultEndFabricsTier2Text.text = "+" + collectedFabrics2.ToString();
+                resultEndFabricsTier2Text.color = positiveColor;
+            }
+            if (collectedRock2 > 0)
+            {
+                resultEndRockTier2Text.text = "+" + collectedRock2.ToString();
+                resultEndRockTier2Text.color = positiveColor;
+            }
+            if (collectedFabrics > 0)
+            {
+                resultEndWoodTier2Text.text = "+" + collectedWood2.ToString();
+                resultEndWoodTier2Text.color = positiveColor;
+            }
         }
 
         else if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
         {
-            totalFabrics -= totalFabrics * 10 / 100;
+            int pers;
+
+            pers = totalFabrics * 10 / 100;
+            totalFabrics -= pers;
+            if (pers > 0)
+            {
+                resultEndFabricText.text = "-" + pers.ToString();
+                resultEndFabricText.color = negativeColor;
+            }
             if (totalFabrics < 0) totalFabrics = 0;
 
-            totalRock -= totalRock * 10 / 100;
+            pers = totalRock * 10 / 100;
+            totalRock -= pers;
+            if (pers > 0)
+            {
+                resultEndRocksText.text = "-" + pers.ToString();
+                resultEndRocksText.color = negativeColor;
+            }
             if (totalRock < 0) totalRock = 0;
 
-            totalWood -= totalWood * 10 / 100;
+            pers = totalWood * 10 / 100;
+            totalWood -= pers;
+            if (pers > 0)
+            {
+                resultEndWoodText.text = "-" + pers.ToString();
+                resultEndWoodText.color = negativeColor;
+            }
             if (totalWood < 0) totalWood = 0;
 
-            totalFabrics2 -= totalFabrics2 * 10 / 100;
+            pers = totalFabrics2 * 10 / 100;
+            totalFabrics2 -= pers;
+            if (pers > 0)
+            {
+                resultEndFabricsTier2Text.text = "-" + pers.ToString();
+                resultEndFabricsTier2Text.color = negativeColor;
+            }
             if (totalFabrics2 < 0) totalFabrics2 = 0;
 
-            totalRock2 -= totalRock2 * 10 / 100;
+            pers = totalRock2 * 10 / 100;
+            totalRock2 -= pers;
+            if (pers > 0)
+            {
+                resultEndRockTier2Text.text = "-" + pers.ToString();
+                resultEndRockTier2Text.color = negativeColor;
+            }
             if (totalRock2 < 0) totalRock2 = 0;
 
-            totalWood2 -= totalWood2 * 10 / 100;
+            pers = totalWood2 * 10 / 100;
+            totalWood2 -= pers;
+            if (pers > 0)
+            {
+                resultEndWoodTier2Text.text = "-" + pers.ToString();
+                resultEndWoodTier2Text.color = negativeColor;
+            }
             if (totalWood2 < 0) totalWood2 = 0;
         }
 
         //si muere y habia activado el portal, no pierde ni gana nada, solo las monedas
 
+        if (currentCoins != 0)
+        {
+            resultEndCoinsText.text = currentCoins.ToString();
+            resultEndCoinsText.color = positiveColor;
+        }
         totalCoins += currentCoins; //las monedas las gana siempre
 
         currentCoins = 0;
@@ -575,28 +622,40 @@ public class GameManager : MonoBehaviour
 
 
         totalEndCoinsText.text = totalCoins.ToString();
+        abilitesCoinsText.text = totalCoins.ToString();
+
         totalEndWoodText.text = totalWood.ToString();
         totalEndRockText.text = totalRock.ToString();
         totalEndFabricText.text = totalFabrics.ToString();
-        if (BomberAbilities.rockTier2)
-            totalRockTier2.SetActive(true);
-        if (SwordAbilities.enemyTier2)
-            totalFabricsTier2.SetActive(true);
-        if (AxerAbilities.treeTier2)
-            totalWoodTier2.SetActive(true);
+        totalEndWoodTier2Text.text = totalWood2.ToString();
+        totalEndRockTier2Text.text = totalRock2.ToString();
+        totalEndFabricTier2Text.text = totalFabrics2.ToString();
 
-        //entreIslasCanvas.SetActive(true);
-        AbilitesCoinsUpdate();
+        if (BomberAbilities.rockTier2)
+        {
+            totalEndRockTier2Text.transform.parent.gameObject.SetActive(true);
+            resultEndRockTier2Text.transform.parent.gameObject.SetActive(true);
+        }
+        if (SwordAbilities.enemyTier2)
+        {
+            totalEndFabricTier2Text.transform.parent.gameObject.SetActive(true);
+            resultEndFabricsTier2Text.transform.parent.gameObject.SetActive(true);
+        }
+        if (AxerAbilities.treeTier2)
+        {
+            totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
+            resultEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
+        }
+
         mainCanvas.SetActive(false);
         movingCamera = true;
         cameraAnchor.GetComponent<CameraRotation>().enabled = false;
         player.GetComponent<Movement>().enabled = false;
         entreIslasCanvas.SetActive(true);
         cameraSpeed = initialCameraSpeed;
-        //mainCamera.orthographic = true;
-        //mainCamera.orthographicSize = 77;
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Market)
+            buttonMarket.SetActive(true);
     }
 
 
@@ -1219,8 +1278,4 @@ public class GameManager : MonoBehaviour
         return vector.sqrMagnitude;
     }
 
-    public void AbilitesCoinsUpdate()
-    {
-        abilitesCoinsText.text = totalCoins.ToString();
-    }
 }

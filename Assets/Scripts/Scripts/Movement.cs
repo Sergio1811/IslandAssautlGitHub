@@ -133,11 +133,6 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-        if (InputManager.Instance.GetInputDown("Dash") && dashActive)
-            Dash();
-
-        else
-        {
             Vector3 movement = Vector3.zero;
             xMovement = InputManager.Instance.GetAxis("Horizontal");
             zMovement = InputManager.Instance.GetAxis("Vertical");
@@ -161,13 +156,14 @@ public class Movement : MonoBehaviour
                 movement.y += Physics.gravity.y;
 
             characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
-        }
     }
 
     void Dash()
     {
         if (InputManager.Instance.GetInput("Dash"))
         {
+            lastDashButtonReleased = false;
+
             characterController.enabled = false;
 
             Ray ray = new Ray(transform.position, transform.forward);

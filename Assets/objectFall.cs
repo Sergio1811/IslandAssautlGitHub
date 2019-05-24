@@ -34,7 +34,7 @@ public class objectFall : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Island")
+        if (collision.gameObject.tag == "IslandCollision")
         {
             moving = false;
         }

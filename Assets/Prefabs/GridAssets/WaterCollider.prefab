@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2041424603190229417}
   - component: {fileID: 2041424603190229418}
+  - component: {fileID: 4183948026002726227}
   m_Layer: 0
   m_Name: WaterDecorationMesh
   m_TagString: Decoration
@@ -40,10 +41,24 @@ BoxCollider:
   m_GameObject: {fileID: 2041424603190229421}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.318981, z: 1}
+  m_Size: {x: 1, y: 9.9, z: 1}
   m_Center: {x: 0, y: 0.65949047, z: 0}
+--- !u!136 &4183948026002726227
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041424603190229421}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 12.27
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9016246708617481165
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,7 +97,7 @@ public class Grid : MonoBehaviour
 
                 for (int k = 0; k < colliders.Length; k++)
                 {
-                    if (colliders[k].tag != "")
+                    if (colliders[k].tag != "" && colliders[k].tag != "IslandCollision")
                     {
                         objectType = Node.Type.floor;
                         isTransitable = true;

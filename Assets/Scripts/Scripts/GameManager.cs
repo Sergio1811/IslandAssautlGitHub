@@ -146,6 +146,10 @@ public class GameManager : MonoBehaviour
 
     static int lastCharacter = -1;
     static List<int> last5Characters = new List<int>();
+
+    static int lastIsland = -1;
+    static List<int> lastIslandList = new List<int>();
+
     bool gameOver = false;
 
     private void Awake()
@@ -153,7 +157,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         startGame = false;
 
-        protoIsland = Random.Range(0, islands.Length);
+        RandomIsland();
         islands[protoIsland].SetActive(true);
         islandParent = islands[protoIsland].transform.GetChild(0);
 
@@ -460,6 +464,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void RandomIsland()
+    {
+        protoIsland = Random.Range(0, islands.Length);
+
+        while(protoIsland == lastIsland)
+        {
+            protoIsland = Random.Range(0, islands.Length);
+        }
+
+        lastIsland = protoIsland;
+    }
 
     void RandomCharacter()
     {

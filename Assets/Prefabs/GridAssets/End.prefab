@@ -62,7 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 4
   isEnemy: 0
 --- !u!1 &689475416247800003
 GameObject:
@@ -262,8 +261,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.0831027, z: 1}
-  m_Center: {x: 0, y: -0.4586618, z: 0}
+  m_Size: {x: 1, y: 0.059826694, z: 1}
+  m_Center: {x: 0, y: -0.4702998, z: 0}
 --- !u!208 &5043777905562949571
 NavMeshObstacle:
   m_ObjectHideFlags: 0

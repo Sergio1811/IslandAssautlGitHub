@@ -1016,7 +1016,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.position = new Vector3 (actualNode.worldPosition.x, 8f, actualNode.worldPosition.z);
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
@@ -1050,7 +1050,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                     //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 8f, actualNode.worldPosition.z);
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);

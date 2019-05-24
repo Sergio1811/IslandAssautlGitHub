@@ -80034,13 +80034,28 @@ PrefabInstance:
     - target: {fileID: 2858636337169680343, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: orthographic size
-      value: 45
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: islandGroup
       value: 
       objectReference: {fileID: 1110704537}
+    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: minZoom
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: maxZoom
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: zoomSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683737, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: m_LocalPosition.x

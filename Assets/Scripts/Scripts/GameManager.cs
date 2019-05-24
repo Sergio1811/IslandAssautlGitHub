@@ -1030,8 +1030,8 @@ public class GameManager : MonoBehaviour
                             ChangeTransitable(actualNode, false, 4, 4);
                             break;
                     }
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = new Vector3 (actualNode.worldPosition.x, 8f, actualNode.worldPosition.z);
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.position = new Vector3 (actualNode.worldPosition.x, 7.5f, actualNode.worldPosition.z);
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
@@ -1064,8 +1064,8 @@ public class GameManager : MonoBehaviour
                             ChangeTransitable(actualNode, false, 4, 4);
                             break;
                     }
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 8f, actualNode.worldPosition.z);
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 7.5f, actualNode.worldPosition.z);
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
@@ -1084,7 +1084,7 @@ public class GameManager : MonoBehaviour
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)
                 {
                     objectInstantiation = Instantiate(enemy, islandParent);
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.SetActive(true);
                     actualNode.isTransitable = false;
@@ -1094,7 +1094,7 @@ public class GameManager : MonoBehaviour
                 else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy2)
                 {
                     objectInstantiation = Instantiate(enemy_T2, islandParent);
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY, actualNode.worldPosition.z);
+                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                     objectInstantiation.transform.position = actualNode.worldPosition;
                     objectInstantiation.SetActive(true);
                     actualNode.isTransitable = false;

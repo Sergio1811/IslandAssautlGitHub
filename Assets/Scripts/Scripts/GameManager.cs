@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public float waitToStartTime, initialPanelPositionsTime;
     float waitTimer;
-    bool startGame;
+    public bool startGame;
     public float instantiationHeight;
 
     //Menu entre islas cantidades de recursos

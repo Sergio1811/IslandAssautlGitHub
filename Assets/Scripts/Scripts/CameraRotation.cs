@@ -42,8 +42,9 @@ public class CameraRotation : MonoBehaviour
 
             camera.localRotation = Quaternion.Euler(pitch, yaw, 0);
 
-            if ((zoom < 0 && mainCamera.fieldOfView > minZoom) || (zoom > 0 && mainCamera.fieldOfView < maxZoom))
-                mainCamera.fieldOfView += zoom * zoomSpeed * Time.deltaTime;
+            if ((zoom < 0 && mainCamera.orthographicSize > minZoom) || (zoom > 0 && mainCamera.orthographicSize < maxZoom))
+                //mainCamera.fieldOfView += zoom * zoomSpeed * Time.deltaTime;
+                mainCamera.orthographicSize += zoom * zoomSpeed * Time.deltaTime;
         }
 
     }

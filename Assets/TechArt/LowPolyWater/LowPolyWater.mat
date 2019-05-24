@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: LowPolyWater
   m_Shader: {fileID: 4800000, guid: 62c4b9a8441c640a892d4019d8ae3e42, type: 3}
-  m_ShaderKeywords: _EMISSION _LOWPOLY_ON
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -84,18 +84,18 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LowPoly: 1
+    - _LowPoly: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Opacity: 0.5
+    - _Opacity: 0.803
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _WaveHeight: 5
-    - _WaveSpeed: 0.15
+    - _WaveSpeed: 1.84
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:

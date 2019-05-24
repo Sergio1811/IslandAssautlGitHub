@@ -780,8 +780,17 @@ public class GameManager : MonoBehaviour
             if (enemyTier2)
                 recursoPrincipalCaughtTier2.text = collectedFabrics2.ToString();
 
-            if (collectedFabrics >= fabricNeeded * enemiesByItem)
-                ActivatePortal();
+            if (collectedFabrics >= fabricNeeded)
+            {
+                if (enemyTier2)
+                {
+                    if (collectedFabrics2 >= fabric2Needed)
+                        ActivatePortal();
+                }
+
+                else
+                    ActivatePortal();
+            }
         }
         else
         {

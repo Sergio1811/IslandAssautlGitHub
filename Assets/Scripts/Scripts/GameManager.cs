@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
     public Text timeText;
 
     [HideInInspector] public GameObject player;
+    Movement playerScript;
     GameObject portalExit;
 
     public Grid gridScript;
@@ -166,7 +167,8 @@ public class GameManager : MonoBehaviour
 
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
-        player.SetActive(false);
+        playerScript = player.GetComponent<Movement>();
+        playerScript.enabled = false;
 
         gridScript.GenerateGrid(characterNumber);
 
@@ -182,8 +184,9 @@ public class GameManager : MonoBehaviour
         remainingTimeInLevel = timeByLevel;
 
         InstantiateObjectInGrid();
-        player = PlayerInstantiation();
-        player.SetActive(false);
+
+        player.transform.position = (startNode.worldPosition + (Vector3.up * 3));
+        player.transform.rotation = Quaternion.LookRotation(transform.forward);
 
         switch (characterNumber)
         {
@@ -448,11 +451,8 @@ public class GameManager : MonoBehaviour
                     startGame = true;
 
                     rightPanelSecundaries.SetActive(true);
-
-                    player.transform.position = (startNode.worldPosition + (Vector3.up * 3));
-                    player.transform.rotation = Quaternion.LookRotation(transform.forward);
-
-                    player.SetActive(true);
+                    
+                    playerScript.enabled = true;
                 }
             }
             else if (waitTimer >= waitToStartTime - 0.2f && leftPanel.transform.parent != mainCanvas.transform)
@@ -1194,8 +1194,8 @@ public class GameManager : MonoBehaviour
                 }
                 else if (actualNode.currentType == Node.Type.water)
                 {
-                    objectInstantiation = Instantiate(water, islandParent);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
+                    //objectInstantiation = Instantiate(water, islandParent);
+                    //objectInstantiation.transform.position = actualNode.worldPosition;
                 }
 
             }

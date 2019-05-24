@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7133,14 +7133,27 @@ MonoBehaviour:
   totalEndWoodText: {fileID: 3898891411425252532}
   totalEndRockText: {fileID: 3898891410817867229}
   totalEndFabricText: {fileID: 3898891411922991060}
-  totalEndWoodTextTier2: {fileID: 3898891411221884152}
-  totalEndRockTextTier2: {fileID: 3898891410367980002}
-  totalEndFabricTextTier2: {fileID: 3898891410547816069}
-  totalWoodTier2: {fileID: 3898891411545293431}
-  totalRockTier2: {fileID: 3898891410656497707}
-  totalFabricsTier2: {fileID: 3898891410309282959}
+  totalEndWoodTier2Text: {fileID: 0}
+  totalEndRockTier2Text: {fileID: 0}
+  totalEndFabricTier2Text: {fileID: 0}
+  resultEndCoinsText: {fileID: 0}
+  resultEndWoodText: {fileID: 0}
+  resultEndRocksText: {fileID: 0}
+  resultEndFabricText: {fileID: 0}
+  resultEndWoodTier2Text: {fileID: 0}
+  resultEndRockTier2Text: {fileID: 0}
+  resultEndFabricsTier2Text: {fileID: 0}
+  positiveColor: {r: 0, g: 0, b: 0, a: 0}
+  negativeColor: {r: 0, g: 0, b: 0, a: 0}
+  endCameraPosition: {fileID: 0}
+  mainCamera: {fileID: 0}
+  initialCameraSpeed: 0
+  buttonsArray: []
+  buttonMarket: {fileID: 0}
+  buttonSelectedColor: {r: 0, g: 0, b: 0, a: 0}
   titan: 0
   islandTier2: 0
+  Market: 0
   enemyTier2: 0
   treeTier2: 0
   rockTier2: 0
@@ -18075,7 +18088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &5613600642091864225

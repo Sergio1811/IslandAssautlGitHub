@@ -522,6 +522,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7183280707160121879}
     m_Modifications:
+    - target: {fileID: 100000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
+      propertyPath: m_Name
+      value: Sword_Model
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -578,10 +582,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
-      propertyPath: m_Name
-      value: Sword_Model
-      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -601,6 +601,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7086794555016594153}
     m_Modifications:
+    - target: {fileID: 100000, guid: 73b786d819b059547b8810e8fc18ce75, type: 3}
+      propertyPath: m_Name
+      value: Red_Sword_Model_Testing
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 73b786d819b059547b8810e8fc18ce75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -656,10 +660,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 73b786d819b059547b8810e8fc18ce75, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 73b786d819b059547b8810e8fc18ce75, type: 3}
-      propertyPath: m_Name
-      value: Red_Sword_Model_Testing
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 73b786d819b059547b8810e8fc18ce75, type: 3}
       propertyPath: m_LocalPosition.z

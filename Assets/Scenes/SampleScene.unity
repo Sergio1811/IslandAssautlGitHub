@@ -11402,6 +11402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784672816}
   - component: {fileID: 784672817}
+  - component: {fileID: 784672818}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -11435,6 +11436,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dd7d19ab396d34ea15ead75125edd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &784672818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784672815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &789451486
 GameObject:
   m_ObjectHideFlags: 0
@@ -17463,31 +17477,6 @@ RectTransform:
   m_AnchoredPosition: {x: -23.0999, y: 67}
   m_SizeDelta: {x: 80.4, y: 41.93}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1216059633 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2858636336009683738, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2858636336797822343}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1216059637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216059633}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ebc2eb90b009b418e8298d3d18cb52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  appearSpeed: 10
-  disappearSpeed: 5
-  radius: 12
-  keep: 1
-  objects: []
-  values: []
 --- !u!1 &1217231651
 GameObject:
   m_ObjectHideFlags: 0
@@ -23100,12 +23089,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552405143}
   m_CullTransparentMesh: 0
---- !u!20 &1564031100 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 2858636337169680343, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2858636336797822343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1564475324
 GameObject:
   m_ObjectHideFlags: 0
@@ -25280,6 +25263,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ability: {fileID: 11400000, guid: 7704e88859084344598653b8883cd91f, type: 2}
+--- !u!1 &1738710279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2858636336009683738, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2858636336797822343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1738710281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738710279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1740623183
 GameObject:
   m_ObjectHideFlags: 0
@@ -29981,36 +29993,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CameraAnchor
       objectReference: {fileID: 0}
-    - target: {fileID: 2858636337169680343, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636337169680343, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: orthographic size
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: islandGroup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: minZoom
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: maxZoom
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683736, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: zoomSpeed
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683737, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -30068,24 +30050,114 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: buttonsArray.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: islands.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: objectiveText
+      propertyPath: entreIslasCanvas
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 887935738}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: secondaryObjectiveText
+      propertyPath: abilitiesCanvas
       value: 
-      objectReference: {fileID: 8934052174145751238}
+      objectReference: {fileID: 7146663376544890209}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 8934052174480988392}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipal
+      value: 
+      objectReference: {fileID: 5450777384368000765}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipalTier2
+      value: 
+      objectReference: {fileID: 1536289547}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalRockImage
+      value: 
+      objectReference: {fileID: 3483864409488034402}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalWoodImage
+      value: 
+      objectReference: {fileID: 3483864409969075549}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalFabricImage
+      value: 
+      objectReference: {fileID: 3483864407983831052}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalRockImageTier2
+      value: 
+      objectReference: {fileID: 1217231651}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalWoodImageTier2
+      value: 
+      objectReference: {fileID: 1913543196}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: principalFabricImageTier2
+      value: 
+      objectReference: {fileID: 2101708530}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipalText
+      value: 
+      objectReference: {fileID: 5450777383257017544}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipalTextTier2
+      value: 
+      objectReference: {fileID: 760268770}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: cointsText
+      value: 
+      objectReference: {fileID: 8934052175498798324}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipalCaughtText
+      value: 
+      objectReference: {fileID: 3483864409881176607}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: recursoPrincipalCaughtTier2
+      value: 
+      objectReference: {fileID: 2000024460}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rockSecundary
+      value: 
+      objectReference: {fileID: 439020445}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rockSecundaryTier2
+      value: 
+      objectReference: {fileID: 614278904}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: woodSecundary
+      value: 
+      objectReference: {fileID: 1623238057}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: woodSecundaryTier2
+      value: 
+      objectReference: {fileID: 575953746}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: fabricSecundary
+      value: 
+      objectReference: {fileID: 1987422620}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: fabricSecundaryTier2
+      value: 
+      objectReference: {fileID: 791816290}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: woodText
@@ -30093,9 +30165,19 @@ PrefabInstance:
       objectReference: {fileID: 513192653}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
+      propertyPath: woodTextTier2
+      value: 
+      objectReference: {fileID: 1705045019}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
       propertyPath: rockText
       value: 
       objectReference: {fileID: 8934052173570593926}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rockTextTier2
+      value: 
+      objectReference: {fileID: 2107697143}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: fabricText
@@ -30103,29 +30185,84 @@ PrefabInstance:
       objectReference: {fileID: 1429557919}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: currentCoinsText
+      propertyPath: fabricTextTier2
       value: 
-      objectReference: {fileID: 8934052175498798324}
+      objectReference: {fileID: 1108209462}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: totalCoinsText
+      propertyPath: sworderImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1191428218}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: totalWoodText
+      propertyPath: bomberImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 961416881}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: totalRockText
+      propertyPath: axerImage
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1936146186}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: totalFabricsText
+      propertyPath: bomberTier2Image
       value: 
-      objectReference: {fileID: 8934052173570593926}
+      objectReference: {fileID: 425961462}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: woodObjectiveImage
+      value: 
+      objectReference: {fileID: 1233485822}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rockObjectiveImage
+      value: 
+      objectReference: {fileID: 1711494958}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: timeObjectiveImage
+      value: 
+      objectReference: {fileID: 1729211825}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: fabricObjectiveImage
+      value: 
+      objectReference: {fileID: 404314551}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: livesObjectiveImage
+      value: 
+      objectReference: {fileID: 233806916}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: secondaryObjectiveText
+      value: 
+      objectReference: {fileID: 8934052174145751238}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rightPanel
+      value: 
+      objectReference: {fileID: 1632214828}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: rightPanelSecundaries
+      value: 
+      objectReference: {fileID: 1552405143}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: leftPanel
+      value: 
+      objectReference: {fileID: 8934052174835267613}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: positionRight
+      value: 
+      objectReference: {fileID: 1353654612}
+    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
+        type: 3}
+      propertyPath: positionLeft
+      value: 
+      objectReference: {fileID: 636654526}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: timeText
@@ -30173,221 +30310,6 @@ PrefabInstance:
       objectReference: {fileID: 8934052174518949180}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: woodImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: fabricImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rockImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: sworderImage
-      value: 
-      objectReference: {fileID: 1191428218}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: axerImage
-      value: 
-      objectReference: {fileID: 1936146186}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: bomberImage
-      value: 
-      objectReference: {fileID: 961416881}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipalText
-      value: 
-      objectReference: {fileID: 5450777383257017544}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipalTextTier2
-      value: 
-      objectReference: {fileID: 760268770}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: cointsText
-      value: 
-      objectReference: {fileID: 8934052175498798324}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalRockImage
-      value: 
-      objectReference: {fileID: 3483864409488034402}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipal
-      value: 
-      objectReference: {fileID: 5450777384368000765}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipalTier2
-      value: 
-      objectReference: {fileID: 1536289547}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalWoodImage
-      value: 
-      objectReference: {fileID: 3483864409969075549}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalFabricImage
-      value: 
-      objectReference: {fileID: 3483864407983831052}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalRockImageTier2
-      value: 
-      objectReference: {fileID: 1217231651}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalWoodImageTier2
-      value: 
-      objectReference: {fileID: 1913543196}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: principalFabricImageTier2
-      value: 
-      objectReference: {fileID: 2101708530}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rockSecundary
-      value: 
-      objectReference: {fileID: 439020445}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rockSecundaryTier2
-      value: 
-      objectReference: {fileID: 614278904}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: woodSecundary
-      value: 
-      objectReference: {fileID: 1623238057}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: woodSecundaryTier2
-      value: 
-      objectReference: {fileID: 575953746}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: fabricSecundary
-      value: 
-      objectReference: {fileID: 1987422620}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: fabricSecundaryTier2
-      value: 
-      objectReference: {fileID: 791816290}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: woodTextTier2
-      value: 
-      objectReference: {fileID: 1705045019}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rockTextTier2
-      value: 
-      objectReference: {fileID: 2107697143}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: fabricTextTier2
-      value: 
-      objectReference: {fileID: 1108209462}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rockObjectiveImage
-      value: 
-      objectReference: {fileID: 1711494958}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: woodObjectiveImage
-      value: 
-      objectReference: {fileID: 1233485822}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: fabricObjectiveImage
-      value: 
-      objectReference: {fileID: 404314551}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: timeObjectiveImage
-      value: 
-      objectReference: {fileID: 1729211825}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: livesObjectiveImage
-      value: 
-      objectReference: {fileID: 233806916}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: EntreIslasCanvas
-      value: 
-      objectReference: {fileID: 887935738}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: entreIslasCanvas
-      value: 
-      objectReference: {fileID: 887935738}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: abilitiesCanvas
-      value: 
-      objectReference: {fileID: 7146663376544890209}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: waitToStartTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: instantiationHeight
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rightPanel
-      value: 
-      objectReference: {fileID: 1632214828}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rightPanelSecundaries
-      value: 
-      objectReference: {fileID: 1552405143}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: leftPanel
-      value: 
-      objectReference: {fileID: 8934052174835267613}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: positionRight
-      value: 
-      objectReference: {fileID: 1353654612}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: positionLeft
-      value: 
-      objectReference: {fileID: 636654526}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: initialPanelPositionsTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: speedPanels
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
       propertyPath: abilitesCoinsText
       value: 
       objectReference: {fileID: 1653804211}
@@ -30396,21 +30318,6 @@ PrefabInstance:
       propertyPath: totalEndCoinsText
       value: 
       objectReference: {fileID: 1095796437}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalEndWoodTextTier2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalEndFabricTextTier2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalEndRockTextTier2
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: totalEndWoodText
@@ -30426,172 +30333,6 @@ PrefabInstance:
       propertyPath: totalEndFabricText
       value: 
       objectReference: {fileID: 1153810115}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalFabricsTier2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalWoodTier2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: totalRockTier2
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: tree1x2_T2
-      value: 
-      objectReference: {fileID: 2853597050433466779, guid: abef4a3bf8514154ab409bf811a979b9,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: tree2x2_T2
-      value: 
-      objectReference: {fileID: 2853597050433466779, guid: a770fa9971f8cfc4ca31986c900743ad,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: tree1x1_T2
-      value: 
-      objectReference: {fileID: 2853597050433466779, guid: d4f24d7181314db4b8acf97a26322897,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rock1x2_T2
-      value: 
-      objectReference: {fileID: 8829530387875484065, guid: f4e21f4bb231ca3469554d2654198dff,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rock2x2_T2
-      value: 
-      objectReference: {fileID: 8829530387875484065, guid: dffd1907fb180d5438c38975cb13f0b5,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rock1x1_T2
-      value: 
-      objectReference: {fileID: 8829530387875484065, guid: 9fc08005283c48240ae5fcb9fc8cc47c,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: rock1x2
-      value: 
-      objectReference: {fileID: 8829530387875484065, guid: 013e97e8fd48942479c57185fd1615db,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: mainCanvas
-      value: 
-      objectReference: {fileID: 8934052174480988392}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: enemy_T2
-      value: 
-      objectReference: {fileID: 8798297767836160538, guid: a67f939a40fcd8f4697622c03608b2b1,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: village4x4_T2
-      value: 
-      objectReference: {fileID: 27376118978638002, guid: 58b9ebc4c8d491e4eb37c8b9c570b59c,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: village3x3_T2
-      value: 
-      objectReference: {fileID: 27376118978638002, guid: f95186232d939e147bc9c78a0d5ba1b8,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: village2x2_T2
-      value: 
-      objectReference: {fileID: 27376118978638002, guid: d0bfc755f1fd8714785c7aabd7cae12b,
-        type: 3}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipalCaughtText
-      value: 
-      objectReference: {fileID: 3483864409881176607}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: recursoPrincipalCaughtTier2
-      value: 
-      objectReference: {fileID: 2000024460}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: bomberTier2Image
-      value: 
-      objectReference: {fileID: 425961462}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: endCameraPosition
-      value: 
-      objectReference: {fileID: 1567700715}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1564031100}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: cameraSpeed
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonSelectedColor.r
-      value: 0.972549
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonSelectedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonSelectedColor.b
-      value: 0.81960785
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonSelectedColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonsArray.Array.data[0]
-      value: 
-      objectReference: {fileID: 1077777972}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonsArray.Array.data[1]
-      value: 
-      objectReference: {fileID: 1740623183}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonsArray.Array.data[2]
-      value: 
-      objectReference: {fileID: 186834114}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonExit
-      value: 
-      objectReference: {fileID: 186834114}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: buttonMarket
-      value: 
-      objectReference: {fileID: 2123766582}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: initialCameraSpeed
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: totalEndWoodTier2Text
@@ -30629,9 +30370,9 @@ PrefabInstance:
       objectReference: {fileID: 418752261}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: resultEndFabricsTier2Text
+      propertyPath: resultEndWoodTier2Text
       value: 
-      objectReference: {fileID: 483371220}
+      objectReference: {fileID: 132772599}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
       propertyPath: resultEndRockTier2Text
@@ -30639,55 +30380,36 @@ PrefabInstance:
       objectReference: {fileID: 53937373}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: resultEndWoodTier2Text
+      propertyPath: resultEndFabricsTier2Text
       value: 
-      objectReference: {fileID: 132772599}
+      objectReference: {fileID: 483371220}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: positiveColor.g
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: endCameraPosition
+      value: 
+      objectReference: {fileID: 1567700715}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: positiveColor.b
-      value: 0.39607844
-      objectReference: {fileID: 0}
+      propertyPath: buttonsArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 1077777972}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: positiveColor.a
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: buttonsArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 1740623183}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: negativeColor.r
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: buttonsArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 186834114}
     - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
         type: 3}
-      propertyPath: negativeColor.g
-      value: 0.078431375
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636336009683751, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: negativeColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636337169680342, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636337169680342, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 89.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2858636337169680342, guid: 9bc28d47d458d374bb6ebcd78831f0d8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -82.97
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+      propertyPath: buttonMarket
+      value: 
+      objectReference: {fileID: 2123766582}
+    m_RemovedComponents:
+    - {fileID: 1513487012956318928, guid: 9bc28d47d458d374bb6ebcd78831f0d8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9bc28d47d458d374bb6ebcd78831f0d8, type: 3}
 --- !u!114 &2858636336797822344 stripped
 MonoBehaviour:
@@ -30695,7 +30417,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2858636336797822343}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216059633}
+  m_GameObject: {fileID: 1738710279}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b8d1d4f86b35c640b400683c2862ae4, type: 3}

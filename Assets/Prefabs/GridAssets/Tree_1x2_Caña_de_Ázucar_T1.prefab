@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 2637018906295726032}
   m_Layer: 0
   m_Name: Tree (1)
-  m_TagString: Tree2
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 4262720417389303457}
   - component: {fileID: 3593651400820065493}
   m_Layer: 0
-  m_Name: Tree1x2 T2
+  m_Name: "Tree_1x2_Ca\xF1a_de_\xC1zucar_T1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,12 +275,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8451684093200434082}
-  - {fileID: 1100392185682059618}
+  - {fileID: 1000972340934391399}
   - {fileID: 6544397574323399747}
   m_Father: {fileID: 2448529715266591432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1100392185682459618
+--- !u!1001 &1000972340934520039
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -337,25 +337,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.04233093
+      value: 0.042330924
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.042330943
+      value: 0.042330924
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.04233094
+      value: 0.042330924
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f2eb74c8da59c4143863893a6427003f, type: 2}
+      objectReference: {fileID: 2100000, guid: 1a860934366d80544b124079a34ed3da, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
---- !u!4 &1100392185682059618 stripped
+--- !u!4 &1000972340934391399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06,
     type: 3}
-  m_PrefabInstance: {fileID: 1100392185682459618}
+  m_PrefabInstance: {fileID: 1000972340934520039}
   m_PrefabAsset: {fileID: 0}

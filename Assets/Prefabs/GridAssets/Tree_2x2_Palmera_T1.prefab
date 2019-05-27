@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 4035098502387474433}
   - component: {fileID: 8533950234768685225}
   m_Layer: 0
-  m_Name: Tree2x2
+  m_Name: Tree_2x2_Palmera_T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,14 +624,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.03670456
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: f677651adf780994fbee625722e36336, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 95567592d0e4ec449bdc8a21d8580052, type: 2}
     - target: {fileID: 2300002, guid: f677651adf780994fbee625722e36336, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 21f8c2a9e2bb216469c8bb5645b927f0, type: 2}
+      objectReference: {fileID: 2100000, guid: cfb073a2b2ac1f045aa018160ce9a9c1, type: 2}
+    - target: {fileID: 2300000, guid: f677651adf780994fbee625722e36336, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ebe42a9a658ea84fbe47d23386ae132, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f677651adf780994fbee625722e36336, type: 3}
 --- !u!4 &6545805190496137828 stripped

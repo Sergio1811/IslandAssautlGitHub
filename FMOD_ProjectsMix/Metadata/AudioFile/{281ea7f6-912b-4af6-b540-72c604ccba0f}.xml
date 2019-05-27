@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{281ea7f6-912b-4af6-b540-72c604ccba0f}">
+		<property name="assetPath">
+			<value>Storm_loop.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>180.19265306122449</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{152d0b3e-6b6d-430a-8802-5ba4ab17d5b6}</destination>
+		</relationship>
+	</object>
+</objects>

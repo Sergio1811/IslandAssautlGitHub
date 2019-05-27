@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{0544a8f6-60fb-43d0-b17d-66019c704802}">
+		<property name="assetPath">
+			<value>Strong_Wind.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>43.546122448979595</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{152d0b3e-6b6d-430a-8802-5ba4ab17d5b6}</destination>
+		</relationship>
+	</object>
+</objects>

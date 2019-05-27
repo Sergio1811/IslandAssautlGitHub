@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ad82442d-1f78-4b40-9276-2016fbec2156}">
+		<property name="assetPath">
+			<value>Portal_Sound.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.2046712018140591</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{152d0b3e-6b6d-430a-8802-5ba4ab17d5b6}</destination>
+		</relationship>
+	</object>
+</objects>

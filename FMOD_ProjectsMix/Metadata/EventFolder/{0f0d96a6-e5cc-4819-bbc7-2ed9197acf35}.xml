@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EventFolder" id="{0f0d96a6-e5cc-4819-bbc7-2ed9197acf35}">
+		<property name="name">
+			<value>agafar objectes</value>
+		</property>
+		<relationship name="folder">
+			<destination>{30d013f0-9e24-4784-9125-8834be66e197}</destination>
+		</relationship>
+	</object>
+</objects>

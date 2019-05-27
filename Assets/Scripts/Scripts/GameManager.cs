@@ -389,7 +389,7 @@ public class GameManager : MonoBehaviour
                         selectedButton.GetComponent<Image>().color = buttonSelectedColor;
                         hasMoved = true;
                     }
-                    else if (InputManager.Instance.GetInputDown("Submit"))
+                    else if (InputManager.Instance.GetInputDown("Submit") && entreIslasCanvas.activeSelf)
                         selectedButton.GetComponent<Button>().onClick.Invoke();
                 }
 
@@ -1239,6 +1239,7 @@ public class GameManager : MonoBehaviour
         axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied
 
         rockTier2 = BomberAbilities.rockTier2;
+        enemyTier2 = SwordAbilities.enemyTier2;
 
         titan = CharacterAbiliities.Titan;//applied
         axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
@@ -1281,6 +1282,7 @@ public class GameManager : MonoBehaviour
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
 
         treeTier2 = AxerAbilities.treeTier2;
+        enemyTier2 = SwordAbilities.enemyTier2;
 
         titan = CharacterAbiliities.Titan;//applied
         bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied

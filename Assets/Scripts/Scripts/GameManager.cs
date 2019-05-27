@@ -862,7 +862,7 @@ public class GameManager : MonoBehaviour
                     endNode = actualNode;
                     objectInstantiation = Instantiate(portal, islandParent);
                     ChangeTransitable(actualNode, false, 1, 1);
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 10f, actualNode.worldPosition.z);
                     portalExit = objectInstantiation;
                 }
 

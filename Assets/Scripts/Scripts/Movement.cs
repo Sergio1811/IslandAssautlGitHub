@@ -133,29 +133,29 @@ public class Movement : MonoBehaviour
 
     void WalkTime()
     {
-            Vector3 movement = Vector3.zero;
-            xMovement = InputManager.Instance.GetAxis("Horizontal");
-            zMovement = InputManager.Instance.GetAxis("Vertical");
+        Vector3 movement = Vector3.zero;
+        xMovement = InputManager.Instance.GetAxis("Horizontal");
+        zMovement = InputManager.Instance.GetAxis("Vertical");
 
-            if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
-            {
-                GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
+        if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
+        {
+            GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
 
-                Vector3 forward = cameraAnchor.forward;
-                forward.y = 0;
-                forward.Normalize();
-                Vector3 right = cameraAnchor.right;
-                right.y = 0;
-                right.Normalize();
+            Vector3 forward = cameraAnchor.forward;
+            forward.y = 0;
+            forward.Normalize();
+            Vector3 right = cameraAnchor.right;
+            right.y = 0;
+            right.Normalize();
 
-                movement = forward * zMovement + right * xMovement;
-                transform.localRotation = Quaternion.LookRotation(movement);
-            }
+            movement = forward * zMovement + right * xMovement;
+            transform.localRotation = Quaternion.LookRotation(movement);
+        }
 
-            if (!characterController.isGrounded)
-                movement.y += Physics.gravity.y;
+        if (!characterController.isGrounded)
+            movement.y += Physics.gravity.y;
 
-            characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
+        characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
     }
 
     void Dash()
@@ -406,10 +406,10 @@ public class Movement : MonoBehaviour
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
                 break;
 
-            //case "Chest":
-            //    if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
-            //        PickFabrics(actionObject);
-            //    break;
+                //case "Chest":
+                //    if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
+                //        PickFabrics(actionObject);
+                //    break;
         }
 
         actionOn = false;
@@ -497,8 +497,11 @@ public class Movement : MonoBehaviour
         {
             inmortal = true;
             inmortalTimer = 0;
-            knockDirection = direction;
-            StartCoroutine(KnockBack());
+            if (bomberKnockBack)
+            {
+                knockDirection = direction;
+                StartCoroutine(KnockBack());
+            }
             GameManager.Instance.Damage();
         }
     }

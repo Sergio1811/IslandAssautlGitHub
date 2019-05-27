@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8956093819988479545}
   - component: {fileID: 8697852104805486251}
   m_Layer: 0
-  m_Name: Tree1x1 T2
+  m_Name: Tree_1x1_Arbusto_T2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 663a77a9bd467dd4a971597b11c04706, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f2eb74c8da59c4143863893a6427003f, type: 2}
+      objectReference: {fileID: 2100000, guid: b6f55f214b0eb0f41817734975aeb658, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 663a77a9bd467dd4a971597b11c04706, type: 3}
 --- !u!4 &8855429567948018812 stripped

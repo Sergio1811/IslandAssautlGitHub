@@ -66,7 +66,7 @@ public class ButtonManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Time.timeScale = 1;
+        backMenu.SetActive(false);
 
         MatrixInitialization();
         IconsInitialization();
@@ -88,6 +88,12 @@ public class ButtonManager : MonoBehaviour
 
         UpdateComponents();
         canBuy = false;
+    }
+
+    private void OnDisable()
+    {
+        if (imagesMatrix[arrayPositionX, arrayPositionY] != null)
+            imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childSelectedNumber).gameObject.SetActive(false);
     }
 
 
@@ -491,6 +497,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "maestrodelhacha":
                 AxerAbilities.treeTier2 = true;
+                GameManager.Instance.treeTier2 = true;
                 GameManager.Instance.totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalentemadera":
@@ -519,6 +526,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "artificiero":
                 BomberAbilities.rockTier2 = true;
+                GameManager.Instance.rockTier2 = true;
                 GameManager.Instance.totalEndRockTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalenterocas":
@@ -547,6 +555,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "gladiador":
                 SwordAbilities.enemyTier2 = true;
+                GameManager.Instance.enemyTier2 = true;
                 GameManager.Instance.totalEndFabricTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalenteataque":

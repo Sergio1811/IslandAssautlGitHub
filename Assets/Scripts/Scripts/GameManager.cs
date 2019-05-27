@@ -746,7 +746,6 @@ public class GameManager : MonoBehaviour
 
     public void PickRock(int rockTier)
     {
-        print(rockTier);
         if (rockTier == 1)
             collectedRock += (int)(rockByItem * resourceStoneMultiplier);
         else

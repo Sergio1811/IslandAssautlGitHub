@@ -63,7 +63,7 @@ public class Bomb : MonoBehaviour
             {
                 tree = Instantiate(treePrefab);
                 tree.transform.position = colliders[k].transform.position;
-                tree.transform.position = new Vector3(tree.transform.position.x, 5f, tree.transform.position.z);
+                tree.transform.position = new Vector3(tree.transform.position.x, 7.5f, tree.transform.position.z);
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
@@ -71,7 +71,7 @@ public class Bomb : MonoBehaviour
             {
                 tree = Instantiate(tree2Prefab);
                 tree.transform.position = colliders[k].transform.position;
-                tree.transform.position = new Vector3(tree.transform.position.x, 5f, tree.transform.position.z);
+                tree.transform.position = new Vector3(tree.transform.position.x, 7.5f, tree.transform.position.z);
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 

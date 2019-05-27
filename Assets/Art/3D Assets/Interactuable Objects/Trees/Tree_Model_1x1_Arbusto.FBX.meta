@@ -3,12 +3,19 @@ guid: 663a77a9bd467dd4a971597b11c04706
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Sphere001
+    100002: Sphere002
+    100004: //RootNode
+    400000: Sphere001
+    400002: Sphere002
+    400004: //RootNode
     2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
+    2300000: Sphere001
+    2300002: Sphere002
+    3300000: Sphere001
+    3300002: Sphere002
     4300000: Sphere001
+    4300002: Sphere002
   externalObjects: {}
   materials:
     importMaterials: 1

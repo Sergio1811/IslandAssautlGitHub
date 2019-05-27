@@ -586,7 +586,7 @@ public class GameManager : MonoBehaviour
                 resultEndRockTier2Text.text = "+" + collectedRock2.ToString();
                 resultEndRockTier2Text.color = positiveColor;
             }
-            if (collectedFabrics > 0)
+            if (collectedWood2 > 0)
             {
                 resultEndWoodTier2Text.text = "+" + collectedWood2.ToString();
                 resultEndWoodTier2Text.color = positiveColor;
@@ -737,14 +737,16 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            woodText.text = collectedWood.ToString();
-            if (treeTier2)
+            if(woodTier == 1)
+                woodText.text = collectedWood.ToString();
+            else
                 woodTextTier2.text = collectedWood2.ToString();
         }
     }
 
     public void PickRock(int rockTier)
     {
+        print(rockTier);
         if (rockTier == 1)
             collectedRock += (int)(rockByItem * resourceStoneMultiplier);
         else
@@ -773,8 +775,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            rockText.text = collectedRock.ToString();
-            if (rockTier2)
+            if (rockTier == 1)
+                rockText.text = collectedRock.ToString();
+            else
                 rockTextTier2.text = collectedRock2.ToString();
         }
     }
@@ -809,8 +812,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            fabricText.text = collectedFabrics.ToString();
-            if (enemyTier2)
+            if (fabricTier == 1)
+                fabricText.text = collectedFabrics.ToString();
+            else
                 fabricTextTier2.text = collectedFabrics2.ToString();
         }
     }

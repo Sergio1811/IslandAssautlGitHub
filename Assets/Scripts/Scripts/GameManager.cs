@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
 
         InstantiateObjectInGrid();
 
-        player.transform.position = (startNode.worldPosition + (Vector3.up * 3));
+        player.transform.position = (startNode.worldPosition + (Vector3.up * 4));
         player.transform.rotation = Quaternion.LookRotation(transform.forward);
 
         switch (characterNumber)
@@ -746,7 +746,6 @@ public class GameManager : MonoBehaviour
 
     public void PickRock(int rockTier)
     {
-        print(rockTier);
         if (rockTier == 1)
             collectedRock += (int)(rockByItem * resourceStoneMultiplier);
         else

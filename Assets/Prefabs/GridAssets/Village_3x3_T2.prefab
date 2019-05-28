@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7471853249627815341}
   - component: {fileID: 5570209084582588250}
   m_Layer: 0
-  m_Name: Village3x3 T2
+  m_Name: Village_3x3_T2
   m_TagString: Village
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -898,7 +898,7 @@ PrefabInstance:
     - target: {fileID: 2300002, guid: d1ecf3959a5388043a149fb2724a0250, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f2eb74c8da59c4143863893a6427003f, type: 2}
+      objectReference: {fileID: 2100000, guid: 490fb929abbd9a24ca3bfb9e4cd8a457, type: 2}
     - target: {fileID: 2300000, guid: d1ecf3959a5388043a149fb2724a0250, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

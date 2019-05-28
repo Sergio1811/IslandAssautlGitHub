@@ -4,11 +4,44 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: BODY
+    100004: Bone002
+    100006: Bone003
+    100008: Bone005
+    100010: Bone006
+    100012: Bone008
+    100014: Bone009
+    100016: Bone011
+    100018: Bone012
+    100020: Bone014
+    100022: Bone015
+    100024: Left_Arm
+    100026: Left_Food
+    100028: Right_Arm
+    100030: Right_Food
+    100032: Torso_Head
     400000: //RootNode
+    400002: BODY
+    400004: Bone002
+    400006: Bone003
+    400008: Bone005
+    400010: Bone006
+    400012: Bone008
+    400014: Bone009
+    400016: Bone011
+    400018: Bone012
+    400020: Bone014
+    400022: Bone015
+    400024: Left_Arm
+    400026: Left_Food
+    400028: Right_Arm
+    400030: Right_Food
+    400032: Torso_Head
     2100000: No Name
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: REDB
+    4300000: BODY
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: BODY
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -61,8 +94,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -89,7 +122,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

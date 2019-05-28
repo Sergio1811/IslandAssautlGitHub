@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7471853249627815341}
   - component: {fileID: 5424523639980170698}
   m_Layer: 0
-  m_Name: Village2x2
+  m_Name: Village_2x2_T1
   m_TagString: Village
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -674,7 +674,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e26e9fdc223589e41a19f4b9249c96e0, type: 2}
+      objectReference: {fileID: 2100000, guid: c049ba879b5c7a34f8784b26f6a0a1db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
 --- !u!1 &7989992004797065286 stripped

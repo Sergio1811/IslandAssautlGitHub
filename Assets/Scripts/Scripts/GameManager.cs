@@ -1319,9 +1319,9 @@ public class GameManager : MonoBehaviour
     public void ButtonNextIsland()
     {
         if (islandTier2)
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         else
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
     }
 
     public void ButtonQuit()

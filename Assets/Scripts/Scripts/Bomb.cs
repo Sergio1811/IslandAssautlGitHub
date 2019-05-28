@@ -77,7 +77,7 @@ public class Bomb : MonoBehaviour
 
             if (colliders[k].tag == "Player")
             {
-                player.GetComponent<Movement>().Damage(player.transform.forward - transform.position.normalized);
+                player.GetComponent<Movement>().Damage(player.transform.forward - transform.position.normalized, false);
             }
         }
 

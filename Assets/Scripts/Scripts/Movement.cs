@@ -491,11 +491,11 @@ public class Movement : MonoBehaviour
             CutTree(other.transform.parent.gameObject, 2);
     }
 
-    public void Damage(Vector3 direction)
+    public void Damage(Vector3 direction, bool changeInmortal) //changeInmortal para decidir si te da unos segundos de invulnerabilidad, la bomba no te los da
     {
         if (!inmortal)
         {
-            inmortal = true;
+            inmortal = changeInmortal;
             inmortalTimer = 0;
             if (bomberKnockBack)
             {

@@ -206,7 +206,7 @@ public class EnemyScript : MonoBehaviour
         if (attackTimer >= attackCoolDown)
         {
             attackTimer = 0;
-            player.GetComponent<Movement>().Damage(transform.forward);
+            player.GetComponent<Movement>().Damage(transform.forward, true);
             //player.SendMessage("Damage");
             //GameManager.Instance.Damage();
         }

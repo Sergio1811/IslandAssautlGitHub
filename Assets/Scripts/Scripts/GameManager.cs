@@ -413,6 +413,7 @@ public class GameManager : MonoBehaviour
             if (remainingTimeInLevel <= 0f)
             {
                 //EndLevel();
+                livesNumber = 0;
                 EndProtoLevel();
                 remainingTimeInLevel = timeByLevel;
             }

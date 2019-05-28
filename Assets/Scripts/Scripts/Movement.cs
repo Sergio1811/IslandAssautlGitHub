@@ -201,8 +201,8 @@ public class Movement : MonoBehaviour
             lastActionButtonReleased = false;
 
             Ray ray = new Ray(transform.position, transform.forward);
-            Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
-            Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
+            Ray ray2 = new Ray(transform.position + transform.right * 2f, transform.forward);
+            Ray ray3 = new Ray(transform.position - transform.right * 2f, transform.forward);
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
             {
@@ -621,9 +621,9 @@ public class Movement : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.forward * hitDistance);
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position + transform.right * 1.5f, transform.forward * hitDistance);
+        Gizmos.DrawRay(transform.position + transform.right * 2f, transform.forward * hitDistance);
         Gizmos.color = Color.blue;
-        Gizmos.DrawRay(transform.position - transform.right * 1.5f, transform.forward * hitDistance);
+        Gizmos.DrawRay(transform.position - transform.right * 2f, transform.forward * hitDistance);
 
     }
 }

@@ -164,7 +164,10 @@ public class GameManager : MonoBehaviour
 
 
         RandomCharacter();
+    }
 
+    void Start()
+    {
         //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
         playerScript = player.GetComponent<Movement>();
@@ -173,10 +176,8 @@ public class GameManager : MonoBehaviour
         gridScript.GenerateGrid(characterNumber);
 
         cameraAnchor = mainCamera.transform.parent.gameObject;
-    }
 
-    void Start()
-    {
+
         entreIslasCanvas.SetActive(false);
         abilitiesCanvas.SetActive(false);
 

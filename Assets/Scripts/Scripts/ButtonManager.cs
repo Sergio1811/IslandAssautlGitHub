@@ -586,6 +586,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "explorador":
                 CharacterAbiliities.islandTier2 = true;
+                GameManager.Instance.islandTier2 = true;
                 break;
             case "titan":
                 CharacterAbiliities.Titan = true;

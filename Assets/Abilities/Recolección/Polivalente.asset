@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Polivalente
   m_EditorClassIdentifier: 
   nameAbility: POLIVALENTE
-  description: Puedes recoger todos los recursos con el hacha pero te cansas.
+  description: Puedes recoger todos los recursos con el hacha.
   price: 50
   materialNeeded: 0
   materialType: 0

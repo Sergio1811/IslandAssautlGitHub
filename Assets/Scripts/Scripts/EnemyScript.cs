@@ -27,8 +27,8 @@ public class EnemyScript : MonoBehaviour
     Vector3 goingPos;
     Vector3 initialPos;
 
+    public Renderer myRenderer;
     Material initMat;
-    Renderer myRenderer;
     public Material attackMat;
 
     
@@ -69,7 +69,6 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         initialPos = new Vector3(transform.position.x, 0, transform.position.z);
 
-        myRenderer = transform.GetChild(0).GetChild(0).GetChild(2).GetComponent<Renderer>();
         initMat = myRenderer.material;
 
         iniSpeed = agent.speed;

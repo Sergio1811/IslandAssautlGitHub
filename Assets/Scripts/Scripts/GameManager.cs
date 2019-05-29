@@ -12,121 +12,18 @@ public class GameManager : MonoBehaviour
     public GameObject pickerPrefab;
     public GameObject acerPrefab;
     public GameObject sworderPrefab;
+
     public GameObject entreIslasCanvas;
     public GameObject abilitiesCanvas;
     public GameObject mainCanvas;
 
-    int characterNumber;
-
-    int woodInMap = 0;
-    int rockInMap = 0;
-    int fabricInMap = 0;
-    int wood2InMap = 0;
-    int rock2InMap = 0;
-    int fabric2InMap = 0;
-
-    int woodNeeded;
-    int rockNeeded;
-    int fabricNeeded;
-    int wood2Needed;
-    int rock2Needed;
-    int fabric2Needed;
-    public string[] secondaryObjectives;
-
-    public int rockByItem;
-    public int woodByItem;
-    public int enemiesByItem;
-
-    [HideInInspector] public int collectedWood = 0;
-    [HideInInspector] public int collectedRock = 0;
-    [HideInInspector] public int collectedFabrics = 0;
-    [HideInInspector] public int collectedWood2 = 0;
-    [HideInInspector] public int collectedRock2 = 0;
-    [HideInInspector] public int collectedFabrics2 = 0;
-
-    [HideInInspector] public int currentCoins = 0;
-    [HideInInspector] public static int totalCoins = 0;
-    [HideInInspector] public static int totalWood = 0;
-    [HideInInspector] public static int totalRock = 0;
-    [HideInInspector] public static int totalFabrics = 0;
-    [HideInInspector] public static int totalWood2 = 0;
-    [HideInInspector] public static int totalRock2 = 0;
-    [HideInInspector] public static int totalFabrics2 = 0;
-
-    public GameObject recursoPrincipal, recursoPrincipalTier2;
-    public GameObject principalRockImage, principalWoodImage, principalFabricImage;
-    public GameObject principalRockImageTier2, principalWoodImageTier2, principalFabricImageTier2;
-    public Text recursoPrincipalText, recursoPrincipalTextTier2, cointsText, recursoPrincipalCaughtText, recursoPrincipalCaughtTier2;
-
-    public GameObject rockSecundary, rockSecundaryTier2, woodSecundary, woodSecundaryTier2, fabricSecundary, fabricSecundaryTier2;
-    public Text woodText, woodTextTier2, rockText, rockTextTier2, fabricText, fabricTextTier2;
-
-    public Image sworderImage, bomberImage, axerImage, bomberTier2Image;
-    public GameObject woodObjectiveImage, rockObjectiveImage, timeObjectiveImage, fabricObjectiveImage, livesObjectiveImage;
-    public Text secondaryObjectiveText;
-    GameObject[] objectiveImage;
-
-    public GameObject rightPanel, rightPanelSecundaries, leftPanel;
-    public Transform positionRight, positionLeft;
-    public float speedPanels;
-    float initialSpeedPanels;
-
-    public float timeByLevel;
-    private float remainingTimeInLevel;
-    public Text timeText;
-
+    [HideInInspector] public int characterNumber;
     [HideInInspector] public GameObject player;
     Movement playerScript;
-    GameObject portalExit;
-
-    public Grid gridScript;
-    public GameObject tree1x1, tree2x2, tree1x2, enemy, rock1x1, rock2x2, rock1x2, village2x2, village3x3, village4x4, portal, water;
-    public GameObject tree1x1_T2, tree2x2_T2, tree1x2_T2, enemy_T2, rock1x1_T2, rock2x2_T2, rock1x2_T2, village2x2_T2, village3x3_T2, village4x4_T2;
-    public GameObject decoration1x1, decoration1x2, decoration1x3, decoration1x4, decoration2x2, decoration2x3, decoration2x4;
-
-    Node startNode, endNode;
-    int protoIsland;
-    public GameObject[] islands;
-    Transform islandParent;
-
     public GameObject livesGroup;
     int livesNumber, initialLiveNumber;
 
-    int secondaryObjectiveID;
-
-
-    List<MeshRenderer> meshList = new List<MeshRenderer>();
-
-    public float waitToStartTime, initialPanelPositionsTime;
-    float waitTimer;
-    public bool startGame;
-    public float instantiationHeight;
-
-    //Menu entre islas cantidades de recursos
-    public Text abilitesCoinsText;
-    public Text totalEndCoinsText, totalEndWoodText, totalEndRockText, totalEndFabricText, totalEndWoodTier2Text, totalEndRockTier2Text, totalEndFabricTier2Text;
-    public Text resultEndCoinsText, resultEndWoodText, resultEndRocksText, resultEndFabricText, resultEndWoodTier2Text, resultEndRockTier2Text, resultEndFabricsTier2Text;
-    public Color positiveColor, negativeColor;
-
-    bool portalActivated = false;
-
-    bool movingCamera;
-    public GameObject endCameraPosition;
-    public Camera mainCamera;
-    public float initialCameraSpeed;
-    float cameraSpeed;
-    GameObject cameraAnchor;
-
-    public GameObject[] buttonsArray;
-    public GameObject buttonMarket;
-    int menuArrayNumber;
-    public Color buttonSelectedColor;
-    GameObject selectedButton;
-    bool hasMoved, movementOn;
-    float timerMovement;
-    int numberOfButtons;
-
-    #region
+    #region Player abilities varibles
     [HideInInspector]
     public bool titan = false;//applied
     [HideInInspector]
@@ -145,13 +42,189 @@ public class GameManager : MonoBehaviour
     public bool rockTier2 = false;
     #endregion
 
+    public Grid gridScript;
+    int protoIsland;
+    public GameObject[] islands;
+    [HideInInspector] public Node startNode, endNode;
+    [HideInInspector] public GameObject portalExit;
+    bool portalActivated = false;
+
+    #region Number of main resources in island variables
+
+    [HideInInspector] public int woodInMap = 0;
+    [HideInInspector] public int rockInMap = 0;
+    [HideInInspector] public int fabricInMap = 0;
+    [HideInInspector] public int wood2InMap = 0;
+    [HideInInspector] public int rock2InMap = 0;
+    [HideInInspector] public int fabric2InMap = 0;
+
+    #endregion
+    #region Number of resources needed variables
+
+    [HideInInspector] public int woodNeeded;
+    [HideInInspector] public int rockNeeded;
+    [HideInInspector] public int fabricNeeded;
+    [HideInInspector] public int wood2Needed;
+    [HideInInspector] public int rock2Needed;
+    [HideInInspector] public int fabric2Needed;
+
+    string[] secondaryObjectives;
+    #endregion
+
+    public int rockByItem;
+    public int woodByItem;
+    public int enemiesByItem;
+
+    #region Collected resources in island variables
+
+    [HideInInspector] public int currentCoins = 0;
+    [HideInInspector] public int collectedWood = 0;
+    [HideInInspector] public int collectedRock = 0;
+    [HideInInspector] public int collectedFabrics = 0;
+    [HideInInspector] public int collectedWood2 = 0;
+    [HideInInspector] public int collectedRock2 = 0;
+    [HideInInspector] public int collectedFabrics2 = 0;
+
+    #endregion
+    #region Total resources variables
+
+    [HideInInspector] public static int totalCoins = 0;
+    [HideInInspector] public static int totalWood = 0;
+    [HideInInspector] public static int totalRock = 0;
+    [HideInInspector] public static int totalFabrics = 0;
+    [HideInInspector] public static int totalWood2 = 0;
+    [HideInInspector] public static int totalRock2 = 0;
+    [HideInInspector] public static int totalFabrics2 = 0;
+
+    #endregion
+
     static int lastCharacter = -1;
     static List<int> last5Characters = new List<int>();
-
     static int lastIsland = -1;
     static List<int> lastIslandList = new List<int>();
 
+    public float timeByLevel;
+    private float remainingTimeInLevel;
+    public Text timeText;
+    public float waitToStartTime, initialPanelPositionsTime;
+    float waitTimer;
+    public bool startGame;
     bool gameOver = false;
+
+    bool movingCamera;
+    public GameObject endCameraPosition;
+    public Camera mainCamera;
+    public float initialCameraSpeed;
+    float cameraSpeed;
+    GameObject cameraAnchor;
+
+
+    //MAIN CANVAS
+    public GameObject recursoPrincipal;
+    public GameObject recursoPrincipalTier2;
+
+    #region Main resource panel images
+
+    public GameObject principalRockImage;
+    public GameObject principalWoodImage;
+    public GameObject principalFabricImage;
+    public GameObject principalRockImageTier2;
+    public GameObject principalWoodImageTier2;
+    public GameObject principalFabricImageTier2;
+
+    #endregion
+    #region Main resource panel texts
+
+    public Text recursoPrincipalText;
+    public Text recursoPrincipalTextTier2;
+    public Text cointsText;
+    public Text recursoPrincipalCaughtText;
+    public Text recursoPrincipalCaughtTier2;
+
+    #endregion
+
+    #region Secudary resources panel images
+
+    public GameObject rockSecundary;
+    public GameObject rockSecundaryTier2;
+    public GameObject woodSecundary;
+    public GameObject woodSecundaryTier2;
+    public GameObject fabricSecundary;
+    public GameObject fabricSecundaryTier2;
+
+    #endregion
+    #region Secundary resources panel texts
+
+    public Text woodText;
+    public Text woodTextTier2;
+    public Text rockText;
+    public Text rockTextTier2;
+    public Text fabricText;
+    public Text fabricTextTier2;
+
+    #endregion
+
+    public Image sworderImage;
+    public Image bomberImage;
+    public Image axerImage;
+    public Image bomberTier2Image;
+
+    #region Secundary objective images
+
+    public GameObject woodObjectiveImage;
+    public GameObject rockObjectiveImage;
+    public GameObject timeObjectiveImage;
+    public GameObject fabricObjectiveImage;
+    public GameObject livesObjectiveImage;
+
+    #endregion
+
+    public Text secondaryObjectiveText;
+    GameObject[] objectiveImage;
+    int secondaryObjectiveID;
+
+    public GameObject rightPanel;
+    public GameObject rightPanelSecundaries;
+    public GameObject leftPanel;
+    public Transform positionRight, positionLeft;
+    public float speedPanels;
+    float initialSpeedPanels;
+
+
+    //BETWEEN ISLANDS MENU
+    public Text abilitesCoinsText;
+    public Color positiveColor, negativeColor;
+
+    #region Total resources text
+
+    public Text totalEndCoinsText;
+    public Text totalEndWoodText;
+    public Text totalEndRockText;
+    public Text totalEndFabricText;
+    public Text totalEndWoodTier2Text;
+    public Text totalEndRockTier2Text;
+    public Text totalEndFabricTier2Text;
+
+    #endregion
+    #region Result resources text
+    public Text resultEndCoinsText;
+    public Text resultEndWoodText;
+    public Text resultEndRocksText;
+    public Text resultEndFabricText;
+    public Text resultEndWoodTier2Text;
+    public Text resultEndRockTier2Text;
+    public Text resultEndFabricsTier2Text;
+    #endregion
+
+    public GameObject[] buttonsArray;
+    public GameObject buttonMarket;
+    int menuArrayNumber;
+    public Color buttonSelectedColor;
+    GameObject selectedButton;
+    bool hasMoved, movementOn;
+    float timerMovement;
+    int numberOfButtons;
+
 
     private void Awake()
     {
@@ -160,35 +233,155 @@ public class GameManager : MonoBehaviour
 
         RandomIsland();
         islands[protoIsland].SetActive(true);
-        islandParent = islands[protoIsland].transform.GetChild(0);
+        gridScript.islandParent = islands[protoIsland].transform.GetChild(0);
+        islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
 
+        remainingTimeInLevel = timeByLevel;
+        initialSpeedPanels = speedPanels;
+        cameraAnchor = mainCamera.transform.parent.gameObject;
+
+        entreIslasCanvas.SetActive(false);
+        abilitiesCanvas.SetActive(false);
 
         RandomCharacter();
     }
 
     void Start()
     {
-        //characterNumber = 2; // -> 0 para solo leñadores, 1 para solo bombers, 2 para solo sworders
         player = PlayerInstantiation();
         playerScript = player.GetComponent<Movement>();
         playerScript.enabled = false;
 
         gridScript.GenerateGrid(characterNumber);
 
-        cameraAnchor = mainCamera.transform.parent.gameObject;
-
-
-        entreIslasCanvas.SetActive(false);
-        abilitiesCanvas.SetActive(false);
-
-        islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
-        remainingTimeInLevel = timeByLevel;
-
-        InstantiateObjectInGrid();
-
         player.transform.position = (startNode.worldPosition + (Vector3.up * 4));
         player.transform.rotation = Quaternion.LookRotation(transform.forward);
+        PlayerInitialization();
+        LivesInitialization();
+        SecundaryObjectivesInitialization();
+    }
 
+    void Update()
+    {
+        if (startGame)
+        {
+            if (!gameOver)
+            {
+                remainingTimeInLevel -= Time.deltaTime;
+
+                if (Input.GetKeyDown(KeyCode.N))
+                    EndProtoLevel();
+
+                timeText.text = remainingTimeInLevel.ToString("0");
+
+                if (remainingTimeInLevel <= 0f)
+                {
+                    livesNumber = 0;
+                    EndProtoLevel();
+                    remainingTimeInLevel = timeByLevel;
+                }
+            }
+            else if (movingCamera)
+                UpdateEndCameraPosition();
+            else
+                UpdateBetweenIslandMenuButtons();
+
+
+            if (Input.GetKeyDown(KeyCode.R))
+                SaveManager.Instance.ResetSaving();
+
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                totalCoins += 500;
+                SaveManager.Instance.Save();
+                totalEndCoinsText.text = totalCoins.ToString();
+                abilitesCoinsText.text = totalCoins.ToString();
+                gameOver = true;
+            }
+        }
+        else
+            UpdateWaitTimerToStart();
+    }
+
+
+
+    //RANDOMIZE METHODS
+
+    void RandomIsland()
+    {
+        protoIsland = Random.Range(0, islands.Length);
+
+        while (protoIsland == lastIsland)
+            protoIsland = Random.Range(0, islands.Length);
+
+        lastIsland = protoIsland;
+    }
+
+    void RandomCharacter()
+    {
+        if (last5Characters.Count == 4)
+        {
+            if (!last5Characters.Contains(0)) characterNumber = 0;
+            else if (!last5Characters.Contains(1)) characterNumber = 1;
+            else if (!last5Characters.Contains(2)) characterNumber = 2;
+
+            else
+            {
+                characterNumber = Random.Range(0, 3);
+
+                while (characterNumber == lastCharacter)
+                    characterNumber = Random.Range(0, 3);
+            }
+
+            last5Characters.RemoveAt(0);
+        }
+
+        else
+        {
+            characterNumber = Random.Range(0, 3);
+
+            while (characterNumber == lastCharacter)
+                characterNumber = Random.Range(0, 3);
+        }
+
+        last5Characters.Add(characterNumber);
+        lastCharacter = characterNumber;
+    }
+
+    int RandomSecondaryObjective()
+    {
+        return Random.Range(0, secondaryObjectives.Length);
+    }
+
+
+
+    //INITIALIZATION METHODS
+
+    public GameObject PlayerInstantiation()
+    {
+        GameObject p = null;
+
+        switch (characterNumber)
+        {
+            case 0:
+                p = Instantiate(acerPrefab);
+                ApplyAxerAbilities(p);
+                break;
+            case 1:
+                p = Instantiate(pickerPrefab);
+                ApplyBomberAbilities(p);
+                break;
+            case 2:
+                p = Instantiate(sworderPrefab);
+                ApplySwordAbilities(p);
+                break;
+        }
+
+        return p;
+    }
+
+    void PlayerInitialization()
+    {
         switch (characterNumber)
         {
             case 0:
@@ -267,12 +460,19 @@ public class GameManager : MonoBehaviour
                 sworderImage.enabled = true;
                 break;
         }
+    }
+
+    void LivesInitialization()
+    {
         if (titan)
             livesNumber++;
         for (int i = 0; i < livesNumber; i++)
             livesGroup.transform.GetChild(i).gameObject.SetActive(true);
         initialLiveNumber = livesNumber;
+    }
 
+    void SecundaryObjectivesInitialization()
+    {
         secondaryObjectives = new string[4];
         objectiveImage = new GameObject[4];
         secondaryObjectives[0] = "20s";
@@ -301,249 +501,165 @@ public class GameManager : MonoBehaviour
         secondaryObjectiveID = RandomSecondaryObjective();
         objectiveImage[secondaryObjectiveID].SetActive(true);
         secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
-
-        initialSpeedPanels = speedPanels;
     }
 
-    void Update()
+
+
+    //UPDATE METHODS
+    
+    void UpdateWaitTimerToStart()
     {
-        if (startGame)
+        waitTimer += Time.deltaTime;
+
+        if (waitTimer >= waitToStartTime)
         {
-            if (!gameOver) remainingTimeInLevel -= Time.deltaTime;
+            if (speedPanels > initialSpeedPanels / 4)
+                speedPanels -= Time.deltaTime * initialSpeedPanels / 3f;
+            rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * 1.5f * Time.deltaTime);
+            leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
 
-            else if (movingCamera)
+            if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
+                GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
             {
-                if (cameraSpeed > initialCameraSpeed / 5)
-                    cameraSpeed -= Time.deltaTime * initialCameraSpeed / 2f;
+                waitTimer = 0;
+                startGame = true;
 
-                mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
-                mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f);
+                rightPanelSecundaries.SetActive(true);
 
-                cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
-                entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.5f);
-                if (mainCamera.orthographicSize < 80)
-                    mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
+                playerScript.enabled = true;
+            }
+        }
+        else if (waitTimer >= waitToStartTime - 0.2f && leftPanel.transform.parent != mainCanvas.transform)
+        {
+            leftPanel.transform.SetParent(mainCanvas.transform);
+            rightPanel.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.UpperRight;
+        }
+    }
+
+    void UpdateEndCameraPosition()
+    {
+        if (cameraSpeed > initialCameraSpeed / 5)
+            cameraSpeed -= Time.deltaTime * initialCameraSpeed / 2f;
+
+        mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
+        mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f);
+
+        cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
+        entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.5f);
+        if (mainCamera.orthographicSize < 80)
+            mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
 
 
-                if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
-                {
-                    movingCamera = false;
+        if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
+        {
+            movingCamera = false;
+            menuArrayNumber = 0;
+            selectedButton = buttonsArray[0];
+            selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+            numberOfButtons = buttonsArray.Length - 1;
+        }
+    }
+
+    void UpdateBetweenIslandMenuButtons()
+    {
+        cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
+
+        float horizontal = InputManager.Instance.GetAxis("Horizontal");
+        float vertical = InputManager.Instance.GetAxis("Vertical");
+
+        if (!hasMoved)
+        {
+            if (vertical < -0.2f)
+            {
+                menuArrayNumber++;
+                selectedButton.GetComponent<Image>().color = Color.white;
+
+                if (menuArrayNumber > numberOfButtons)
                     menuArrayNumber = 0;
-                    selectedButton = buttonsArray[0];
-                    selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                    numberOfButtons = buttonsArray.Length - 1;
-                }
+
+                if (menuArrayNumber == numberOfButtons && Market)
+                    selectedButton = buttonMarket;
+                else
+                    selectedButton = buttonsArray[menuArrayNumber];
+
+                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                hasMoved = true;
             }
-            else
+            else if (vertical > 0.2f)
             {
-                cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
+                menuArrayNumber--;
+                selectedButton.GetComponent<Image>().color = Color.white;
 
+                if (menuArrayNumber < 0)
+                    menuArrayNumber = numberOfButtons;
 
-                float horizontal = InputManager.Instance.GetAxis("Horizontal");
-                float vertical = InputManager.Instance.GetAxis("Vertical");
+                if (menuArrayNumber == numberOfButtons && Market)
+                    selectedButton = buttonMarket;
+                else
+                    selectedButton = buttonsArray[menuArrayNumber];
 
-                if (!hasMoved)
-                {
-                    if (vertical < -0.2f)
-                    {
-                        menuArrayNumber++;
-                        selectedButton.GetComponent<Image>().color = Color.white;
-
-                        if (menuArrayNumber > numberOfButtons)
-                            menuArrayNumber = 0;
-
-                        if (menuArrayNumber == numberOfButtons && Market)
-                            selectedButton = buttonMarket;
-                        else
-                            selectedButton = buttonsArray[menuArrayNumber];
-
-                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                        hasMoved = true;
-                    }
-                    else if (vertical > 0.2f)
-                    {
-                        menuArrayNumber--;
-                        selectedButton.GetComponent<Image>().color = Color.white;
-
-                        if (menuArrayNumber < 0)
-                            menuArrayNumber = numberOfButtons;
-
-                        if (menuArrayNumber == numberOfButtons && Market)
-                            selectedButton = buttonMarket;
-                        else
-                            selectedButton = buttonsArray[menuArrayNumber];
-
-                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                        hasMoved = true;
-                    }
-                    else if (horizontal > 0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonsArray[menuArrayNumber] && Market)
-                    {
-                        selectedButton.GetComponent<Image>().color = Color.white;
-                        selectedButton = buttonsArray[menuArrayNumber];
-                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                        hasMoved = true;
-                    }
-                    else if (horizontal < -0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && Market)
-                    {
-                        selectedButton.GetComponent<Image>().color = Color.white;
-                        selectedButton = buttonMarket;
-                        selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                        hasMoved = true;
-                    }
-                    else if (InputManager.Instance.GetInputDown("Submit") && entreIslasCanvas.activeSelf)
-                        selectedButton.GetComponent<Button>().onClick.Invoke();
-                }
-
-                if (hasMoved)
-                    movementOn = true;
-
-                if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
-                {
-                    hasMoved = false;
-                    timerMovement = 0;
-                    movementOn = false;
-                }
-
-                if (movementOn)
-                    timerMovement += Time.deltaTime;
+                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                hasMoved = true;
             }
-
-            timeText.text = remainingTimeInLevel.ToString("0");
-
-            if (remainingTimeInLevel <= 0f)
+            else if (horizontal > 0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonsArray[menuArrayNumber] && Market)
             {
-                //EndLevel();
-                livesNumber = 0;
-                EndProtoLevel();
-                remainingTimeInLevel = timeByLevel;
+                selectedButton.GetComponent<Image>().color = Color.white;
+                selectedButton = buttonsArray[menuArrayNumber];
+                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                hasMoved = true;
             }
-
-            if (Input.GetKeyDown(KeyCode.N))
-                EndProtoLevel();
-
-            if (Input.GetKeyDown(KeyCode.R))
-                SaveManager.Instance.ResetSaving();
-
-            if (Input.GetKeyDown(KeyCode.M))
+            else if (horizontal < -0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && Market)
             {
-                totalCoins += 500;
-                SaveManager.Instance.Save();
-                totalEndCoinsText.text = totalCoins.ToString();
-                abilitesCoinsText.text = totalCoins.ToString();
-                gameOver = true;
+                selectedButton.GetComponent<Image>().color = Color.white;
+                selectedButton = buttonMarket;
+                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                hasMoved = true;
             }
+            else if (InputManager.Instance.GetInputDown("Submit") && entreIslasCanvas.activeSelf)
+                selectedButton.GetComponent<Button>().onClick.Invoke();
         }
-        else
+
+        if (hasMoved)
+            movementOn = true;
+
+        if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
         {
-
-            waitTimer += Time.deltaTime;
-
-            if (waitTimer >= waitToStartTime)
-            {
-                if (speedPanels > initialSpeedPanels / 4)
-                    speedPanels -= Time.deltaTime * initialSpeedPanels / 3f;
-                rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * 1.5f * Time.deltaTime);
-                leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
-
-                if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
-                    GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
-                //if (rightPanel.transform.position == positionRight.transform.position && leftPanel.transform.position == positionLeft.transform.position)
-                {
-                    waitTimer = 0;
-                    startGame = true;
-
-                    rightPanelSecundaries.SetActive(true);
-                    
-                    playerScript.enabled = true;
-                }
-            }
-            else if (waitTimer >= waitToStartTime - 0.2f && leftPanel.transform.parent != mainCanvas.transform)
-            {
-                leftPanel.transform.SetParent(mainCanvas.transform);
-                rightPanel.GetComponent<VerticalLayoutGroup>().childAlignment = UnityEngine.TextAnchor.UpperRight;
-            }
-
+            hasMoved = false;
+            timerMovement = 0;
+            movementOn = false;
         }
+
+        if (movementOn)
+            timerMovement += Time.deltaTime;
     }
 
-    void RandomIsland()
+
+
+    //END LEVEL METHODS
+    
+    public void LevelComplete()
     {
-        protoIsland = Random.Range(0, islands.Length);
-
-        while(protoIsland == lastIsland)
-        {
-            protoIsland = Random.Range(0, islands.Length);
-        }
-
-        lastIsland = protoIsland;
+        if (CheckSecondaryObjective()) totalCoins += 50;
+        EndProtoLevel();
     }
 
-    void RandomCharacter()
+    bool CheckSecondaryObjective()
     {
-        if (last5Characters.Count == 4)
-        {
-            if (!last5Characters.Contains(0)) characterNumber = 0;
-            else if (!last5Characters.Contains(1)) characterNumber = 1;
-            else if (!last5Characters.Contains(2)) characterNumber = 2;
-
-            else
-            {
-                characterNumber = Random.Range(0, 3);
-
-                while (characterNumber == lastCharacter)
-                {
-                    characterNumber = Random.Range(0, 3);
-
-                }
-            }
-
-            last5Characters.RemoveAt(0);
-        }
-
-        else
-        {
-            characterNumber = Random.Range(0, 3);
-
-            while (characterNumber == lastCharacter)
-            {
-                characterNumber = Random.Range(0, 3);
-
-            }
-        }
-
-        last5Characters.Add(characterNumber);
-        lastCharacter = characterNumber;
-    }
-
-    public GameObject PlayerInstantiation()
-    {
-        GameObject p = null;
-
-        switch (characterNumber)
+        switch (secondaryObjectiveID)
         {
             case 0:
-                p = Instantiate(acerPrefab);
-                ApplyAxerAbilities(p);
-                break;
+                return remainingTimeInLevel >= 20.0f;
             case 1:
-                p = Instantiate(pickerPrefab);
-                ApplyBomberAbilities(p);
-                break;
+                return remainingTimeInLevel >= 10.0f;
             case 2:
-                p = Instantiate(sworderPrefab);
-                ApplySwordAbilities(p);
-                break;
+                if (characterNumber == 0) return collectedWood >= 70 * woodInMap / 100;
+                else if (characterNumber == 1) return collectedRock >= 70 * rockInMap / 100;
+                else return collectedFabrics >= 70 * fabricInMap / 100;
+            case 3:
+                return livesNumber == initialLiveNumber;
+            default:
+                return false;
         }
-
-        return p;
-    }
-
-
-
-    public void EndLevel()
-    {
-        Destroy(player);
-        player = PlayerInstantiation();
     }
 
     public void EndProtoLevel()
@@ -665,7 +781,6 @@ public class GameManager : MonoBehaviour
 
         currentCoins = 0;
 
-        meshList.Clear();
         SaveManager.Instance.Save();
 
 
@@ -707,6 +822,9 @@ public class GameManager : MonoBehaviour
     }
 
 
+
+    //PICK RESOURCES METHODS
+
     public void PickWood(int woodTier)
     {
         if (woodTier == 1)
@@ -739,7 +857,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if(woodTier == 1)
+            if (woodTier == 1)
                 woodText.text = collectedWood.ToString();
             else
                 woodTextTier2.text = collectedWood2.ToString();
@@ -820,414 +938,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Damage()
-    {
-        if (!gameOver)
-        {
-            livesNumber--;
-            livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
-
-            if (livesNumber <= 0)
-                EndProtoLevel();
-        }
-    }
 
 
-    public void ActivatePortal()
-    {
-        portalExit.transform.GetChild(0).gameObject.SetActive(false);
-        portalExit.transform.GetChild(1).gameObject.SetActive(true);
-        portalActivated = true;
-    }
-
-    public void LevelComplete()
-    {
-        if (CheckSecondaryObjective()) totalCoins += 50;
-        EndProtoLevel();
-    }
-
-    void InstantiateObjectInGrid()
-    {
-        GameObject objectInstantiation;
-
-        for (int i = gridScript.grid.GetLength(0) - 1; i >= 0; i--)
-        {
-            for (int j = gridScript.grid.GetLength(1) - 1; j >= 0; j--)
-            {
-                Node actualNode = gridScript.grid[i, j];
-
-                if (actualNode.isTransitable && actualNode.currentType == Node.Type.entry)
-                {
-                    startNode = actualNode;
-                    actualNode.isTransitable = false;
-                }
-
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.exit)
-                {
-                    endNode = actualNode;
-                    objectInstantiation = Instantiate(portal, islandParent);
-                    ChangeTransitable(actualNode, false, 1, 1);
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 10f, actualNode.worldPosition.z);
-                    portalExit = objectInstantiation;
-                }
-
-                //TREES T1
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.tree)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s1x1:
-                            objectInstantiation = Instantiate(tree1x1, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 1);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                        case Node.Size.s1x2:
-                            objectInstantiation = Instantiate(tree1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s2x1:
-                            objectInstantiation = Instantiate(tree1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(tree2x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                    }
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    woodInMap += woodByItem;
-                    //woodNeeded += 1;
-                }
-
-                //TREES T2
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.tree2)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s1x1:
-                            objectInstantiation = Instantiate(tree1x1_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 1);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                        case Node.Size.s1x2:
-                            objectInstantiation = Instantiate(tree1x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s2x1:
-                            objectInstantiation = Instantiate(tree1x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(tree2x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                    }
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    wood2InMap += woodByItem;
-                    //woodNeeded += 1;
-                }
-
-                //ROCKS T1
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.rock)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s1x1:
-                            objectInstantiation = Instantiate(rock1x1, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 1);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                        case Node.Size.s1x2:
-                            objectInstantiation = Instantiate(rock1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s2x1:
-                            objectInstantiation = Instantiate(rock1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(rock2x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                    }
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    rockInMap += rockByItem;
-                    //rockNeeded += 1;
-
-
-                }
-
-                //ROCKS T2
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.rock2)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s1x1:
-                            objectInstantiation = Instantiate(rock1x1_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 1);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                        case Node.Size.s1x2:
-                            objectInstantiation = Instantiate(rock1x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s2x1:
-                            objectInstantiation = Instantiate(rock1x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(rock2x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, Random.Range(0, 360), 0);
-                            break;
-                    }
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    rock2InMap += rockByItem;
-                    //rockNeeded += 1;
-                }
-
-                //VILLAGES T1
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s2x2:
-                            objectInstantiation = Instantiate(village2x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            break;
-                        case Node.Size.s3x3:
-                            objectInstantiation = Instantiate(village3x3, islandParent);
-                            ChangeTransitable(actualNode, false, 3, 3);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(village4x4, islandParent);
-                            ChangeTransitable(actualNode, false, 4, 4);
-                            break;
-                    }
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = new Vector3 (actualNode.worldPosition.x, 7.75f, actualNode.worldPosition.z);
-                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
-                    GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
-                    enemiesGroup.SetActive(true);
-                    if (characterNumber == 0)
-                    {
-                        for (int k = 0; k < enemiesGroup.transform.childCount; k++)
-                        {
-                            enemiesGroup.transform.GetChild(k).GetComponent<EnemyScript>().lives = 3;
-                        }
-                    }
-                    //enemiesNeeded += 1;
-                    fabricInMap += enemiesByItem;
-                }
-
-                //VILLAGES T2
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.village2)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s2x2:
-                            objectInstantiation = Instantiate(village2x2_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            break;
-                        case Node.Size.s3x3:
-                            objectInstantiation = Instantiate(village3x3_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 3, 3);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(village4x4_T2, islandParent);
-                            ChangeTransitable(actualNode, false, 4, 4);
-                            break;
-                    }
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, 7.75f, actualNode.worldPosition.z);
-                    objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
-                    GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
-                    enemiesGroup.SetActive(true);
-                    if (characterNumber == 0)
-                    {
-                        for (int k = 0; k < enemiesGroup.transform.childCount; k++)
-                        {
-                            enemiesGroup.transform.GetChild(k).GetComponent<EnemyScript>().lives = 3;
-                        }
-                    }
-                    //enemiesNeeded += 1;
-                    fabric2InMap += enemiesByItem;
-                }
-
-                //ENEMIES T1
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy)
-                {
-                    objectInstantiation = Instantiate(enemy, islandParent);
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.SetActive(true);
-                    actualNode.isTransitable = false;
-                }
-
-                //ENEMIES T2
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.enemy2)
-                {
-                    objectInstantiation = Instantiate(enemy_T2, islandParent);
-                    //objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                    objectInstantiation.transform.position = actualNode.worldPosition;
-                    objectInstantiation.SetActive(true);
-                    actualNode.isTransitable = false;
-                }
-
-                else if (actualNode.isTransitable && actualNode.currentType == Node.Type.decoration)
-                {
-                    switch (actualNode.currentSize)
-                    {
-                        case Node.Size.s1x2:
-                            objectInstantiation = Instantiate(decoration1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 2);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.25f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s2x1:
-                            objectInstantiation = Instantiate(decoration1x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        case Node.Size.s1x3:
-                            objectInstantiation = Instantiate(decoration1x3, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 3);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.5f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s3x1:
-                            objectInstantiation = Instantiate(decoration1x3, islandParent);
-                            ChangeTransitable(actualNode, false, 3, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        case Node.Size.s1x4:
-                            objectInstantiation = Instantiate(decoration1x4, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 4);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(0, 0, -0.75f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s4x1:
-                            objectInstantiation = Instantiate(decoration1x4, islandParent);
-                            ChangeTransitable(actualNode, false, 4, 1);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        case Node.Size.s2x2:
-                            objectInstantiation = Instantiate(decoration2x2, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 2);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
-                            break;
-                        case Node.Size.s2x3:
-                            objectInstantiation = Instantiate(decoration2x3, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 3);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(-0.25f, 0, -0.5f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s3x2:
-                            objectInstantiation = Instantiate(decoration2x3, islandParent);
-                            ChangeTransitable(actualNode, false, 3, 2);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        case Node.Size.s2x4:
-                            objectInstantiation = Instantiate(decoration2x4, islandParent);
-                            ChangeTransitable(actualNode, false, 2, 4);
-                            objectInstantiation.transform.GetChild(0).localPosition = new Vector3(-0.25f, 0, -0.75f);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90, 0);
-                            else
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, -90, 0);
-                            break;
-                        case Node.Size.s4x2:
-                            objectInstantiation = Instantiate(decoration2x4, islandParent);
-                            ChangeTransitable(actualNode, false, 4, 2);
-                            if (Random.Range(0, 2) == 1)
-                                objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 180, 0);
-                            break;
-                        default:
-                            objectInstantiation = Instantiate(decoration1x1, islandParent);
-                            ChangeTransitable(actualNode, false, 1, 1);
-                            objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
-                            break;
-                    }
-                    objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
-                }
-                else if (actualNode.currentType == Node.Type.water)
-                {
-                    //objectInstantiation = Instantiate(water, islandParent);
-                    //objectInstantiation.transform.position = actualNode.worldPosition;
-                }
-
-            }
-        }
-    }
-
-    void AddMeshes(GameObject o)
-    {
-        MeshRenderer[] meshesToAdd = o.GetComponent<meshesArray>().meshArray;
-
-        for (int i = 0; i < meshesToAdd.Length; i++)
-        {
-            meshList.Add(meshesToAdd[i]);
-        }
-    }
-
-
-    void ChangeTransitable(Node nodeToChange, bool _isTransitable, int sizeX, int sizeY)
-    {
-        for (int i = 0; i < sizeX; i++)
-        {
-            for (int j = 0; j < sizeY; j++)
-            {
-                gridScript.grid[nodeToChange.gridPositionX - i, nodeToChange.gridPositionY - j].isTransitable = _isTransitable;
-            }
-        }
-    }
+    //ABILITIES METHODS
 
     void ApplyAxerAbilities(GameObject charac)
     {
@@ -1294,29 +1007,9 @@ public class GameManager : MonoBehaviour
         goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
     }
 
-    int RandomSecondaryObjective()
-    {
-        return Random.Range(0, secondaryObjectives.Length);
-    }
 
-    bool CheckSecondaryObjective()
-    {
-        switch (secondaryObjectiveID)
-        {
-            case 0:
-                return remainingTimeInLevel >= 20.0f;
-            case 1:
-                return remainingTimeInLevel >= 10.0f;
-            case 2:
-                if (characterNumber == 0) return collectedWood >= 70 * woodInMap / 100;
-                else if (characterNumber == 1) return collectedRock >= 70 * rockInMap / 100;
-                else return collectedFabrics >= 70 * fabricInMap / 100;
-            case 3:
-                return livesNumber == initialLiveNumber;
-            default:
-                return false;
-        }
-    }
+
+    //BUTTON METHODS
 
     public void ButtonNextIsland()
     {
@@ -1331,6 +1024,28 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+
+
+    //OTHER METHODS
+
+    public void Damage()
+    {
+        if (!gameOver)
+        {
+            livesNumber--;
+            livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
+
+            if (livesNumber <= 0)
+                EndProtoLevel();
+        }
+    }
+
+    public void ActivatePortal()
+    {
+        portalExit.transform.GetChild(0).gameObject.SetActive(false);
+        portalExit.transform.GetChild(1).gameObject.SetActive(true);
+        portalActivated = true;
+    }
 
     private float GetSqrDistanceXZToPosition(Vector3 initialPosition, Vector3 finalPosition)
     {

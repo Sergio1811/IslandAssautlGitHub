@@ -8,14 +8,16 @@ public class Grid : MonoBehaviour
     public int size_x;
     public int size_y;
     public float node_size;
-    [HideInInspector]
-    public Node[,] grid;
+    [HideInInspector] public Node[,] grid;
 
     public int minPrimaryPers, maxPrimaryPers;
     public int minSecundaryPers, maxSecundaryPers;
     int numberOfFloor;
 
     Node entryNode;
+
+    public ObjectsInstantiation instantiationScript;
+    [HideInInspector] public Transform islandParent;
 
 
     public void GenerateGrid(int characterType)
@@ -74,6 +76,9 @@ public class Grid : MonoBehaviour
                 AssaignDecoration(randomNumber);
                 break;
         }
+
+        instantiationScript.islandParent = islandParent;
+        instantiationScript.InstantiateObjectInGrid();
     }
 
 
@@ -262,8 +267,8 @@ public class Grid : MonoBehaviour
     {
         int smallVillages = Random.Range(10 * (cellsNumber / 4) / 100, 20 * (cellsNumber / 4) / 100);
         cellsNumber -= smallVillages * 4;
-
-        int mediumVillages = Random.Range(10 * (cellsNumber / 9) / 100, 20 * (cellsNumber / 9) / 100);
+        
+        int mediumVillages = Random.Range(30 * (cellsNumber / 9) / 100,  50 * (cellsNumber / 9) / 100);
         cellsNumber -= mediumVillages * 9;
 
         int bigVillages = cellsNumber / 16;

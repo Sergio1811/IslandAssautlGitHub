@@ -20149,8 +20149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToComplete: 40
   radius: 500
-  startAngle: 0
-  degreesToRotate: 180
+  speed: 0.008
+  startMinimumAngle: 0
+  startMaximumAngle: 3
 --- !u!114 &767404579903353143
 MonoBehaviour:
   m_ObjectHideFlags: 0

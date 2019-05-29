@@ -6,21 +6,20 @@ public class LightMovement : MonoBehaviour
 {
     public float timeToComplete;
     public float radius;
-    float speed;
-    public float startAngle;
+    public float speed;
+    public float startMinimumAngle;
+    public float startMaximumAngle;
     float currentAngle;
-    public float degreesToRotate;
     float timer = 0;
 
     void Start()
     {
-        currentAngle = startAngle;
+        currentAngle = Random.Range(startMinimumAngle, startMaximumAngle);
 
         transform.position = new Vector3(radius * Mathf.Cos(currentAngle), radius * Mathf.Sin(currentAngle), transform.position.z);
 
         transform.LookAt(Vector3.zero);
-
-        speed = (Mathf.Deg2Rad * degreesToRotate) / timeToComplete;
+        
     }
 
     void Update()
@@ -31,7 +30,6 @@ public class LightMovement : MonoBehaviour
                 timer += Time.deltaTime;
 
                 currentAngle += Time.deltaTime * speed;
-
                 transform.position = new Vector3(radius * Mathf.Cos(currentAngle), radius * Mathf.Sin(currentAngle), transform.position.z);
 
                 transform.LookAt(Vector3.zero);

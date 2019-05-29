@@ -74,8 +74,12 @@ public class Movement : MonoBehaviour
     float iniPressedTime;
     float iniBombTime;
 
+    [Header("ParticleSystem")]
     public GameObject psWood;
-    //public GameObject psRock;
+    public GameObject psBombPickUp;
+    public GameObject psMagicPoof;
+    public GameObject psSand;
+    public GameObject psSwordSlash;
 
     void Start()
     {

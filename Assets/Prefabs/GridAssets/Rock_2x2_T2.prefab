@@ -27,8 +27,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20.447863, y: 22.13829, z: 18.915033}
-  m_Center: {x: -0.40821406, y: 0.5706032, z: 9.45752}
+  m_Size: {x: 21.706089, y: 25.014256, z: 17.836555}
+  m_Center: {x: -0.3183408, y: 0.57060426, z: 9.996758}
 --- !u!1 &3806215038219618819
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +394,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3806215038219618831}
     m_Modifications:
+    - target: {fileID: 100000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
+      propertyPath: m_Name
+      value: Rock_Model_2x2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
+      propertyPath: m_TagString
+      value: Rock2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02
@@ -449,14 +457,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.04574034
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
-      propertyPath: m_Name
-      value: Rock_Model_2x2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
-      propertyPath: m_TagString
-      value: Rock2
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
       propertyPath: m_Materials.Array.data[0]

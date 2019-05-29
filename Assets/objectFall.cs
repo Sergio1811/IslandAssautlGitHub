@@ -37,6 +37,8 @@ public class objectFall : MonoBehaviour
         if (collision.gameObject.tag == "IslandCollision")
         {
             moving = false;
+            Destroy(myRigidbody);
+            this.enabled = false;
         }
     }
 }

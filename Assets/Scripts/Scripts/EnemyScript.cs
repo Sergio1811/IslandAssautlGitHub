@@ -47,6 +47,9 @@ public class EnemyScript : MonoBehaviour
     float iniAcc;
     float knokBackIniDisctance;
 
+    public GameObject psStun1;
+    public GameObject psStun2;
+
     void Start()
     {
         if (patroler)

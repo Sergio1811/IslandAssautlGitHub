@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 1323551531209791827}
   - component: {fileID: 5505174655097418352}
   - component: {fileID: 4421477409617885656}
+  - component: {fileID: 6147500878718705954}
   m_Layer: 0
   m_Name: Sworder
   m_TagString: Player
@@ -274,6 +275,10 @@ MonoBehaviour:
   bootsMovementSpeed: 1
   dashActive: 0
   psWood: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
+  psBombPickUp: {fileID: 0}
+  psMagicPoof: {fileID: 0}
+  psSand: {fileID: 0}
+  psSwordSlash: {fileID: 0}
 --- !u!143 &4421477409617885656
 CharacterController:
   m_ObjectHideFlags: 0
@@ -292,6 +297,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6147500878718705954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6686073746894510971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea62de1ab83289d4885d12b32eb2b80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 40
 --- !u!1 &8381953846118866657
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,6 +520,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7086794555016594153}
     m_Modifications:
+    - target: {fileID: 100000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
+      propertyPath: m_Name
+      value: Base_Model_Body
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -558,10 +580,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
-      propertyPath: m_Name
-      value: Base_Model_Body
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -593,6 +611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7183280707160121879}
     m_Modifications:
+    - target: {fileID: 100000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
+      propertyPath: m_Name
+      value: Sword_Model
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -648,10 +670,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
-      propertyPath: m_Name
-      value: Sword_Model
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 706b8b58253733b42bf94c369eb24fa6, type: 3}
       propertyPath: m_Materials.Array.data[0]

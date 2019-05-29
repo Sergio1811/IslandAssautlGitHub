@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2600837555911353101}
   - component: {fileID: 2600837555911353096}
   - component: {fileID: 3225420765675762107}
+  - component: {fileID: 151268595733840805}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Player
@@ -122,6 +123,10 @@ MonoBehaviour:
   bootsMovementSpeed: 1
   dashActive: 0
   psWood: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
+  psBombPickUp: {fileID: 0}
+  psMagicPoof: {fileID: 0}
+  psSand: {fileID: 0}
+  psSwordSlash: {fileID: 0}
 --- !u!143 &3225420765675762107
 CharacterController:
   m_ObjectHideFlags: 0
@@ -140,6 +145,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &151268595733840805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600837555911353107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea62de1ab83289d4885d12b32eb2b80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallSpeed: 40
 --- !u!1 &6540230597882652778
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +550,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2098623441860676298}
     m_Modifications:
+    - target: {fileID: 100000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
+      propertyPath: m_Name
+      value: Base_Model_Body
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -587,10 +609,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
-      propertyPath: m_Name
-      value: Base_Model_Body
       objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 125ef027b7809fa4891936151d0fdfb6, type: 3}
       propertyPath: m_Materials.Array.data[0]

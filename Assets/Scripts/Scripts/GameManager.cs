@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
 
         gridScript.GenerateGrid(characterNumber);
 
-        player.transform.position = (startNode.worldPosition + (Vector3.up * 4));
+        player.transform.position = (startNode.worldPosition + (Vector3.up * 100));
         player.transform.rotation = Quaternion.LookRotation(transform.forward);
         PlayerInitialization();
         LivesInitialization();

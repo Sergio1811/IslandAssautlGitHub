@@ -407,6 +407,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8113825480262361266}
     m_Modifications:
+    - target: {fileID: 100066, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
+      propertyPath: m_Name
+      value: Sword_Character_Animated
+      objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -463,18 +467,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 100066, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
-      propertyPath: m_Name
-      value: Sword_Character_Animated
-      objectReference: {fileID: 0}
-    - target: {fileID: 13700000, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d4783269fccd25b47ac54449111f7ce6, type: 2}
     - target: {fileID: 9500000, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
+    - target: {fileID: 13700000, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d4783269fccd25b47ac54449111f7ce6, type: 2}
+    - target: {fileID: 13700004, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c33a0c4511284a949aaff4350686047c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c8e2d067c63b1748b7dc342db6cb196, type: 3}
 --- !u!4 &442517417055356455 stripped

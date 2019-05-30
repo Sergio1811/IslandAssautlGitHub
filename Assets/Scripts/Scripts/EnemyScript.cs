@@ -27,7 +27,6 @@ public class EnemyScript : MonoBehaviour
     Vector3 goingPos;
     Vector3 initialPos;
 
-    public Renderer myRenderer;
     Material initMat;
     public Material attackMat;
 
@@ -83,8 +82,6 @@ public class EnemyScript : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         initialPos = new Vector3(transform.position.x, 0, transform.position.z);
 
-        initMat = myRenderer.material;
-
         iniSpeed = agent.speed;
         iniAngSpeed = agent.angularSpeed;
         iniAcc = agent.acceleration;
@@ -133,8 +130,6 @@ public class EnemyScript : MonoBehaviour
                         attackTimer = 0;
                         currentState = state.attack; myAnimator.SetBool("Move", false);
                         myAnimator.transform.localPosition = originalAnimationPosition;
-                        if (attackMat != null) myRenderer.material = attackMat;
-                        else print("No attack material attached in inspector");
                         break;
                     }
 
@@ -150,7 +145,6 @@ public class EnemyScript : MonoBehaviour
                     {
                         currentState = state.chase; myAnimator.SetBool("Move", true);
                         myAnimator.transform.localPosition = originalAnimationPosition;
-                        myRenderer.material = initMat;
                         break;
                     }
 

@@ -50,7 +50,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject psStun;
     public GameObject psDamage;
-    Vector3 psOffset = new Vector3(0, 2, 0);
+    Vector3 psOffset = new Vector3(0, 4, 0);
 
     void Start()
     {

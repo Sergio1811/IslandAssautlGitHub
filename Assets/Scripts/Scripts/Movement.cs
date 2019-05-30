@@ -423,7 +423,7 @@ public class Movement : MonoBehaviour
         }
         else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
         {
-            Instantiate(psClickTextEffect, this.transform.position+ new Vector3 (0,2,0), Quaternion.identity);
+            Instantiate(psClickTextEffect, this.transform.position+ new Vector3 (0,4,0), Quaternion.identity);
             bomb.SendMessage("Explode");
             bombOn = false;
             actionSphere.fillAmount = 0;

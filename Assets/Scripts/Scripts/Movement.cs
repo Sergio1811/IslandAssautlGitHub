@@ -87,6 +87,7 @@ public class Movement : MonoBehaviour
     float currentTrialTimer = 0;
 
     public Animator myAnimator;
+    Vector3 originalAnimationPosition;
 
     void Start()
     {
@@ -105,6 +106,8 @@ public class Movement : MonoBehaviour
             hitDistance *= hitDistanceUpgradeMultiplier;
         //if (actualType == playerType.pick && bombTier2)
         //change bomb to C4
+
+        originalAnimationPosition = myAnimator.transform.localPosition;
     }
 
     void Update()
@@ -160,6 +163,7 @@ public class Movement : MonoBehaviour
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
             myAnimator.SetBool("Move", true);
+            myAnimator.transform.localPosition = originalAnimationPosition;
             GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
 
             Vector3 forward = cameraAnchor.forward;
@@ -174,7 +178,10 @@ public class Movement : MonoBehaviour
         }
 
         else
+        {
             myAnimator.SetBool("Move", false);
+            myAnimator.transform.localPosition = originalAnimationPosition;
+        }
 
         if (!characterController.isGrounded)
             movement.y += Physics.gravity.y;
@@ -244,6 +251,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -252,6 +260,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -262,6 +271,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -270,6 +280,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -287,6 +298,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
@@ -295,6 +307,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
                         }
@@ -310,6 +323,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 4;
                             actionOn = true;
                         }
@@ -317,6 +331,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -327,6 +342,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -334,6 +350,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
+                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }

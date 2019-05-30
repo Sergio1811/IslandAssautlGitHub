@@ -32,7 +32,8 @@ public class EnemyScript : MonoBehaviour
     public Material attackMat;
 
     public Animator myAnimator;
-    
+    Vector3 originalAnimationPosition;
+
     float iniSpeed;
     float iniAngSpeed;
     float stunnedTimer = 0;
@@ -50,10 +51,12 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject psStun;
     public GameObject psDamage;
-    Vector3 psOffset = new Vector3 (0,2,0);
+    Vector3 psOffset = new Vector3(0, 2, 0);
 
     void Start()
     {
+        originalAnimationPosition = myAnimator.transform.localPosition;
+
         if (patroler)
         {
             availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
@@ -100,6 +103,7 @@ public class EnemyScript : MonoBehaviour
                     {
                         goingPos = player.transform.position;
                         currentState = state.chase; myAnimator.SetBool("Move", true);
+                        myAnimator.transform.localPosition = originalAnimationPosition;
                         break;
                     }
 
@@ -111,8 +115,16 @@ public class EnemyScript : MonoBehaviour
                 case state.chase:
                     if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
-                        if (patroler) { currentState = state.patrol; myAnimator.SetBool("Move", true); }
-                        else currentState = state.stay; myAnimator.SetBool("Move", false);
+                        if (patroler)
+                        {
+                            currentState = state.patrol; myAnimator.SetBool("Move", true);
+                            myAnimator.transform.localPosition = originalAnimationPosition;
+                        }
+                        else
+                        {
+                            currentState = state.stay; myAnimator.SetBool("Move", false);
+                            myAnimator.transform.localPosition = originalAnimationPosition;
+                        }
                         break;
                     }
 
@@ -120,6 +132,7 @@ public class EnemyScript : MonoBehaviour
                     {
                         attackTimer = 0;
                         currentState = state.attack; myAnimator.SetBool("Move", false);
+                        myAnimator.transform.localPosition = originalAnimationPosition;
                         if (attackMat != null) myRenderer.material = attackMat;
                         else print("No attack material attached in inspector");
                         break;
@@ -131,11 +144,12 @@ public class EnemyScript : MonoBehaviour
                     break;
 
                 case state.attack:
-                    transform.LookAt(new Vector3 (player.transform.position.x, transform.position.y, player.transform.position.z));
+                    transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
                     if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
                     {
                         currentState = state.chase; myAnimator.SetBool("Move", true);
+                        myAnimator.transform.localPosition = originalAnimationPosition;
                         myRenderer.material = initMat;
                         break;
                     }
@@ -226,12 +240,13 @@ public class EnemyScript : MonoBehaviour
     public void Stun()
     {
         myAnimator.SetBool("Stay", true);
+        myAnimator.transform.localPosition = originalAnimationPosition;
         agent.speed = 0;
         agent.angularSpeed = 0;
         canAttack = false;
         stunned = true;
         stunnedTimer = 0;
-        Instantiate(psStun, this.transform.position +psOffset, Quaternion.identity);
+        Instantiate(psStun, this.transform.position + psOffset, Quaternion.identity);
     }
 
     public void OffStun()
@@ -241,11 +256,13 @@ public class EnemyScript : MonoBehaviour
         canAttack = true;
         stunned = false;
         myAnimator.SetBool("Stay", false);
+        myAnimator.transform.localPosition = originalAnimationPosition;
     }
 
     IEnumerator KnockBack()
     {
         myAnimator.SetBool("Stay", true);
+        myAnimator.transform.localPosition = originalAnimationPosition;
         knockBack = true;
         agent.speed = iniSpeed * 1.5f;
         agent.angularSpeed = 0;//Keeps the enemy facing forwad rther than spinning
@@ -262,6 +279,7 @@ public class EnemyScript : MonoBehaviour
         agent.baseOffset = 0;
         knockBackDistance = knokBackIniDisctance;
         myAnimator.SetBool("Stay", false);
+        myAnimator.transform.localPosition = originalAnimationPosition;
     }
 
     public void KnockBackActivated(Transform bomb)
@@ -281,9 +299,9 @@ public class EnemyScript : MonoBehaviour
 
     public void GetAttacked(Transform player, bool knockBack)
     {
-        Instantiate(psDamage, this.transform.position+psOffset, Quaternion.identity);
+        Instantiate(psDamage, this.transform.position + psOffset, Quaternion.identity);
         lives--;
-        if(knockBack)
+        if (knockBack)
         {
             KnockBackActivated(player);
             knockBackDistance *= 0.5f;

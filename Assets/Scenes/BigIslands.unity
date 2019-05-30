@@ -9480,6 +9480,7 @@ MonoBehaviour:
     type: 3}
   entreIslasCanvas: {fileID: 767404580687989129}
   abilitiesCanvas: {fileID: 7604418266903537170}
+  marketCanvas: {fileID: 767404580672808187}
   mainCanvas: {fileID: 8167981029621515163}
   characterNumber: 0
   player: {fileID: 0}

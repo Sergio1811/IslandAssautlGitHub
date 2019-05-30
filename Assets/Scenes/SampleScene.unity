@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44824654, g: 0.49827242, b: 0.5755816, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824642, g: 0.4982723, b: 0.57558155, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24641,6 +24641,7 @@ MonoBehaviour:
     type: 3}
   entreIslasCanvas: {fileID: 887935738}
   abilitiesCanvas: {fileID: 7146663376544890209}
+  marketCanvas: {fileID: 872693640}
   mainCanvas: {fileID: 8934052174480988392}
   characterNumber: 0
   player: {fileID: 0}
@@ -56620,7 +56621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135.315, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &8934052174992916594

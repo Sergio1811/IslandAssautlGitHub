@@ -9163,6 +9163,7 @@ GameObject:
   - component: {fileID: 1506516892398043456}
   - component: {fileID: 2805305498813047677}
   - component: {fileID: 4199517089962324034}
+  - component: {fileID: 2715353326062794179}
   m_Layer: 0
   m_Name: ImpactSand
   m_TagString: Untagged
@@ -9179,7 +9180,7 @@ Transform:
   m_GameObject: {fileID: 8474962619035826573}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.874014, y: 59.650013, z: -55.583244}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 3973500058665792262}
   - {fileID: 8372990276256201711}
@@ -13748,3 +13749,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2715353326062794179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8474962619035826573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaa1c85a02486a41af0e9b3e6e74e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 1

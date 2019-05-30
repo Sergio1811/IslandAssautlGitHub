@@ -254,7 +254,7 @@ MonoBehaviour:
   psWood: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
   psBombPutDown: {fileID: 79530551279959240, guid: 9b9c27bc34b296b46aa0986865c16402,
     type: 3}
-  psMagicPoof: {fileID: 6005799397695837422, guid: db2582c2a2436ac4ead7c6f7bbb07401,
+  psMagicPoof: {fileID: 8474962619035826573, guid: 07c25ccb43c174146af41056af73c910,
     type: 3}
   psSand: {fileID: 8474962619035826573, guid: 07c25ccb43c174146af41056af73c910, type: 3}
   psSwordSlash: {fileID: 5943428990349555738, guid: f2c8ba076339a2b48a1a16aa8a95a969,
@@ -380,10 +380,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Axe_Character_Animated
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
     - target: {fileID: 400002, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -444,14 +440,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 189960dbc729fcb4098d02b381e3d5d9, type: 2}
-    - target: {fileID: 13700002, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 2100000, guid: 4af5e6363aee42240a52740d5c17487a, type: 2}
+      objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
     - target: {fileID: 13700000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6f1efe2d329dd8b449845caa5334d4c5, type: 2}
+    - target: {fileID: 13700002, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4af5e6363aee42240a52740d5c17487a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
 --- !u!4 &2450371816866972469 stripped

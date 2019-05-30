@@ -23215,6 +23215,7 @@ GameObject:
   - component: {fileID: 550673304037460561}
   - component: {fileID: 5055545251798488721}
   - component: {fileID: 6615722927829745369}
+  - component: {fileID: 1031958651048129009}
   m_Layer: 0
   m_Name: MagicPoof
   m_TagString: FxTemporaire
@@ -23231,7 +23232,7 @@ Transform:
   m_GameObject: {fileID: 6005799397695837422}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -14.12, y: 64.27, z: -54.17}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 4222596034742700292}
   - {fileID: 6295010995099001890}
@@ -27826,6 +27827,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1031958651048129009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005799397695837422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaa1c85a02486a41af0e9b3e6e74e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 2
 --- !u!1 &6195733211196898952
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1520370553476515707}
   - component: {fileID: 8459824323941170460}
   - component: {fileID: 6122839946284184262}
+  - component: {fileID: 8359639806905275301}
   m_Layer: 0
   m_Name: ClickTextEffect
   m_TagString: FxTemporaire
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1602641490626352832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.837252, y: 60.51, z: -49.9655}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4410145101828173816}
   - {fileID: 2891653755873730447}
@@ -4614,6 +4615,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &8359639806905275301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602641490626352832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eaa1c85a02486a41af0e9b3e6e74e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seconds: 2
 --- !u!1 &7049415581288222500
 GameObject:
   m_ObjectHideFlags: 0

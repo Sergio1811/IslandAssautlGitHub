@@ -397,6 +397,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 22634832424691056}
     m_Modifications:
+    - target: {fileID: 100000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
+      propertyPath: m_Name
+      value: Dec_2x2_Tiki_Treasure_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.009
@@ -452,14 +460,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalScale.z
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
-      propertyPath: m_Name
-      value: Dec_2x2_Tiki_Treasure_Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_Materials.Array.data[0]

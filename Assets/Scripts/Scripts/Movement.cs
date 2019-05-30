@@ -282,11 +282,12 @@ public class Movement : MonoBehaviour
                              sword.GetComponent<Animation>().Play();
                              actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                          }*/
+                        print(axePolivalente);
                         if (actualType == playerType.ace && axePolivalente)
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            axe.GetComponent<Animation>().Play();
+                            //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
@@ -294,7 +295,7 @@ public class Movement : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            axe.GetComponent<Animation>().Play();
+                            //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
                         }
                         break;

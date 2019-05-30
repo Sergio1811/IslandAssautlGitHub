@@ -123,10 +123,17 @@ MonoBehaviour:
   bootsMovementSpeed: 1
   dashActive: 0
   psWood: {fileID: 100002, guid: d39ab699aa314a147969fd483aa55205, type: 3}
-  psBombPickUp: {fileID: 0}
-  psMagicPoof: {fileID: 0}
-  psSand: {fileID: 0}
-  psSwordSlash: {fileID: 0}
+  psBombPutDown: {fileID: 79530551279959240, guid: 9b9c27bc34b296b46aa0986865c16402,
+    type: 3}
+  psMagicPoof: {fileID: 6005799397695837422, guid: db2582c2a2436ac4ead7c6f7bbb07401,
+    type: 3}
+  psSand: {fileID: 8474962619035826573, guid: 07c25ccb43c174146af41056af73c910, type: 3}
+  psSwordSlash: {fileID: 5943428990349555738, guid: f2c8ba076339a2b48a1a16aa8a95a969,
+    type: 3}
+  psHit: {fileID: 4267134499729965683, guid: 381c44bbf54eaac49b0be8142a3f1888, type: 3}
+  psClickTextEffect: {fileID: 1602641490626352832, guid: 64eb6301173a074428a1447460208fdf,
+    type: 3}
+  psTrial: {fileID: 0}
 --- !u!143 &3225420765675762107
 CharacterController:
   m_ObjectHideFlags: 0

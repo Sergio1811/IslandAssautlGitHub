@@ -47,8 +47,9 @@ public class EnemyScript : MonoBehaviour
     float iniAcc;
     float knokBackIniDisctance;
 
-    public GameObject psStun1;
-    public GameObject psStun2;
+    public GameObject psStun;
+    public GameObject psDamage;
+    Vector3 psOffset = new Vector3 (0,2,0);
 
     void Start()
     {
@@ -221,6 +222,7 @@ public class EnemyScript : MonoBehaviour
         canAttack = false;
         stunned = true;
         stunnedTimer = 0;
+        Instantiate(psStun, this.transform.position +psOffset, Quaternion.identity);
     }
 
     public void OffStun()
@@ -267,6 +269,7 @@ public class EnemyScript : MonoBehaviour
 
     public void GetAttacked(Transform player, bool knockBack)
     {
+        Instantiate(psDamage, this.transform.position+psOffset, Quaternion.identity);
         lives--;
         if(knockBack)
         {

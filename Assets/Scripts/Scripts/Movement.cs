@@ -76,10 +76,15 @@ public class Movement : MonoBehaviour
 
     [Header("ParticleSystem")]
     public GameObject psWood;
-    public GameObject psBombPickUp;
+    public GameObject psBombPutDown;
     public GameObject psMagicPoof;
     public GameObject psSand;
     public GameObject psSwordSlash;
+    public GameObject psHit;
+    public GameObject psClickTextEffect;
+    public GameObject psTrial;
+    float trialTimer = 1.0f;
+    float currentTrialTimer = 0;
 
     void Start()
     {
@@ -132,6 +137,15 @@ public class Movement : MonoBehaviour
         if (!canAttack)
             currentCD += Time.deltaTime;
 
+        if(actualType==playerType.sword && psTrial.activeSelf)
+            currentTrialTimer += Time.deltaTime;
+    
+        if(currentTrialTimer>= trialTimer)
+        {
+            currentTrialTimer = 0;
+            psTrial.SetActive(false);
+        }
+
     }
 
 
@@ -166,6 +180,7 @@ public class Movement : MonoBehaviour
     {
         if (InputManager.Instance.GetInput("Dash"))
         {
+            Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
             lastDashButtonReleased = false;
 
             characterController.enabled = false;
@@ -198,6 +213,8 @@ public class Movement : MonoBehaviour
             canAttack = false;
             lastActionButtonReleased = false;
             SwordAttack();
+            Instantiate(psSwordSlash, sword.transform.parent.transform.position, Quaternion.identity);
+            psTrial.SetActive(true);
         }
 
         if (InputManager.Instance.GetInput("Action") && (actualType != playerType.sword || (actualType == playerType.sword && swordPolivalente)))
@@ -211,6 +228,8 @@ public class Movement : MonoBehaviour
             if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
             {
                 actionObject = hit.collider.gameObject;
+                Instantiate(psHit, hit.transform.position, Quaternion.identity);
+
                 switch (actionObject.tag)
                 {
                     case "Tree2":
@@ -305,6 +324,7 @@ public class Movement : MonoBehaviour
 
             if (actualType == playerType.pick)
             {
+                Instantiate(psBombPutDown, this.transform.position, Quaternion.identity);
                 bomb.SetActive(true);
                 bomb.transform.SetParent(transform);
                 bomb.transform.localPosition = Vector3.zero;
@@ -363,6 +383,7 @@ public class Movement : MonoBehaviour
         }
         else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
         {
+            Instantiate(psClickTextEffect, this.transform.position+ new Vector3 (0,2,0), Quaternion.identity);
             bomb.SendMessage("Explode");
             bombOn = false;
             actionSphere.fillAmount = 0;

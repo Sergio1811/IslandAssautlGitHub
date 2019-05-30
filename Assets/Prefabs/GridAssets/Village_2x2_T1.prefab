@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesGroup: {fileID: 6914713876333531922}
   chest: {fileID: 7105702260702440481}
+  psPoof: {fileID: 79530551279959240, guid: 9b9c27bc34b296b46aa0986865c16402, type: 3}
 --- !u!114 &5424523639980170698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,6 +612,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7545794851937470842}
     m_Modifications:
+    - target: {fileID: 100000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
+      propertyPath: m_Name
+      value: Village_Model_2x2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.27
@@ -666,10 +671,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.04321738
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
-      propertyPath: m_Name
-      value: Village_Model_2x2
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: b8b66b2f544259e4cbb6ae72af288850, type: 3}
       propertyPath: m_Materials.Array.data[0]

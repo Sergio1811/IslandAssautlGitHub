@@ -639,7 +639,6 @@ public class GameManager : MonoBehaviour
     
     public void LevelComplete()
     {
-        if (CheckSecondaryObjective()) totalCoins += 50;
         EndProtoLevel();
     }
 
@@ -648,15 +647,15 @@ public class GameManager : MonoBehaviour
         switch (secondaryObjectiveID)
         {
             case 0:
-                return remainingTimeInLevel >= 20.0f;
+                return remainingTimeInLevel >= 20.0f && livesNumber > 0;
             case 1:
-                return remainingTimeInLevel >= 10.0f;
+                return remainingTimeInLevel >= 10.0f && livesNumber > 0;
             case 2:
-                if (characterNumber == 0) return collectedWood >= 70 * woodInMap / 100;
-                else if (characterNumber == 1) return collectedRock >= 70 * rockInMap / 100;
-                else return collectedFabrics >= 70 * fabricInMap / 100;
+                if (characterNumber == 0) return collectedWood >= 70 * woodInMap / 100 && remainingTimeInLevel > 0 && livesNumber > 0;
+                else if (characterNumber == 1) return collectedRock >= 70 * rockInMap / 100 && remainingTimeInLevel > 0 && livesNumber > 0;
+                else return collectedFabrics >= 70 * fabricInMap / 100 && remainingTimeInLevel > 0 && livesNumber > 0;
             case 3:
-                return livesNumber == initialLiveNumber;
+                return livesNumber == initialLiveNumber && remainingTimeInLevel > 0;
             default:
                 return false;
         }
@@ -774,9 +773,12 @@ public class GameManager : MonoBehaviour
 
         if (currentCoins != 0)
         {
-            resultEndCoinsText.text = currentCoins.ToString();
+            if (CheckSecondaryObjective()) resultEndCoinsText.text = currentCoins.ToString() + " + 50";
+            else resultEndCoinsText.text = currentCoins.ToString();
             resultEndCoinsText.color = positiveColor;
         }
+
+        if (CheckSecondaryObjective()) currentCoins += 50;
         totalCoins += currentCoins; //las monedas las gana siempre
 
         currentCoins = 0;

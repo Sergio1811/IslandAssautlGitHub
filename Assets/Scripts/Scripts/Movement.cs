@@ -550,11 +550,11 @@ public class Movement : MonoBehaviour
         if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
             BreakRock(other.transform.parent.gameObject, 1);
         else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
-            GameManager.Instance.PickWood(1);
+            GameManager.Instance.PickWood(1); Destroy(other.gameObject);
         else if (other.gameObject.tag == "Rock2" && actualType == playerType.pick)
             BreakRock(other.transform.parent.gameObject, 2);
         else if (other.gameObject.tag == "Tree2" && actualType == playerType.pick)
-            GameManager.Instance.PickWood(2);
+            GameManager.Instance.PickWood(2); Destroy(other.gameObject);
     }
 
     public void Damage(Vector3 direction, bool changeInmortal) //changeInmortal para decidir si te da unos segundos de invulnerabilidad, la bomba no te los da

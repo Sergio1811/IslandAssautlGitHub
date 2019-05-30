@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: dc6c6b0caf8902947a35369b6df4b002, type: 3}
   m_Name: Rock
   m_EditorClassIdentifier: Assembly-CSharp::Product
-  nameProduct: x30 Roca
+  nameProduct: x30 Rocas
   description: Consigue rocas a cambio de monedas.
   price: 100
   reward: 30

@@ -263,6 +263,7 @@ MonoBehaviour:
   psClickTextEffect: {fileID: 1602641490626352832, guid: 64eb6301173a074428a1447460208fdf,
     type: 3}
   psTrial: {fileID: 0}
+  myAnimator: {fileID: 2450371816857464023}
 --- !u!143 &3856131672928921524
 CharacterController:
   m_ObjectHideFlags: 0
@@ -439,11 +440,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 189960dbc729fcb4098d02b381e3d5d9, type: 2}
+    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
 --- !u!4 &2450371816866972469 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: a55178cb97a7cb24b92223d6d1fd1310,
+    type: 3}
+  m_PrefabInstance: {fileID: 2450371816866847159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2450371816857464023 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310,
     type: 3}
   m_PrefabInstance: {fileID: 2450371816866847159}
   m_PrefabAsset: {fileID: 0}

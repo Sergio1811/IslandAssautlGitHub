@@ -86,6 +86,8 @@ public class Movement : MonoBehaviour
     float trialTimer = 1.0f;
     float currentTrialTimer = 0;
 
+    public Animator myAnimator;
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -157,6 +159,7 @@ public class Movement : MonoBehaviour
 
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
+            myAnimator.SetBool("Move", true);
             GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
 
             Vector3 forward = cameraAnchor.forward;
@@ -169,6 +172,9 @@ public class Movement : MonoBehaviour
             movement = forward * zMovement + right * xMovement;
             transform.localRotation = Quaternion.LookRotation(movement);
         }
+
+        else
+            myAnimator.SetBool("Move", false);
 
         if (!characterController.isGrounded)
             movement.y += Physics.gravity.y;
@@ -236,13 +242,16 @@ public class Movement : MonoBehaviour
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)
                         {
-                            axe.GetComponent<Animation>().Play();
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -251,13 +260,16 @@ public class Movement : MonoBehaviour
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)
                         {
-                            axe.GetComponent<Animation>().Play();
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -272,12 +284,16 @@ public class Movement : MonoBehaviour
                          }*/
                         if (actualType == playerType.ace && axePolivalente)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
                         if (actualType == playerType.ace && axeStun)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
                         }
@@ -291,12 +307,15 @@ public class Movement : MonoBehaviour
                     case "Rock2":
                         if (actualType == playerType.ace && axePolivalente)
                         {
-                            axe.GetComponent<Animation>().Play();
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 4;
                             actionOn = true;
                         }
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -305,12 +324,15 @@ public class Movement : MonoBehaviour
                     case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
                         {
-                            axe.GetComponent<Animation>().Play();
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            myAnimator.SetBool("Move", false);
+                            myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -442,6 +464,7 @@ public class Movement : MonoBehaviour
         pressedTimer = 0f;
         receiveInputAction = true;
         canMove = true;
+        myAnimator.SetBool("Attack", false);
     }
 
     public void BreakRock(GameObject rock, int rockTier)
@@ -536,7 +559,8 @@ public class Movement : MonoBehaviour
         bool foundEnemy = false;
         bool repeatedEnemy = false;
 
-        sword.GetComponent<Animation>().Play();
+        myAnimator.SetBool("Move", false);
+        myAnimator.SetBool("Attack", true);
         currentCD = 0;
         Collider[] enemies = Physics.OverlapSphere(this.transform.position, hitDistance);
 
@@ -632,11 +656,15 @@ public class Movement : MonoBehaviour
 
     IEnumerator KnockBack()
     {
+        myAnimator.SetBool("Stay", true);
+
         knockBack = true;
 
         yield return new WaitForSeconds(0.2f); //Only knock the enemy back for a short time    
 
         knockBack = false;
+
+        myAnimator.SetBool("Stay", false);
     }
 
 

@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
     Material initMat;
     public Material attackMat;
 
+    public Animator myAnimator;
     
     float iniSpeed;
     float iniAngSpeed;
@@ -59,7 +60,10 @@ public class EnemyScript : MonoBehaviour
             patrolPoint = availableNodes[Random.Range(0, availableNodes.Count)];
 
             if (patrolPoint != null)
+            {
+                myAnimator.SetBool("Move", true);
                 currentState = state.patrol;
+            }
             else
             {
                 print("No patrol points in patroler, changing to non-patroler");
@@ -67,7 +71,10 @@ public class EnemyScript : MonoBehaviour
             }
         }
         else
+        {
+            myAnimator.SetBool("Move", false);
             currentState = state.stay;
+        }
 
         //player = GameManager.Instance.player;
         agent = GetComponent<NavMeshAgent>();
@@ -92,7 +99,7 @@ public class EnemyScript : MonoBehaviour
                     if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance)
                     {
                         goingPos = player.transform.position;
-                        currentState = state.chase;
+                        currentState = state.chase; myAnimator.SetBool("Move", true);
                         break;
                     }
 
@@ -104,15 +111,15 @@ public class EnemyScript : MonoBehaviour
                 case state.chase:
                     if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
-                        if (patroler) currentState = state.patrol;
-                        else currentState = state.stay;
+                        if (patroler) { currentState = state.patrol; myAnimator.SetBool("Move", true); }
+                        else currentState = state.stay; myAnimator.SetBool("Move", false);
                         break;
                     }
 
                     else if (GetSqrDistanceXZToPosition(player.transform.position) <= attackDistance)
                     {
                         attackTimer = 0;
-                        currentState = state.attack;
+                        currentState = state.attack; myAnimator.SetBool("Move", false);
                         if (attackMat != null) myRenderer.material = attackMat;
                         else print("No attack material attached in inspector");
                         break;
@@ -128,7 +135,7 @@ public class EnemyScript : MonoBehaviour
 
                     if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
                     {
-                        currentState = state.chase;
+                        currentState = state.chase; myAnimator.SetBool("Move", true);
                         myRenderer.material = initMat;
                         break;
                     }
@@ -209,6 +216,7 @@ public class EnemyScript : MonoBehaviour
         if (attackTimer >= attackCoolDown)
         {
             attackTimer = 0;
+            myAnimator.SetTrigger("Attack");
             player.GetComponent<Movement>().Damage(transform.forward, true);
             //player.SendMessage("Damage");
             //GameManager.Instance.Damage();
@@ -217,6 +225,7 @@ public class EnemyScript : MonoBehaviour
 
     public void Stun()
     {
+        myAnimator.SetBool("Stay", true);
         agent.speed = 0;
         agent.angularSpeed = 0;
         canAttack = false;
@@ -231,10 +240,12 @@ public class EnemyScript : MonoBehaviour
         agent.angularSpeed = iniAngSpeed;
         canAttack = true;
         stunned = false;
+        myAnimator.SetBool("Stay", false);
     }
 
     IEnumerator KnockBack()
     {
+        myAnimator.SetBool("Stay", true);
         knockBack = true;
         agent.speed = iniSpeed * 1.5f;
         agent.angularSpeed = 0;//Keeps the enemy facing forwad rther than spinning
@@ -250,6 +261,7 @@ public class EnemyScript : MonoBehaviour
         agent.acceleration = iniAcc;
         agent.baseOffset = 0;
         knockBackDistance = knokBackIniDisctance;
+        myAnimator.SetBool("Stay", false);
     }
 
     public void KnockBackActivated(Transform bomb)

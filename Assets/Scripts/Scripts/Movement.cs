@@ -202,7 +202,7 @@ public class Movement : MonoBehaviour
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(ray, out hit, dashDistance))
             {
-                if (hit.collider.gameObject.name == "WaterDecorationMesh")
+                if (hit.collider.gameObject.tag == "IslandCollision")
                 {
                     Vector3 newPos = hit.point + hit.normal * 2;
                     transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
@@ -664,6 +664,7 @@ public class Movement : MonoBehaviour
                 }
 
                 if (!swordSeep)
+                    break;
                     break;
 
                 repeatedEnemy = false;

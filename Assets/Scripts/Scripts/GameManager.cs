@@ -181,10 +181,7 @@ public class GameManager : MonoBehaviour
     GameObject[] objectiveImage;
     int secondaryObjectiveID;
 
-
-
-
-
+    
     private void Awake()
     {
         Instance = this;
@@ -206,6 +203,7 @@ public class GameManager : MonoBehaviour
         RandomCharacter();
     }
 
+
     void Start()
     {
         player = PlayerInstantiation();
@@ -221,6 +219,7 @@ public class GameManager : MonoBehaviour
         SecundaryObjectivesInitialization();
     }
 
+    
     void Update()
     {
         if (startGame)

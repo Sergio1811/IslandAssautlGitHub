@@ -14,15 +14,16 @@ public class SwordAbilities : MonoBehaviour
     public static float resourceMultiplier = 1.0f;
 
     public static bool enemyTier2 = false;
-
     public static bool initialized = false;
 
+    
     private void Awake()
     {
         Instance = this;
         if (!initialized)
             PlayerPrefsInitialization();
     }
+
 
     void PlayerPrefsInitialization()
     {
@@ -41,5 +42,4 @@ public class SwordAbilities : MonoBehaviour
 
         initialized = true;
     }
-    
 }

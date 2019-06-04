@@ -6,7 +6,4 @@ using UnityEngine.UI;
 public class AbilityDisplay : MonoBehaviour
 {
     public Abilities Ability;
-
-
 }
-

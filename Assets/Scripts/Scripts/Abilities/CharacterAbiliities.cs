@@ -14,8 +14,8 @@ public class CharacterAbiliities : MonoBehaviour
     public static float goldMultiplier = 1.0f;
 
     public static bool islandTier2 = false;
-
     public static bool initialized = false;
+    
 
     private void Awake()
     {
@@ -23,6 +23,7 @@ public class CharacterAbiliities : MonoBehaviour
         if (!initialized)
             PlayerPrefsInitialization();
     }
+
 
     void PlayerPrefsInitialization()
     {
@@ -41,5 +42,4 @@ public class CharacterAbiliities : MonoBehaviour
 
         initialized = true;
     }
-    
 }

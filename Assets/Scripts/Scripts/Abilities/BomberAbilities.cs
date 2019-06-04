@@ -14,8 +14,8 @@ public class BomberAbilities : MonoBehaviour
     public static float resourceMultiplier = 1.0f;
 
     public static bool rockTier2 = false;
-
     public static bool initialized = false;
+    
 
     private void Awake()
     {
@@ -23,6 +23,7 @@ public class BomberAbilities : MonoBehaviour
         if (!initialized)
             PlayerPrefsInitialization();
     }
+
 
     void PlayerPrefsInitialization()
     {
@@ -41,5 +42,4 @@ public class BomberAbilities : MonoBehaviour
 
         initialized = true;
     }
-   
 }

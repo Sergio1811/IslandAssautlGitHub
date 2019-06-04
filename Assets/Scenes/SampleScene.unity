@@ -24737,12 +24737,10 @@ MonoBehaviour:
   entreIslasCanvas: {fileID: 887935738}
   abilitiesCanvas: {fileID: 7146663376544890209}
   mainCanvas: {fileID: 8934052174480988392}
-  rightPanel: {fileID: 1632214828}
-  rightPanelSecundaries: {fileID: 1552405143}
-  leftPanel: {fileID: 8934052174835267613}
   positionRight: {fileID: 1353654612}
   positionLeft: {fileID: 636654526}
   speedPanels: 1000
+  rightPanel: {fileID: 1632214828}
   recursoPrincipal: {fileID: 5450777384368000765}
   recursoPrincipalTier2: {fileID: 1536289547}
   recursoPrincipalText: {fileID: 5450777383257017544}
@@ -24750,6 +24748,7 @@ MonoBehaviour:
   cointsText: {fileID: 8934052175498798324}
   recursoPrincipalCaughtText: {fileID: 3483864409881176607}
   recursoPrincipalCaughtTier2: {fileID: 2000024460}
+  rightPanelSecundaries: {fileID: 1552405143}
   woodText: {fileID: 513192653}
   woodTextTier2: {fileID: 1705045019}
   rockText: {fileID: 8934052173570593926}
@@ -24760,11 +24759,7 @@ MonoBehaviour:
   bomberImage: {fileID: 961416881}
   axerImage: {fileID: 1936146186}
   bomberTier2Image: {fileID: 425961462}
-  woodObjectiveImage: {fileID: 1233485822}
-  rockObjectiveImage: {fileID: 1711494958}
-  timeObjectiveImage: {fileID: 1729211825}
-  fabricObjectiveImage: {fileID: 404314551}
-  livesObjectiveImage: {fileID: 233806916}
+  leftPanel: {fileID: 8934052174835267613}
   secondaryObjectiveText: {fileID: 8934052174145751238}
 --- !u!114 &1362759329
 MonoBehaviour:

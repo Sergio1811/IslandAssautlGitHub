@@ -138,14 +138,12 @@ public class GameManager : MonoBehaviour
     public GameObject entreIslasCanvas;
     public GameObject abilitiesCanvas;
     public GameObject mainCanvas;
-    public GameObject rightPanel;
-    public GameObject rightPanelSecundaries;
-    public GameObject leftPanel;
     public Transform positionRight, positionLeft;
     public float speedPanels;
     float initialSpeedPanels;
 
     [Header("Main Resource Canvas Panel")]
+    public GameObject rightPanel;
     public GameObject recursoPrincipal;
     public GameObject recursoPrincipalTier2;
     #region Main resource panel texts
@@ -159,6 +157,7 @@ public class GameManager : MonoBehaviour
     #endregion
     
     [Header("Secundary Resource Canvas Panel")]
+    public GameObject rightPanelSecundaries;
     #region Secundary resources panel texts
 
     public Text woodText;
@@ -177,16 +176,7 @@ public class GameManager : MonoBehaviour
     public Image bomberTier2Image;
 
     [Header("Secundary Objective Images")]
-    #region Secundary objective images
-
-    public GameObject woodObjectiveImage;
-    public GameObject rockObjectiveImage;
-    public GameObject timeObjectiveImage;
-    public GameObject fabricObjectiveImage;
-    public GameObject livesObjectiveImage;
-
-    #endregion
-
+    public GameObject leftPanel;
     public Text secondaryObjectiveText;
     GameObject[] objectiveImage;
     int secondaryObjectiveID;
@@ -443,27 +433,27 @@ public class GameManager : MonoBehaviour
         secondaryObjectives = new string[4];
         objectiveImage = new GameObject[4];
         secondaryObjectives[0] = "20s";
-        objectiveImage[0] = timeObjectiveImage;
+        objectiveImage[0] = leftPanel.transform.GetChild(6).gameObject;
         secondaryObjectives[1] = "10s";
-        objectiveImage[1] = timeObjectiveImage;
+        objectiveImage[1] = leftPanel.transform.GetChild(6).gameObject;
 
         if (characterNumber == 0)
         {
             secondaryObjectives[2] = "" + (70 * woodInMap / 100) + "";
-            objectiveImage[2] = woodObjectiveImage;
+            objectiveImage[2] = leftPanel.transform.GetChild(3).gameObject;
         }
         else if (characterNumber == 1)
         {
             secondaryObjectives[2] = "" + (70 * rockInMap / 100) + "";
-            objectiveImage[2] = rockObjectiveImage;
+            objectiveImage[2] = leftPanel.transform.GetChild(4).gameObject;
         }
         else
         {
             secondaryObjectives[2] = "" + (70 * fabricInMap / 100) + "";
-            objectiveImage[2] = fabricObjectiveImage;
+            objectiveImage[2] = leftPanel.transform.GetChild(5).gameObject;
         }
         secondaryObjectives[3] = livesNumber.ToString();
-        objectiveImage[3] = livesObjectiveImage;
+        objectiveImage[3] = leftPanel.transform.GetChild(7).gameObject;
 
         secondaryObjectiveID = RandomSecondaryObjective();
         objectiveImage[secondaryObjectiveID].SetActive(true);

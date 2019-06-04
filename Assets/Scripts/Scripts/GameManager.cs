@@ -40,6 +40,14 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool rockTier2 = false;
     #endregion
+    #region
+
+    public static bool mastil, casco;
+    public static bool cañon, timon;
+    public static bool remos, velas;
+    public static bool mapa, brujula;
+
+    #endregion
 
     [Header("Islands")]
     public Grid gridScript;
@@ -248,6 +256,18 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M))
             {
                 totalCoins += 500;
+                SaveManager.Instance.Save();
+                gameOver = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                totalFabrics += 500;
+                totalFabrics2 += 500;
+                totalRock += 500;
+                totalRock2 += 500;
+                totalWood += 500;
+                totalWood2 += 500;
                 SaveManager.Instance.Save();
                 gameOver = true;
             }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MarketManager : MonoBehaviour
 {
     public GameObject backMenu;
-    MidGameMenuScript backMenuScript;
 
     public Text totalCoins;
     public Text totalWood, totalWood2, totalRock, totalRocks2, totalFabric, totalFabrics2;
@@ -38,7 +37,6 @@ public class MarketManager : MonoBehaviour
     private void OnEnable()
     {
         backMenu.SetActive(false);
-        backMenuScript = backMenu.GetComponent<MidGameMenuScript>();
 
         MatrixInitialization();
         UpdateTotals();
@@ -364,8 +362,7 @@ public class MarketManager : MonoBehaviour
                 GameManager.totalFabrics2 -= (int)actualProduct.price;
                 break;
         }
-
-        backMenuScript.UpdateTexts(actualProduct.idName);
+        
         SaveManager.Instance.Save();
 
         UpdateTotals();

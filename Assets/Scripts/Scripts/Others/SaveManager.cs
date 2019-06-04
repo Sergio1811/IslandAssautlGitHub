@@ -11,11 +11,6 @@ public class SaveManager : MonoBehaviour
         Load();
     }
 
-    private void Start()
-    {
-        Load();
-    }
-
     public void Save()
     {
         PlayerPrefs.SetInt("TotalCoins", GameManager.totalCoins);
@@ -37,6 +32,24 @@ public class SaveManager : MonoBehaviour
         GameManager.totalWood2 = PlayerPrefs.GetInt("TotalWood2");
         GameManager.totalRock2 = PlayerPrefs.GetInt("TotalRock2");
         GameManager.totalFabrics2 = PlayerPrefs.GetInt("TotalFabric2");
+
+        print(ButtonManager.boughtString);
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "mastil") == 1)
+            GameManager.mastil = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "casco") == 1)
+            GameManager.casco = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "remos") == 1)
+            GameManager.remos = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "timon") == 1)
+            GameManager.timon = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "cañon") == 1)
+            GameManager.cañon = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "vela") == 1)
+            GameManager.velas = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "mapa") == 1)
+            GameManager.mapa = true;
+        if (PlayerPrefs.GetInt(ButtonManager.boughtString + "brujula") == 1)
+            GameManager.brujula = true;
     }
 
     public void ResetSaving()

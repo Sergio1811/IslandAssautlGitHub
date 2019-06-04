@@ -47,6 +47,9 @@ public class MidGameMenuScript : MonoBehaviour
     public static float persFabric, persFabric2;
     public static float persRock, persRock2;
 
+    public GameObject boatParts;
+    public Image[] boatPartsIcons;
+
 
     void Start()
     {
@@ -55,9 +58,21 @@ public class MidGameMenuScript : MonoBehaviour
 
         ResultTextsInitialization();
         TotalTextsInitialization();
+        BoatPartsInitialization();
 
         if (GameManager.Instance.Market)
             buttonMarket.SetActive(true);
+    }
+
+    private void OnEnable()
+    {
+        if (activeCanvas)
+        {
+            TotalTextsInitialization();
+            BoatPartsInitialization();
+            if (GameManager.Instance.Market)
+                buttonMarket.SetActive(true);
+        }
     }
 
 
@@ -80,12 +95,8 @@ public class MidGameMenuScript : MonoBehaviour
         else
             UpdateBetweenIslandMenuButtons();
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            GameManager.totalCoins += 500;
-            SaveManager.Instance.Save();
-            totalEndCoinsText.text = GameManager.totalCoins.ToString();
-        }
+        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.P))
+            TotalTextsInitialization();
     }
 
     
@@ -193,9 +204,27 @@ public class MidGameMenuScript : MonoBehaviour
             totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
             resultEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
         }
-
     }
 
+    void BoatPartsInitialization()
+    {
+        if (GameManager.mastil)
+            boatPartsIcons[0].color = Color.white;
+        if (GameManager.timon)
+            boatPartsIcons[1].color = Color.white;
+        if (GameManager.velas)
+            boatPartsIcons[2].color = Color.white;
+        if (GameManager.mapa)
+            boatPartsIcons[3].color = Color.white;
+        if (GameManager.casco)
+            boatPartsIcons[4].color = Color.white;
+        if (GameManager.cañon)
+            boatPartsIcons[5].color = Color.white;
+        if (GameManager.remos)
+            boatPartsIcons[6].color = Color.white;
+        if (GameManager.brujula)
+            boatPartsIcons[7].color = Color.white;
+    }
     
     void UpdateBetweenIslandMenuButtons()
     {
@@ -268,52 +297,5 @@ public class MidGameMenuScript : MonoBehaviour
 
         if (movementOn)
             timerMovement += Time.deltaTime;
-    }
-
-
-    public void UpdateTexts(string type)
-    {
-        switch (type)
-        {
-            case "wood":
-                totalEndWoodText.text = GameManager.totalWood.ToString();
-                break;
-            case "rock":
-                totalEndRockText.text = GameManager.totalRock.ToString();
-                break;
-            case "fabric":
-                totalEndFabricText.text = GameManager.totalFabrics.ToString();
-                break;
-            case "wood2":
-                totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
-                break;
-            case "rock2":
-                totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
-                break;
-            case "fabric2":
-                totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
-                break;
-
-            case "moneyForWood":
-                totalEndWoodText.text = GameManager.totalWood.ToString();
-                break;
-            case "moneyForRocks":
-                totalEndRockText.text = GameManager.totalRock.ToString();
-                break;
-            case "moneyForFabrics":
-                totalEndFabricText.text = GameManager.totalFabrics.ToString();
-                break;
-            case "moneyForWood2":
-                totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
-                break;
-            case "moneyForRocks2":
-                totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
-                break;
-            case "moneyForFabrics2":
-                totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
-                break;
-        }
-
-        totalEndCoinsText.text = GameManager.totalCoins.ToString();
     }
 }

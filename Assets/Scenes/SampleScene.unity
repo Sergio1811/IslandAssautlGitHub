@@ -16109,7 +16109,7 @@ MonoBehaviour:
   - {fileID: 1740623183}
   - {fileID: 186834114}
   buttonMarket: {fileID: 2123766582}
-  buttonSelectedColor: {r: 1, g: 0.89142513, b: 0.4764151, a: 1}
+  buttonSelectedColor: {r: 1, g: 0.92941177, b: 0.64705884, a: 1}
   boatParts: {fileID: 835936611}
   boatPartsIcons:
   - {fileID: 981452856}

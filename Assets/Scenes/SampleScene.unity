@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44459635, g: 0.49410963, b: 0.57337385, a: 1}
+  m_IndirectSpecularColor: {r: 0.44459614, g: 0.4941091, b: 0.57337403, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -15549,6 +15549,7 @@ GameObject:
   - component: {fileID: 887935741}
   - component: {fileID: 887935740}
   - component: {fileID: 887935739}
+  - component: {fileID: 887935743}
   m_Layer: 5
   m_Name: Mid_Game_Canvas
   m_TagString: Untagged
@@ -15636,6 +15637,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &887935743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887935738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676af05547a45394ca571435ad1c6248, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positiveColor: {r: 0.22014059, g: 0.9150943, b: 0.2773899, a: 1}
+  negativeColor: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
+  totalEndCoinsText: {fileID: 1095796437}
+  totalEndWoodText: {fileID: 1588968186}
+  totalEndRockText: {fileID: 34523670}
+  totalEndFabricText: {fileID: 1153810115}
+  totalEndWoodTier2Text: {fileID: 5007148}
+  totalEndRockTier2Text: {fileID: 1807986934}
+  totalEndFabricTier2Text: {fileID: 1270066994}
+  resultEndCoinsText: {fileID: 1963064943}
+  resultEndWoodText: {fileID: 979027045}
+  resultEndRocksText: {fileID: 1444334860}
+  resultEndFabricText: {fileID: 418752261}
+  resultEndWoodTier2Text: {fileID: 132772599}
+  resultEndRockTier2Text: {fileID: 53937373}
+  resultEndFabricsTier2Text: {fileID: 483371220}
+  buttonsArray:
+  - {fileID: 1077777972}
+  - {fileID: 1740623183}
+  - {fileID: 186834114}
+  buttonMarket: {fileID: 2123766582}
+  buttonSelectedColor: {r: 1, g: 0.89142513, b: 0.4764151, a: 1}
 --- !u!1 &890284692
 GameObject:
   m_ObjectHideFlags: 0
@@ -24702,7 +24737,6 @@ MonoBehaviour:
   initialPanelPositionsTime: 1
   startGame: 0
   endCameraPosition: {fileID: 1567700715}
-  mainCamera: {fileID: 534669904}
   initialCameraSpeed: 150
   recursoPrincipal: {fileID: 5450777384368000765}
   recursoPrincipalTier2: {fileID: 1536289547}
@@ -24745,29 +24779,6 @@ MonoBehaviour:
   positionRight: {fileID: 1353654612}
   positionLeft: {fileID: 636654526}
   speedPanels: 1000
-  abilitesCoinsText: {fileID: 1653804211}
-  positiveColor: {r: 0, g: 1, b: 0.39607844, a: 1}
-  negativeColor: {r: 1, g: 0.078431375, b: 0, a: 1}
-  totalEndCoinsText: {fileID: 1095796437}
-  totalEndWoodText: {fileID: 1588968186}
-  totalEndRockText: {fileID: 34523670}
-  totalEndFabricText: {fileID: 1153810115}
-  totalEndWoodTier2Text: {fileID: 5007148}
-  totalEndRockTier2Text: {fileID: 1807986934}
-  totalEndFabricTier2Text: {fileID: 1270066994}
-  resultEndCoinsText: {fileID: 1963064943}
-  resultEndWoodText: {fileID: 979027045}
-  resultEndRocksText: {fileID: 1444334860}
-  resultEndFabricText: {fileID: 418752261}
-  resultEndWoodTier2Text: {fileID: 132772599}
-  resultEndRockTier2Text: {fileID: 53937373}
-  resultEndFabricsTier2Text: {fileID: 483371220}
-  buttonsArray:
-  - {fileID: 1077777972}
-  - {fileID: 1740623183}
-  - {fileID: 186834114}
-  buttonMarket: {fileID: 2123766582}
-  buttonSelectedColor: {r: 0.972549, g: 1, b: 0.81960785, a: 1}
 --- !u!114 &1362759329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32370,7 +32381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1797444966
 GameObject:
   m_ObjectHideFlags: 0
@@ -56634,7 +56645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 135.315, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &8934052174992916594

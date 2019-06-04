@@ -36,34 +36,7 @@ public class ButtonManager : MonoBehaviour
     bool movementOn = false;
 
 
-
-    void Awake()
-    {
-        //    Time.timeScale = 1;
-
-        //    MatrixInitialization();
-        //    IconsInitialization();
-
-        //    arrayPositionX = 3;
-        //    arrayPositionY = 3;
-
-        //    totalCoins.text = GameManager.totalCoins.ToString();
-        //    if (InputManager.Instance.psController)
-        //    {
-        //        backCircle.SetActive(true);
-        //        buyTriangle.SetActive(true);
-        //    }
-        //    else
-        //    {
-        //        backB.SetActive(true);
-        //        buyY.SetActive(true);
-        //    }
-
-        //    UpdateComponents();
-        //    canBuy = false;
-    }
-
-
+    
     private void OnEnable()
     {
         backMenu.SetActive(false);
@@ -360,27 +333,27 @@ public class ButtonManager : MonoBehaviour
             {
                 case Node.Type.tree:
                     GameManager.totalWood -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndWoodText.text = GameManager.totalWood.ToString();
+                    MidGameMenuScript.Instance.totalEndWoodText.text = GameManager.totalWood.ToString();
                     break;
                 case Node.Type.tree2:
                     GameManager.totalWood2 -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
+                    MidGameMenuScript.Instance.totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
                     break;
                 case Node.Type.rock:
                     GameManager.totalRock -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndRockText.text = GameManager.totalRock.ToString();
+                    MidGameMenuScript.Instance.totalEndRockText.text = GameManager.totalRock.ToString();
                     break;
                 case Node.Type.rock2:
                     GameManager.totalRock2 -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
+                    MidGameMenuScript.Instance.totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
                     break;
                 case Node.Type.enemy:
                     GameManager.totalFabrics -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndFabricText.text = GameManager.totalFabrics.ToString();
+                    MidGameMenuScript.Instance.totalEndFabricText.text = GameManager.totalFabrics.ToString();
                     break;
                 case Node.Type.enemy2:
                     GameManager.totalFabrics2 -= (int)actualAbility.materialPrice;
-                    GameManager.Instance.totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
+                    MidGameMenuScript.Instance.totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
                     break;
             }
         }
@@ -388,8 +361,7 @@ public class ButtonManager : MonoBehaviour
         GameManager.totalCoins -= (int)actualAbility.price;
         totalCoins.text = GameManager.totalCoins.ToString();
         SaveManager.Instance.Save();
-        GameManager.Instance.totalEndCoinsText.text = GameManager.totalCoins.ToString();
-        GameManager.Instance.abilitesCoinsText.text = GameManager.totalCoins.ToString();
+        MidGameMenuScript.Instance.totalEndCoinsText.text = GameManager.totalCoins.ToString();
         PlayerPrefs.SetInt(boughtString + actualAbility.saverString, 1);
         actualAbility.isBought = true;
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childBNImageNumber).gameObject.SetActive(false);
@@ -498,7 +470,7 @@ public class ButtonManager : MonoBehaviour
             case "maestrodelhacha":
                 AxerAbilities.treeTier2 = true;
                 GameManager.Instance.treeTier2 = true;
-                GameManager.Instance.totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
+                MidGameMenuScript.Instance.totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalentemadera":
                 AxerAbilities.Polivalente = true;
@@ -527,7 +499,7 @@ public class ButtonManager : MonoBehaviour
             case "artificiero":
                 BomberAbilities.rockTier2 = true;
                 GameManager.Instance.rockTier2 = true;
-                GameManager.Instance.totalEndRockTier2Text.transform.parent.gameObject.SetActive(true);
+                MidGameMenuScript.Instance.totalEndRockTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalenterocas":
                 BomberAbilities.Polivalente = true;
@@ -556,7 +528,7 @@ public class ButtonManager : MonoBehaviour
             case "gladiador":
                 SwordAbilities.enemyTier2 = true;
                 GameManager.Instance.enemyTier2 = true;
-                GameManager.Instance.totalEndFabricTier2Text.transform.parent.gameObject.SetActive(true);
+                MidGameMenuScript.Instance.totalEndFabricTier2Text.transform.parent.gameObject.SetActive(true);
                 break;
             case "polivalenteataque":
                 SwordAbilities.Polivalente = true;
@@ -575,7 +547,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case "comerciante":
                 CharacterAbiliities.market = true;
-                GameManager.Instance.buttonMarket.SetActive(true);
+                MidGameMenuScript.Instance.buttonMarket.SetActive(true);
                 GameManager.Instance.Market = true;
                 break;
             case "botas":

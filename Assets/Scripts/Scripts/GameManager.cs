@@ -110,12 +110,13 @@ public class GameManager : MonoBehaviour
     float waitTimer;
     public bool startGame;
     bool gameOver = false;
+    public static bool gameWon;
 
-    bool movingCamera;
+    public static bool movingCamera;
     public GameObject endCameraPosition;
-    public Camera mainCamera;
     public float initialCameraSpeed;
-    float cameraSpeed;
+    public static float cameraSpeed;
+    Camera mainCamera;
     GameObject cameraAnchor;
 
 
@@ -191,39 +192,7 @@ public class GameManager : MonoBehaviour
     float initialSpeedPanels;
 
 
-    //BETWEEN ISLANDS MENU
-    public Text abilitesCoinsText;
-    public Color positiveColor, negativeColor;
 
-    #region Total resources text
-
-    public Text totalEndCoinsText;
-    public Text totalEndWoodText;
-    public Text totalEndRockText;
-    public Text totalEndFabricText;
-    public Text totalEndWoodTier2Text;
-    public Text totalEndRockTier2Text;
-    public Text totalEndFabricTier2Text;
-
-    #endregion
-    #region Result resources text
-    public Text resultEndCoinsText;
-    public Text resultEndWoodText;
-    public Text resultEndRocksText;
-    public Text resultEndFabricText;
-    public Text resultEndWoodTier2Text;
-    public Text resultEndRockTier2Text;
-    public Text resultEndFabricsTier2Text;
-    #endregion
-
-    public GameObject[] buttonsArray;
-    public GameObject buttonMarket;
-    int menuArrayNumber;
-    public Color buttonSelectedColor;
-    GameObject selectedButton;
-    bool hasMoved, movementOn;
-    float timerMovement;
-    int numberOfButtons;
 
 
     private void Awake()
@@ -238,6 +207,7 @@ public class GameManager : MonoBehaviour
 
         remainingTimeInLevel = timeByLevel;
         initialSpeedPanels = speedPanels;
+        mainCamera = Camera.main;
         cameraAnchor = mainCamera.transform.parent.gameObject;
 
         entreIslasCanvas.SetActive(false);
@@ -283,10 +253,7 @@ public class GameManager : MonoBehaviour
             }
             else if (movingCamera)
                 UpdateEndCameraPosition();
-            else
-                UpdateBetweenIslandMenuButtons();
-
-
+            
             if (Input.GetKeyDown(KeyCode.R))
                 SaveManager.Instance.ResetSaving();
 
@@ -294,8 +261,6 @@ public class GameManager : MonoBehaviour
             {
                 totalCoins += 500;
                 SaveManager.Instance.Save();
-                totalEndCoinsText.text = totalCoins.ToString();
-                abilitesCoinsText.text = totalCoins.ToString();
                 gameOver = true;
             }
         }
@@ -506,7 +471,7 @@ public class GameManager : MonoBehaviour
 
 
     //UPDATE METHODS
-    
+
     void UpdateWaitTimerToStart()
     {
         waitTimer += Time.deltaTime;
@@ -545,104 +510,25 @@ public class GameManager : MonoBehaviour
         mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f);
 
         cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
-        entreIslasCanvas.transform.GetChild(0).localPosition = Vector3.MoveTowards(entreIslasCanvas.transform.GetChild(0).localPosition, Vector3.zero, cameraSpeed * Time.deltaTime * 3.5f);
         if (mainCamera.orthographicSize < 80)
             mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
 
 
         if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
-        {
             movingCamera = false;
-            menuArrayNumber = 0;
-            selectedButton = buttonsArray[0];
-            selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-            numberOfButtons = buttonsArray.Length - 1;
-        }
     }
 
-    void UpdateBetweenIslandMenuButtons()
-    {
-        cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
-
-        float horizontal = InputManager.Instance.GetAxis("Horizontal");
-        float vertical = InputManager.Instance.GetAxis("Vertical");
-
-        if (!hasMoved)
-        {
-            if (vertical < -0.2f)
-            {
-                menuArrayNumber++;
-                selectedButton.GetComponent<Image>().color = Color.white;
-
-                if (menuArrayNumber > numberOfButtons)
-                    menuArrayNumber = 0;
-
-                if (menuArrayNumber == numberOfButtons && Market)
-                    selectedButton = buttonMarket;
-                else
-                    selectedButton = buttonsArray[menuArrayNumber];
-
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
-            }
-            else if (vertical > 0.2f)
-            {
-                menuArrayNumber--;
-                selectedButton.GetComponent<Image>().color = Color.white;
-
-                if (menuArrayNumber < 0)
-                    menuArrayNumber = numberOfButtons;
-
-                if (menuArrayNumber == numberOfButtons && Market)
-                    selectedButton = buttonMarket;
-                else
-                    selectedButton = buttonsArray[menuArrayNumber];
-
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
-            }
-            else if (horizontal > 0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonsArray[menuArrayNumber] && Market)
-            {
-                selectedButton.GetComponent<Image>().color = Color.white;
-                selectedButton = buttonsArray[menuArrayNumber];
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
-            }
-            else if (horizontal < -0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && Market)
-            {
-                selectedButton.GetComponent<Image>().color = Color.white;
-                selectedButton = buttonMarket;
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
-            }
-            else if (InputManager.Instance.GetInputDown("Submit") && entreIslasCanvas.activeSelf)
-                selectedButton.GetComponent<Button>().onClick.Invoke();
-        }
-
-        if (hasMoved)
-            movementOn = true;
-
-        if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
-        {
-            hasMoved = false;
-            timerMovement = 0;
-            movementOn = false;
-        }
-
-        if (movementOn)
-            timerMovement += Time.deltaTime;
-    }
-
+    
 
 
     //END LEVEL METHODS
-    
+
     public void LevelComplete()
     {
         EndProtoLevel();
     }
 
-    bool CheckSecondaryObjective()
+    public bool CheckSecondaryObjective()
     {
         switch (secondaryObjectiveID)
         {
@@ -671,43 +557,14 @@ public class GameManager : MonoBehaviour
 
         if (livesNumber > 0) //si se pasa el nivel
         {
+            gameWon = true;
+
             totalFabrics += collectedFabrics;
             totalRock += collectedRock;
             totalWood += collectedWood;
             totalFabrics2 += collectedFabrics2;
             totalRock2 += collectedRock2;
             totalWood2 += collectedWood2;
-
-            if (collectedFabrics > 0)
-            {
-                resultEndFabricText.text = "+" + collectedFabrics.ToString();
-                resultEndFabricText.color = positiveColor;
-            }
-            if (collectedRock > 0)
-            {
-                resultEndRocksText.text = "+" + collectedRock.ToString();
-                resultEndRocksText.color = positiveColor;
-            }
-            if (collectedWood > 0)
-            {
-                resultEndWoodText.text = "+" + collectedWood.ToString();
-                resultEndWoodText.color = positiveColor;
-            }
-            if (collectedFabrics2 > 0)
-            {
-                resultEndFabricsTier2Text.text = "+" + collectedFabrics2.ToString();
-                resultEndFabricsTier2Text.color = positiveColor;
-            }
-            if (collectedRock2 > 0)
-            {
-                resultEndRockTier2Text.text = "+" + collectedRock2.ToString();
-                resultEndRockTier2Text.color = positiveColor;
-            }
-            if (collectedWood2 > 0)
-            {
-                resultEndWoodTier2Text.text = "+" + collectedWood2.ToString();
-                resultEndWoodTier2Text.color = positiveColor;
-            }
         }
 
         else if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
@@ -716,67 +573,37 @@ public class GameManager : MonoBehaviour
 
             pers = totalFabrics * 10 / 100;
             totalFabrics -= pers;
-            if (pers > 0)
-            {
-                resultEndFabricText.text = "-" + pers.ToString();
-                resultEndFabricText.color = negativeColor;
-            }
+            MidGameMenuScript.persFabric = pers;
             if (totalFabrics < 0) totalFabrics = 0;
 
             pers = totalRock * 10 / 100;
             totalRock -= pers;
-            if (pers > 0)
-            {
-                resultEndRocksText.text = "-" + pers.ToString();
-                resultEndRocksText.color = negativeColor;
-            }
+            MidGameMenuScript.persRock = pers;
             if (totalRock < 0) totalRock = 0;
 
             pers = totalWood * 10 / 100;
             totalWood -= pers;
-            if (pers > 0)
-            {
-                resultEndWoodText.text = "-" + pers.ToString();
-                resultEndWoodText.color = negativeColor;
-            }
+            MidGameMenuScript.persWood = pers;
             if (totalWood < 0) totalWood = 0;
 
             pers = totalFabrics2 * 10 / 100;
             totalFabrics2 -= pers;
-            if (pers > 0)
-            {
-                resultEndFabricsTier2Text.text = "-" + pers.ToString();
-                resultEndFabricsTier2Text.color = negativeColor;
-            }
+            MidGameMenuScript.persFabric2 = pers;
             if (totalFabrics2 < 0) totalFabrics2 = 0;
 
             pers = totalRock2 * 10 / 100;
             totalRock2 -= pers;
-            if (pers > 0)
-            {
-                resultEndRockTier2Text.text = "-" + pers.ToString();
-                resultEndRockTier2Text.color = negativeColor;
-            }
+            MidGameMenuScript.persRock2 = pers;
             if (totalRock2 < 0) totalRock2 = 0;
 
             pers = totalWood2 * 10 / 100;
             totalWood2 -= pers;
-            if (pers > 0)
-            {
-                resultEndWoodTier2Text.text = "-" + pers.ToString();
-                resultEndWoodTier2Text.color = negativeColor;
-            }
+            MidGameMenuScript.persWood2 = pers;
             if (totalWood2 < 0) totalWood2 = 0;
         }
 
         //si muere y habia activado el portal, no pierde ni gana nada, solo las monedas
 
-        if (currentCoins != 0)
-        {
-            if (CheckSecondaryObjective()) resultEndCoinsText.text = currentCoins.ToString() + " + 50";
-            else resultEndCoinsText.text = currentCoins.ToString();
-            resultEndCoinsText.color = positiveColor;
-        }
 
         if (CheckSecondaryObjective()) currentCoins += 50;
         totalCoins += currentCoins; //las monedas las gana siempre
@@ -785,42 +612,12 @@ public class GameManager : MonoBehaviour
 
         SaveManager.Instance.Save();
 
-
-        totalEndCoinsText.text = totalCoins.ToString();
-        abilitesCoinsText.text = totalCoins.ToString();
-
-        totalEndWoodText.text = totalWood.ToString();
-        totalEndRockText.text = totalRock.ToString();
-        totalEndFabricText.text = totalFabrics.ToString();
-        totalEndWoodTier2Text.text = totalWood2.ToString();
-        totalEndRockTier2Text.text = totalRock2.ToString();
-        totalEndFabricTier2Text.text = totalFabrics2.ToString();
-
-        if (BomberAbilities.rockTier2)
-        {
-            totalEndRockTier2Text.transform.parent.gameObject.SetActive(true);
-            resultEndRockTier2Text.transform.parent.gameObject.SetActive(true);
-        }
-        if (SwordAbilities.enemyTier2)
-        {
-            totalEndFabricTier2Text.transform.parent.gameObject.SetActive(true);
-            resultEndFabricsTier2Text.transform.parent.gameObject.SetActive(true);
-        }
-        if (AxerAbilities.treeTier2)
-        {
-            totalEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
-            resultEndWoodTier2Text.transform.parent.gameObject.SetActive(true);
-        }
-
         mainCanvas.SetActive(false);
         movingCamera = true;
         cameraAnchor.GetComponent<CameraRotation>().enabled = false;
         player.GetComponent<Movement>().enabled = false;
         entreIslasCanvas.SetActive(true);
         cameraSpeed = initialCameraSpeed;
-
-        if (Market)
-            buttonMarket.SetActive(true);
     }
 
 
@@ -1056,5 +853,4 @@ public class GameManager : MonoBehaviour
 
         return vector.sqrMagnitude;
     }
-
 }

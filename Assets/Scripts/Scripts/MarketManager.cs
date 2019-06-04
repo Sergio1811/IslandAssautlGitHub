@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MarketManager : MonoBehaviour
 {
     public GameObject backMenu;
+    MidGameMenuScript backMenuScript;
 
     public Text totalCoins;
     public Text totalWood, totalWood2, totalRock, totalRocks2, totalFabric, totalFabrics2;
@@ -38,6 +39,7 @@ public class MarketManager : MonoBehaviour
     private void OnEnable()
     {
         backMenu.SetActive(false);
+        backMenuScript = backMenu.GetComponent<MidGameMenuScript>();
 
         MatrixInitialization();
         UpdateTotals();
@@ -314,68 +316,56 @@ public class MarketManager : MonoBehaviour
         {
             case "wood":
                 GameManager.totalWood += (int)actualProduct.reward;
-                GameManager.Instance.totalEndWoodText.text = GameManager.totalWood.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
             case "rock":
                 GameManager.totalRock += (int)actualProduct.reward;
-                GameManager.Instance.totalEndRockText.text = GameManager.totalRock.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
             case "fabric":
                 GameManager.totalFabrics += (int)actualProduct.reward;
-                GameManager.Instance.totalEndFabricText.text = GameManager.totalFabrics.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
             case "wood2":
                 GameManager.totalWood2 += (int)actualProduct.reward;
-                GameManager.Instance.totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
             case "rock2":
                 GameManager.totalRock2 += (int)actualProduct.reward;
-                GameManager.Instance.totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
             case "fabric2":
                 GameManager.totalFabrics2 += (int)actualProduct.reward;
-                GameManager.Instance.totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
                 GameManager.totalCoins -= (int)actualProduct.price;
                 break;
 
             case "moneyForWood":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalWood -= (int)actualProduct.price;
-                GameManager.Instance.totalEndWoodText.text = GameManager.totalWood.ToString();
                 break;
             case "moneyForRocks":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalRock -= (int)actualProduct.price;
-                GameManager.Instance.totalEndRockText.text = GameManager.totalRock.ToString();
                 break;
             case "moneyForFabrics":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalFabrics -= (int)actualProduct.price;
-                GameManager.Instance.totalEndFabricText.text = GameManager.totalFabrics.ToString();
                 break;
             case "moneyForWood2":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalWood2 -= (int)actualProduct.price;
-                GameManager.Instance.totalEndWoodTier2Text.text = GameManager.totalWood2.ToString();
                 break;
             case "moneyForRocks2":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalRock2 -= (int)actualProduct.price;
-                GameManager.Instance.totalEndRockTier2Text.text = GameManager.totalRock2.ToString();
                 break;
             case "moneyForFabrics2":
                 GameManager.totalCoins += (int)actualProduct.reward;
                 GameManager.totalFabrics2 -= (int)actualProduct.price;
-                GameManager.Instance.totalEndFabricTier2Text.text = GameManager.totalFabrics2.ToString();
                 break;
         }
-        
-        GameManager.Instance.totalEndCoinsText.text = GameManager.totalCoins.ToString();
+
+        backMenuScript.UpdateTexts(actualProduct.idName);
         SaveManager.Instance.Save();
 
         UpdateTotals();

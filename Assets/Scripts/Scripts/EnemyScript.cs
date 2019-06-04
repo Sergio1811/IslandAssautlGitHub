@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class EnemyScript : MonoBehaviour
 {
     public GameObject player;
+    PlayerScript playerScript;
     public Node patrolPoint;
     List<Node> availableNodes;
     private NavMeshAgent agent;
@@ -78,7 +79,8 @@ public class EnemyScript : MonoBehaviour
             currentState = state.stay;
         }
 
-        //player = GameManager.Instance.player;
+        player = GameManager.Instance.player;
+        playerScript = player.GetComponent<PlayerScript>();
         agent = GetComponent<NavMeshAgent>();
         initialPos = new Vector3(transform.position.x, 0, transform.position.z);
 
@@ -110,7 +112,7 @@ public class EnemyScript : MonoBehaviour
                     break;
 
                 case state.chase:
-                    if (player.GetComponent<Movement>().actualType != Movement.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
+                    if (playerScript.actualType != PlayerScript.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                     {
                         if (patroler)
                         {
@@ -225,7 +227,7 @@ public class EnemyScript : MonoBehaviour
         {
             attackTimer = 0;
             myAnimator.SetTrigger("Attack");
-            player.GetComponent<Movement>().Damage(transform.forward, true);
+            playerScript.Damage(transform.forward, true);
             //player.SendMessage("Damage");
             //GameManager.Instance.Damage();
         }

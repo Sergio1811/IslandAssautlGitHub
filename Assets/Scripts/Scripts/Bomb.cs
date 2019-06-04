@@ -6,7 +6,7 @@ public class Bomb : MonoBehaviour
 {
     public float range;
     public GameObject player, psRockHit, psExplosion;
-    Movement playerMovement;
+    PlayerScript playerMovement;
     public GameObject rockPrefab, treePrefab, rock2Prefab, tree2Prefab;
     GameObject rock, tree;
     public bool knockback = false;
@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
 
     private void Start()
     {
-        playerMovement = player.GetComponent<Movement>();
+        playerMovement = player.GetComponent<PlayerScript>();
 
         canDestroyEnemies = true;
         canDestroyVillage = false;
@@ -77,7 +77,7 @@ public class Bomb : MonoBehaviour
 
             if (colliders[k].tag == "Player")
             {
-                player.GetComponent<Movement>().Damage(player.transform.forward - transform.position.normalized, false);
+                playerMovement.Damage(player.transform.forward - transform.position.normalized, false);
             }
         }
 

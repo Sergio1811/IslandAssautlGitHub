@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Movement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     private CharacterController characterController;
     private Transform cameraAnchor;
@@ -293,7 +293,6 @@ public class Movement : MonoBehaviour
                              sword.GetComponent<Animation>().Play();
                              actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
                          }*/
-                        print(axePolivalente);
                         if (actualType == playerType.ace && axePolivalente)
                         {
                             myAnimator.SetBool("Move", false);

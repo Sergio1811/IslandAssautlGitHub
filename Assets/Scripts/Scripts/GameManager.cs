@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public static int characterNumber;
     [HideInInspector] public GameObject player;
-    Movement playerScript;
+    PlayerScript playerScript;
     public GameObject livesGroup;
     int livesNumber, initialLiveNumber;
 
@@ -207,7 +207,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = PlayerInstantiation();
-        playerScript = player.GetComponent<Movement>();
         playerScript.enabled = false;
 
         gridScript.GenerateGrid(characterNumber);
@@ -319,14 +318,17 @@ public class GameManager : MonoBehaviour
         {
             case 0:
                 p = Instantiate(acerPrefab);
+                playerScript = p.GetComponent<PlayerScript>();
                 ApplyAxerAbilities(p);
                 break;
             case 1:
                 p = Instantiate(pickerPrefab);
+                playerScript = p.GetComponent<PlayerScript>();
                 ApplyBomberAbilities(p);
                 break;
             case 2:
                 p = Instantiate(sworderPrefab);
+                playerScript = p.GetComponent<PlayerScript>();
                 ApplySwordAbilities(p);
                 break;
         }
@@ -606,7 +608,7 @@ public class GameManager : MonoBehaviour
         mainCanvas.SetActive(false);
         movingCamera = true;
         cameraAnchor.GetComponent<CameraRotation>().enabled = false;
-        player.GetComponent<Movement>().enabled = false;
+        playerScript.enabled = false;
         entreIslasCanvas.SetActive(true);
         cameraSpeed = initialCameraSpeed;
     }
@@ -734,7 +736,7 @@ public class GameManager : MonoBehaviour
 
     void ApplyAxerAbilities(GameObject charac)
     {
-        Movement axerAbs = charac.GetComponent<Movement>();
+        PlayerScript axerAbs = playerScript;
 
         axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;//apply
         axerAbs.axePolivalente = AxerAbilities.Polivalente;//apply
@@ -756,7 +758,7 @@ public class GameManager : MonoBehaviour
     }
     void ApplySwordAbilities(GameObject charac)
     {
-        Movement swordAbs = charac.GetComponent<Movement>();
+        PlayerScript swordAbs = playerScript;
 
         swordAbs.attackSpeedCooldown = SwordAbilities.resourceSpeedMultiplier;
         swordAbs.swordPolivalente = SwordAbilities.Polivalente;//apply
@@ -777,7 +779,7 @@ public class GameManager : MonoBehaviour
     }
     void ApplyBomberAbilities(GameObject charac)
     {
-        Movement bomberAbs = charac.GetComponent<Movement>();
+        PlayerScript bomberAbs = playerScript;
 
         bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;//apply
         bomberAbs.bombPolivalente = BomberAbilities.Polivalente;//apply

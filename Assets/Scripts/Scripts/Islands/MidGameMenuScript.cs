@@ -49,6 +49,7 @@ public class MidGameMenuScript : MonoBehaviour
 
     public GameObject boatParts;
     public Image[] boatPartsIcons;
+    public Transform positionParts;
 
 
     void Start()
@@ -81,6 +82,7 @@ public class MidGameMenuScript : MonoBehaviour
         if (!activeCanvas)
         {
             transform.GetChild(0).localPosition = Vector3.MoveTowards(transform.GetChild(0).localPosition, Vector3.zero, GameManager.cameraSpeed * Time.deltaTime * 3.5f);
+            boatParts.transform.localPosition = Vector3.MoveTowards(boatParts.transform.localPosition, positionParts.localPosition, GameManager.cameraSpeed * Time.deltaTime * 0.9f);
 
             if (!GameManager.movingCamera)
             {

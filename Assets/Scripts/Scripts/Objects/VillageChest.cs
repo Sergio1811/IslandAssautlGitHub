@@ -15,7 +15,7 @@ public class VillageChest : MonoBehaviour
         {
             if (enemiesGroup.transform.childCount <= 0)
             {
-                Instantiate(psPoof, this.transform.position, Quaternion.identity);
+                Instantiate(psPoof, transform.position, Quaternion.identity);
                 chest.SetActive(true);
                 chestOut = true;
             }

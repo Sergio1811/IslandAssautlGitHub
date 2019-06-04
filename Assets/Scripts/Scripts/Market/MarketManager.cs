@@ -33,8 +33,7 @@ public class MarketManager : MonoBehaviour
 
     float timerMovement;
     bool movementOn = false;
-
-
+    
 
     private void OnEnable()
     {
@@ -74,9 +73,80 @@ public class MarketManager : MonoBehaviour
         }
 
         if (canBuy && InputManager.Instance.GetInputDown("Buy"))
-            BuyAbility();
+            BuyProduct();
+
+        UpdateButtons();
+    }
+
+    private void OnDisable()
+    {
+        if (actualIcono != null)
+            actualIcono.SetActive(false);
+        if (actualSelectedImage != null)
+            actualSelectedImage.SetActive(false);
+    }
+
+    
+    void MatrixInitialization()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (i == 0)
+                    imagesMatrix[i, j] = arrayWood[j];
+                else if (i == 1)
+                    imagesMatrix[i, j] = arrayRock[j];
+                else if (i == 2)
+                    imagesMatrix[i, j] = arrayFabrics[j];
+
+                productsMatrix[i, j] = imagesMatrix[i, j].GetComponent<MarketDisplay>().MarketProduct;
+
+                imagesMatrix[i, j].transform.GetChild(childTextNumber).GetComponent<Text>().text = "x" + productsMatrix[i, j].reward.ToString();
+            }
+        }
+
+        
+        if (GameManager.Instance.enemyTier2)
+        {
+            totalFabrics2Object.SetActive(true);
+            imagesMatrix[2, 1].SetActive(true);
+            imagesMatrix[2, 3].SetActive(true);
+        }
+        if (GameManager.Instance.rockTier2)
+        {
+            totalRock2Object.SetActive(true);
+            imagesMatrix[1, 1].SetActive(true);
+            imagesMatrix[1, 3].SetActive(true);
+        }
+        if (GameManager.Instance.treeTier2)
+        {
+            totalWood2Object.SetActive(true);
+            imagesMatrix[0, 1].SetActive(true);
+            imagesMatrix[0, 3].SetActive(true);
+        }
+    }
 
 
+
+    void UpdateTotals()
+    {
+        totalCoins.text = GameManager.totalCoins.ToString();
+        totalFabric.text = GameManager.totalFabrics.ToString();
+        totalRock.text = GameManager.totalRock.ToString();
+        totalWood.text = GameManager.totalWood.ToString();
+
+        if (GameManager.Instance.enemyTier2)
+            totalFabrics2.text = GameManager.totalFabrics2.ToString();
+        if (GameManager.Instance.rockTier2)
+            totalRocks2.text = GameManager.totalRock2.ToString();
+        if (GameManager.Instance.treeTier2)
+            totalWood2.text = GameManager.totalWood2.ToString();
+    }
+
+
+    void UpdateButtons()
+    {
         float horizontal = InputManager.Instance.GetAxis("Horizontal");
         if (horizontal == 0)
             horizontal = InputManager.Instance.GetAxis("CameraMovementX");
@@ -143,76 +213,6 @@ public class MarketManager : MonoBehaviour
         if (movementOn)
             timerMovement += Time.deltaTime;
     }
-
-    private void OnDisable()
-    {
-        if (actualIcono != null)
-            actualIcono.SetActive(false);
-        if (actualSelectedImage != null)
-            actualSelectedImage.SetActive(false);
-    }
-
-
-
-
-    void MatrixInitialization()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                if (i == 0)
-                    imagesMatrix[i, j] = arrayWood[j];
-                else if (i == 1)
-                    imagesMatrix[i, j] = arrayRock[j];
-                else if (i == 2)
-                    imagesMatrix[i, j] = arrayFabrics[j];
-
-                productsMatrix[i, j] = imagesMatrix[i, j].GetComponent<MarketDisplay>().MarketProduct;
-
-                imagesMatrix[i, j].transform.GetChild(childTextNumber).GetComponent<Text>().text = "x" + productsMatrix[i, j].reward.ToString();
-            }
-        }
-
-        
-        if (GameManager.Instance.enemyTier2)
-        {
-            totalFabrics2Object.SetActive(true);
-            imagesMatrix[2, 1].SetActive(true);
-            imagesMatrix[2, 3].SetActive(true);
-        }
-        if (GameManager.Instance.rockTier2)
-        {
-            totalRock2Object.SetActive(true);
-            imagesMatrix[1, 1].SetActive(true);
-            imagesMatrix[1, 3].SetActive(true);
-        }
-        if (GameManager.Instance.treeTier2)
-        {
-            totalWood2Object.SetActive(true);
-            imagesMatrix[0, 1].SetActive(true);
-            imagesMatrix[0, 3].SetActive(true);
-        }
-    }
-
-
-
-    void UpdateTotals()
-    {
-        totalCoins.text = GameManager.totalCoins.ToString();
-        totalFabric.text = GameManager.totalFabrics.ToString();
-        totalRock.text = GameManager.totalRock.ToString();
-        totalWood.text = GameManager.totalWood.ToString();
-
-        if (GameManager.Instance.enemyTier2)
-            totalFabrics2.text = GameManager.totalFabrics2.ToString();
-        if (GameManager.Instance.rockTier2)
-            totalRocks2.text = GameManager.totalRock2.ToString();
-        if (GameManager.Instance.treeTier2)
-            totalWood2.text = GameManager.totalWood2.ToString();
-    }
-
-
 
     void UpdateComponents()
     {
@@ -308,7 +308,7 @@ public class MarketManager : MonoBehaviour
 
 
 
-    void BuyAbility()
+    void BuyProduct()
     {
         canBuy = false;
 
@@ -371,6 +371,4 @@ public class MarketManager : MonoBehaviour
         UpdateTotals();
         UpdateComponents();
     }
-
-
 }

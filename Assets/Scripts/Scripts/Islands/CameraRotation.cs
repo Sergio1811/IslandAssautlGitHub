@@ -16,8 +16,7 @@ public class CameraRotation : MonoBehaviour
     public float maxYRotationAngle;
     [HideInInspector] public bool cameraRotating;
 
-
-
+    
     void Awake()
     {
         mainCamera = Camera.main;
@@ -36,8 +35,7 @@ public class CameraRotation : MonoBehaviour
             UpdateCameraPosition();
     }
 
-
-
+    
     public void CameraBehindPlayer()
     {
         Vector3 newRotation = new Vector3(transform.eulerAngles.x, GameManager.Instance.player.transform.eulerAngles.y, transform.eulerAngles.z);

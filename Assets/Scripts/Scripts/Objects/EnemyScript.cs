@@ -53,6 +53,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject psDamage;
     Vector3 psOffset = new Vector3(0, 4, 0);
 
+
     void Start()
     {
         originalAnimationPosition = myAnimator.transform.localPosition;
@@ -89,7 +90,7 @@ public class EnemyScript : MonoBehaviour
         iniAcc = agent.acceleration;
         knokBackIniDisctance = knockBackDistance;
     }
-
+    
     void Update()
     {
         if (player != null)
@@ -228,8 +229,6 @@ public class EnemyScript : MonoBehaviour
             attackTimer = 0;
             myAnimator.SetTrigger("Attack");
             playerScript.Damage(transform.forward, true);
-            //player.SendMessage("Damage");
-            //GameManager.Instance.Damage();
         }
     }
 

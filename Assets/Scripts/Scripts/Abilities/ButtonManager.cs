@@ -36,7 +36,6 @@ public class ButtonManager : MonoBehaviour
     bool movementOn = false;
 
 
-    
     private void OnEnable()
     {
         backMenu.SetActive(false);
@@ -68,8 +67,7 @@ public class ButtonManager : MonoBehaviour
         if (imagesMatrix[arrayPositionX, arrayPositionY] != null)
             imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childSelectedNumber).gameObject.SetActive(false);
     }
-
-
+    
     private void Update()
     {
         if (InputManager.Instance.GetInputDown("Cancel"))
@@ -81,7 +79,83 @@ public class ButtonManager : MonoBehaviour
         if (canBuy && InputManager.Instance.GetInputDown("Buy"))
             BuyAbility();
 
+        UpdateButtons();
+    }
 
+    
+    void MatrixInitialization()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                if (i < 3 && j < 3)
+                    imagesMatrix[i, j] = arrayAxe[j + i * 3];
+                else if (i < 3 && j > 2)
+                    imagesMatrix[i, j] = arrayBomb[j + i * 3 - 3];
+                else if (i > 2 && j < 3)
+                    imagesMatrix[i, j] = arraySword[j + (i - 3) * 3];
+                else
+                    imagesMatrix[i, j] = arrayGeneral[j + (i - 3) * 3 - 3];
+
+                abilitiesMatrix[i, j] = imagesMatrix[i, j].GetComponent<AbilityDisplay>().Ability;
+            }
+        }
+
+        if (!PlayerPrefs.HasKey(boughtString + abilitiesMatrix[3, 3].saverString))
+        {
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 3].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 2].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 2].saverString, 1);
+            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 3].saverString, 1);
+
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 4].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 3].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 2].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 1].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 1].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 2].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 4].saverString, 1);
+            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 3].saverString, 1);
+        }
+    }
+
+
+    void IconsInitialization()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                imagesMatrix[i, j].transform.GetChild(childImageNumber).GetComponent<Image>().sprite = abilitiesMatrix[i, j].icono;
+                imagesMatrix[i, j].transform.GetChild(childBNImageNumber).GetComponent<Image>().sprite = abilitiesMatrix[i, j].iconoByN;
+
+
+                if (PlayerPrefs.GetInt(boughtString + abilitiesMatrix[i, j].saverString) == 1)
+                    abilitiesMatrix[i, j].isBought = true;
+                else
+                    abilitiesMatrix[i, j].isBought = false;
+
+                if (PlayerPrefs.GetInt(unlockedString + abilitiesMatrix[i, j].saverString) == 1)
+                    abilitiesMatrix[i, j].isUnlocked = true;
+                else
+                    abilitiesMatrix[i, j].isUnlocked = false;
+
+
+                if (abilitiesMatrix[i, j].isBought)
+                    imagesMatrix[i, j].transform.GetChild(childImageNumber).gameObject.SetActive(true);
+                else if (abilitiesMatrix[i, j].isUnlocked)
+                    imagesMatrix[i, j].transform.GetChild(childBNImageNumber).gameObject.SetActive(true);
+                else
+                    imagesMatrix[i, j].transform.GetChild(childBlockNumber).gameObject.SetActive(true);
+            }
+        }
+    }
+
+
+
+    void UpdateButtons()
+    {
         float horizontal = InputManager.Instance.GetAxis("Horizontal");
         if (horizontal == 0)
             horizontal = InputManager.Instance.GetAxis("CameraMovementX");
@@ -134,78 +208,6 @@ public class ButtonManager : MonoBehaviour
         if (movementOn)
             timerMovement += Time.deltaTime;
     }
-
-
-
-
-    void MatrixInitialization()
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                if (i < 3 && j < 3)
-                    imagesMatrix[i, j] = arrayAxe[j + i * 3];
-                else if (i < 3 && j > 2)
-                    imagesMatrix[i, j] = arrayBomb[j + i * 3 - 3];
-                else if (i > 2 && j < 3)
-                    imagesMatrix[i, j] = arraySword[j + (i - 3) * 3];
-                else
-                    imagesMatrix[i, j] = arrayGeneral[j + (i - 3) * 3 - 3];
-
-                abilitiesMatrix[i, j] = imagesMatrix[i, j].GetComponent<AbilityDisplay>().Ability;
-            }
-        }
-
-        if (!PlayerPrefs.HasKey(boughtString + abilitiesMatrix[3, 3].saverString))
-        {
-            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 3].saverString, 1);
-            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 2].saverString, 1);
-            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[3, 2].saverString, 1);
-            PlayerPrefs.SetInt(boughtString + abilitiesMatrix[2, 3].saverString, 1);
-
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 4].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 3].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 2].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 1].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[3, 1].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[4, 2].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[2, 4].saverString, 1);
-            PlayerPrefs.SetInt(unlockedString + abilitiesMatrix[1, 3].saverString, 1);
-        }
-    }
-
-    void IconsInitialization()
-    {
-        for (int i = 0; i < 6; i++)
-        {
-            for (int j = 0; j < 6; j++)
-            {
-                imagesMatrix[i, j].transform.GetChild(childImageNumber).GetComponent<Image>().sprite = abilitiesMatrix[i, j].icono;
-                imagesMatrix[i, j].transform.GetChild(childBNImageNumber).GetComponent<Image>().sprite = abilitiesMatrix[i, j].iconoByN;
-
-
-                if (PlayerPrefs.GetInt(boughtString + abilitiesMatrix[i, j].saverString) == 1)
-                    abilitiesMatrix[i, j].isBought = true;
-                else
-                    abilitiesMatrix[i, j].isBought = false;
-
-                if (PlayerPrefs.GetInt(unlockedString + abilitiesMatrix[i, j].saverString) == 1)
-                    abilitiesMatrix[i, j].isUnlocked = true;
-                else
-                    abilitiesMatrix[i, j].isUnlocked = false;
-
-
-                if (abilitiesMatrix[i, j].isBought)
-                    imagesMatrix[i, j].transform.GetChild(childImageNumber).gameObject.SetActive(true);
-                else if (abilitiesMatrix[i, j].isUnlocked)
-                    imagesMatrix[i, j].transform.GetChild(childBNImageNumber).gameObject.SetActive(true);
-                else
-                    imagesMatrix[i, j].transform.GetChild(childBlockNumber).gameObject.SetActive(true);
-            }
-        }
-    }
-
 
 
     void UpdateComponents()

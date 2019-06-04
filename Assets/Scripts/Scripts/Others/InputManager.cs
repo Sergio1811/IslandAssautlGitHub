@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public bool xboxController = false;
 
+
     private void Awake()
     {
         Instance = this;
@@ -28,14 +29,12 @@ public class InputManager : MonoBehaviour
         {
             if (names[x].ToUpper().Contains("XBOX"))
             {
-                //print("XBOX ONE CONTROLLER CONNECTED");
                 psController = false;
                 xboxController = true;
 
             }
             else
             {
-                //print("PS4 CONTROLLER CONNECTED");
                 psController = true;
                 xboxController = false;
             }

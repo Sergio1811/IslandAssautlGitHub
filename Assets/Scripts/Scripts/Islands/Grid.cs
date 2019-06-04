@@ -749,4 +749,3 @@ public class Node
         isTransitable = _isTransitable;
     }
 }
-

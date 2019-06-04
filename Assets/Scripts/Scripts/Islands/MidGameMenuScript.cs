@@ -88,9 +88,7 @@ public class MidGameMenuScript : MonoBehaviour
         }
     }
 
-
-
-
+    
     void ResultTextsInitialization()
     {
         if (GameManager.Instance.currentCoins != 0)
@@ -198,8 +196,7 @@ public class MidGameMenuScript : MonoBehaviour
 
     }
 
-
-
+    
     void UpdateBetweenIslandMenuButtons()
     {
         cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));

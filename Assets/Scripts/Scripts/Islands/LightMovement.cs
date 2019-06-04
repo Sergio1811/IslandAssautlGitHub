@@ -12,18 +12,14 @@ public class LightMovement : MonoBehaviour
     float currentAngle;
     float timer = 0;
 
+
     void Start()
     {
         currentAngle = Random.Range(startMinimumAngle, startMaximumAngle) * Mathf.Deg2Rad;
-
-        //currentAngle = Random.Range(startMinimumAngle, startMaximumAngle);
-
         transform.position = new Vector3(radius * Mathf.Cos(currentAngle), radius * Mathf.Sin(currentAngle), transform.position.z);
-
         transform.LookAt(Vector3.zero);
-        
     }
-
+    
     void Update()
     {
         if (GameManager.startGame)

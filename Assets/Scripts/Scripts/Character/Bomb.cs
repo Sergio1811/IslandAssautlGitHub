@@ -12,6 +12,7 @@ public class Bomb : MonoBehaviour
     public bool knockback = false;
     bool canDestroyEnemies, canDestroyVillage, canDestroyDecoration;
 
+
     private void Start()
     {
         playerMovement = player.GetComponent<PlayerScript>();
@@ -20,6 +21,7 @@ public class Bomb : MonoBehaviour
         canDestroyVillage = false;
         canDestroyDecoration = false;
     }
+
 
     public void Explode()
     {
@@ -36,7 +38,7 @@ public class Bomb : MonoBehaviour
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
-            if (colliders[k].tag == "Rock2")
+            else if (colliders[k].tag == "Rock2")
             {
                 rock = Instantiate(rock2Prefab);
                 Instantiate(psRockHit, colliders[k].transform);
@@ -44,22 +46,20 @@ public class Bomb : MonoBehaviour
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
-            if (colliders[k].tag == "Enemy" && canDestroyEnemies)
+            else if (colliders[k].tag == "Enemy" && canDestroyEnemies)
             {
                 EnemyScript enemyScript = colliders[k].transform.parent.GetComponent<EnemyScript>();
                 if (playerMovement.bomberKnockBack)
                     enemyScript.KnockBackActivated(this.gameObject.transform);
                 enemyScript.GetAttackedByBomb();
             }
-            if (colliders[k].tag == "Decoration" && canDestroyDecoration)
-            {
+
+            else if (colliders[k].tag == "Decoration" && canDestroyDecoration)
                 Destroy(colliders[k].transform.parent.gameObject);
-            }
-            if (colliders[k].tag == "Village" && canDestroyVillage)
-            {
+            else if (colliders[k].tag == "Village" && canDestroyVillage)
                 Destroy(colliders[k].gameObject);
-            }
-            if (colliders[k].tag == "Tree" && playerMovement.bombPolivalente)
+
+            else if (colliders[k].tag == "Tree" && playerMovement.bombPolivalente)
             {
                 tree = Instantiate(treePrefab);
                 tree.transform.position = colliders[k].transform.position;
@@ -67,7 +67,7 @@ public class Bomb : MonoBehaviour
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
-            if (colliders[k].tag == "Tree2" && playerMovement.bombPolivalente)
+            else if (colliders[k].tag == "Tree2" && playerMovement.bombPolivalente)
             {
                 tree = Instantiate(tree2Prefab);
                 tree.transform.position = colliders[k].transform.position;
@@ -75,10 +75,8 @@ public class Bomb : MonoBehaviour
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
-            if (colliders[k].tag == "Player")
-            {
+            else if (colliders[k].tag == "Player")
                 playerMovement.Damage(player.transform.forward - transform.position.normalized, false);
-            }
         }
 
         gameObject.SetActive(false);
@@ -89,6 +87,5 @@ public class Bomb : MonoBehaviour
     {
         Gizmos.color = new Color(1f, 1f, 0f, 0.5f);
         Gizmos.DrawSphere(transform.position, range);
-
     }
 }

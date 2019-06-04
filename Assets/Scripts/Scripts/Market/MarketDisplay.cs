@@ -6,6 +6,4 @@ using UnityEngine;
 public class MarketDisplay : MonoBehaviour
 {
     public Product MarketProduct;
-
-
 }

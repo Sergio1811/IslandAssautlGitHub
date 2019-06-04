@@ -89,6 +89,7 @@ public class PlayerScript : MonoBehaviour
     public Animator myAnimator;
     Vector3 originalAnimationPosition;
 
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -104,8 +105,6 @@ public class PlayerScript : MonoBehaviour
             hitDistance *= hitDistanceUpgradeMultiplier;
         if (actualType == playerType.sword && swordTier2)
             hitDistance *= hitDistanceUpgradeMultiplier;
-        //if (actualType == playerType.pick && bombTier2)
-        //change bomb to C4
 
         originalAnimationPosition = myAnimator.transform.localPosition;
     }
@@ -189,6 +188,7 @@ public class PlayerScript : MonoBehaviour
         characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
     }
 
+
     void Dash()
     {
         if (InputManager.Instance.GetInput("Dash"))
@@ -218,6 +218,7 @@ public class PlayerScript : MonoBehaviour
             characterController.enabled = true;
         }
     }
+
 
     void StartAction()
     {
@@ -288,17 +289,11 @@ public class PlayerScript : MonoBehaviour
 
                     case "Enemy2":
                     case "Enemy":
-                        /* if (actualType == playerType.sword)
-                         {
-                             sword.GetComponent<Animation>().Play();
-                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform);
-                         }*/
                         if (actualType == playerType.ace && axePolivalente)
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             myAnimator.transform.localPosition = originalAnimationPosition;
-                            //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
@@ -307,16 +302,9 @@ public class PlayerScript : MonoBehaviour
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             myAnimator.transform.localPosition = originalAnimationPosition;
-                            //axe.GetComponent<Animation>().Play();
                             actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
                         }
                         break;
-
-                    /*case "Chest":
-                        if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
-                            actionOn = true;
-
-                        break;*/
                     case "Rock2":
                         if (actualType == playerType.ace && axePolivalente)
                         {
@@ -354,13 +342,9 @@ public class PlayerScript : MonoBehaviour
                             actionOn = true;
                         }
                         break;
-                        //case "Exit":
-                        //    GameManager.Instance.LevelComplete();
-                        //    break;
                 }
             }
-
-
+            
             if (actualType == playerType.pick)
             {
                 Instantiate(psBombPutDown, this.transform.position, Quaternion.identity);
@@ -383,6 +367,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     void UpdateAction()
     {
         if (InputManager.Instance.GetInput("Action"))
@@ -403,6 +388,7 @@ public class PlayerScript : MonoBehaviour
             canMove = true;
         }
     }
+
 
     void UpdateBomb()
     {
@@ -431,6 +417,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     void EndAction()
     {
         switch (actionObject.tag)
@@ -456,24 +443,15 @@ public class PlayerScript : MonoBehaviour
             case "Tree":
                 if (actualType == playerType.ace)
                     CutTree(actionObject.transform.parent.parent.gameObject, 1);
-                //if (actualType == playerType.pick && bombPolivalente)
-                //CutTree(actionObject.transform.parent.parent.gameObject);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject, 1);
                 break;
             case "Tree2":
                 if (actualType == playerType.ace)
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
-                //if (actualType == playerType.pick && bombPolivalente)
-                //CutTree(actionObject.transform.parent.parent.gameObject);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
                 break;
-
-                //case "Chest":
-                //    if (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick))
-                //        PickFabrics(actionObject);
-                //    break;
         }
 
         actionOn = false;
@@ -483,6 +461,7 @@ public class PlayerScript : MonoBehaviour
         canMove = true;
         myAnimator.SetBool("Attack", false);
     }
+
 
     public void BreakRock(GameObject rock, int rockTier)
     {
@@ -496,34 +475,13 @@ public class PlayerScript : MonoBehaviour
         Instantiate(psWood, this.transform.position + this.transform.forward.normalized, Quaternion.identity);
         Destroy(tree);
     }
-
-    void Stun()
-    {
-        //if (InputManager.Instance.GetInput("Stun"))
-        //{
-        //    lastStunButtonReleased = false;
-
-        //    Ray ray = new Ray(transform.position, transform.forward);
-        //    Ray ray2 = new Ray(transform.position + transform.right * 1.5f, transform.forward);
-        //    Ray ray3 = new Ray(transform.position - transform.right * 1.5f, transform.forward);
-        //    RaycastHit hit = new RaycastHit();
-        //    if (Physics.Raycast(ray, out hit, hitDistance) || Physics.Raycast(ray2, out hit, hitDistance) || Physics.Raycast(ray3, out hit, hitDistance))
-        //    {
-        //        actionObject = hit.collider.gameObject;
-        //        if (actionObject.tag == "Enemy")
-        //        {
-        //            if (actualType == playerType.ace && axeStun)
-        //                actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
-        //        }
-        //    }
-        //}
-    }
-
+    
     public void PickFabrics(GameObject chest, int tier)
     {
         GameManager.Instance.PickFabrics(tier);
         Destroy(chest);
     }
+
 
     void CheckInmortal()
     {
@@ -531,6 +489,7 @@ public class PlayerScript : MonoBehaviour
         if (inmortalTimer >= inmortalDurationTime)
             inmortal = false;
     }
+
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -562,6 +521,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     public void Damage(Vector3 direction, bool changeInmortal) //changeInmortal para decidir si te da unos segundos de invulnerabilidad, la bomba no te los da
     {
         if (!inmortal)
@@ -576,6 +536,7 @@ public class PlayerScript : MonoBehaviour
             GameManager.Instance.Damage();
         }
     }
+
 
     public void SwordAttack()
     {
@@ -690,8 +651,7 @@ public class PlayerScript : MonoBehaviour
         myAnimator.SetBool("Stay", false);
     }
 
-
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -700,6 +660,5 @@ public class PlayerScript : MonoBehaviour
         Gizmos.DrawRay(transform.position + transform.right * 2f, transform.forward * hitDistance);
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(transform.position - transform.right * 2f, transform.forward * hitDistance);
-
     }
 }

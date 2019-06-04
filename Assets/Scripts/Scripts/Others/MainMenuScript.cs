@@ -15,6 +15,7 @@ public class MainMenuScript : MonoBehaviour
     bool hasMoved, movementOn;
     float timerMovement;
 
+
     void Start()
     {
         arrayNumber = 0;
@@ -25,6 +26,28 @@ public class MainMenuScript : MonoBehaviour
     }
     
     void Update()
+    {
+        UpdateButtons();
+
+        if (InputManager.Instance.GetInputDown("Submit"))
+        {
+            switch(arrayNumber)
+            {
+                case 0:
+                    SceneManager.LoadScene(1);
+                    break;
+                case 1:
+                    //options
+                    break;
+                case 2:
+                    Application.Quit();
+                    break;
+            }
+        }
+    }
+
+
+    void UpdateButtons()
     {
         float vertical = -InputManager.Instance.GetAxis("Vertical");
         if (vertical == 0)
@@ -46,7 +69,7 @@ public class MainMenuScript : MonoBehaviour
                 if (arrayNumber < 0)
                     arrayNumber = numberOfButtons - 1;
             }
-            
+
             if (hasMoved)
             {
                 actualImage.color = Color.white;
@@ -65,22 +88,5 @@ public class MainMenuScript : MonoBehaviour
 
         if (movementOn)
             timerMovement += Time.deltaTime;
-
-
-        if (InputManager.Instance.GetInputDown("Submit"))
-        {
-            switch(arrayNumber)
-            {
-                case 0:
-                    SceneManager.LoadScene(1);
-                    break;
-                case 1:
-                    //options
-                    break;
-                case 2:
-                    Application.Quit();
-                    break;
-            }
-        }
     }
 }

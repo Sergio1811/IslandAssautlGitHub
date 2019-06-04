@@ -671,7 +671,6 @@ public class Movement : MonoBehaviour
 
                 if (!swordSeep)
                     break;
-                    break;
 
                 repeatedEnemy = false;
             }

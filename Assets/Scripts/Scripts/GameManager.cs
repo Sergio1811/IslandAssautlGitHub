@@ -9,15 +9,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
 
+    private float rangedFloat;
+    [Header("Main Characters Prefabs")]
+    [Tooltip("The main character prefabs")]
     public GameObject pickerPrefab;
     public GameObject acerPrefab;
     public GameObject sworderPrefab;
 
-    public GameObject entreIslasCanvas;
-    public GameObject abilitiesCanvas;
-    public GameObject mainCanvas;
-
-    [HideInInspector] public int characterNumber;
+    public static int characterNumber;
     [HideInInspector] public GameObject player;
     Movement playerScript;
     public GameObject livesGroup;
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
     public bool rockTier2 = false;
     #endregion
 
+    [Header("Islands")]
     public Grid gridScript;
     int protoIsland;
     public GameObject[] islands;
@@ -68,11 +68,17 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int rock2Needed;
     [HideInInspector] public int fabric2Needed;
 
-    string[] secondaryObjectives;
+    [HideInInspector] public string[] secondaryObjectives;
     #endregion
 
+    [Range(1f, 5f)]
+    [SerializeField]
     public int rockByItem;
+    [Range(1f, 5f)]
+    [SerializeField]
     public int woodByItem;
+    [Range(1f, 5f)]
+    [SerializeField]
     public int enemiesByItem;
 
     #region Collected resources in island variables
@@ -106,9 +112,16 @@ public class GameManager : MonoBehaviour
     public float timeByLevel;
     private float remainingTimeInLevel;
     public Text timeText;
-    public float waitToStartTime, initialPanelPositionsTime;
+    
+    [Header("Start Variables")]
+    [Range(1f, 5f)]
+    [SerializeField]
+    public float waitToStartTime;
+    [Range(1f, 5f)]
+    [SerializeField]
+    public float initialPanelPositionsTime;
     float waitTimer;
-    public bool startGame;
+    public static bool startGame;
     bool gameOver = false;
     public static bool gameWon;
 
@@ -120,20 +133,21 @@ public class GameManager : MonoBehaviour
     GameObject cameraAnchor;
 
 
-    //MAIN CANVAS
+    //CANVAS
+    [Header("Canvas")]
+    public GameObject entreIslasCanvas;
+    public GameObject abilitiesCanvas;
+    public GameObject mainCanvas;
+    public GameObject rightPanel;
+    public GameObject rightPanelSecundaries;
+    public GameObject leftPanel;
+    public Transform positionRight, positionLeft;
+    public float speedPanels;
+    float initialSpeedPanels;
+
+    [Header("Main Resource Canvas Panel")]
     public GameObject recursoPrincipal;
     public GameObject recursoPrincipalTier2;
-
-    #region Main resource panel images
-
-    public GameObject principalRockImage;
-    public GameObject principalWoodImage;
-    public GameObject principalFabricImage;
-    public GameObject principalRockImageTier2;
-    public GameObject principalWoodImageTier2;
-    public GameObject principalFabricImageTier2;
-
-    #endregion
     #region Main resource panel texts
 
     public Text recursoPrincipalText;
@@ -143,17 +157,8 @@ public class GameManager : MonoBehaviour
     public Text recursoPrincipalCaughtTier2;
 
     #endregion
-
-    #region Secudary resources panel images
-
-    public GameObject rockSecundary;
-    public GameObject rockSecundaryTier2;
-    public GameObject woodSecundary;
-    public GameObject woodSecundaryTier2;
-    public GameObject fabricSecundary;
-    public GameObject fabricSecundaryTier2;
-
-    #endregion
+    
+    [Header("Secundary Resource Canvas Panel")]
     #region Secundary resources panel texts
 
     public Text woodText;
@@ -164,12 +169,14 @@ public class GameManager : MonoBehaviour
     public Text fabricTextTier2;
 
     #endregion
-
+    
+    [Header("Main Weapon Images")]
     public Image sworderImage;
     public Image bomberImage;
     public Image axerImage;
     public Image bomberTier2Image;
 
+    [Header("Secundary Objective Images")]
     #region Secundary objective images
 
     public GameObject woodObjectiveImage;
@@ -183,13 +190,6 @@ public class GameManager : MonoBehaviour
     public Text secondaryObjectiveText;
     GameObject[] objectiveImage;
     int secondaryObjectiveID;
-
-    public GameObject rightPanel;
-    public GameObject rightPanelSecundaries;
-    public GameObject leftPanel;
-    public Transform positionRight, positionLeft;
-    public float speedPanels;
-    float initialSpeedPanels;
 
 
 
@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
             }
             else if (movingCamera)
                 UpdateEndCameraPosition();
-            
+
             if (Input.GetKeyDown(KeyCode.R))
                 SaveManager.Instance.ResetSaving();
 
@@ -355,21 +355,21 @@ public class GameManager : MonoBehaviour
                 woodText.gameObject.SetActive(true);
                 woodNeeded = woodInMap / 2;
                 recursoPrincipalText.text = woodNeeded.ToString();
-                principalWoodImage.SetActive(true);
-                fabricSecundary.SetActive(true);
-                rockSecundary.SetActive(true);
+                recursoPrincipal.transform.GetChild(2).gameObject.SetActive(true);
+                fabricText.transform.parent.gameObject.SetActive(true);
+                rockText.transform.parent.gameObject.SetActive(true);
 
                 if (treeTier2)
                 {
                     wood2Needed = wood2InMap / 2;
-                    principalWoodImageTier2.SetActive(true);
+                    recursoPrincipalTier2.transform.GetChild(2).gameObject.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
                     recursoPrincipalTextTier2.text = wood2Needed.ToString();
                 }
                 if (rockTier2)
-                    rockSecundaryTier2.SetActive(true);
+                    rockTextTier2.transform.parent.gameObject.SetActive(true);
                 if (enemyTier2)
-                    fabricSecundaryTier2.SetActive(true);
+                    fabricTextTier2.transform.parent.gameObject.SetActive(true);
 
                 cointsText.text = currentCoins.ToString();
                 axerImage.enabled = true;
@@ -380,13 +380,14 @@ public class GameManager : MonoBehaviour
                 rockText.gameObject.SetActive(true);
                 rockNeeded = rockInMap / 2;
                 recursoPrincipalText.text = rockNeeded.ToString();
-                principalRockImage.SetActive(true);
-                fabricSecundary.SetActive(true);
-                woodSecundary.SetActive(true);
+                recursoPrincipal.transform.GetChild(1).gameObject.SetActive(true);
+                fabricText.transform.parent.gameObject.SetActive(true);
+                woodText.transform.parent.gameObject.SetActive(true);
+
                 if (rockTier2)
                 {
                     rock2Needed = rock2InMap / 2;
-                    principalRockImageTier2.SetActive(true);
+                    recursoPrincipalTier2.transform.GetChild(1).gameObject.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
                     recursoPrincipalTextTier2.text = rock2Needed.ToString();
                     bomberTier2Image.enabled = true;
@@ -394,9 +395,9 @@ public class GameManager : MonoBehaviour
                 else
                     bomberImage.enabled = true;
                 if (treeTier2)
-                    woodSecundaryTier2.SetActive(true);
+                    woodTextTier2.transform.parent.gameObject.SetActive(true);
                 if (enemyTier2)
-                    fabricSecundaryTier2.SetActive(true);
+                    fabricTextTier2.transform.parent.gameObject.SetActive(true);
 
                 cointsText.text = currentCoins.ToString();
                 break;
@@ -406,20 +407,21 @@ public class GameManager : MonoBehaviour
                 fabricText.gameObject.SetActive(true);
                 fabricNeeded = fabricInMap / 2;
                 recursoPrincipalText.text = fabricNeeded.ToString();
-                principalFabricImage.SetActive(true);
-                rockSecundary.SetActive(true);
-                woodSecundary.SetActive(true);
+                recursoPrincipal.transform.GetChild(3).gameObject.SetActive(true);
+                woodText.transform.parent.gameObject.SetActive(true);
+                rockText.transform.parent.gameObject.SetActive(true);
+
                 if (enemyTier2)
                 {
                     fabric2Needed = fabric2InMap / 2;
-                    principalFabricImageTier2.SetActive(true);
+                    recursoPrincipalTier2.transform.GetChild(3).gameObject.SetActive(true);
                     recursoPrincipalTier2.SetActive(true);
                     recursoPrincipalTextTier2.text = fabric2Needed.ToString();
                 }
                 if (rockTier2)
-                    rockSecundaryTier2.SetActive(true);
+                    rockTextTier2.transform.parent.gameObject.SetActive(true);
                 if (treeTier2)
-                    woodSecundaryTier2.SetActive(true);
+                    woodTextTier2.transform.parent.gameObject.SetActive(true);
 
                 cointsText.text = currentCoins.ToString();
                 sworderImage.enabled = true;
@@ -518,7 +520,7 @@ public class GameManager : MonoBehaviour
             movingCamera = false;
     }
 
-    
+
 
 
     //END LEVEL METHODS

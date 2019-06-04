@@ -211,7 +211,7 @@ public class ObjectsInstantiation : MonoBehaviour
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
-                    if (GameManager.Instance.characterNumber == 0)
+                    if (GameManager.characterNumber == 0)
                     {
                         for (int k = 0; k < enemiesGroup.transform.childCount; k++)
                         {
@@ -243,7 +243,7 @@ public class ObjectsInstantiation : MonoBehaviour
                     objectInstantiation.transform.GetChild(0).localEulerAngles = new Vector3(0, 90 * Random.Range(0, 4), 0);
                     GameObject enemiesGroup = objectInstantiation.transform.GetChild(0).GetChild(2).gameObject;
                     enemiesGroup.SetActive(true);
-                    if (GameManager.Instance.characterNumber == 0)
+                    if (GameManager.characterNumber == 0)
                     {
                         for (int k = 0; k < enemiesGroup.transform.childCount; k++)
                         {

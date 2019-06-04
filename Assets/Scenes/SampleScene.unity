@@ -24688,10 +24688,6 @@ MonoBehaviour:
     type: 3}
   sworderPrefab: {fileID: 6686073746894510971, guid: af7b64b3311e6d443b2d13eeccd8e2e6,
     type: 3}
-  entreIslasCanvas: {fileID: 887935738}
-  abilitiesCanvas: {fileID: 7146663376544890209}
-  mainCanvas: {fileID: 8934052174480988392}
-  characterNumber: 0
   player: {fileID: 0}
   livesGroup: {fileID: 8934052174518949180}
   titan: 0
@@ -24721,6 +24717,7 @@ MonoBehaviour:
   wood2Needed: 0
   rock2Needed: 0
   fabric2Needed: 0
+  secondaryObjectives: []
   rockByItem: 2
   woodByItem: 2
   enemiesByItem: 3
@@ -24735,28 +24732,24 @@ MonoBehaviour:
   timeText: {fileID: 6740300293385485274}
   waitToStartTime: 3
   initialPanelPositionsTime: 1
-  startGame: 0
   endCameraPosition: {fileID: 1567700715}
   initialCameraSpeed: 150
+  entreIslasCanvas: {fileID: 887935738}
+  abilitiesCanvas: {fileID: 7146663376544890209}
+  mainCanvas: {fileID: 8934052174480988392}
+  rightPanel: {fileID: 1632214828}
+  rightPanelSecundaries: {fileID: 1552405143}
+  leftPanel: {fileID: 8934052174835267613}
+  positionRight: {fileID: 1353654612}
+  positionLeft: {fileID: 636654526}
+  speedPanels: 1000
   recursoPrincipal: {fileID: 5450777384368000765}
   recursoPrincipalTier2: {fileID: 1536289547}
-  principalRockImage: {fileID: 3483864409488034402}
-  principalWoodImage: {fileID: 3483864409969075549}
-  principalFabricImage: {fileID: 3483864407983831052}
-  principalRockImageTier2: {fileID: 1217231651}
-  principalWoodImageTier2: {fileID: 1913543196}
-  principalFabricImageTier2: {fileID: 2101708530}
   recursoPrincipalText: {fileID: 5450777383257017544}
   recursoPrincipalTextTier2: {fileID: 760268770}
   cointsText: {fileID: 8934052175498798324}
   recursoPrincipalCaughtText: {fileID: 3483864409881176607}
   recursoPrincipalCaughtTier2: {fileID: 2000024460}
-  rockSecundary: {fileID: 439020445}
-  rockSecundaryTier2: {fileID: 614278904}
-  woodSecundary: {fileID: 1623238057}
-  woodSecundaryTier2: {fileID: 575953746}
-  fabricSecundary: {fileID: 1987422620}
-  fabricSecundaryTier2: {fileID: 791816290}
   woodText: {fileID: 513192653}
   woodTextTier2: {fileID: 1705045019}
   rockText: {fileID: 8934052173570593926}
@@ -24773,12 +24766,6 @@ MonoBehaviour:
   fabricObjectiveImage: {fileID: 404314551}
   livesObjectiveImage: {fileID: 233806916}
   secondaryObjectiveText: {fileID: 8934052174145751238}
-  rightPanel: {fileID: 1632214828}
-  rightPanelSecundaries: {fileID: 1552405143}
-  leftPanel: {fileID: 8934052174835267613}
-  positionRight: {fileID: 1353654612}
-  positionLeft: {fileID: 636654526}
-  speedPanels: 1000
 --- !u!114 &1362759329
 MonoBehaviour:
   m_ObjectHideFlags: 0

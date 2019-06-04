@@ -26,7 +26,7 @@ public class LightMovement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.startGame)
+        if (GameManager.startGame)
             if (timer < timeToComplete)
             {
                 timer += Time.deltaTime;

@@ -380,6 +380,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Axe_Character_Animated
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
+    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -440,18 +448,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 189960dbc729fcb4098d02b381e3d5d9, type: 2}
-    - target: {fileID: 9500000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
-    - target: {fileID: 13700000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6f1efe2d329dd8b449845caa5334d4c5, type: 2}
     - target: {fileID: 13700002, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4af5e6363aee42240a52740d5c17487a, type: 2}
+    - target: {fileID: 13700000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f1efe2d329dd8b449845caa5334d4c5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a55178cb97a7cb24b92223d6d1fd1310, type: 3}
 --- !u!4 &2450371816866972469 stripped

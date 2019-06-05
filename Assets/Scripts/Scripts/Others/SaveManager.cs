@@ -3,10 +3,16 @@
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance { get; set; }
+    static bool created = false;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (!created)
+        {
+            DontDestroyOnLoad(gameObject);
+            created = true;
+        }
+
         Instance = this;
         Load();
     }

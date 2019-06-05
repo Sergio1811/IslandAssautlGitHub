@@ -34,12 +34,17 @@ public class MainMenuScript : MonoBehaviour
             switch(arrayNumber)
             {
                 case 0:
+                    PlayerPrefs.DeleteAll();
+                    PlayerPrefs.Save();
                     SceneManager.LoadScene(1);
                     break;
                 case 1:
-                    //options
+                    SceneManager.LoadScene(1);
                     break;
                 case 2:
+                    //options
+                    break;
+                case 3:
                     Application.Quit();
                     break;
             }

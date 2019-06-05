@@ -250,9 +250,6 @@ public class GameManager : MonoBehaviour
             else if (movingCamera)
                 UpdateEndCameraPosition();
 
-            if (Input.GetKeyDown(KeyCode.R))
-                SaveManager.Instance.ResetSaving();
-
             if (Input.GetKeyDown(KeyCode.M))
             {
                 totalCoins += 500;

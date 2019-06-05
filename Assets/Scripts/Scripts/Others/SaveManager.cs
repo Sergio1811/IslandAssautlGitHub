@@ -38,8 +38,7 @@ public class SaveManager : MonoBehaviour
         GameManager.totalWood2 = PlayerPrefs.GetInt("TotalWood2");
         GameManager.totalRock2 = PlayerPrefs.GetInt("TotalRock2");
         GameManager.totalFabrics2 = PlayerPrefs.GetInt("TotalFabric2");
-
-        print(ButtonManager.boughtString);
+        
         if (PlayerPrefs.GetInt(ButtonManager.boughtString + "mastil") == 1)
             GameManager.mastil = true;
         if (PlayerPrefs.GetInt(ButtonManager.boughtString + "casco") == 1)

@@ -8,6 +8,7 @@ public class MainMenuScript : MonoBehaviour
 {
     public Color buttonSelectedColor;
     public Image[] buttonsArray;
+    public GameObject[] buttonsArrayDef;
     Image actualImage;
     int arrayNumber;
     int numberOfButtons;
@@ -62,6 +63,7 @@ public class MainMenuScript : MonoBehaviour
         {
             if (vertical > 0.5f)
             {
+                buttonsArrayDef[arrayNumber].SetActive(false);
                 hasMoved = true;
                 arrayNumber++;
                 if (arrayNumber >= numberOfButtons)
@@ -69,6 +71,7 @@ public class MainMenuScript : MonoBehaviour
             }
             else if (vertical < -0.5f)
             {
+                buttonsArrayDef[arrayNumber].SetActive(false);
                 hasMoved = true;
                 arrayNumber--;
                 if (arrayNumber < 0)
@@ -77,6 +80,7 @@ public class MainMenuScript : MonoBehaviour
 
             if (hasMoved)
             {
+                buttonsArrayDef[arrayNumber].SetActive(true);
                 actualImage.color = Color.white;
                 actualImage = buttonsArray[arrayNumber];
                 actualImage.color = buttonSelectedColor;

@@ -179,7 +179,6 @@ public class PlayerScript : MonoBehaviour
         else
         {
             myAnimator.SetBool("Move", false);
-            myAnimator.transform.localPosition = originalAnimationPosition;
         }
 
         if (!characterController.isGrounded)
@@ -227,7 +226,7 @@ public class PlayerScript : MonoBehaviour
             canAttack = false;
             lastActionButtonReleased = false;
             SwordAttack();
-            Instantiate(psSwordSlash, sword.transform.parent.transform.position, Quaternion.identity);
+            Instantiate(psSwordSlash, sword.transform.position, Quaternion.identity);
             psTrial.SetActive(true);
         }
 
@@ -252,7 +251,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -261,7 +259,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -272,7 +269,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -281,7 +277,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }
@@ -293,7 +288,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
@@ -301,7 +295,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             actionObject.transform.parent.GetComponent<EnemyScript>().Stun();
                         }
                         break;
@@ -310,7 +303,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 4;
                             actionOn = true;
                         }
@@ -318,7 +310,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -329,7 +320,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime * 2;
                             actionOn = true;
                         }
@@ -337,7 +327,6 @@ public class PlayerScript : MonoBehaviour
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
-                            myAnimator.transform.localPosition = originalAnimationPosition;
                             neededPressedTime = iniPressedTime;
                             actionOn = true;
                         }

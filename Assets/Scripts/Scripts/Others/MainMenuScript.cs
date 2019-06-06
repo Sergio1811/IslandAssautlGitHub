@@ -16,6 +16,8 @@ public class MainMenuScript : MonoBehaviour
     bool hasMoved, movementOn;
     float timerMovement;
 
+    bool inOptions;
+    public GameObject optionsScreen;
 
     void Start()
     {
@@ -25,30 +27,39 @@ public class MainMenuScript : MonoBehaviour
         actualImage.color = buttonSelectedColor;
         hasMoved = false;
     }
-    
+
     void Update()
     {
-        UpdateButtons();
-
-        if (InputManager.Instance.GetInputDown("Submit"))
+        if (!inOptions)
         {
-            switch(arrayNumber)
+            UpdateButtons();
+
+            if (InputManager.Instance.GetInputDown("Submit"))
             {
-                case 0:
-                    PlayerPrefs.DeleteAll();
-                    PlayerPrefs.Save();
-                    SceneManager.LoadScene(1);
-                    break;
-                case 1:
-                    SceneManager.LoadScene(1);
-                    break;
-                case 2:
-                    //options
-                    break;
-                case 3:
-                    Application.Quit();
-                    break;
+                switch (arrayNumber)
+                {
+                    case 0:
+                        PlayerPrefs.DeleteAll();
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene(1);
+                        break;
+                    case 1:
+                        SceneManager.LoadScene(1);
+                        break;
+                    case 2:
+                        inOptions = true;
+                        optionsScreen.SetActive(true);
+                        break;
+                    case 3:
+                        Application.Quit();
+                        break;
+                }
             }
+        }
+        else if (InputManager.Instance.GetInputDown("Cancel"))
+        {
+            inOptions = false;
+            optionsScreen.SetActive(false);
         }
     }
 

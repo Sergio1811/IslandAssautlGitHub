@@ -32,10 +32,11 @@ public class MidGameMenuScript : MonoBehaviour
     #endregion
 
     public GameObject[] buttonsArray;
-    public GameObject buttonMarket;
+    public GameObject buttonMarket, buttonControls;
     int menuArrayNumber;
     public Color buttonSelectedColor;
     GameObject selectedButton;
+    Image selectedButtonImage;
     bool hasMoved, movementOn;
     float timerMovement;
     int numberOfButtons;
@@ -50,6 +51,9 @@ public class MidGameMenuScript : MonoBehaviour
     public GameObject boatParts;
     public Image[] boatPartsIcons;
     public Transform positionParts;
+
+    bool inOptions;
+    public GameObject optionsScreen;
 
 
     void Start()
@@ -88,20 +92,26 @@ public class MidGameMenuScript : MonoBehaviour
             {
                 menuArrayNumber = 0;
                 selectedButton = buttonsArray[0];
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                selectedButtonImage = selectedButton.GetComponent<Image>();
+                selectedButtonImage.color = buttonSelectedColor;
                 numberOfButtons = buttonsArray.Length - 1;
 
                 activeCanvas = true;
             }
         }
-        else
+        else if (!inOptions)
             UpdateBetweenIslandMenuButtons();
+        else if (InputManager.Instance.GetInputDown("Cancel"))
+        {
+            inOptions = false;
+            optionsScreen.SetActive(false);
+        }
 
         if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.P))
             TotalTextsInitialization();
     }
 
-    
+
     void ResultTextsInitialization()
     {
         if (GameManager.Instance.currentCoins != 0)
@@ -208,6 +218,12 @@ public class MidGameMenuScript : MonoBehaviour
         }
     }
 
+    public void ActivateOptions()
+    {
+        inOptions = true;
+        optionsScreen.SetActive(true);
+    }
+
     void BoatPartsInitialization()
     {
         if (GameManager.mastil)
@@ -227,7 +243,7 @@ public class MidGameMenuScript : MonoBehaviour
         if (GameManager.brujula)
             boatPartsIcons[7].color = Color.white;
     }
-    
+
     void UpdateBetweenIslandMenuButtons()
     {
         cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
@@ -240,48 +256,79 @@ public class MidGameMenuScript : MonoBehaviour
             if (vertical < -0.2f)
             {
                 menuArrayNumber++;
-                selectedButton.GetComponent<Image>().color = Color.white;
+                selectedButtonImage.color = Color.white;
 
                 if (menuArrayNumber > numberOfButtons)
                     menuArrayNumber = 0;
 
-                if (menuArrayNumber == numberOfButtons && GameManager.Instance.Market)
+                if (menuArrayNumber == numberOfButtons && selectedButton == buttonControls)
+                    selectedButton = buttonsArray[menuArrayNumber];
+                else if (menuArrayNumber == numberOfButtons && GameManager.Instance.Market)
                     selectedButton = buttonMarket;
                 else
                     selectedButton = buttonsArray[menuArrayNumber];
 
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                selectedButtonImage = selectedButton.GetComponent<Image>();
+                selectedButtonImage.color = buttonSelectedColor;
                 hasMoved = true;
             }
             else if (vertical > 0.2f)
             {
                 menuArrayNumber--;
-                selectedButton.GetComponent<Image>().color = Color.white;
+                selectedButtonImage.color = Color.white;
 
                 if (menuArrayNumber < 0)
                     menuArrayNumber = numberOfButtons;
 
-                if (menuArrayNumber == numberOfButtons && GameManager.Instance.Market)
+                if (menuArrayNumber == numberOfButtons - 1 && selectedButton == buttonsArray[numberOfButtons])
+                    selectedButton = buttonControls;
+                else if (menuArrayNumber == numberOfButtons && GameManager.Instance.Market)
                     selectedButton = buttonMarket;
                 else
                     selectedButton = buttonsArray[menuArrayNumber];
 
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
+                selectedButtonImage = selectedButton.GetComponent<Image>();
+                selectedButtonImage.color = buttonSelectedColor;
                 hasMoved = true;
             }
-            else if (horizontal > 0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonsArray[menuArrayNumber] && GameManager.Instance.Market)
+            else if (horizontal > 0.2f)
             {
-                selectedButton.GetComponent<Image>().color = Color.white;
-                selectedButton = buttonsArray[menuArrayNumber];
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
+                if (menuArrayNumber == numberOfButtons && GameManager.Instance.Market && selectedButton != buttonsArray[menuArrayNumber])
+                {
+                    selectedButtonImage.color = Color.white;
+                    selectedButton = buttonsArray[menuArrayNumber];
+                    selectedButtonImage = selectedButton.GetComponent<Image>();
+                    selectedButtonImage.color = buttonSelectedColor;
+                    hasMoved = true;
+                }
+                else if (menuArrayNumber == numberOfButtons - 1 && selectedButton != buttonControls)
+                {
+                    selectedButtonImage.color = Color.white;
+                    selectedButton = buttonControls;
+                    selectedButtonImage = selectedButton.GetComponent<Image>();
+                    selectedButtonImage.color = buttonSelectedColor;
+                    hasMoved = true;
+                }
+
             }
-            else if (horizontal < -0.2f && menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && GameManager.Instance.Market)
+            else if (horizontal < -0.2f)
             {
-                selectedButton.GetComponent<Image>().color = Color.white;
-                selectedButton = buttonMarket;
-                selectedButton.GetComponent<Image>().color = buttonSelectedColor;
-                hasMoved = true;
+                if (menuArrayNumber == numberOfButtons && selectedButton != buttonMarket && GameManager.Instance.Market)
+                {
+                    selectedButtonImage.color = Color.white;
+                    selectedButton = buttonMarket;
+                    selectedButtonImage = selectedButton.GetComponent<Image>();
+                    selectedButtonImage.color = buttonSelectedColor;
+                    hasMoved = true;
+                }
+                else if (menuArrayNumber == numberOfButtons - 1 && selectedButton != buttonsArray[menuArrayNumber])
+                {
+                    selectedButtonImage.color = Color.white;
+                    selectedButton = buttonsArray[menuArrayNumber];
+                    selectedButtonImage = selectedButton.GetComponent<Image>();
+                    selectedButtonImage.color = buttonSelectedColor;
+                    hasMoved = true;
+                }
             }
             else if (InputManager.Instance.GetInputDown("Submit") && gameObject.activeSelf)
                 selectedButton.GetComponent<Button>().onClick.Invoke();

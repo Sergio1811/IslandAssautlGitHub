@@ -219,11 +219,16 @@ public class GameManager : MonoBehaviour
 
         gridScript.GenerateGrid(characterNumber);
 
+        player.GetComponent<CharacterController>().enabled = false;
+
         player.transform.position = (startNode.worldPosition + (Vector3.up * 100));
         player.transform.rotation = Quaternion.LookRotation(transform.forward);
+
         PlayerInitialization();
         LivesInitialization();
         SecundaryObjectivesInitialization();
+
+        player.GetComponent<CharacterController>().enabled = true;
     }
 
     

@@ -483,7 +483,7 @@ public class PlayerScript : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "Dead")
-            GameManager.Instance.EndProtoLevel();
+            GameManager.Instance.EndLevel();
         else if (hit.gameObject.tag == "Exit")
             GameManager.Instance.LevelComplete();
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))

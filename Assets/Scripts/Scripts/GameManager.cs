@@ -115,7 +115,6 @@ public class GameManager : MonoBehaviour
     static int lastCharacter = -1;
     static List<int> last5Characters = new List<int>();
     static int lastIsland = -1;
-    static List<int> lastIslandList = new List<int>();
 
     public float timeByLevel;
     private float remainingTimeInLevel;
@@ -196,9 +195,6 @@ public class GameManager : MonoBehaviour
         startGame = false;
 
         RandomIsland();
-        islands[protoIsland].SetActive(true);
-        gridScript.islandParent = islands[protoIsland].transform.GetChild(0);
-        islands[protoIsland].GetComponent<NavMeshSurface>().BuildNavMesh();
 
         remainingTimeInLevel = timeByLevel;
         initialSpeedPanels = speedPanels;
@@ -241,14 +237,14 @@ public class GameManager : MonoBehaviour
                 remainingTimeInLevel -= Time.deltaTime;
 
                 if (Input.GetKeyDown(KeyCode.N))
-                    EndProtoLevel();
+                    EndLevel();
 
                 timeText.text = remainingTimeInLevel.ToString("0");
 
                 if (remainingTimeInLevel <= 0f)
                 {
                     livesNumber = 0;
-                    EndProtoLevel();
+                    EndLevel();
                     remainingTimeInLevel = timeByLevel;
                 }
             }
@@ -290,6 +286,12 @@ public class GameManager : MonoBehaviour
             protoIsland = Random.Range(0, islands.Length);
 
         lastIsland = protoIsland;
+
+        GameObject island = Instantiate(islands[protoIsland]);
+        //islands[protoIsland].SetActive(true);
+        gridScript.islandParent = island.transform.GetChild(0);
+        island.GetComponent<NavMeshSurface>().BuildNavMesh();
+        island.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     void RandomCharacter()
@@ -540,7 +542,7 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete()
     {
-        EndProtoLevel();
+        EndLevel();
     }
 
     public bool CheckSecondaryObjective()
@@ -562,13 +564,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void EndProtoLevel()
+    public void EndLevel()
     {
         gameOver = true;
-
-        protoIsland++;
-        if (protoIsland >= islands.Length)
-            protoIsland = 0;
 
         if (livesNumber > 0) //si se pasa el nivel
         {
@@ -850,7 +848,7 @@ public class GameManager : MonoBehaviour
             livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
 
             if (livesNumber <= 0)
-                EndProtoLevel();
+                EndLevel();
         }
     }
 

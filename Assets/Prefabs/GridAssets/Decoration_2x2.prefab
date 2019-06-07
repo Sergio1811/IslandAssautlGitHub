@@ -87,7 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7615498163674354344}
   m_Layer: 0
-  m_Name: All
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,22 +109,6 @@ Transform:
   m_Father: {fileID: 576174198573730413}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &376817022902592910
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766199623172355306}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
 --- !u!208 &2847595235324086670
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -154,19 +138,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05840174, y: 0.04066616, z: 0.060889274}
   m_Center: {x: 0.0000000017587924, y: 0.0021330141, z: 0.030444633}
---- !u!114 &6769265695119352636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766199623172355306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemy: 0
 --- !u!1 &6450495703018602609
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 22634832424691056}
   - component: {fileID: 5047696034306977289}
+  - component: {fileID: 1391598514752406131}
   m_Layer: 0
   m_Name: Possibilities
   m_TagString: Untagged
@@ -212,22 +184,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeae102daa1b91b4ebc27400ff65e13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &8952360754426758821
-Rigidbody:
+--- !u!114 &1391598514752406131
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445756009208796166}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_GameObject: {fileID: 6450495703018602609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!208 &3169150574956824397
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -257,19 +225,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0889, y: 0.08454894, z: 0.08255002}
   m_Center: {x: 0, y: 0.0000000037252907, z: 0.04127501}
---- !u!114 &7649392986831669829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7445756009208796166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isEnemy: 0
 --- !u!1 &9016246708617481165
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.009
+      value: 0.009000003
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalPosition.y
@@ -415,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.004
+      value: 0.003999993
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalRotation.x
@@ -423,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: dff034eb448cc9d428979e9e8594eb93, type: 3}
       propertyPath: m_LocalRotation.z

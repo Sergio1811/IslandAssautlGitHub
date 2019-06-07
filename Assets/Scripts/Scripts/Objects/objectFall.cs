@@ -7,23 +7,30 @@ public class objectFall : MonoBehaviour
 {
     Rigidbody myRigidbody;
     float velocity = 4;
+    float finalPositionY;
 
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody>();
+
+
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down);
+        RaycastHit hit = new RaycastHit();
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider.gameObject.tag == "IslandCollision")
+                finalPositionY = hit.point.y;
+        }
     }
 
 
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, 0, transform.position.z), velocity * Time.deltaTime);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "IslandCollision")
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, -10f, transform.position.z), velocity * Time.deltaTime);
+        if (transform.position.y <= finalPositionY)
         {
-            Destroy(myRigidbody);
+            transform.position = new Vector3(transform.position.x, finalPositionY , transform.position.z);
             enabled = false;
         }
     }

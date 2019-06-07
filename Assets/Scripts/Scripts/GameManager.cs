@@ -244,6 +244,7 @@ public class GameManager : MonoBehaviour
                 if (remainingTimeInLevel <= 0f)
                 {
                     livesNumber = 0;
+                    player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
                     EndLevel();
                     remainingTimeInLevel = timeByLevel;
                 }

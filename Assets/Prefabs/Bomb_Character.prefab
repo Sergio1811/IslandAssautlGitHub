@@ -134,8 +134,8 @@ MonoBehaviour:
   psHit: {fileID: 4267134499729965683, guid: 381c44bbf54eaac49b0be8142a3f1888, type: 3}
   psClickTextEffect: {fileID: 1602641490626352832, guid: 64eb6301173a074428a1447460208fdf,
     type: 3}
-  psTrial: {fileID: 0}
-  myAnimator: {fileID: 0}
+  psTrial: {fileID: 1300130965290592415, guid: 8625f4f0b72fcef44bdc1a9ab9b83fbc, type: 3}
+  myAnimator: {fileID: 8931430535395634473}
 --- !u!143 &3225420765675762107
 CharacterController:
   m_ObjectHideFlags: 0
@@ -561,6 +561,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
+    - target: {fileID: 9500000, guid: 8f4878334f5a4c845b3d4a9e2a927e0b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 13700002, guid: 8f4878334f5a4c845b3d4a9e2a927e0b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -582,6 +586,12 @@ PrefabInstance:
 --- !u!4 &8931430535402849015 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400062, guid: 8f4878334f5a4c845b3d4a9e2a927e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8931430535402985545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8931430535395634473 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 8f4878334f5a4c845b3d4a9e2a927e0b,
     type: 3}
   m_PrefabInstance: {fileID: 8931430535402985545}
   m_PrefabAsset: {fileID: 0}

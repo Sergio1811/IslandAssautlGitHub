@@ -109,7 +109,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &56025380232434618
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   attackCoolDown: 0.5
   repathTime: 0.5
   attackMat: {fileID: 2100000, guid: f2eb74c8da59c4143863893a6427003f, type: 2}
-  myAnimator: {fileID: 0}
+  myAnimator: {fileID: 290159068941714935}
   maxStunnedTimer: 2
   lives: 2
   psStun: {fileID: 6711774613581081512, guid: fdad0bf3282b4a0478643a769d5d5b95, type: 3}
@@ -188,6 +188,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 261279383177dfc469ead3c1368e15c4, type: 2}
+    - target: {fileID: 9500000, guid: 4cccbeaa9a2c2294da9b916301f7e0fc, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 4cccbeaa9a2c2294da9b916301f7e0fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -265,6 +269,12 @@ PrefabInstance:
 --- !u!4 &290159068934826537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400062, guid: 4cccbeaa9a2c2294da9b916301f7e0fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 290159068934434967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &290159068941714935 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 4cccbeaa9a2c2294da9b916301f7e0fc,
     type: 3}
   m_PrefabInstance: {fileID: 290159068934434967}
   m_PrefabAsset: {fileID: 0}

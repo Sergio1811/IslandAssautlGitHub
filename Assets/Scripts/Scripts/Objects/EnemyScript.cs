@@ -14,7 +14,7 @@ public class EnemyScript : MonoBehaviour
 
     public bool patroler = false;
 
-    public enum state { stay, patrol, chase, attack }
+    public enum state { stay, patrol, chase, attack, dead }
     public state currentState;
 
     public float chaseDistance;
@@ -52,6 +52,9 @@ public class EnemyScript : MonoBehaviour
     public GameObject psStun;
     public GameObject psDamage;
     Vector3 psOffset = new Vector3(0, 4, 0);
+
+    float deadTime = 0;
+    float timeToDestroy = 3f;
 
 
     void Start()
@@ -154,6 +157,15 @@ public class EnemyScript : MonoBehaviour
                     else if (canAttack)
                         Attack();
 
+                    break;
+
+                case state.dead:
+                    transform.position -= Vector3.up * Time.deltaTime;
+
+                    deadTime += Time.deltaTime;
+
+                    if (deadTime >= timeToDestroy)
+                        Destroy(this.gameObject);
                     break;
             }
         }
@@ -303,13 +315,21 @@ public class EnemyScript : MonoBehaviour
         }
 
         if (lives < 1)
-            Destroy(this.gameObject);
+        {
+            currentState = state.dead;
+            myAnimator.SetBool("Dead", true);
+            agent.enabled = false;
+        }
     }
 
     public void GetAttackedByBomb()
     {
         lives--;
         if (lives < 1)
-            Destroy(this.gameObject);
+        {
+            currentState = state.dead;
+            myAnimator.SetBool("Dead", true);
+            agent.enabled = false;
+        }
     }
 }

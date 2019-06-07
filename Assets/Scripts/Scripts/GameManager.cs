@@ -848,7 +848,10 @@ public class GameManager : MonoBehaviour
             livesGroup.transform.GetChild(livesNumber).gameObject.SetActive(false);
 
             if (livesNumber <= 0)
+            {
+                player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
                 EndLevel();
+            }
         }
     }
 

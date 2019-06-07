@@ -192,6 +192,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (InputManager.Instance.GetInput("Dash"))
         {
+            //myAnimator.SetTrigger("Dash");
             Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
             lastDashButtonReleased = false;
 
@@ -215,6 +216,7 @@ public class PlayerScript : MonoBehaviour
                 transform.position += transform.forward * dashDistance;
 
             characterController.enabled = true;
+
         }
     }
 
@@ -639,7 +641,6 @@ public class PlayerScript : MonoBehaviour
 
         myAnimator.SetBool("Stay", false);
     }
-
     
     private void OnDrawGizmos()
     {

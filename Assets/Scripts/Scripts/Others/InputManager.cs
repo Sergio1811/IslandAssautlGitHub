@@ -33,14 +33,14 @@ public class InputManager : MonoBehaviour
                 xboxController = true;
 
             }
-            else
+            else if (names[x].ToUpper() != "")
             {
                 psController = true;
                 xboxController = false;
             }
         }
-
     }
+
 
     public bool GetInputDown(string input)
     {
@@ -50,7 +50,9 @@ public class InputManager : MonoBehaviour
         if (xboxController)
             return Input.GetButtonDown("XBOX_" + input);
 
-        return false;
+        else
+            return Input.GetButtonDown(input);
+
     }
 
     public bool GetInput(string input)
@@ -71,7 +73,7 @@ public class InputManager : MonoBehaviour
 
         if (xboxController)
             return Input.GetAxisRaw("XBOX_" + input) < 0.2;
-
+        
         return false;
     }
 
@@ -83,6 +85,7 @@ public class InputManager : MonoBehaviour
         if (xboxController)
             return Input.GetAxisRaw("XBOX_" + input);
 
-        return 0;
+        else
+            return Input.GetAxisRaw(input);
     }
 }

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 114908999053605600}
-  - {fileID: 114126725632011228}
+  - {fileID: 114061222652021000}
+  - {fileID: 114634763067130270}
   EditorEvents:
   - {fileID: 114702311779882432}
   - {fileID: 114247503041374860}
@@ -22,12 +22,13 @@ MonoBehaviour:
   - {fileID: 114594578944561652}
   - {fileID: 114039083550126726}
   - {fileID: 114684864774779444}
+  - {fileID: 114369662266331878}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   StringsBanks:
-  - {fileID: 114908999053605600}
-  stringsBankWriteTime: 636948437198172869
+  - {fileID: 114061222652021000}
+  stringsBankWriteTime: 636955320022700812
   cacheVersion: 3
 --- !u!114 &114039083550126726
 MonoBehaviour:
@@ -44,7 +45,50 @@ MonoBehaviour:
   Path: event:/GrupoMusica/Ambient/Maritim/Mar_2
   guid: d1d61333f27536428f531a7d16b9f3bf
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 157238
+--- !u!114 &114061222652021000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 636955320022700812
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1094
+  Exists: 1
+--- !u!114 &114081265044053346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrupoMusica/Ambient/Maritim/Mar_2
+  m_EditorClassIdentifier: 
+  Path: event:/GrupoMusica/Ambient/Maritim/Mar_2
+  guid: d1d61333f27536428f531a7d16b9f3bf
+  Banks:
+  - {fileID: 114449837503399134}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -87,10 +131,10 @@ MonoBehaviour:
   Path: event:/GrupoMusica/BS/BSO/Intro
   guid: 296de279249eaa4094c2ec180bd353c9
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -110,14 +154,83 @@ MonoBehaviour:
   Path: "event:/GrupoMusica/BS/Percusi\xF3"
   guid: 1f8f549c75fa9745944ff01b55f547e2
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 81133
+--- !u!114 &114267292137680732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrupoMusica/BS/BSO/Vibes
+  m_EditorClassIdentifier: 
+  Path: event:/GrupoMusica/BS/BSO/Vibes
+  guid: b82b49b7e4fa554588802209e59ae10f
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 41142
+--- !u!114 &114369662266331878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vaiana/Once Sound/Sword/Sword
+  m_EditorClassIdentifier: 
+  Path: event:/Vaiana/Once Sound/Sword/Sword
+  guid: 070d8d1765f1a04dbb42725409d5ef3d
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &114394756736770584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
+  m_EditorClassIdentifier: 
+  Path: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
+  guid: fbdb9f4d7f600e46a19f2920d802ba08
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 63121
 --- !u!114 &114430174623804208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +251,72 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1000
   Exists: 1
+--- !u!114 &114432473723691490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrupoMusica/BS/BSO/Intro
+  m_EditorClassIdentifier: 
+  Path: event:/GrupoMusica/BS/BSO/Intro
+  guid: 296de279249eaa4094c2ec180bd353c9
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 34285
+--- !u!114 &114449837503399134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 636955320022651184
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 7495872
+  Exists: 1
+--- !u!114 &114523786426202174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vaiana/Once Sound/Sword/Sword
+  m_EditorClassIdentifier: 
+  Path: event:/Vaiana/Once Sound/Sword/Sword
+  guid: 070d8d1765f1a04dbb42725409d5ef3d
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
 --- !u!114 &114594578944561652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,14 +332,77 @@ MonoBehaviour:
   Path: event:/GrupoMusica/BS/BSO/Vibes
   guid: b82b49b7e4fa554588802209e59ae10f
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
   Length: 41142
+--- !u!114 &114615665732270598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
+  SubDir: 
+  lastModified: 636955320022700812
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 1094
+  Exists: 1
+--- !u!114 &114624951798426684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GrupoMusica/Ambient/Maritim/Mar
+  m_EditorClassIdentifier: 
+  Path: event:/GrupoMusica/Ambient/Maritim/Mar
+  guid: dca3e6c8d70b2c47a6575db6fc8f486e
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 80788
+--- !u!114 &114634763067130270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
+  SubDir: 
+  lastModified: 636955320022651184
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 7495872
+  Exists: 1
 --- !u!114 &114684864774779444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +418,10 @@ MonoBehaviour:
   Path: event:/GrupoMusica/Ambient/Maritim/Mar
   guid: dca3e6c8d70b2c47a6575db6fc8f486e
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   IsStream: 1
   Is3D: 1
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -199,7 +441,7 @@ MonoBehaviour:
   Path: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
   guid: fbdb9f4d7f600e46a19f2920d802ba08
   Banks:
-  - {fileID: 114126725632011228}
+  - {fileID: 114634763067130270}
   IsStream: 1
   Is3D: 1
   IsOneShot: 1
@@ -207,6 +449,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 63121
+--- !u!114 &114707661280398230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/GrupoMusica/BS/Percusi\xF3"
+  m_EditorClassIdentifier: 
+  Path: "event:/GrupoMusica/BS/Percusi\xF3"
+  guid: 1f8f549c75fa9745944ff01b55f547e2
+  Banks:
+  - {fileID: 114449837503399134}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 81133
 --- !u!114 &114908999053605600
 MonoBehaviour:
   m_ObjectHideFlags: 0

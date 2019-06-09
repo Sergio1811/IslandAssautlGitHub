@@ -15,9 +15,9 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\FMOD_ProjectsMix\FMOD_ProjectsMix.fspro
-  SourceProjectPathUnformatted: FMOD_ProjectsMix\FMOD_ProjectsMix.fspro
-  SourceBankPathUnformatted: FMOD_ProjectsMix\Build
+  sourceProjectPath: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\FMOD_ProjectsMix.fspro
+  SourceProjectPathUnformatted: Assets\FMOD_ProjectsMix\FMOD_ProjectsMix.fspro
+  SourceBankPathUnformatted: Assets\FMOD_ProjectsMix\Build
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0

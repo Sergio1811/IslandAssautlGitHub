@@ -319,6 +319,7 @@ public class EnemyScript : MonoBehaviour
             currentState = state.dead;
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
+            this.transform.GetChild(0).tag = "Untagged";
         }
     }
 
@@ -330,6 +331,7 @@ public class EnemyScript : MonoBehaviour
             currentState = state.dead;
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
+            this.transform.GetChild(0).tag = "Untagged";
         }
     }
 }

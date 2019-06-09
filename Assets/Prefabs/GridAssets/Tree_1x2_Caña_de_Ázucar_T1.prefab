@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1997764031695303583}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &437202583919575828
 MeshFilter:
@@ -87,7 +87,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8451684093200434082}
   - component: {fileID: 3842845140577924112}
-  - component: {fileID: 3195569987593761475}
   - component: {fileID: 2637018906295726032}
   - component: {fileID: 4160459123674471772}
   m_Layer: 0
@@ -107,7 +106,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1000972340934391399}
   m_Father: {fileID: 1997764031695303583}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,43 +119,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2778229251818296644}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3195569987593761475
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2778229251818296644}
-  m_Enabled: 0
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 95567592d0e4ec449bdc8a21d8580052, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!65 &2637018906295726032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -240,7 +203,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8451684093200434082}
-  - {fileID: 1000972340934391399}
   - {fileID: 6544397574323399747}
   m_Father: {fileID: 2448529715266591432}
   m_RootOrder: 0
@@ -250,7 +212,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1997764031695303583}
+    m_TransformParent: {fileID: 8451684093200434082}
     m_Modifications:
     - target: {fileID: 100000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_Name
@@ -266,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.024
+      value: 0.019000001
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalRotation.x
@@ -286,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -302,15 +264,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.042330924
+      value: 0.04233093
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.042330924
+      value: 0.042330943
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.042330924
+      value: 0.04233094
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 261185d6748a8b14a8a1180b4d415c06, type: 3}
       propertyPath: m_Materials.Array.data[0]

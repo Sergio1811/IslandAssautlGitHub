@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour
         if (psController)
             return Input.GetButtonDown("PS_" + input);
 
-        if (xboxController)
+        else if (xboxController)
             return Input.GetButtonDown("XBOX_" + input);
 
         else
@@ -60,10 +60,11 @@ public class InputManager : MonoBehaviour
         if (psController)
             return Input.GetAxisRaw("PS_" + input) > 0.2;
 
-        if (xboxController)
+        else if (xboxController)
             return Input.GetAxisRaw("XBOX_" + input) > 0.2;
 
-        return false;
+        else
+            return Input.GetAxisRaw(input) > 0.2;
     }
 
     public bool GetInputUp(string input)
@@ -71,10 +72,11 @@ public class InputManager : MonoBehaviour
         if (psController)
             return Input.GetAxisRaw("PS_" + input) < 0.2;
 
-        if (xboxController)
+        else if (xboxController)
             return Input.GetAxisRaw("XBOX_" + input) < 0.2;
-        
-        return false;
+
+        else
+            return Input.GetAxisRaw(input) < 0.2;
     }
 
     public float GetAxis(string input)
@@ -82,7 +84,7 @@ public class InputManager : MonoBehaviour
         if (psController)
             return Input.GetAxisRaw("PS_" + input);
 
-        if (xboxController)
+        else if (xboxController)
             return Input.GetAxisRaw("XBOX_" + input);
 
         else

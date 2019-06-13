@@ -132,9 +132,15 @@ public class ButtonManager : MonoBehaviour
 
 
                 if (PlayerPrefs.GetInt(boughtString + abilitiesMatrix[i, j].saverString) == 1)
+                {
                     abilitiesMatrix[i, j].isBought = true;
+                    imagesMatrix[i, j].transform.GetChild(5).gameObject.SetActive(true);
+                }
                 else
+                {
                     abilitiesMatrix[i, j].isBought = false;
+                    imagesMatrix[i, j].transform.GetChild(4).gameObject.SetActive(true);
+                }
 
                 if (PlayerPrefs.GetInt(unlockedString + abilitiesMatrix[i, j].saverString) == 1)
                     abilitiesMatrix[i, j].isUnlocked = true;
@@ -361,6 +367,7 @@ public class ButtonManager : MonoBehaviour
         actualAbility.isBought = true;
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childBNImageNumber).gameObject.SetActive(false);
         imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(childImageNumber).gameObject.SetActive(true);
+        imagesMatrix[arrayPositionX, arrayPositionY].transform.GetChild(5).gameObject.SetActive(true);
         selectedAbility_Image.sprite = actualAbility.icono;
         buyWithMaterialSquare.SetActive(false);
         buyWithCoinsSquare.SetActive(false);

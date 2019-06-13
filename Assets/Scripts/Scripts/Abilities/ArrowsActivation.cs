@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArrowsActivation : MonoBehaviour
 {
     public bool twoDirections;
-    public float speed = 0.5f;
+    float speed = 0.2f;
     float timer;
     int childsNumber;
     int activatedChildren;
@@ -14,8 +14,6 @@ public class ArrowsActivation : MonoBehaviour
     void Start()
     {
         childsNumber = transform.childCount;
-        if (twoDirections)
-            childsNumber--;
         timer = 0;
         activatedChildren = 0;
     }
@@ -34,8 +32,9 @@ public class ArrowsActivation : MonoBehaviour
                 activatedChildren++;
             }
             transform.GetChild(activatedChildren).gameObject.SetActive(true);
+            activatedChildren++;
 
-            if (activatedChildren == childsNumber - 1)
+            if (activatedChildren == childsNumber)
                 enabled = false;
         }
     }

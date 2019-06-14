@@ -30,7 +30,7 @@ public class objectFall : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, -10f, transform.position.z), velocity * Time.deltaTime);
         if (transform.position.y <= finalPositionY)
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.FallingObject, this.transform.position);
+
             transform.position = new Vector3(transform.position.x, finalPositionY , transform.position.z);
             enabled = false;
         }

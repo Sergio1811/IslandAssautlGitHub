@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
     public Grid gridScript;
     int protoIsland;
     public GameObject[] islands;
+    public GameObject[] islandsRain;
     [HideInInspector] public Node startNode, endNode;
     [HideInInspector] public GameObject portalExit;
     bool portalActivated = false;
@@ -292,11 +293,18 @@ public class GameManager : MonoBehaviour
 
         lastIsland = protoIsland;
 
-        GameObject island = Instantiate(islands[protoIsland]);
+        GameObject island = null;
+        if (ClimaRandom.Rain)
+        {
+             island = Instantiate(islandsRain[protoIsland]);
+        }
+        else
+            island = Instantiate(islands[protoIsland]);
         //islands[protoIsland].SetActive(true);
         gridScript.islandParent = island.transform.GetChild(0);
-        island.GetComponent<NavMeshSurface>().BuildNavMesh();
-        island.GetComponent<NavMeshSurface>().BuildNavMesh();
+            island.GetComponent<NavMeshSurface>().BuildNavMesh();
+            island.GetComponent<NavMeshSurface>().BuildNavMesh();
+        
     }
 
     void RandomCharacter()

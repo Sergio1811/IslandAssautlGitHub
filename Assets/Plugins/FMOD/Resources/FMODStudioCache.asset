@@ -23,12 +23,41 @@ MonoBehaviour:
   - {fileID: 114039083550126726}
   - {fileID: 114684864774779444}
   - {fileID: 114123048927261456}
+  - {fileID: 114290027813261482}
+  - {fileID: 114103299769708438}
+  - {fileID: 114518080924531028}
+  - {fileID: 114520755089921212}
+  - {fileID: 114733701064619952}
+  - {fileID: 114774136996583412}
+  - {fileID: 114196145857144028}
+  - {fileID: 114411359866407284}
+  - {fileID: 114871196315803166}
+  - {fileID: 114688704084008248}
+  - {fileID: 114749041673614324}
+  - {fileID: 114653959122226698}
+  - {fileID: 114789952948583442}
+  - {fileID: 114422671140092832}
+  - {fileID: 114880626633603446}
+  - {fileID: 114794737249603672}
+  - {fileID: 114499935499213724}
+  - {fileID: 114168636027744378}
+  - {fileID: 114687457205252306}
+  - {fileID: 114281030383061916}
+  - {fileID: 114880064359788734}
+  - {fileID: 114899046500234230}
+  - {fileID: 114078831695337166}
+  - {fileID: 114942399318446608}
+  - {fileID: 114072186429428048}
+  - {fileID: 114853766496718528}
+  - {fileID: 114129776508696316}
+  - {fileID: 114408558466698060}
+  - {fileID: 114927806369324336}
   EditorParameters: []
   MasterBanks:
   - {fileID: 114634763067130270}
   StringsBanks:
   - {fileID: 114061222652021000}
-  stringsBankWriteTime: 636959612237700128
+  stringsBankWriteTime: 636961308283004919
   cacheVersion: 3
 --- !u!114 &114039083550126726
 MonoBehaviour:
@@ -53,6 +82,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 157238
+--- !u!114 &114052186055727872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Maori/Maori_Percussion/Percussion sound2
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Maori/Maori_Percussion/Percussion sound2
+  guid: 0a5e916e41ddb94e814a1ee3c3d8bbe3
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 44511
 --- !u!114 &114061222652021000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,12 +119,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 636959612237700128
+  lastModified: 636961308283004919
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1094
+    Value: 2796
   Exists: 1
+--- !u!114 &114072186429428048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Axe_Enemy_Sound/Axe_Enemy_Sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Axe_Enemy_Sound/Axe_Enemy_Sound
+  guid: e88e1f435d29294296dfffabf7c34bae
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 320
+--- !u!114 &114073144018680908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/LongSound/Fire/Fire_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/LongSound/Fire/Fire_Loop
+  guid: 48332d5c133cd541a050624c52f3454c
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 32032
+--- !u!114 &114078831695337166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/victory_game
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/victory_game
+  guid: bc840f5264630d45a3f58905ac8babd3
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3200
 --- !u!114 &114081265044053346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +217,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 157238
+--- !u!114 &114094286425479468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Portals/Portal_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Portals/Portal_1
+  guid: 72988a0addd9ea449d6cd1984a66ddd6
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1204
+--- !u!114 &114101839275020750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/agafarObjectes/pickup_4
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/agafarObjectes/pickup_4
+  guid: 653a046db5763c42a2b15b237f08c43a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 375
+--- !u!114 &114103299769708438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Waves/Brave_Wave_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Waves/Brave_Wave_Loop
+  guid: 05a7884860e23a4e8288a983b2b3227a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 125725
 --- !u!114 &114123048927261456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +309,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114124567035891212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/UI/Objective_Completed/Objective_completed
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/UI/Objective_Completed/Objective_completed
+  guid: f0c6b78a60a79443a92aa0b28b8dcfde
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1267
 --- !u!114 &114126725632011228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +352,75 @@ MonoBehaviour:
   - Name: Desktop
     Value: 7491264
   Exists: 1
+--- !u!114 &114129776508696316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound
+  guid: ef9db0f45d8c8b4b899c60ddeaf16f04
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2335
+--- !u!114 &114143735082169156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound
+  guid: ef9db0f45d8c8b4b899c60ddeaf16f04
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 2335
+--- !u!114 &114168636027744378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Explosion/Explosion-sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Explosion/Explosion-sound
+  guid: 8911410de4fb4f4e8bb1f5d3435168aa
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 934
 --- !u!114 &114180413108714368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +444,52 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34285
+--- !u!114 &114189472902727206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Hit_Rock/Hit_Rock
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Hit_Rock/Hit_Rock
+  guid: ae3b13a6f1c288419fc7693e442b6a3a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 266
+--- !u!114 &114196145857144028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit aldeano
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit aldeano
+  guid: 35f08de209b2d445b374e6b5032730fb
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 523
 --- !u!114 &114247503041374860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +536,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 41142
+--- !u!114 &114281030383061916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/espases/hit_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/espases/hit_1
+  guid: 932d31f5285ee748a0f21fa9f9b9ade0
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &114290027813261482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Maori/Maori_Sound_Loop/Maori_Sound_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Maori/Maori_Sound_Loop/Maori_Sound_Loop
+  guid: 033aaa32b8bfa349b7ba2c429ba5edf5
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 12278
+--- !u!114 &114367152508756310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Botons/boto_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Botons/boto_1
+  guid: 84acb5aa5c47d043ac203be1e9b56314
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 336
 --- !u!114 &114369662266331878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +619,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Vaiana/Once Sound/Sword/Sword
   guid: 070d8d1765f1a04dbb42725409d5ef3d
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &114379784092362568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit aldeano
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit aldeano
+  guid: 35f08de209b2d445b374e6b5032730fb
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 523
+--- !u!114 &114386588087231728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Waves/Brave_Wave_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Waves/Brave_Wave_Loop
+  guid: 05a7884860e23a4e8288a983b2b3227a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 125725
+--- !u!114 &114391509889018586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound
+  guid: bfe0f9ae08ac88439ef44ebfaf636403
   Banks:
   - {fileID: 114634763067130270}
   IsStream: 0
@@ -254,6 +720,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 63121
+--- !u!114 &114408558466698060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/UI/Objective_Completed/Objective_completed
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/UI/Objective_Completed/Objective_completed
+  guid: f0c6b78a60a79443a92aa0b28b8dcfde
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 1267
+--- !u!114 &114411359866407284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enem_hurt/Enemy_hurt
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enem_hurt/Enemy_hurt
+  guid: 3c1026e2bdd4034280ad8957a9dd80c5
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 700
+--- !u!114 &114422671140092832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/game_over
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/game_over
+  guid: 62c580dd2e909143ab25fb535a0aca8f
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
 --- !u!114 &114430174623804208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +852,167 @@ MonoBehaviour:
   - Name: Desktop
     Value: 7495872
   Exists: 1
+--- !u!114 &114453873354202414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/game_over
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/game_over
+  guid: 62c580dd2e909143ab25fb535a0aca8f
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
+--- !u!114 &114499935499213724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Botons/boto_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Botons/boto_1
+  guid: 84acb5aa5c47d043ac203be1e9b56314
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 336
+--- !u!114 &114505396901645862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Portals/Portal_4_1seg
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Portals/Portal_4_1seg
+  guid: 517f85750fd26a4e8b13f5b8070ba349
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &114506375315434478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Wind/Wind_Blowing
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Wind/Wind_Blowing
+  guid: 8ee08889b6f2e44890dd8f19943eb099
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 34901
+--- !u!114 &114515314825221822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Axe_Enemy_Sound/Axe_Enemy_Sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Axe_Enemy_Sound/Axe_Enemy_Sound
+  guid: e88e1f435d29294296dfffabf7c34bae
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 320
+--- !u!114 &114518080924531028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Botons/boto_2
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Botons/boto_2
+  guid: 05a7ddca1e539b4e89fcbcb1bf8e26fe
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 139
+--- !u!114 &114520755089921212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Maori/Maori_Percussion/Percussion sound2
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Maori/Maori_Percussion/Percussion sound2
+  guid: 0a5e916e41ddb94e814a1ee3c3d8bbe3
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 44511
 --- !u!114 &114523786426202174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,6 +1036,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114571753457950722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Botons/boto_2
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Botons/boto_2
+  guid: 05a7ddca1e539b4e89fcbcb1bf8e26fe
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 139
+--- !u!114 &114574079261434288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Death_Sound/Dead_Sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Death_Sound/Dead_Sound
+  guid: fcd5992f1835aa499033225bc327d096
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 667
 --- !u!114 &114594578944561652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,6 +1105,29 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 41142
+--- !u!114 &114607609094928854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Explosion/Explosion-sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Explosion/Explosion-sound
+  guid: 8911410de4fb4f4e8bb1f5d3435168aa
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 934
 --- !u!114 &114615665732270598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,12 +1185,104 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 636959612237450303
+  lastModified: 636961308282925132
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 7495872
+    Value: 13779776
   Exists: 1
+--- !u!114 &114635601403945030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enem_hurt/Enemy_hurt
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enem_hurt/Enemy_hurt
+  guid: 3c1026e2bdd4034280ad8957a9dd80c5
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 700
+--- !u!114 &114653959122226698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Character/moviments/velocitat/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Character/moviments/velocitat/Dash
+  guid: 5590aee404fbee4d86d76c1c7191e4ce
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 719
+--- !u!114 &114665332815754442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Character/moviments/velocitat/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Character/moviments/velocitat/Dash
+  guid: 5590aee404fbee4d86d76c1c7191e4ce
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 719
+--- !u!114 &114671124171692194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Maori/Maori_Sound_Loop/Maori_Sound_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Maori/Maori_Sound_Loop/Maori_Sound_Loop
+  guid: 033aaa32b8bfa349b7ba2c429ba5edf5
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 12278
 --- !u!114 &114684864774779444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +1306,75 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 80788
+--- !u!114 &114687457205252306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/AmbientSounds/Wind/Wind_Blowing
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/AmbientSounds/Wind/Wind_Blowing
+  guid: 8ee08889b6f2e44890dd8f19943eb099
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 34901
+--- !u!114 &114688704084008248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/LongSound/Fire/Fire_Loop
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/LongSound/Fire/Fire_Loop
+  guid: 48332d5c133cd541a050624c52f3454c
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 32032
+--- !u!114 &114699072606389068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Character/moviments/pases/caminar/fulles
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Character/moviments/pases/caminar/fulles
+  guid: 5e9354f308168241b249c88865d21937
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
 --- !u!114 &114702311779882432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +1421,328 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 81133
+--- !u!114 &114733701064619952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/caida_objetos
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/caida_objetos
+  guid: 2009a37cf4af7a41afe0ea94d7810513
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 1724
+--- !u!114 &114749041673614324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Portals/Portal_4_1seg
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Portals/Portal_4_1seg
+  guid: 517f85750fd26a4e8b13f5b8070ba349
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
+--- !u!114 &114764484852545684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/level_start
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/level_start
+  guid: edc5da7d7853ab4b8a522a8bf48e0951
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &114774136996583412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Ambient/Maritim/Mar
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Ambient/Maritim/Mar
+  guid: 32e8ae5f38c3ac439e3ecbc2dc412c59
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 80788
+--- !u!114 &114789952948583442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Character/moviments/pases/caminar/fulles
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Character/moviments/pases/caminar/fulles
+  guid: 5e9354f308168241b249c88865d21937
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 600
+--- !u!114 &114794737249603672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/Portals/Portal_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/Portals/Portal_1
+  guid: 72988a0addd9ea449d6cd1984a66ddd6
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1204
+--- !u!114 &114821483873464562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/victory_game
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/victory_game
+  guid: bc840f5264630d45a3f58905ac8babd3
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3200
+--- !u!114 &114853766496718528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/level_start
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/level_start
+  guid: edc5da7d7853ab4b8a522a8bf48e0951
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1500
+--- !u!114 &114871196315803166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit player
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit player
+  guid: 4529c23b2693f046a88c4cc75b37f458
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 780
+--- !u!114 &114875410232948504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/espases/hit_1
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/espases/hit_1
+  guid: 932d31f5285ee748a0f21fa9f9b9ade0
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2000
+--- !u!114 &114880064359788734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/victory_level
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/victory_level
+  guid: a42623c03b06a34d991db9eba071860b
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
+--- !u!114 &114880626633603446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/agafarObjectes/pickup_4
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/agafarObjectes/pickup_4
+  guid: 653a046db5763c42a2b15b237f08c43a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 375
+--- !u!114 &114885785734138512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Eventuals/victory_level
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Eventuals/victory_level
+  guid: a42623c03b06a34d991db9eba071860b
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3428
+--- !u!114 &114899046500234230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Hit_Rock/Hit_Rock
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Hit_Rock/Hit_Rock
+  guid: ae3b13a6f1c288419fc7693e442b6a3a
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 266
 --- !u!114 &114908999053605600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,3 +1783,118 @@ MonoBehaviour:
   - Name: Desktop
     Value: 688
   Exists: 1
+--- !u!114 &114913179430585334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/Ambient/Maritim/Mar
+  m_EditorClassIdentifier: 
+  Path: event:/BS/Ambient/Maritim/Mar
+  guid: 32e8ae5f38c3ac439e3ecbc2dc412c59
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 80788
+--- !u!114 &114921332559171604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/caida_objetos
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/caida_objetos
+  guid: 2009a37cf4af7a41afe0ea94d7810513
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 10000
+  Length: 1724
+--- !u!114 &114927806369324336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Death_Sound/Dead_Sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Death_Sound/Dead_Sound
+  guid: fcd5992f1835aa499033225bc327d096
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 667
+--- !u!114 &114942399318446608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound
+  guid: bfe0f9ae08ac88439ef44ebfaf636403
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 500
+--- !u!114 &114968380092846254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit player
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Enemy_hit/Enemy hit player
+  guid: 4529c23b2693f046a88c4cc75b37f458
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 780

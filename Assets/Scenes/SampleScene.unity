@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44459614, g: 0.4941091, b: 0.57337403, a: 1}
+  m_IndirectSpecularColor: {r: 0.44459635, g: 0.49410963, b: 0.57337385, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12220,6 +12220,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -12296,6 +12297,24 @@ Transform:
   m_Father: {fileID: 1362759326}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c346baac83218464cbe84257aeaf4058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScriptPrincipal: {fileID: 534669903}
+  DayProfile: {fileID: 11400000, guid: 76148d05d1f7ded48bddab0d5ea0f4be, type: 2}
+  NightProfile: {fileID: 11400000, guid: 971e532db6b595741acd0c12b82840d1, type: 2}
+  RainProfile: {fileID: 11400000, guid: 330fddb8662280040b71ec1fd4c08403, type: 2}
+  FogProfile: {fileID: 11400000, guid: 6a75ae05478ec404c881d642a94a6219, type: 2}
+  RainPS: {fileID: 19800002, guid: 51e0078f8a34b7144b110e107df8f9cc, type: 3}
 --- !u!1 &540622550
 GameObject:
   m_ObjectHideFlags: 0
@@ -31793,6 +31812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8d1d4f86b35c640b400683c2862ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
   pickerPrefab: {fileID: 2600837555911353107, guid: 922463314cb6fc646a2bd35e8f6dd365,
     type: 3}
   acerPrefab: {fileID: 3380901957251514670, guid: 066238002c64e494583231c495ee566e,
@@ -31815,6 +31835,13 @@ MonoBehaviour:
   - {fileID: 8840540186003469182, guid: 1e8f6637437e7954c9a25871b0a31231, type: 3}
   - {fileID: 523919918827522179, guid: c2c2205d47e37224cb315694abe03b7a, type: 3}
   - {fileID: 2348044393733907161, guid: 88f41652f3644be46b5bd220cf52a4e6, type: 3}
+  islandsRain:
+  - {fileID: 5652668401491794924, guid: a29347a01071ed74dbc51f966619b0d8, type: 3}
+  - {fileID: 2427546354384074610, guid: 7913ab3974ed35c4aa6adf5a9ef774ac, type: 3}
+  - {fileID: 1715844224673747320, guid: b71cd73f08323f4409966fa46a3ad67d, type: 3}
+  - {fileID: 8840540186003469182, guid: fdebb9b732f0b8845aa8b23b56a5b33d, type: 3}
+  - {fileID: 523919918827522179, guid: 61bc2037392326a4f914a8c1025a7d28, type: 3}
+  - {fileID: 2348044393733907161, guid: 8c00455a112a0c0438b2b0f589e69bbe, type: 3}
   portalExit: {fileID: 0}
   woodInMap: 0
   rockInMap: 0
@@ -40851,6 +40878,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729211825}
   m_CullTransparentMesh: 0
+--- !u!1 &1732138546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732138548}
+  - component: {fileID: 1732138547}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1732138547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732138546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9361bd6b549cb4abd915478f40227b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwordSound: 
+  DashSound: 
+  BombDownSound: 
+  BombCountDownSound: 
+  BombExplosionSound: 
+  BombClickSound: 
+  HitSound: 
+  EnemyHurtSound: 
+  PlayerHurtSound: 
+  PortalOpenSound: 
+  PortalFluctuationSound: 
+  FireSound: 
+  DeathSound: 
+  HitEnemySword: 
+  SwordStoneSound: 
+  HitTree: 
+  BreakTree: 
+  HitAir: 
+  OpenChestSound: 
+  ButtonClicked: 
+  PassButton: 
+  CoinsSound: 
+  ObjectiveCompleteSound: 
+  FallingObject: 
+  UpgradeSkill: 
+  SunSound: 
+  AldeaEnemigos: 
+  FogSetting: 
+  RainSetting: 
+  WinIsland: 
+  NeutralIsland: 
+  LoseIsland: 
+  PickUpSound: 
+  NightSound: 
+--- !u!4 &1732138548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732138546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5318146, y: 96.326965, z: 6.1850433}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732163289
 GameObject:
   m_ObjectHideFlags: 0

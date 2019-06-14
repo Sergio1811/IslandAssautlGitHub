@@ -123,7 +123,7 @@ MonoBehaviour:
       basic:
         postExposure: 0
         temperature: 34.9
-        tint: 0
+        tint: -15
         hueShift: 0
         saturation: 1.189
         contrast: 1.145

@@ -116,10 +116,12 @@ public class MidGameMenuScript : MonoBehaviour
     {
         if (GameManager.Instance.currentCoins != 0)
         {
-            if (GameManager.Instance.CheckSecondaryObjective()) resultEndCoinsText.text = GameManager.Instance.currentCoins.ToString() + " + 50";
-            else resultEndCoinsText.text = GameManager.Instance.currentCoins.ToString();
+            if (GameManager.Instance.CheckSecondaryObjective()) resultEndCoinsText.text = "+" + GameManager.Instance.currentCoins.ToString() + " + 50";
+            else resultEndCoinsText.text = "+" + GameManager.Instance.currentCoins.ToString();
             resultEndCoinsText.color = positiveColor;
         }
+
+        GameManager.Instance.currentCoins = 0;
 
         if (GameManager.gameWon)
         {

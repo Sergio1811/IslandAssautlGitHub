@@ -582,20 +582,9 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
 
-        if (livesNumber > 0) //si se pasa el nivel
+        if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
         {
-            gameWon = true;
-
-            totalFabrics += collectedFabrics;
-            totalRock += collectedRock;
-            totalWood += collectedWood;
-            totalFabrics2 += collectedFabrics2;
-            totalRock2 += collectedRock2;
-            totalWood2 += collectedWood2;
-        }
-
-        else if (livesNumber <= 0 && !portalActivated) //si muere y no habia cumplido el primer objetivo
-        {
+            gameWon = false;
             int pers;
 
             pers = totalFabrics * 10 / 100;
@@ -629,13 +618,24 @@ public class GameManager : MonoBehaviour
             if (totalWood2 < 0) totalWood2 = 0;
         }
 
-        //si muere y habia activado el portal, no pierde ni gana nada, solo las monedas
+        else
+        {
+            gameWon = true;
 
+            totalFabrics += collectedFabrics;
+            totalRock += collectedRock;
+            totalWood += collectedWood;
+            totalFabrics2 += collectedFabrics2;
+            totalRock2 += collectedRock2;
+            totalWood2 += collectedWood2;
+        }
 
-        if (CheckSecondaryObjective()) currentCoins += 50;
-        totalCoins += currentCoins; //las monedas las gana siempre
+        if (CheckSecondaryObjective())
+            totalCoins += 50;
 
-        currentCoins = 0;
+        totalCoins += currentCoins; //siempre gana las monedas conseguidas en el nivel
+
+        entreIslasCanvas.SetActive(true);
 
         SaveManager.Instance.Save();
 
@@ -643,7 +643,6 @@ public class GameManager : MonoBehaviour
         movingCamera = true;
         cameraAnchor.GetComponent<CameraRotation>().enabled = false;
         playerScript.enabled = false;
-        entreIslasCanvas.SetActive(true);
         cameraSpeed = initialCameraSpeed;
     }
 

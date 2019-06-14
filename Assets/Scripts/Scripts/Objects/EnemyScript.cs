@@ -246,7 +246,6 @@ public class EnemyScript : MonoBehaviour
 
     public void Stun()
     {
-        myAnimator.SetBool("Stay", true);
         myAnimator.transform.localPosition = originalAnimationPosition;
         agent.speed = 0;
         agent.angularSpeed = 0;
@@ -262,13 +261,11 @@ public class EnemyScript : MonoBehaviour
         agent.angularSpeed = iniAngSpeed;
         canAttack = true;
         stunned = false;
-        myAnimator.SetBool("Stay", false);
         myAnimator.transform.localPosition = originalAnimationPosition;
     }
 
     IEnumerator KnockBack()
     {
-        myAnimator.SetBool("Stay", true);
         myAnimator.transform.localPosition = originalAnimationPosition;
         knockBack = true;
         agent.speed = iniSpeed * 1.5f;
@@ -285,7 +282,6 @@ public class EnemyScript : MonoBehaviour
         agent.acceleration = iniAcc;
         agent.baseOffset = 0;
         knockBackDistance = knokBackIniDisctance;
-        myAnimator.SetBool("Stay", false);
         myAnimator.transform.localPosition = originalAnimationPosition;
     }
 

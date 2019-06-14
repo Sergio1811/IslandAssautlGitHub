@@ -192,7 +192,6 @@ public class PlayerScript : MonoBehaviour
     {
         if (InputManager.Instance.GetInput("Dash"))
         {
-            //myAnimator.SetTrigger("Dash");
             Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
             lastDashButtonReleased = false;
 
@@ -631,15 +630,11 @@ public class PlayerScript : MonoBehaviour
 
     IEnumerator KnockBack()
     {
-        myAnimator.SetBool("Stay", true);
-
         knockBack = true;
 
         yield return new WaitForSeconds(0.2f); //Only knock the enemy back for a short time    
 
         knockBack = false;
-
-        myAnimator.SetBool("Stay", false);
     }
     
     private void OnDrawGizmos()

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="EventFolder" id="{0be7ced5-e8a8-4a09-96bf-33579a63119d}">
+		<property name="name">
+			<value>Objective_Completed</value>
+		</property>
+		<relationship name="folder">
+			<destination>{607df05d-d6dd-459a-baac-3dbd4caac00f}</destination>
+		</relationship>
+	</object>
+</objects>

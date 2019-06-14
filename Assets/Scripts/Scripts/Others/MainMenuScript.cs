@@ -36,6 +36,7 @@ public class MainMenuScript : MonoBehaviour
 
             if (InputManager.Instance.GetInputDown("Submit"))
             {
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
                 switch (arrayNumber)
                 {
                     case 0:
@@ -58,6 +59,7 @@ public class MainMenuScript : MonoBehaviour
         }
         else if (InputManager.Instance.GetInputDown("Cancel"))
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
             inOptions = false;
             optionsScreen.SetActive(false);
         }
@@ -91,6 +93,7 @@ public class MainMenuScript : MonoBehaviour
 
             if (hasMoved)
             {
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PassButton, this.transform.position);
                 buttonsArrayDef[arrayNumber].SetActive(true);
                 actualImage.color = Color.white;
                 actualImage = buttonsArray[arrayNumber];

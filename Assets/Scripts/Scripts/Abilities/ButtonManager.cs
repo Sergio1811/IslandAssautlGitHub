@@ -72,6 +72,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (InputManager.Instance.GetInputDown("Cancel"))
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
             backMenu.SetActive(true);
             gameObject.SetActive(false);
         }
@@ -199,6 +200,7 @@ public class ButtonManager : MonoBehaviour
 
             if (hasMoved)
             {
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PassButton, this.transform.position);
                 movementOn = true;
                 UpdateComponents();
             }
@@ -331,6 +333,7 @@ public class ButtonManager : MonoBehaviour
 
     void BuyAbility()
     {
+        GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.UpgradeSkill, this.transform.position);
         canBuy = false;
 
         if (actualAbility.materialNeeded)

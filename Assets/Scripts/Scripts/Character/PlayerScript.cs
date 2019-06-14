@@ -141,10 +141,10 @@ public class PlayerScript : MonoBehaviour
         if (!canAttack)
             currentCD += Time.deltaTime;
 
-        if(actualType==playerType.sword && psTrial.activeSelf)
+        if (actualType == playerType.sword && psTrial.activeSelf)
             currentTrialTimer += Time.deltaTime;
-    
-        if(currentTrialTimer>= trialTimer)
+
+        if (currentTrialTimer >= trialTimer)
         {
             currentTrialTimer = 0;
             psTrial.SetActive(false);
@@ -192,6 +192,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (InputManager.Instance.GetInput("Dash"))
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.DashSound, this.transform.position);
             Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
             lastDashButtonReleased = false;
 
@@ -250,6 +251,7 @@ public class PlayerScript : MonoBehaviour
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
@@ -258,6 +260,7 @@ public class PlayerScript : MonoBehaviour
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
@@ -268,6 +271,7 @@ public class PlayerScript : MonoBehaviour
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
                         if (actualType == playerType.ace)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
@@ -276,6 +280,7 @@ public class PlayerScript : MonoBehaviour
 
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
@@ -287,6 +292,7 @@ public class PlayerScript : MonoBehaviour
                     case "Enemy":
                         if (actualType == playerType.ace && axePolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitEnemySword, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
@@ -302,6 +308,7 @@ public class PlayerScript : MonoBehaviour
                     case "Rock2":
                         if (actualType == playerType.ace && axePolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 4;
@@ -309,6 +316,7 @@ public class PlayerScript : MonoBehaviour
                         }
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
@@ -319,6 +327,7 @@ public class PlayerScript : MonoBehaviour
                     case "Rock":
                         if (actualType == playerType.ace && axePolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime * 2;
@@ -326,6 +335,7 @@ public class PlayerScript : MonoBehaviour
                         }
                         if (actualType == playerType.sword && swordPolivalente)
                         {
+                            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
                             neededPressedTime = iniPressedTime;
@@ -334,7 +344,7 @@ public class PlayerScript : MonoBehaviour
                         break;
                 }
             }
-            
+
             if (actualType == playerType.pick)
             {
                 Instantiate(psBombPutDown, this.transform.position, Quaternion.identity);
@@ -398,7 +408,7 @@ public class PlayerScript : MonoBehaviour
         }
         else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
         {
-            Instantiate(psClickTextEffect, this.transform.position+ new Vector3 (0,4,0), Quaternion.identity);
+            Instantiate(psClickTextEffect, this.transform.position + new Vector3(0, 4, 0), Quaternion.identity);
             bomb.SendMessage("Explode");
             bombOn = false;
             actionSphere.fillAmount = 0;
@@ -461,11 +471,12 @@ public class PlayerScript : MonoBehaviour
 
     public void CutTree(GameObject tree, int woodTier)
     {
+        GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.BreakTree, this.transform.position);
         GameManager.Instance.PickWood(woodTier);
         Instantiate(psWood, this.transform.position + this.transform.forward.normalized, Quaternion.identity);
         Destroy(tree);
     }
-    
+
     public void PickFabrics(GameObject chest, int tier)
     {
         GameManager.Instance.PickFabrics(tier);
@@ -496,16 +507,24 @@ public class PlayerScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
+        {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PickUpSound, this.transform.position);
             BreakRock(other.transform.parent.gameObject, 1);
+        }
         else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PickUpSound, this.transform.position);
             GameManager.Instance.PickWood(1);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "Rock2" && actualType == playerType.pick)
+        {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PickUpSound, this.transform.position);
             BreakRock(other.transform.parent.gameObject, 2);
+        }
         else if (other.gameObject.tag == "Tree2" && actualType == playerType.pick)
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PickUpSound, this.transform.position);
             GameManager.Instance.PickWood(2);
             Destroy(other.gameObject);
         }
@@ -550,6 +569,7 @@ public class PlayerScript : MonoBehaviour
 
             if (actionObject.tag == "Enemy")
             {
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitEnemySword, this.transform.position);
                 EnemyScript enemyScript = actionObject.transform.parent.GetComponent<EnemyScript>();
                 enemyScript.GetAttacked(this.gameObject.transform, true);
                 foundEnemy = true;
@@ -557,6 +577,8 @@ public class PlayerScript : MonoBehaviour
                     enemyScript.GetAttackedByBomb();
                 enemiesList.Add(actionObject);
             }
+            else
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitAir, this.transform.position);
 
             if (!swordSeep)
                 break;
@@ -636,7 +658,7 @@ public class PlayerScript : MonoBehaviour
 
         knockBack = false;
     }
-    
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

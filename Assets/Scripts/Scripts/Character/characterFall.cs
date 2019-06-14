@@ -21,7 +21,10 @@ public class characterFall : MonoBehaviour
         if (!characterController.isGrounded)
             movement.y += Physics.gravity.y;
         else
+        {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.FallingObject, this.transform.position);
             enabled = false;
+        }
         
         characterController.Move(movement.normalized * fallSpeed * Time.deltaTime);
     }

@@ -103,6 +103,7 @@ public class MidGameMenuScript : MonoBehaviour
             UpdateBetweenIslandMenuButtons();
         else if (InputManager.Instance.GetInputDown("Cancel"))
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
             inOptions = false;
             optionsScreen.SetActive(false);
         }
@@ -125,6 +126,7 @@ public class MidGameMenuScript : MonoBehaviour
 
         if (GameManager.gameWon)
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.WinIsland, this.transform.position);
             if (GameManager.Instance.collectedFabrics > 0)
             {
                 resultEndFabricText.text = "+" + GameManager.Instance.collectedFabrics.ToString();
@@ -158,6 +160,7 @@ public class MidGameMenuScript : MonoBehaviour
         }
         else
         {
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.LoseIsland, this.transform.position);
             if (persFabric > 0)
             {
                 resultEndFabricText.text = "-" + persFabric.ToString();
@@ -222,6 +225,7 @@ public class MidGameMenuScript : MonoBehaviour
 
     public void ActivateOptions()
     {
+        GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
         inOptions = true;
         optionsScreen.SetActive(true);
     }
@@ -333,11 +337,17 @@ public class MidGameMenuScript : MonoBehaviour
                 }
             }
             else if (InputManager.Instance.GetInputDown("Submit") && gameObject.activeSelf)
+            {
+                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
                 selectedButton.GetComponent<Button>().onClick.Invoke();
+            }
         }
 
         if (hasMoved)
+        {
             movementOn = true;
+            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PassButton, this.transform.position);
+        }
 
         if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)
         {

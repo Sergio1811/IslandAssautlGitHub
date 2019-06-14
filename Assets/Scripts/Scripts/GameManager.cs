@@ -862,14 +862,18 @@ public class GameManager : MonoBehaviour
 
             if (livesNumber <= 0)
             {
+                soundManager.PlayOneShot(soundManager.DeathSound, this.transform.position);
                 player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
                 EndLevel();
             }
+            else
+                soundManager.PlayOneShot(soundManager.PlayerHurtSound, this.transform.position);
         }
     }
 
     public void ActivatePortal()
     {
+        soundManager.PlayOneShot(soundManager.PortalOpenSound, this.transform.position);
         portalExit.transform.GetChild(0).gameObject.SetActive(false);
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
         portalActivated = true;

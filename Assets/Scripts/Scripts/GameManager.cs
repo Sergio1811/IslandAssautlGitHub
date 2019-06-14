@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
 
+    public SoundManager soundManager;
     private float rangedFloat;
     [Header("Main Characters Prefabs")]
     [Tooltip("The main character prefabs")]
@@ -191,6 +192,7 @@ public class GameManager : MonoBehaviour
     
     private void Awake()
     {
+       
         Instance = this;
         startGame = false;
 
@@ -230,6 +232,8 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
+        if(Input.GetKey(KeyCode.L))
+            soundManager.PlayOneShot(soundManager.SwordSound, this.transform.position);
         if (startGame)
         {
             if (!gameOver)
@@ -545,6 +549,7 @@ public class GameManager : MonoBehaviour
     {
         EndLevel();
     }
+
 
     public bool CheckSecondaryObjective()
     {

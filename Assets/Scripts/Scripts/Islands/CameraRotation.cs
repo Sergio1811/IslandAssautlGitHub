@@ -33,6 +33,7 @@ public class CameraRotation : MonoBehaviour
             CameraBehindPlayer();
         else
             UpdateCameraPosition();
+        
     }
 
     

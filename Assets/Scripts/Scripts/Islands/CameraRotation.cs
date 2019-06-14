@@ -27,6 +27,7 @@ public class CameraRotation : MonoBehaviour
 
     void Update()
     {
+        transform.position = GameManager.Instance.player.transform.position;
         if (InputManager.Instance.GetInputDown("CameraBack") && !cameraRotating) cameraRotating = true;
 
         if (cameraRotating)

@@ -181,7 +181,7 @@ public class PlayerScript : MonoBehaviour
         }
 
         if (!characterController.isGrounded)
-            movement.y += Physics.gravity.y;
+            movement.y = Physics.gravity.y * Time.deltaTime * 10;
 
         Vector3 controllerMovement = movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime;
         characterController.Move(controllerMovement);

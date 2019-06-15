@@ -333,9 +333,7 @@ public class GameManager : MonoBehaviour
 
         GameObject island = null;
         if (ClimaRandom.Rain)
-        {
             island = Instantiate(islandsRain[protoIsland]);
-        }
         else
             island = Instantiate(islands[protoIsland]);
 

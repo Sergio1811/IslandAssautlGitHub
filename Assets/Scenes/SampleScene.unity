@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44459635, g: 0.49410963, b: 0.57337385, a: 1}
+  m_IndirectSpecularColor: {r: 0.44459614, g: 0.4941091, b: 0.57337403, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20799,8 +20799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676af05547a45394ca571435ad1c6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positiveColor: {r: 0.22014059, g: 0.9150943, b: 0.2773899, a: 1}
-  negativeColor: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
+  positiveColor: {r: 0.047058824, g: 0.38039216, b: 0.11372549, a: 1}
+  negativeColor: {r: 0.3764706, g: 0.05882353, b: 0.043137256, a: 1}
   totalEndCoinsText: {fileID: 1095796437}
   totalEndWoodText: {fileID: 1588968186}
   totalEndRockText: {fileID: 34523670}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -167,7 +167,7 @@ Camera:
   far clip plane: 1000
   field of view: 50
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 35
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -374,41 +374,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9361bd6b549cb4abd915478f40227b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordSound: 
-  DashSound: 
-  BombDownSound: 
-  BombCountDownSound: 
-  BombExplosionSound: 
-  BombClickSound: 
-  HitSound: 
-  EnemyHurtSound: 
-  PlayerHurtSound: 
-  PortalOpenSound: 
-  PortalFluctuationSound: 
-  FireSound: 
-  DeathSound: 
-  HitEnemySword: 
-  SwordStoneSound: 
-  HitTree: 
-  BreakTree: 
-  HitAir: 
-  OpenChestSound: 
-  ButtonClicked: 
-  PassButton: 
-  CoinsSound: 
-  ObjectiveCompleteSound: 
-  FallingObject: 
-  UpgradeSkill: 
-  SunSound: 
-  AldeaEnemigos: 
-  FogSetting: 
-  RainSetting: 
-  WinIsland: 
-  NeutralIsland: 
-  LoseIsland: 
-  PickUpSound: 
-  NightSound: 
-  TimeSound: 
 --- !u!4 &769951037
 Transform:
   m_ObjectHideFlags: 0
@@ -616,9 +581,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lateralSpeed: 100
-  zoomSpeed: 300
+  zoomSpeed: 75
   maxZoom: 60
-  minZoom: 40
+  minZoom: 25
   maxYRotationAngle: 20
   cameraRotating: 0
 --- !u!114 &1362759328
@@ -633,7 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8d1d4f86b35c640b400683c2862ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 0}
   pickerPrefab: {fileID: 2600837555911353107, guid: 922463314cb6fc646a2bd35e8f6dd365,
     type: 3}
   acerPrefab: {fileID: 3380901957251514670, guid: 066238002c64e494583231c495ee566e,
@@ -687,6 +651,7 @@ MonoBehaviour:
   initialPanelPositionsTime: 1
   endCameraPosition: {fileID: 767404579220860312}
   initialCameraSpeed: 150
+  cameraFollowSpeed: 0
   entreIslasCanvas: {fileID: 7100856347755346829}
   abilitiesCanvas: {fileID: 7629739187408900862}
   mainCanvas: {fileID: 8167981029621515163}
@@ -53838,8 +53803,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676af05547a45394ca571435ad1c6248, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positiveColor: {r: 0.22014059, g: 0.9150943, b: 0.2773899, a: 1}
-  negativeColor: {r: 1, g: 0.08962262, b: 0.08962262, a: 1}
+  positiveColor: {r: 0.047058824, g: 0.38039216, b: 0.11372549, a: 1}
+  negativeColor: {r: 0.3764706, g: 0.05882353, b: 0.043137256, a: 1}
   totalEndCoinsText: {fileID: 7100856345937883042}
   totalEndWoodText: {fileID: 7100856346317263757}
   totalEndRockText: {fileID: 7100856347065508705}
@@ -55056,7 +55021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 135.315, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &8167981027919452931

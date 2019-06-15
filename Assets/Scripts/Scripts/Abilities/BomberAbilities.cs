@@ -14,7 +14,7 @@ public class BomberAbilities : MonoBehaviour
     public static float resourceMultiplier = 1.0f;
 
     public static bool rockTier2 = false;
-    public static bool initialized = false;
+    public static bool initialized;
     
 
     private void Awake()

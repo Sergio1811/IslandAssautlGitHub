@@ -19,6 +19,10 @@ public class MainMenuScript : MonoBehaviour
     bool inOptions;
     public GameObject optionsScreen;
 
+    bool loadScene;
+    public GameObject loadingScreen;
+    public Transform loadingIcon;
+
     void Start()
     {
         arrayNumber = 0;
@@ -26,11 +30,12 @@ public class MainMenuScript : MonoBehaviour
         actualImage = buttonsArray[0];
         actualImage.color = buttonSelectedColor;
         hasMoved = false;
+        loadScene = false;
     }
 
     void Update()
     {
-        if (!inOptions)
+        if (!inOptions && !loadScene)
         {
             UpdateButtons();
 
@@ -42,10 +47,18 @@ public class MainMenuScript : MonoBehaviour
                     case 0:
                         PlayerPrefs.DeleteAll();
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene(1);
+                        AxerAbilities.initialized = false;
+                        BomberAbilities.initialized = false;
+                        SwordAbilities.initialized = false;
+                        CharacterAbiliities.initialized = false;
+                        loadScene = true;
+                        loadingScreen.SetActive(true);
+                        StartCoroutine(LoadNewScene(1));
                         break;
                     case 1:
-                        SceneManager.LoadScene(1);
+                        loadScene = true;
+                        loadingScreen.SetActive(true);
+                        StartCoroutine(LoadNewScene(1));
                         break;
                     case 2:
                         inOptions = true;
@@ -57,12 +70,14 @@ public class MainMenuScript : MonoBehaviour
                 }
             }
         }
-        else if (InputManager.Instance.GetInputDown("Cancel"))
+        else if (InputManager.Instance.GetInputDown("Cancel") && inOptions)
         {
             SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
             inOptions = false;
             optionsScreen.SetActive(false);
         }
+        else if (loadScene)
+            loadingIcon.localEulerAngles -= new Vector3(0, 0, 200f) * Time.deltaTime;
     }
 
 
@@ -111,5 +126,16 @@ public class MainMenuScript : MonoBehaviour
 
         if (movementOn)
             timerMovement += Time.deltaTime;
+    }
+
+
+    IEnumerator LoadNewScene(int sceneNumber)
+    {        
+        AsyncOperation async = SceneManager.LoadSceneAsync(sceneNumber);
+        
+        while (!async.isDone)
+        {
+            yield return null;
+        }
     }
 }

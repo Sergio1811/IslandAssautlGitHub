@@ -23,32 +23,30 @@ public class ClimaRandom : MonoBehaviour
         Rain = false;
         Day = false;
         //RenderSettings.fog = false;
-        random = Random.Range(0, 4);
-        switch (random)
+        random = Random.Range(0, 99);
+
+        if (random >= 0 && random <= 49)
         {
-            case 0:
-                ScriptPrincipal.profile = DayProfile;
-                Day = true;
-               
-                break;
-
-            case 1:
-                ScriptPrincipal.profile = NightProfile;
-                break;
-
-            case 2:
-                ScriptPrincipal.profile = RainProfile;
-                Instantiate(RainPS,RainPS.transform.position, RainPS.transform.rotation);
-                Rain = true;
-                break;
-
-            case 3:
-                ScriptPrincipal.profile = FogProfile;
-                RenderSettings.fog = true; 
-                break;
-
+            ScriptPrincipal.profile = DayProfile;
+            Day = true;
         }
 
-    }
+        else if (random >= 50 && random <= 74)
+        {
+            ScriptPrincipal.profile = NightProfile;
+        }
 
+        else if (random >= 75 && random <= 89)
+        {
+            ScriptPrincipal.profile = RainProfile;
+            Instantiate(RainPS, RainPS.transform.position, RainPS.transform.rotation);
+            Rain = true;
+        }
+
+        else
+        {
+            ScriptPrincipal.profile = FogProfile;
+            RenderSettings.fog = true;
+        }
+    }
 }

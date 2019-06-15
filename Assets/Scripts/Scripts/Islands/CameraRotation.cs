@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
+    private InputManager inputManager;
     Camera mainCamera;
     Transform cameraParent;
 
@@ -16,9 +17,9 @@ public class CameraRotation : MonoBehaviour
     public float maxYRotationAngle;
     [HideInInspector] public bool cameraRotating;
 
-    
-    void Awake()
+    private void Start()
     {
+        inputManager = InputManager.Instance;
         mainCamera = Camera.main;
         cameraParent = mainCamera.transform.parent;
         yaw = cameraParent.localRotation.eulerAngles.y;
@@ -27,7 +28,7 @@ public class CameraRotation : MonoBehaviour
 
     void Update()
     {
-        if (InputManager.Instance.GetInputDown("CameraBack") && !cameraRotating) cameraRotating = true;
+        if (inputManager.GetInputDown("CameraBack") && !cameraRotating) cameraRotating = true;
 
         if (cameraRotating)
             CameraBehindPlayer();
@@ -52,9 +53,9 @@ public class CameraRotation : MonoBehaviour
 
     void UpdateCameraPosition()
     {
-        float horizontal = InputManager.Instance.GetAxis("CameraMovementX");
-        float vertical = InputManager.Instance.GetAxis("CameraMovementY");
-        float zoom = -InputManager.Instance.GetAxis("CameraZoom");
+        float horizontal = inputManager.GetAxis("CameraMovementX");
+        float vertical = inputManager.GetAxis("CameraMovementY");
+        float zoom = -inputManager.GetAxis("CameraZoom");
 
         pitch += vertical * lateralSpeed * Time.deltaTime;
         pitch = Mathf.Clamp(pitch, -maxYRotationAngle, maxYRotationAngle);

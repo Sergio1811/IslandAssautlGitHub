@@ -8,6 +8,8 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
+    private InputManager inputManager;
+    private SaveManager saveManager;
 
     private float rangedFloat;
     [Header("Main Characters Prefabs")]
@@ -142,7 +144,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public float cameraFollowSpeed;
 
-
     //CANVAS
     [Header("Canvas")]
     public GameObject entreIslasCanvas;
@@ -194,7 +195,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
         Instance = this;
         startGame = false;
         gameWon = false;
@@ -215,6 +215,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        inputManager = InputManager.Instance;
+        saveManager = SaveManager.Instance;
+
         player = PlayerInstantiation();
         playerScript.enabled = false;
 
@@ -259,7 +262,7 @@ public class GameManager : MonoBehaviour
                 if (remainingTimeInLevel <= 0f)
                 {
                     livesNumber = 0;
-                    player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
+                    player.GetComponent<PlayerScript>().myAnimator.SetBool("Move", false);
                     EndLevel();
                     remainingTimeInLevel = timeByLevel;
                 }
@@ -270,7 +273,7 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.M))
             {
                 totalCoins += 500;
-                SaveManager.Instance.Save();
+                saveManager.Save();
                 gameOver = true;
             }
 
@@ -282,7 +285,7 @@ public class GameManager : MonoBehaviour
                 totalRock2 += 500;
                 totalWood += 500;
                 totalWood2 += 500;
-                SaveManager.Instance.Save();
+                saveManager.Save();
                 gameOver = true;
             }
         }
@@ -292,14 +295,13 @@ public class GameManager : MonoBehaviour
         CameraMovement();
     }
 
-
     void CameraMovement()
     {
         if (gameOver)
             cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
         else if (startGame)
         {
-            if (InputManager.Instance.GetAxis("CameraZoom") == 0)
+            if (inputManager.GetAxis("CameraZoom") == 0)
             {
                 if (mainCamera.orthographicSize > 33f)
                     mainCamera.orthographicSize -= 20f * Time.deltaTime;
@@ -315,7 +317,6 @@ public class GameManager : MonoBehaviour
         if (cameraFollowSpeed > 1f)
             cameraFollowSpeed -= Time.deltaTime * 2f;
     }
-
 
     //RANDOMIZE METHODS
 
@@ -335,9 +336,8 @@ public class GameManager : MonoBehaviour
         }
         else
             island = Instantiate(islands[protoIsland]);
-        //islands[protoIsland].SetActive(true);
+
         gridScript.islandParent = island.transform.GetChild(0);
-        island.GetComponent<NavMeshSurface>().BuildNavMesh();
         island.GetComponent<NavMeshSurface>().BuildNavMesh();
 
     }
@@ -377,8 +377,6 @@ public class GameManager : MonoBehaviour
     {
         return Random.Range(0, secondaryObjectives.Length);
     }
-
-
 
     //INITIALIZATION METHODS
 
@@ -533,8 +531,6 @@ public class GameManager : MonoBehaviour
         secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
     }
 
-
-
     //UPDATE METHODS
 
     void UpdateWaitTimerToStart()
@@ -584,9 +580,6 @@ public class GameManager : MonoBehaviour
         if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
             movingCamera = false;
     }
-
-
-
 
     //END LEVEL METHODS
 
@@ -682,8 +675,6 @@ public class GameManager : MonoBehaviour
         playerScript.enabled = false;
         cameraSpeed = initialCameraSpeed;
     }
-
-
 
     //PICK RESOURCES METHODS
 
@@ -800,30 +791,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
     //ABILITIES METHODS
 
     void ApplyAxerAbilities(GameObject charac)
     {
         PlayerScript axerAbs = playerScript;
 
-        axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;//apply
-        axerAbs.axePolivalente = AxerAbilities.Polivalente;//apply
-        axerAbs.axeStun = AxerAbilities.axeStunt;//applied
+        axerAbs.neededTimeMultiplier = AxerAbilities.resourceSpeedMultiplier;
+        axerAbs.axePolivalente = AxerAbilities.Polivalente;
+        axerAbs.axeStun = AxerAbilities.axeStunt;
         treeTier2 = AxerAbilities.treeTier2;
-        resourceTreeMultiplier = AxerAbilities.resourceMultiplier;//apply
-        axerAbs.axeTier2 = AxerAbilities.axerTier2;//applied
+        resourceTreeMultiplier = AxerAbilities.resourceMultiplier;
+        axerAbs.axeTier2 = AxerAbilities.axerTier2;
 
         rockTier2 = BomberAbilities.rockTier2;
         enemyTier2 = SwordAbilities.enemyTier2;
 
-        titan = CharacterAbiliities.Titan;//applied
-        axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        titan = CharacterAbiliities.Titan;
+        axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
-        axerAbs.dashActive = CharacterAbiliities.dashActive;//applied
-        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
+        axerAbs.dashActive = CharacterAbiliities.dashActive;
+        goldMultiplier = CharacterAbiliities.goldMultiplier;
 
     }
     void ApplySwordAbilities(GameObject charac)
@@ -831,45 +820,43 @@ public class GameManager : MonoBehaviour
         PlayerScript swordAbs = playerScript;
 
         swordAbs.attackSpeedCooldown = SwordAbilities.resourceSpeedMultiplier;
-        swordAbs.swordPolivalente = SwordAbilities.Polivalente;//apply
+        swordAbs.swordPolivalente = SwordAbilities.Polivalente;
         swordAbs.swordSeep = SwordAbilities.swordSweep;
         enemyTier2 = SwordAbilities.enemyTier2;
-        resourceFabricMultiplier = SwordAbilities.resourceMultiplier;//applied
-        swordAbs.swordTier2 = SwordAbilities.swordTier2;//applied
+        resourceFabricMultiplier = SwordAbilities.resourceMultiplier;
+        swordAbs.swordTier2 = SwordAbilities.swordTier2;
 
         treeTier2 = AxerAbilities.treeTier2;
         rockTier2 = BomberAbilities.rockTier2;
 
-        titan = CharacterAbiliities.Titan;//applied
-        swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        titan = CharacterAbiliities.Titan;
+        swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
-        swordAbs.dashActive = CharacterAbiliities.dashActive;//applied
-        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
+        swordAbs.dashActive = CharacterAbiliities.dashActive;
+        goldMultiplier = CharacterAbiliities.goldMultiplier;
     }
     void ApplyBomberAbilities(GameObject charac)
     {
         PlayerScript bomberAbs = playerScript;
 
-        bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;//apply
-        bomberAbs.bombPolivalente = BomberAbilities.Polivalente;//apply
-        bomberAbs.bomberKnockBack = BomberAbilities.bombKnockBack; //applied
+        bomberAbs.neededBombMultiplier = BomberAbilities.resourceSpeedMultiplier;
+        bomberAbs.bombPolivalente = BomberAbilities.Polivalente;
+        bomberAbs.bomberKnockBack = BomberAbilities.bombKnockBack;
         rockTier2 = BomberAbilities.rockTier2;
-        resourceStoneMultiplier = BomberAbilities.resourceMultiplier;//applied
+        resourceStoneMultiplier = BomberAbilities.resourceMultiplier;
         bomberAbs.bombTier2 = BomberAbilities.explosiveTier2;
 
         treeTier2 = AxerAbilities.treeTier2;
         enemyTier2 = SwordAbilities.enemyTier2;
 
-        titan = CharacterAbiliities.Titan;//applied
-        bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;//applied
+        titan = CharacterAbiliities.Titan;
+        bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
-        bomberAbs.dashActive = CharacterAbiliities.dashActive;//applied
-        goldMultiplier = CharacterAbiliities.goldMultiplier;//applied
+        bomberAbs.dashActive = CharacterAbiliities.dashActive;
+        goldMultiplier = CharacterAbiliities.goldMultiplier;
     }
-
-
 
     //BUTTON METHODS
 
@@ -885,8 +872,6 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-
-
 
     //OTHER METHODS
 

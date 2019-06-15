@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44459635, g: 0.49410963, b: 0.57337385, a: 1}
+  m_IndirectSpecularColor: {r: 0.44459614, g: 0.4941091, b: 0.57337403, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12267,7 +12267,7 @@ Camera:
   far clip plane: 1000
   field of view: 50
   orthographic: 1
-  orthographic size: 40
+  orthographic size: 45
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -31782,9 +31782,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lateralSpeed: 100
-  zoomSpeed: 100
-  maxZoom: 50
-  minZoom: 30
+  zoomSpeed: 75
+  maxZoom: 45
+  minZoom: 25
   maxYRotationAngle: 20
   cameraRotating: 0
 --- !u!114 &1362759328
@@ -31858,6 +31858,7 @@ MonoBehaviour:
   initialPanelPositionsTime: 1
   endCameraPosition: {fileID: 1567700715}
   initialCameraSpeed: 150
+  cameraFollowSpeed: 0
   entreIslasCanvas: {fileID: 887935738}
   abilitiesCanvas: {fileID: 7146663376544890209}
   mainCanvas: {fileID: 8934052174480988392}

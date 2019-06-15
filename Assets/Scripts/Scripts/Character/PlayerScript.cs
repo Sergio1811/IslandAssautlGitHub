@@ -87,7 +87,6 @@ public class PlayerScript : MonoBehaviour
     float currentTrialTimer = 0;
 
     public Animator myAnimator;
-    Vector3 originalAnimationPosition;
 
 
     void Start()
@@ -105,8 +104,6 @@ public class PlayerScript : MonoBehaviour
             hitDistance *= hitDistanceUpgradeMultiplier;
         if (actualType == playerType.sword && swordTier2)
             hitDistance *= hitDistanceUpgradeMultiplier;
-
-        originalAnimationPosition = myAnimator.transform.localPosition;
     }
 
     void Update()
@@ -162,7 +159,6 @@ public class PlayerScript : MonoBehaviour
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
             myAnimator.SetBool("Move", true);
-            myAnimator.transform.localPosition = originalAnimationPosition;
             GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
 
             Vector3 forward = cameraAnchor.forward;
@@ -174,6 +170,8 @@ public class PlayerScript : MonoBehaviour
 
             movement = forward * zMovement + right * xMovement;
             transform.localRotation = Quaternion.LookRotation(movement);
+
+            GameManager.Instance.cameraFollowSpeed = 5f;
         }
 
         else
@@ -577,8 +575,6 @@ public class PlayerScript : MonoBehaviour
                     enemyScript.GetAttackedByBomb();
                 enemiesList.Add(actionObject);
             }
-            else
-                SoundManager.PlayOneShot(SoundManager.HitAir, this.transform.position);
 
             if (!swordSeep)
                 break;
@@ -647,6 +643,9 @@ public class PlayerScript : MonoBehaviour
                 repeatedEnemy = false;
             }
         }
+
+        if (!foundEnemy)
+            SoundManager.PlayOneShot(SoundManager.HitAir, this.transform.position);
 
     }
 

@@ -318,6 +318,7 @@ public class EnemyScript : MonoBehaviour
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
             this.transform.GetChild(0).tag = "Untagged";
+            this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
         }
         else
             SoundManager.PlayOneShot(SoundManager.EnemyHurtSound, this.transform.position);
@@ -333,8 +334,7 @@ public class EnemyScript : MonoBehaviour
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
             this.transform.GetChild(0).tag = "Untagged";
+            this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
         }
-        else
-            SoundManager.PlayOneShot(SoundManager.EnemyHurtSound, this.transform.position);
     }
 }

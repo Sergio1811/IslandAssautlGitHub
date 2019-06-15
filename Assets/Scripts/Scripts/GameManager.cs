@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
-    
+
     private float rangedFloat;
     [Header("Main Characters Prefabs")]
     [Tooltip("The main character prefabs")]
@@ -139,6 +139,8 @@ public class GameManager : MonoBehaviour
     public static float cameraSpeed;
     Camera mainCamera;
     GameObject cameraAnchor;
+    [HideInInspector]
+    public float cameraFollowSpeed;
 
 
     //CANVAS
@@ -195,6 +197,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         startGame = false;
+        gameWon = false;
 
         RandomIsland();
 
@@ -293,9 +296,24 @@ public class GameManager : MonoBehaviour
     void CameraMovement()
     {
         if (gameOver)
-            cameraAnchor.transform.position = Vector3.MoveTowards(cameraAnchor.transform.position, Vector3.zero, 50f * Time.deltaTime);
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
         else if (startGame)
-            cameraAnchor.transform.position = Vector3.MoveTowards(cameraAnchor.transform.position, player.transform.position, 50f * Time.deltaTime);
+        {
+            if (InputManager.Instance.GetAxis("CameraZoom") == 0)
+            {
+                if (mainCamera.orthographicSize > 33f)
+                    mainCamera.orthographicSize -= 20f * Time.deltaTime;
+                else if (mainCamera.orthographicSize < 31f)
+                    mainCamera.orthographicSize += 20f * Time.deltaTime;
+            }
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(player.transform.position.x, cameraAnchor.transform.position.y, player.transform.position.z), cameraFollowSpeed * Time.deltaTime);
+        }
+
+        if (GetSqrDistanceXZToPosition(cameraAnchor.transform.position, player.transform.position) < 10f && cameraFollowSpeed > 2f)
+            cameraFollowSpeed -= Time.deltaTime * 3f;
+
+        if (cameraFollowSpeed > 1f)
+            cameraFollowSpeed -= Time.deltaTime * 2f;
     }
 
 
@@ -539,6 +557,8 @@ public class GameManager : MonoBehaviour
                 rightPanelSecundaries.SetActive(true);
 
                 playerScript.enabled = true;
+
+                cameraFollowSpeed = 5f;
             }
         }
         else if (waitTimer >= waitToStartTime - 0.2f && leftPanel.transform.parent != mainCanvas.transform)
@@ -863,7 +883,7 @@ public class GameManager : MonoBehaviour
 
     public void ButtonQuit()
     {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 
 

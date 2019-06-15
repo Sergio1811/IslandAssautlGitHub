@@ -236,10 +236,12 @@ public class GameManager : MonoBehaviour
 
         lights = GameObject.FindGameObjectsWithTag("FireTorch");
         print(lights.Length);
-        foreach (GameObject fire in lights)
+        if (ClimaRandom.Day)
         {
-            print(fire.name);
-            fire.SetActive(false);
+            foreach (GameObject fire in lights)
+            {
+                fire.gameObject.SetActive(false);
+            }
         }
     }
 

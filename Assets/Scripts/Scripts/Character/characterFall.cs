@@ -19,7 +19,7 @@ public class characterFall : MonoBehaviour
         Vector3 movement = Vector3.zero;
 
         if (!characterController.isGrounded)
-            movement.y += Physics.gravity.y;
+            movement.y += -9.8f;
         else
         {
             SoundManager.PlayOneShot(SoundManager.FallingObject, this.transform.position);

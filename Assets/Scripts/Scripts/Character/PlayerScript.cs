@@ -7,6 +7,9 @@ public class PlayerScript : MonoBehaviour
 {
     private CharacterController characterController;
     private Transform cameraAnchor;
+    private InputManager inputManager;
+    private GameManager gameManager;
+    private CameraRotation cameraScript;
 
     public enum playerType { pick, ace, sword }
     public playerType actualType;
@@ -29,6 +32,8 @@ public class PlayerScript : MonoBehaviour
     bool inmortal;
 
     public float dashDistance;
+    public float dashCooldown;
+    float dashTime = 0;
 
     public GameObject bomb;
     public GameObject sword;
@@ -92,6 +97,10 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        inputManager = InputManager.Instance;
+        gameManager = GameManager.Instance;
+        cameraScript = gameManager.GetComponent<CameraRotation>();
+
         cameraAnchor = Camera.main.transform.parent.transform;
         actionSphere.transform.rotation = Camera.main.transform.localRotation;
         inmortal = false;
@@ -112,9 +121,18 @@ public class PlayerScript : MonoBehaviour
             WalkTime();
 
         //Mirar si ha soltado el trigger antes de volver a hacer la accion
-        if (lastActionButtonReleased == false && InputManager.Instance.GetInputUp("Action")) lastActionButtonReleased = true;
+        if (lastActionButtonReleased == false && inputManager.GetInputUp("Action")) lastActionButtonReleased = true;
 
-        if (lastDashButtonReleased == false && InputManager.Instance.GetInputUp("Dash")) lastDashButtonReleased = true;
+        if (lastDashButtonReleased == false && inputManager.GetInputUp("Dash"))
+        {
+            dashTime += Time.deltaTime;
+
+            if(dashTime>=dashCooldown)
+            {
+                lastDashButtonReleased = true;
+                dashTime = 0;
+            }
+        }
 
         if (receiveInputAction && !bombOn)
         {
@@ -154,13 +172,13 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 movement = Vector3.zero;
         Vector3 fallMovement = Vector3.zero;
-        xMovement = InputManager.Instance.GetAxis("Horizontal");
-        zMovement = InputManager.Instance.GetAxis("Vertical");
+        xMovement = inputManager.GetAxis("Horizontal");
+        zMovement = inputManager.GetAxis("Vertical");
 
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
             myAnimator.SetBool("Move", true);
-            GameManager.Instance.GetComponent<CameraRotation>().cameraRotating = false;
+            cameraScript.cameraRotating = false;
 
             Vector3 forward = cameraAnchor.forward;
             forward.y = 0;
@@ -172,7 +190,7 @@ public class PlayerScript : MonoBehaviour
             movement = forward * zMovement + right * xMovement;
             transform.localRotation = Quaternion.LookRotation(movement);
 
-            GameManager.Instance.cameraFollowSpeed = 5f;
+            gameManager.cameraFollowSpeed = 5f;
         }
 
         else
@@ -190,7 +208,7 @@ public class PlayerScript : MonoBehaviour
 
     void Dash()
     {
-        if (InputManager.Instance.GetInput("Dash"))
+        if (inputManager.GetInput("Dash"))
         {
             SoundManager.PlayOneShot(SoundManager.DashSound, this.transform.position);
             Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
@@ -223,7 +241,7 @@ public class PlayerScript : MonoBehaviour
 
     void StartAction()
     {
-        if (InputManager.Instance.GetInput("Action") && actualType == playerType.sword && canAttack)
+        if (inputManager.GetInput("Action") && actualType == playerType.sword && canAttack)
         {
             canAttack = false;
             lastActionButtonReleased = false;
@@ -232,7 +250,7 @@ public class PlayerScript : MonoBehaviour
             psTrial.SetActive(true);
         }
 
-        if (InputManager.Instance.GetInput("Action") && (actualType != playerType.sword || (actualType == playerType.sword && swordPolivalente)))
+        if (inputManager.GetInput("Action") && (actualType != playerType.sword || (actualType == playerType.sword && swordPolivalente)))
         {
             lastActionButtonReleased = false;
 
@@ -370,7 +388,7 @@ public class PlayerScript : MonoBehaviour
 
     void UpdateAction()
     {
-        if (InputManager.Instance.GetInput("Action"))
+        if (inputManager.GetInput("Action"))
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
             canMove = false;
@@ -406,7 +424,7 @@ public class PlayerScript : MonoBehaviour
                 pressedTimer = 0.0f;
             }
         }
-        else if (InputManager.Instance.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
+        else if (inputManager.GetInput("Action") && pressedTimer >= 0.1f && lastActionButtonReleased)
         {
             Instantiate(psClickTextEffect, this.transform.position + new Vector3(0, 4, 0), Quaternion.identity);
             bomb.SendMessage("Explode");
@@ -465,21 +483,21 @@ public class PlayerScript : MonoBehaviour
 
     public void BreakRock(GameObject rock, int rockTier)
     {
-        GameManager.Instance.PickRock(rockTier);
+        gameManager.PickRock(rockTier);
         Destroy(rock);
     }
 
     public void CutTree(GameObject tree, int woodTier)
     {
         SoundManager.PlayOneShot(SoundManager.BreakTree, this.transform.position);
-        GameManager.Instance.PickWood(woodTier);
+        gameManager.PickWood(woodTier);
         Instantiate(psWood, this.transform.position + this.transform.forward.normalized, Quaternion.identity);
         Destroy(tree);
     }
 
     public void PickFabrics(GameObject chest, int tier)
     {
-        GameManager.Instance.PickFabrics(tier);
+        gameManager.PickFabrics(tier);
         Destroy(chest);
     }
 
@@ -495,9 +513,9 @@ public class PlayerScript : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.tag == "Dead")
-            GameManager.Instance.EndLevel();
+            gameManager.EndLevel();
         else if (hit.gameObject.tag == "Exit")
-            GameManager.Instance.LevelComplete();
+            gameManager.LevelComplete();
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
             PickFabrics(hit.gameObject, 1);
         else if ((hit.gameObject.tag == "Chest2") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
@@ -514,7 +532,7 @@ public class PlayerScript : MonoBehaviour
         else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
-            GameManager.Instance.PickWood(1);
+            gameManager.PickWood(1);
             Destroy(other.gameObject);
         }
         else if (other.gameObject.tag == "Rock2" && actualType == playerType.pick)
@@ -525,7 +543,7 @@ public class PlayerScript : MonoBehaviour
         else if (other.gameObject.tag == "Tree2" && actualType == playerType.pick)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
-            GameManager.Instance.PickWood(2);
+            gameManager.PickWood(2);
             Destroy(other.gameObject);
         }
     }
@@ -542,7 +560,7 @@ public class PlayerScript : MonoBehaviour
                 knockDirection = direction;
                 StartCoroutine(KnockBack());
             }
-            GameManager.Instance.Damage();
+            gameManager.Damage();
         }
     }
 

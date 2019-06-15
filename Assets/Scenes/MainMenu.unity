@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1416,6 +1416,121 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837059209}
   m_CullTransparentMesh: 0
+--- !u!1 &857734360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 857734362}
+  - component: {fileID: 857734361}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &857734361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857734360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8d1d4f86b35c640b400683c2862ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundManager: {fileID: 956906560}
+  pickerPrefab: {fileID: 0}
+  acerPrefab: {fileID: 0}
+  sworderPrefab: {fileID: 0}
+  player: {fileID: 0}
+  livesGroup: {fileID: 0}
+  titan: 0
+  islandTier2: 0
+  Market: 0
+  enemyTier2: 0
+  treeTier2: 0
+  rockTier2: 0
+  gridScript: {fileID: 0}
+  islands: []
+  islandsRain: []
+  portalExit: {fileID: 0}
+  woodInMap: 0
+  rockInMap: 0
+  fabricInMap: 0
+  wood2InMap: 0
+  rock2InMap: 0
+  fabric2InMap: 0
+  woodNeeded: 0
+  rockNeeded: 0
+  fabricNeeded: 0
+  wood2Needed: 0
+  rock2Needed: 0
+  fabric2Needed: 0
+  secondaryObjectives: []
+  rockByItem: 0
+  woodByItem: 0
+  enemiesByItem: 0
+  currentCoins: 0
+  collectedWood: 0
+  collectedRock: 0
+  collectedFabrics: 0
+  collectedWood2: 0
+  collectedRock2: 0
+  collectedFabrics2: 0
+  timeByLevel: 0
+  timeText: {fileID: 0}
+  waitToStartTime: 0
+  initialPanelPositionsTime: 0
+  endCameraPosition: {fileID: 0}
+  initialCameraSpeed: 0
+  entreIslasCanvas: {fileID: 0}
+  abilitiesCanvas: {fileID: 0}
+  mainCanvas: {fileID: 0}
+  positionRight: {fileID: 0}
+  positionLeft: {fileID: 0}
+  speedPanels: 0
+  rightPanel: {fileID: 0}
+  recursoPrincipal: {fileID: 0}
+  recursoPrincipalTier2: {fileID: 0}
+  recursoPrincipalText: {fileID: 0}
+  recursoPrincipalTextTier2: {fileID: 0}
+  cointsText: {fileID: 0}
+  recursoPrincipalCaughtText: {fileID: 0}
+  recursoPrincipalCaughtTier2: {fileID: 0}
+  rightPanelSecundaries: {fileID: 0}
+  woodText: {fileID: 0}
+  woodTextTier2: {fileID: 0}
+  rockText: {fileID: 0}
+  rockTextTier2: {fileID: 0}
+  fabricText: {fileID: 0}
+  fabricTextTier2: {fileID: 0}
+  sworderImage: {fileID: 0}
+  bomberImage: {fileID: 0}
+  axerImage: {fileID: 0}
+  bomberTier2Image: {fileID: 0}
+  leftPanel: {fileID: 0}
+  secondaryObjectiveText: {fileID: 0}
+--- !u!4 &857734362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857734360}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.240204, y: 14.257765, z: -6.5640445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &884964630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1616,7 @@ GameObject:
   - component: {fileID: 949837510}
   - component: {fileID: 949837509}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MusicEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1522,7 +1637,7 @@ MonoBehaviour:
   CollisionTag: 
   Event: "event:/GrupoMusica/BS/Percusi\xF3"
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -1543,6 +1658,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &956906559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 956906561}
+  - component: {fileID: 956906560}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &956906560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956906559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9361bd6b549cb4abd915478f40227b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SwordSound: 
+  DashSound: 
+  BombDownSound: 
+  BombCountDownSound: 
+  BombExplosionSound: 
+  BombClickSound: 
+  HitSound: 
+  EnemyHurtSound: 
+  PlayerHurtSound: 
+  PortalOpenSound: 
+  PortalFluctuationSound: 
+  FireSound: 
+  DeathSound: 
+  HitEnemySword: 
+  SwordStoneSound: 
+  HitTree: 
+  BreakTree: 
+  HitAir: 
+  OpenChestSound: 
+  ButtonClicked: 
+  PassButton: 
+  CoinsSound: 
+  ObjectiveCompleteSound: 
+  FallingObject: 
+  UpgradeSkill: 
+  SunSound: 
+  AldeaEnemigos: 
+  FogSetting: 
+  RainSetting: 
+  WinIsland: 
+  NeutralIsland: 
+  LoseIsland: 
+  PickUpSound: 
+  NightSound: 
+  TimeSound: 
+--- !u!4 &956906561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956906559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -48.240204, y: 14.257765, z: -6.5640445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999394020
 GameObject:

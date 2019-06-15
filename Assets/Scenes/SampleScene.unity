@@ -15,16 +15,16 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
+  m_FogColor: {r: 0.7497775, g: 0.7830189, b: 0.77193844, a: 1}
+  m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 0
-  m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_LinearFogStart: -40
+  m_LinearFogEnd: 20
+  m_AmbientSkyColor: {r: 0.24830824, g: 0.25882354, b: 0.21176471, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -51,8 +51,8 @@ LightmapSettings:
     m_IndirectOutputScale: 1
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
-    m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 0
+    m_EnableBakedLightmaps: 0
+    m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
     serializedVersion: 10
     m_Resolution: 2
@@ -12240,7 +12240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 76148d05d1f7ded48bddab0d5ea0f4be, type: 2}
 --- !u!20 &534669904
 Camera:
   m_ObjectHideFlags: 0
@@ -18334,7 +18334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 784672816}
   - component: {fileID: 784672817}
-  - component: {fileID: 784672818}
   m_Layer: 0
   m_Name: SaveManager
   m_TagString: Untagged
@@ -18368,19 +18367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08dd7d19ab396d34ea15ead75125edd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &784672818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 784672815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ListenerNumber: 0
 --- !u!1 &786563261
 GameObject:
   m_ObjectHideFlags: 0
@@ -31760,6 +31746,7 @@ GameObject:
   - component: {fileID: 1362759327}
   - component: {fileID: 1362759329}
   - component: {fileID: 1738710281}
+  - component: {fileID: 1362759330}
   m_Layer: 0
   m_Name: CameraAnchor
   m_TagString: Untagged
@@ -31812,7 +31799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8d1d4f86b35c640b400683c2862ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 1732138547}
   pickerPrefab: {fileID: 2600837555911353107, guid: 922463314cb6fc646a2bd35e8f6dd365,
     type: 3}
   acerPrefab: {fileID: 3380901957251514670, guid: 066238002c64e494583231c495ee566e,
@@ -31913,6 +31899,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psController: 0
   xboxController: 0
+--- !u!114 &1362759330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362759325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!1 &1373295999
 GameObject:
   m_ObjectHideFlags: 0
@@ -40907,41 +40906,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9361bd6b549cb4abd915478f40227b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwordSound: 
-  DashSound: 
-  BombDownSound: 
-  BombCountDownSound: 
-  BombExplosionSound: 
-  BombClickSound: 
-  HitSound: 
-  EnemyHurtSound: 
-  PlayerHurtSound: 
-  PortalOpenSound: 
-  PortalFluctuationSound: 
-  FireSound: 
-  DeathSound: 
-  HitEnemySword: 
-  SwordStoneSound: 
-  HitTree: 
-  BreakTree: 
-  HitAir: 
-  OpenChestSound: 
-  ButtonClicked: 
-  PassButton: 
-  CoinsSound: 
-  ObjectiveCompleteSound: 
-  FallingObject: 
-  UpgradeSkill: 
-  SunSound: 
-  AldeaEnemigos: 
-  FogSetting: 
-  RainSetting: 
-  WinIsland: 
-  NeutralIsland: 
-  LoseIsland: 
-  PickUpSound: 
-  NightSound: 
-  TimeSound: 
 --- !u!4 &1732138548
 Transform:
   m_ObjectHideFlags: 0
@@ -41076,9 +41040,9 @@ MonoBehaviour:
   CollisionTag: 
   Event: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
-  TriggerOnce: 0
+  TriggerOnce: 1
   Preload: 0
   Params: []
   OverrideAttenuation: 0
@@ -48768,7 +48732,7 @@ GameObject:
   - component: {fileID: 4649697509730880}
   - component: {fileID: 33889880329876180}
   - component: {fileID: 23593879022641832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48786,7 +48750,7 @@ GameObject:
   - component: {fileID: 4333854169479998}
   - component: {fileID: 33973072405385616}
   - component: {fileID: 23558620579830366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48805,7 +48769,7 @@ GameObject:
   - component: {fileID: 33614123892327440}
   - component: {fileID: 23489640250741362}
   - component: {fileID: 4814756666796473442}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48823,7 +48787,7 @@ GameObject:
   - component: {fileID: 4343150768759258}
   - component: {fileID: 33629276779627040}
   - component: {fileID: 23753319115799198}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48842,7 +48806,7 @@ GameObject:
   - component: {fileID: 33130638998435542}
   - component: {fileID: 23362373879373342}
   - component: {fileID: 1485384940832635620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48860,7 +48824,7 @@ GameObject:
   - component: {fileID: 4785826178121022}
   - component: {fileID: 33014055343388404}
   - component: {fileID: 23745761481336352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48878,7 +48842,7 @@ GameObject:
   - component: {fileID: 4557708087980180}
   - component: {fileID: 33452429353669210}
   - component: {fileID: 23203067175925170}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48896,7 +48860,7 @@ GameObject:
   - component: {fileID: 4138582333048664}
   - component: {fileID: 33846722109462962}
   - component: {fileID: 23720439114464256}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48915,7 +48879,7 @@ GameObject:
   - component: {fileID: 33386291059071946}
   - component: {fileID: 23755968521184712}
   - component: {fileID: 3997193262140537647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48933,7 +48897,7 @@ GameObject:
   - component: {fileID: 4695118228466732}
   - component: {fileID: 33689782718876156}
   - component: {fileID: 23276992582347316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48951,7 +48915,7 @@ GameObject:
   - component: {fileID: 4757148874761954}
   - component: {fileID: 33924258761577666}
   - component: {fileID: 23828216060826322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48969,7 +48933,7 @@ GameObject:
   - component: {fileID: 4778158680524858}
   - component: {fileID: 33153986662162914}
   - component: {fileID: 23281088856637206}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48987,7 +48951,7 @@ GameObject:
   - component: {fileID: 4720427077877456}
   - component: {fileID: 33215530425429232}
   - component: {fileID: 23016063902431234}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49005,7 +48969,7 @@ GameObject:
   - component: {fileID: 4510581931721224}
   - component: {fileID: 33127910224855914}
   - component: {fileID: 23543214571288866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49023,7 +48987,7 @@ GameObject:
   - component: {fileID: 4107545855322480}
   - component: {fileID: 33854530111384232}
   - component: {fileID: 23705789240147186}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49041,7 +49005,7 @@ GameObject:
   - component: {fileID: 4999755046651990}
   - component: {fileID: 33449551470334264}
   - component: {fileID: 23864720111846750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49059,7 +49023,7 @@ GameObject:
   - component: {fileID: 4974577239900288}
   - component: {fileID: 33933139119710416}
   - component: {fileID: 23364677123744492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49077,7 +49041,7 @@ GameObject:
   - component: {fileID: 4194545527187022}
   - component: {fileID: 33536640913884578}
   - component: {fileID: 23568334412834362}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49096,7 +49060,7 @@ GameObject:
   - component: {fileID: 33059157032681432}
   - component: {fileID: 23004064511160762}
   - component: {fileID: 454305579927030634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49114,7 +49078,7 @@ GameObject:
   - component: {fileID: 4571190240525676}
   - component: {fileID: 33460538456661978}
   - component: {fileID: 23646998017294546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49132,7 +49096,7 @@ GameObject:
   - component: {fileID: 4674872026447030}
   - component: {fileID: 33811572944216514}
   - component: {fileID: 23868048229347146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49150,7 +49114,7 @@ GameObject:
   - component: {fileID: 4671089899940192}
   - component: {fileID: 33175046329973670}
   - component: {fileID: 23840658452029494}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49168,7 +49132,7 @@ GameObject:
   - component: {fileID: 4088436657514922}
   - component: {fileID: 33483713761940580}
   - component: {fileID: 23561980426165674}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49186,7 +49150,7 @@ GameObject:
   - component: {fileID: 4589184172316436}
   - component: {fileID: 33977865823723520}
   - component: {fileID: 23189333562006420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49204,7 +49168,7 @@ GameObject:
   - component: {fileID: 4279182613056052}
   - component: {fileID: 33942319844771164}
   - component: {fileID: 23577390628119092}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49222,7 +49186,7 @@ GameObject:
   - component: {fileID: 4568773534896616}
   - component: {fileID: 33844733595690648}
   - component: {fileID: 23836200735724940}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49240,7 +49204,7 @@ GameObject:
   - component: {fileID: 4861424343618814}
   - component: {fileID: 33928467317245954}
   - component: {fileID: 23986865346924574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49259,7 +49223,7 @@ GameObject:
   - component: {fileID: 33017192799172468}
   - component: {fileID: 23348419623312404}
   - component: {fileID: 2003591351118660503}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49277,7 +49241,7 @@ GameObject:
   - component: {fileID: 4477391293477464}
   - component: {fileID: 33516109134347560}
   - component: {fileID: 23108565455589656}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49295,7 +49259,7 @@ GameObject:
   - component: {fileID: 4107972529874562}
   - component: {fileID: 33237333161079708}
   - component: {fileID: 23481082766043640}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49313,7 +49277,7 @@ GameObject:
   - component: {fileID: 4332046962029404}
   - component: {fileID: 33881303140763332}
   - component: {fileID: 23475234910176820}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_SkyDome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49331,7 +49295,7 @@ GameObject:
   - component: {fileID: 4833301827023192}
   - component: {fileID: 33080294343488870}
   - component: {fileID: 23434904820233360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49350,7 +49314,7 @@ GameObject:
   - component: {fileID: 33518601135833640}
   - component: {fileID: 23500947082097666}
   - component: {fileID: 9332196741242324}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49368,7 +49332,7 @@ GameObject:
   - component: {fileID: 4062438265352880}
   - component: {fileID: 33934899312976684}
   - component: {fileID: 23310715792533316}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49386,7 +49350,7 @@ GameObject:
   - component: {fileID: 4533731107850168}
   - component: {fileID: 33943031536628020}
   - component: {fileID: 23506504666584426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49405,7 +49369,7 @@ GameObject:
   - component: {fileID: 33768010460878338}
   - component: {fileID: 23012903265647694}
   - component: {fileID: 4339602389764828910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49421,7 +49385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4233970105677180}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49439,7 +49403,7 @@ GameObject:
   - component: {fileID: 4908081537296034}
   - component: {fileID: 33009171152576122}
   - component: {fileID: 23844601435674028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49457,7 +49421,7 @@ GameObject:
   - component: {fileID: 4890669915116724}
   - component: {fileID: 33407434906412600}
   - component: {fileID: 23630846336062708}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49475,7 +49439,7 @@ GameObject:
   - component: {fileID: 4650170921485542}
   - component: {fileID: 33414195860603366}
   - component: {fileID: 23493478732390066}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49493,7 +49457,7 @@ GameObject:
   - component: {fileID: 4931149830571350}
   - component: {fileID: 33401111205321960}
   - component: {fileID: 23561537895290040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49511,7 +49475,7 @@ GameObject:
   - component: {fileID: 4038268173223568}
   - component: {fileID: 33994581681524516}
   - component: {fileID: 23809910372775782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49529,7 +49493,7 @@ GameObject:
   - component: {fileID: 4236833851078570}
   - component: {fileID: 33368814456032728}
   - component: {fileID: 23902812894418866}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49548,7 +49512,7 @@ GameObject:
   - component: {fileID: 33777252297190112}
   - component: {fileID: 23626507758942642}
   - component: {fileID: 6083291899133095368}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49566,7 +49530,7 @@ GameObject:
   - component: {fileID: 4367958174546326}
   - component: {fileID: 33560774696757690}
   - component: {fileID: 23433266021842528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49584,7 +49548,7 @@ GameObject:
   - component: {fileID: 4615017198018088}
   - component: {fileID: 33400436223013306}
   - component: {fileID: 23554892516838498}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49602,7 +49566,7 @@ GameObject:
   - component: {fileID: 4244460316629844}
   - component: {fileID: 33291002940022884}
   - component: {fileID: 23070463877162070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49620,7 +49584,7 @@ GameObject:
   - component: {fileID: 4630655385253326}
   - component: {fileID: 33033976197887996}
   - component: {fileID: 23189713644913932}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49638,7 +49602,7 @@ GameObject:
   - component: {fileID: 4215873411835146}
   - component: {fileID: 33865528135697368}
   - component: {fileID: 23795430629135404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_02 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49656,7 +49620,7 @@ GameObject:
   - component: {fileID: 4355512620274380}
   - component: {fileID: 33582981649570652}
   - component: {fileID: 23907912387553402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SM_Generic_Cloud_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52678,7 +52642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4153485559938592500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Islands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52707,7 +52671,7 @@ GameObject:
   m_Component:
   - component: {fileID: 16439052068841188}
   - component: {fileID: 4656732689472912761}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52793,7 +52757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389536152018290431}
   - component: {fileID: 2818699917207722059}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52822,7 +52786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4351720047176442386}
   - component: {fileID: 7183049606158409160}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52900,7 +52864,7 @@ GameObject:
   - component: {fileID: 4959458197387581325}
   - component: {fileID: 2376502975736986918}
   - component: {fileID: 8570727008915484712}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Dead
   m_Icon: {fileID: 0}
@@ -52932,7 +52896,7 @@ GameObject:
   - component: {fileID: 9172511127148144156}
   - component: {fileID: 1326240588}
   - component: {fileID: 2213256071539378565}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53013,7 +52977,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5010029312014122179}
   - component: {fileID: 7658228605911762271}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53575,7 +53539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1619660032112055143}
   - component: {fileID: 4163671851246478788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53734,7 +53698,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404853444582228465}
   - component: {fileID: 9010513872679618699}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53844,7 +53808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4376003399693207417}
   - component: {fileID: 847616877238585376}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54113,7 +54077,7 @@ GameObject:
   - component: {fileID: 7576017465395232650}
   - component: {fileID: 7822928384605416045}
   - component: {fileID: 3134178259387850181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54142,7 +54106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3084681729339848480}
   - component: {fileID: 5314563189744839634}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54159,7 +54123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4484111468160575077}
   - component: {fileID: 1991176856344233621}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54333,7 +54297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7028613924235241510}
   - component: {fileID: 2593394475049430177}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54602,7 +54566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5263960295570944181}
   - component: {fileID: 1300801577593536631}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54619,7 +54583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4381913584417774776}
   - component: {fileID: 5283668958279428259}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54644,7 +54608,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5248623087848184371}
   - component: {fileID: 222872148081899715}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54661,7 +54625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742144799398635279}
   - component: {fileID: 7592650745828102889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54678,7 +54642,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2552261523067291334}
   - component: {fileID: 401923988781896947}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55876,7 +55840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8540980725967106370}
   - component: {fileID: 3318870715179812244}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Nube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

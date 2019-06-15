@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
     public Text secondaryObjectiveText;
     GameObject[] objectiveImage;
     int secondaryObjectiveID;
-
+    private GameObject[] lights;
 
     private void Awake()
     {
@@ -227,6 +227,14 @@ public class GameManager : MonoBehaviour
         SecundaryObjectivesInitialization();
 
         player.GetComponent<CharacterController>().enabled = true;
+
+        lights = GameObject.FindGameObjectsWithTag("FireTorch");
+        print(lights.Length);
+        foreach (GameObject fire in lights)
+        {
+            print(fire.name);
+            fire.SetActive(false);
+        }
     }
 
 

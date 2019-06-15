@@ -15,14 +15,21 @@ public class ClimaRandom : MonoBehaviour
     public ParticleSystem RainPS;
     int random;
     public static bool Rain;
+    public static bool Day;
+   
     private void Awake()
     {
+       
         Rain = false;
-        random = Random.Range(0, 3);
+        Day = false;
+        //RenderSettings.fog = false;
+        random = Random.Range(0, 4);
         switch (random)
         {
             case 0:
                 ScriptPrincipal.profile = DayProfile;
+                Day = true;
+               
                 break;
 
             case 1:
@@ -31,12 +38,13 @@ public class ClimaRandom : MonoBehaviour
 
             case 2:
                 ScriptPrincipal.profile = RainProfile;
-                Instantiate(RainPS, Vector3.zero, RainPS.transform.rotation);
+                Instantiate(RainPS,RainPS.transform.position, RainPS.transform.rotation);
                 Rain = true;
                 break;
 
             case 3:
                 ScriptPrincipal.profile = FogProfile;
+                RenderSettings.fog = true; 
                 break;
 
         }

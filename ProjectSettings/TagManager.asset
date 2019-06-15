@@ -22,6 +22,7 @@ TagManager:
   - IslandCollision
   - FxTemporaire
   - Chest2
+  - FireTorch
   layers:
   - Default
   - TransparentFX

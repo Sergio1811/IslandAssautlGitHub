@@ -12,8 +12,8 @@ public class ObjectsInstantiation : MonoBehaviour
     public GameObject decoration1x1, decoration1x2, decoration1x3, decoration1x4, decoration2x2, decoration2x3, decoration2x4;
 
     public float instantiationHeight = 100;
+    private GameObject[] lights;
 
-    
     public void InstantiateObjectInGrid()
     {
         GameObject objectInstantiation;
@@ -368,6 +368,13 @@ public class ObjectsInstantiation : MonoBehaviour
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
                 }
             }
+        }
+        lights = GameObject.FindGameObjectsWithTag("FireTorch");
+        print(lights.Length);
+        foreach (GameObject fire in lights)
+        {
+            print(fire.name);
+            fire.SetActive(false);
         }
     }
 

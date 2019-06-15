@@ -238,7 +238,7 @@ public class EnemyScript : MonoBehaviour
 
         if (attackTimer >= attackCoolDown)
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.HitSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.HitSound, this.transform.position);
             attackTimer = 0;
             myAnimator.SetTrigger("Attack");
             playerScript.Damage(transform.forward, true);
@@ -313,14 +313,14 @@ public class EnemyScript : MonoBehaviour
 
         if (lives < 1)
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.DeathSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
             currentState = state.dead;
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
             this.transform.GetChild(0).tag = "Untagged";
         }
         else
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.EnemyHurtSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.EnemyHurtSound, this.transform.position);
     }
 
     public void GetAttackedByBomb()
@@ -328,13 +328,13 @@ public class EnemyScript : MonoBehaviour
         lives--;
         if (lives < 1)
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.DeathSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
             currentState = state.dead;
             myAnimator.SetBool("Dead", true);
             agent.enabled = false;
             this.transform.GetChild(0).tag = "Untagged";
         }
         else
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.EnemyHurtSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.EnemyHurtSound, this.transform.position);
     }
 }

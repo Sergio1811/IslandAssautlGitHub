@@ -8,8 +8,7 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { set; get; }
-
-    public SoundManager soundManager;
+    
     private float rangedFloat;
     [Header("Main Characters Prefabs")]
     [Tooltip("The main character prefabs")]
@@ -121,7 +120,7 @@ public class GameManager : MonoBehaviour
     public float timeByLevel;
     private float remainingTimeInLevel;
     public Text timeText;
-    
+
     [Header("Start Variables")]
     [Range(1f, 5f)]
     [SerializeField]
@@ -164,7 +163,7 @@ public class GameManager : MonoBehaviour
     public Text recursoPrincipalCaughtTier2;
 
     #endregion
-    
+
     [Header("Secundary Resource Canvas Panel")]
     public GameObject rightPanelSecundaries;
     #region Secundary resources panel texts
@@ -177,7 +176,7 @@ public class GameManager : MonoBehaviour
     public Text fabricTextTier2;
 
     #endregion
-    
+
     [Header("Main Weapon Images")]
     public Image sworderImage;
     public Image bomberImage;
@@ -190,10 +189,10 @@ public class GameManager : MonoBehaviour
     GameObject[] objectiveImage;
     int secondaryObjectiveID;
 
-    
+
     private void Awake()
     {
-       
+
         Instance = this;
         startGame = false;
 
@@ -230,11 +229,11 @@ public class GameManager : MonoBehaviour
         player.GetComponent<CharacterController>().enabled = true;
     }
 
-    
+
     void Update()
     {
-        if(Input.GetKey(KeyCode.L))
-            soundManager.PlayOneShot(soundManager.SwordSound, this.transform.position);
+        if (Input.GetKey(KeyCode.L))
+            SoundManager.PlayOneShot(SoundManager.SwordSound, this.transform.position);
         if (startGame)
         {
             if (!gameOver)
@@ -278,8 +277,18 @@ public class GameManager : MonoBehaviour
         }
         else
             UpdateWaitTimerToStart();
+
+        CameraMovement();
     }
 
+
+    void CameraMovement()
+    {
+        if (gameOver)
+            cameraAnchor.transform.position = Vector3.MoveTowards(cameraAnchor.transform.position, Vector3.zero, 50f * Time.deltaTime);
+        else if (startGame)
+            cameraAnchor.transform.position = Vector3.MoveTowards(cameraAnchor.transform.position, player.transform.position, 50f * Time.deltaTime);
+    }
 
 
     //RANDOMIZE METHODS
@@ -296,15 +305,15 @@ public class GameManager : MonoBehaviour
         GameObject island = null;
         if (ClimaRandom.Rain)
         {
-             island = Instantiate(islandsRain[protoIsland]);
+            island = Instantiate(islandsRain[protoIsland]);
         }
         else
             island = Instantiate(islands[protoIsland]);
         //islands[protoIsland].SetActive(true);
         gridScript.islandParent = island.transform.GetChild(0);
-            island.GetComponent<NavMeshSurface>().BuildNavMesh();
-            island.GetComponent<NavMeshSurface>().BuildNavMesh();
-        
+        island.GetComponent<NavMeshSurface>().BuildNavMesh();
+        island.GetComponent<NavMeshSurface>().BuildNavMesh();
+
     }
 
     void RandomCharacter()
@@ -862,18 +871,18 @@ public class GameManager : MonoBehaviour
 
             if (livesNumber <= 0)
             {
-                soundManager.PlayOneShot(soundManager.DeathSound, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
                 player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
                 EndLevel();
             }
             else
-                soundManager.PlayOneShot(soundManager.PlayerHurtSound, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.PlayerHurtSound, this.transform.position);
         }
     }
 
     public void ActivatePortal()
     {
-        soundManager.PlayOneShot(soundManager.PortalOpenSound, this.transform.position);
+        SoundManager.PlayOneShot(SoundManager.PortalOpenSound, this.transform.position);
         portalExit.transform.GetChild(0).gameObject.SetActive(false);
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
         portalActivated = true;

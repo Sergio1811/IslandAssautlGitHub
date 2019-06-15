@@ -7,16 +7,16 @@ using FMODUnity;
 public class SoundManager : MonoBehaviour
 {
     [HideInInspector]
-    public string SwordSound, DashSound, BombDownSound, BombCountDownSound, BombExplosionSound, BombClickSound, HitSound, EnemyHurtSound, PlayerHurtSound;
+    public static string SwordSound, DashSound, BombDownSound, BombCountDownSound, BombExplosionSound, BombClickSound, HitSound, EnemyHurtSound, PlayerHurtSound;
 
     [HideInInspector]
-    public string PortalOpenSound, PortalFluctuationSound, FireSound, DeathSound, HitEnemySword, SwordStoneSound, HitTree, BreakTree, HitAir;
+    public static string PortalOpenSound, PortalFluctuationSound, FireSound, DeathSound, HitEnemySword, SwordStoneSound, HitTree, BreakTree, HitAir;
 
     [HideInInspector]
-    public string OpenChestSound, ButtonClicked,PassButton, CoinsSound, ObjectiveCompleteSound, FallingObject, UpgradeSkill;
+    public static string OpenChestSound, ButtonClicked,PassButton, CoinsSound, ObjectiveCompleteSound, FallingObject, UpgradeSkill;
 
     [HideInInspector]
-    public string SunSound, AldeaEnemigos, FogSetting, RainSetting, WinIsland, NeutralIsland, LoseIsland, PickUpSound, NightSound, TimeSound;
+    public static string SunSound, AldeaEnemigos, FogSetting, RainSetting, WinIsland, NeutralIsland, LoseIsland, PickUpSound, NightSound, TimeSound;
 
     static bool created = false;
 
@@ -71,7 +71,7 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayOneShot(string ClipName, Vector3 Position)
+    public static void PlayOneShot(string ClipName, Vector3 Position)
     { 
         FMODUnity.RuntimeManager.PlayOneShot(ClipName, Position);
   

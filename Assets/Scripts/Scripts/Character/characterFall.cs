@@ -22,7 +22,7 @@ public class characterFall : MonoBehaviour
             movement.y += Physics.gravity.y;
         else
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.FallingObject, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.FallingObject, this.transform.position);
             enabled = false;
         }
         

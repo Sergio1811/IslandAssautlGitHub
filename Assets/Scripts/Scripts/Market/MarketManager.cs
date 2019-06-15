@@ -66,7 +66,7 @@ public class MarketManager : MonoBehaviour
     {
         if (InputManager.Instance.GetInputDown("Cancel"))
         {
-            GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.ButtonClicked, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
             backMenu.SetActive(true);
             gameObject.SetActive(false);
         }
@@ -193,7 +193,7 @@ public class MarketManager : MonoBehaviour
 
             if (hasMoved)
             {
-                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.PassButton, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.PassButton, this.transform.position);
                 if (actualIcono != null)
                     actualIcono.SetActive(false);
                 if (actualSelectedImage != null)
@@ -310,7 +310,7 @@ public class MarketManager : MonoBehaviour
 
     void BuyProduct()
     {
-        GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.CoinsSound, this.transform.position);
+        SoundManager.PlayOneShot(SoundManager.CoinsSound, this.transform.position);
         canBuy = false;
 
         switch (actualProduct.idName)

@@ -15,7 +15,7 @@ public class VillageChest : MonoBehaviour
         {
             if (enemiesGroup.transform.childCount <= 0)
             {
-                GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.OpenChestSound, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.OpenChestSound, this.transform.position);
                 Instantiate(psPoof, transform.position, Quaternion.identity);
                 chest.SetActive(true);
                 chestOut = true;

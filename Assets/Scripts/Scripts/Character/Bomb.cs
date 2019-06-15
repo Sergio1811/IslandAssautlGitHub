@@ -25,7 +25,7 @@ public class Bomb : MonoBehaviour
 
     public void Explode()
     {
-        GameManager.Instance.soundManager.PlayOneShot(GameManager.Instance.soundManager.BombExplosionSound, this.transform.position);
+        SoundManager.PlayOneShot(SoundManager.BombExplosionSound, this.transform.position);
         Instantiate(psExplosion, this.gameObject.transform.position, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(transform.position, range);
 

@@ -515,7 +515,10 @@ public class PlayerScript : MonoBehaviour
         if (hit.gameObject.tag == "Dead")
             gameManager.EndLevel();
         else if (hit.gameObject.tag == "Exit")
+        {
             gameManager.LevelComplete();
+            this.gameObject.SetActive(false);
+        }
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
             PickFabrics(hit.gameObject, 1);
         else if ((hit.gameObject.tag == "Chest2") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))

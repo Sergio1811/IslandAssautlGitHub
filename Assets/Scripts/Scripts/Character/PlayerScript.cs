@@ -153,6 +153,7 @@ public class PlayerScript : MonoBehaviour
     void WalkTime()
     {
         Vector3 movement = Vector3.zero;
+        Vector3 fallMovement = Vector3.zero;
         xMovement = InputManager.Instance.GetAxis("Horizontal");
         zMovement = InputManager.Instance.GetAxis("Vertical");
 
@@ -182,7 +183,8 @@ public class PlayerScript : MonoBehaviour
         if (!characterController.isGrounded)
             movement.y += Physics.gravity.y;
 
-        characterController.Move(movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime);
+        Vector3 controllerMovement = movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime;
+        characterController.Move(controllerMovement);
     }
 
 

@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3914091174597850211}
   m_Layer: 0
-  m_Name: Improvisando
+  m_Name: Tikis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

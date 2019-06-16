@@ -82,7 +82,7 @@ public class EnemyScript : MonoBehaviour
         playerScript = player.GetComponent<PlayerScript>();
         agent = GetComponent<NavMeshAgent>();
 
-        if(!patroler)
+        if (!patroler)
         {
             initialPos = new Vector3(transform.position.x, 0, transform.position.z);
             initialRotation = transform.rotation;
@@ -151,6 +151,8 @@ public class EnemyScript : MonoBehaviour
                 agent.enabled = false;
                 this.transform.GetChild(0).tag = "Untagged";
                 this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+                if (!patroler)
+                    transform.parent.SendMessage("ChildKilled");
                 break;
         }
         currentState = newState;

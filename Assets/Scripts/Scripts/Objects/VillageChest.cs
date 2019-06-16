@@ -7,19 +7,26 @@ public class VillageChest : MonoBehaviour
     public GameObject enemiesGroup;
     public GameObject chest;
     public GameObject psPoof;
-    bool chestOut = false;
+    int children;
+
+    private void Start()
+    {
+        children = enemiesGroup.transform.childCount;
+    }
 
     void Update()
     {
-        if (!chestOut)
+        if (children <= 0)
         {
-            if (enemiesGroup.transform.childCount <= 0)
-            {
-                SoundManager.PlayOneShot(SoundManager.OpenChestSound, this.transform.position);
-                Instantiate(psPoof, transform.position, Quaternion.identity);
-                chest.SetActive(true);
-                chestOut = true;
-            }
+            SoundManager.PlayOneShot(SoundManager.OpenChestSound, this.transform.position);
+            Instantiate(psPoof, transform.position, Quaternion.identity);
+            chest.SetActive(true);
+            this.enabled = false;
         }
+    }
+
+    public void ChildKilled()
+    {
+        children--;
     }
 }

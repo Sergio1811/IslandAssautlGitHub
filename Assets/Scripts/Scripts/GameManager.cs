@@ -141,7 +141,8 @@ public class GameManager : MonoBehaviour
     public float initialCameraSpeed;
     public static float cameraSpeed;
     Camera mainCamera;
-    GameObject cameraAnchor;
+    [HideInInspector]
+    public GameObject cameraAnchor;
     [HideInInspector]
     public float cameraFollowSpeed;
 
@@ -863,19 +864,19 @@ public class GameManager : MonoBehaviour
 
             if (livesNumber <= 0)
             {
-                SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.DeathSound, cameraAnchor.transform.position);
                 playerScript.myAnimator.SetBool("Dead", true);
                 ignorePlayer = true;
                 EndLevel();
             }
             else
-                SoundManager.PlayOneShot(SoundManager.PlayerHurtSound, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.PlayerHurtSound, cameraAnchor.transform.position);
         }
     }
 
     public void ActivatePortal()
     {
-        SoundManager.PlayOneShot(SoundManager.PortalOpenSound, this.transform.position);
+        SoundManager.PlayOneShot(SoundManager.PortalOpenSound, cameraAnchor.transform.position);
         portalExit.transform.GetChild(0).gameObject.SetActive(false);
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
         portalActivated = true;

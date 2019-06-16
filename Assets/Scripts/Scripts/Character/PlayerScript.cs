@@ -210,7 +210,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (inputManager.GetInput("Dash"))
         {
-            SoundManager.PlayOneShot(SoundManager.DashSound, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.DashSound, gameManager.cameraAnchor.transform.position);
             Instantiate(psMagicPoof, this.transform.position, Quaternion.identity);
             lastDashButtonReleased = false;
 

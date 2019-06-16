@@ -22,7 +22,7 @@ public class MainMenuScript : MonoBehaviour
     bool loadScene;
     public GameObject loadingScreen;
     public Transform loadingIcon;
-
+    public GameObject cameraMenu;
     void Start()
     {
         arrayNumber = 0;
@@ -41,7 +41,7 @@ public class MainMenuScript : MonoBehaviour
 
             if (InputManager.Instance.GetInputDown("Submit"))
             {
-                SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.ButtonClicked, cameraMenu.transform.position);
                 switch (arrayNumber)
                 {
                     case 0:
@@ -67,7 +67,7 @@ public class MainMenuScript : MonoBehaviour
         }
         else if (InputManager.Instance.GetInputDown("Cancel") && inOptions)
         {
-            SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.ButtonClicked, cameraMenu.transform.position);
             inOptions = false;
             optionsScreen.SetActive(false);
         }
@@ -103,7 +103,7 @@ public class MainMenuScript : MonoBehaviour
 
             if (hasMoved)
             {
-                SoundManager.PlayOneShot(SoundManager.PassButton, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.PassButton, cameraMenu.transform.position);
                 buttonsArrayDef[arrayNumber].SetActive(true);
                 actualImage.color = Color.white;
                 actualImage = buttonsArray[arrayNumber];

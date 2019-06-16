@@ -199,6 +199,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         startGame = false;
         gameWon = false;
 
@@ -218,6 +220,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
         inputManager = InputManager.Instance;
         saveManager = SaveManager.Instance;
 

@@ -52,12 +52,13 @@ MonoBehaviour:
   - {fileID: 114129776508696316}
   - {fileID: 114408558466698060}
   - {fileID: 114927806369324336}
+  - {fileID: 114314255387612426}
   EditorParameters: []
   MasterBanks:
   - {fileID: 114634763067130270}
   StringsBanks:
   - {fileID: 114061222652021000}
-  stringsBankWriteTime: 636962780106469429
+  stringsBankWriteTime: 636963186276453156
   cacheVersion: 3
 --- !u!114 &114039083550126726
 MonoBehaviour:
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 636962780106469429
+  lastModified: 636963186276453156
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -192,7 +193,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 200
   Length: 3200
 --- !u!114 &114081265044053346
 MonoBehaviour:
@@ -442,7 +443,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 95
   Length: 34285
 --- !u!114 &114189472902727206
 MonoBehaviour:
@@ -511,7 +512,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 95
   Length: 81133
 --- !u!114 &114267292137680732
 MonoBehaviour:
@@ -582,6 +583,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 12278
+--- !u!114 &114314255387612426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/agafarObjectes/pickup_2
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/agafarObjectes/pickup_2
+  guid: 6655a5d91b4d6144b680d5143ba3793c
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 344
 --- !u!114 &114367152508756310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,7 +811,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 200
   Length: 3428
 --- !u!114 &114430174623804208
 MonoBehaviour:
@@ -1103,7 +1127,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 95
   Length: 41142
 --- !u!114 &114607609094928854
 MonoBehaviour:
@@ -1185,7 +1209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 636962780106190263
+  lastModified: 636963186276363288
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -1603,7 +1627,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 200
   Length: 1500
 --- !u!114 &114871196315803166
 MonoBehaviour:
@@ -1672,7 +1696,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 20
+  MaxDistance: 200
   Length: 3428
 --- !u!114 &114880626633603446
 MonoBehaviour:

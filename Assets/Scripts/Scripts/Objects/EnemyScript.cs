@@ -22,17 +22,14 @@ public class EnemyScript : MonoBehaviour
     public float attackCoolDown;
     private float attackTimer = 0;
 
-    public float repathTime;
-    private float repathTimer = 0;
-
-    Vector3 goingPos;
     Vector3 initialPos;
+    float initialDistance;
+    Quaternion initialRotation;
 
     Material initMat;
     public Material attackMat;
 
     public Animator myAnimator;
-    Vector3 originalAnimationPosition;
 
     float iniSpeed;
     float iniAngSpeed;
@@ -59,8 +56,6 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
-        originalAnimationPosition = myAnimator.transform.localPosition;
-
         if (patroler)
         {
             availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
@@ -86,89 +81,24 @@ public class EnemyScript : MonoBehaviour
         player = GameManager.Instance.player;
         playerScript = player.GetComponent<PlayerScript>();
         agent = GetComponent<NavMeshAgent>();
-        initialPos = new Vector3(transform.position.x, 0, transform.position.z);
+
+        if(!patroler)
+        {
+            initialPos = new Vector3(transform.position.x, 0, transform.position.z);
+            initialRotation = transform.rotation;
+        }
 
         iniSpeed = agent.speed;
         iniAngSpeed = agent.angularSpeed;
         iniAcc = agent.acceleration;
         knokBackIniDisctance = knockBackDistance;
     }
-    
+
     void Update()
     {
         if (player != null)
-        {
-            switch (currentState)
-            {
-                case state.stay:
-                case state.patrol:
-                    if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance)
-                    {
-                        goingPos = player.transform.position;
-                        currentState = state.chase; myAnimator.SetBool("Move", true);
-                        myAnimator.transform.localPosition = originalAnimationPosition;
-                        break;
-                    }
+            UpdateState(currentState);
 
-                    else if (currentState == state.stay) Stay();
-                    else Patrol();
-
-                    break;
-
-                case state.chase:
-                    if (playerScript.actualType != PlayerScript.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
-                    {
-                        if (patroler)
-                        {
-                            currentState = state.patrol; myAnimator.SetBool("Move", true);
-                            myAnimator.transform.localPosition = originalAnimationPosition;
-                        }
-                        else
-                        {
-                            currentState = state.stay; myAnimator.SetBool("Move", false);
-                            myAnimator.transform.localPosition = originalAnimationPosition;
-                        }
-                        break;
-                    }
-
-                    else if (GetSqrDistanceXZToPosition(player.transform.position) <= attackDistance)
-                    {
-                        attackTimer = 0;
-                        currentState = state.attack; myAnimator.SetBool("Move", false);
-                        myAnimator.transform.localPosition = originalAnimationPosition;
-                        break;
-                    }
-
-                    else
-                        Chase();
-
-                    break;
-
-                case state.attack:
-                    transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
-
-                    if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
-                    {
-                        currentState = state.chase; myAnimator.SetBool("Move", true);
-                        myAnimator.transform.localPosition = originalAnimationPosition;
-                        break;
-                    }
-
-                    else if (canAttack)
-                        Attack();
-
-                    break;
-
-                case state.dead:
-                    transform.position -= Vector3.up * Time.deltaTime;
-
-                    deadTime += Time.deltaTime;
-
-                    if (deadTime >= timeToDestroy)
-                        Destroy(this.gameObject);
-                    break;
-            }
-        }
         else
             player = GameObject.FindGameObjectWithTag("Player");
 
@@ -188,16 +118,130 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    void ChangeState(state newState)
+    {
+        switch (newState)
+        {
+            case state.stay:
+                agent.isStopped = false;
+                myAnimator.SetBool("Move", true);
+                break;
+
+            case state.patrol:
+                agent.isStopped = false;
+                myAnimator.SetBool("Move", true);
+                break;
+
+            case state.chase:
+                agent.isStopped = false;
+                myAnimator.SetBool("Move", true);
+                break;
+
+            case state.attack:
+                attackTimer = 0;
+                agent.isStopped = true;
+                myAnimator.SetBool("Move", false);
+                break;
+
+            case state.dead:
+                SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
+                agent.isStopped = true;
+                myAnimator.SetBool("Move", false);
+                myAnimator.SetBool("Dead", true);
+                agent.enabled = false;
+                this.transform.GetChild(0).tag = "Untagged";
+                this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
+                break;
+        }
+        currentState = newState;
+    }
+
+    void UpdateState(state currentState)
+    {
+        switch (currentState)
+        {
+            case state.stay:
+            case state.patrol:
+                if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance)
+                {
+                    ChangeState(state.chase);
+                    break;
+                }
+
+                else if (currentState == state.stay)
+                    Stay();
+
+                else
+                    Patrol();
+
+                break;
+
+            case state.chase:
+                if (playerScript.actualType != PlayerScript.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
+                {
+                    if (patroler)
+                    {
+                        ChangeState(state.patrol);
+                        break;
+                    }
+                    else
+                    {
+                        ChangeState(state.stay);
+                        break;
+                    }
+                }
+
+                else if (GetSqrDistanceXZToPosition(player.transform.position) <= attackDistance)
+                {
+                    ChangeState(state.attack);
+                    break;
+                }
+
+                else
+                    Chase();
+
+                break;
+
+            case state.attack:
+                transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
+
+                if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)
+                {
+                    ChangeState(state.chase);
+                    break;
+                }
+
+                else if (canAttack)
+                    Attack();
+
+                break;
+
+            case state.dead:
+                transform.position -= Vector3.up * Time.deltaTime;
+
+                deadTime += Time.deltaTime;
+
+                if (deadTime >= timeToDestroy)
+                    Destroy(this.gameObject);
+                break;
+        }
+    }
+
 
     void Stay()
     {
-        agent.isStopped = false;
+        Vector3 pos = new Vector3(transform.position.x, 0, transform.position.z);
 
-        agent.SetDestination(initialPos);
-
-        if (Vector3.Distance(transform.position, initialPos) < 0.2f)
+        if (Vector3.Distance(pos, initialPos) <= 0.2)
         {
             agent.isStopped = true;
+            myAnimator.SetBool("Move", false);
+            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, Time.deltaTime * 10);
+        }
+
+        else
+        {
+            agent.SetDestination(initialPos);
         }
     }
 
@@ -216,24 +260,12 @@ public class EnemyScript : MonoBehaviour
 
     void Chase()
     {
-        agent.isStopped = false;
-
         agent.SetDestination(player.transform.position);
-
-        repathTimer += Time.deltaTime;
-
-        if (repathTimer >= repathTime)
-        {
-            goingPos = player.transform.position;
-            repathTimer = 0;
-        }
     }
 
 
     void Attack()
     {
-        agent.isStopped = true;
-
         attackTimer += Time.deltaTime;
 
         if (attackTimer >= attackCoolDown)
@@ -247,7 +279,6 @@ public class EnemyScript : MonoBehaviour
 
     public void Stun()
     {
-        myAnimator.transform.localPosition = originalAnimationPosition;
         agent.speed = 0;
         agent.angularSpeed = 0;
         canAttack = false;
@@ -262,12 +293,10 @@ public class EnemyScript : MonoBehaviour
         agent.angularSpeed = iniAngSpeed;
         canAttack = true;
         stunned = false;
-        myAnimator.transform.localPosition = originalAnimationPosition;
     }
 
     IEnumerator KnockBack()
     {
-        myAnimator.transform.localPosition = originalAnimationPosition;
         knockBack = true;
         agent.speed = iniSpeed * 1.5f;
         agent.angularSpeed = 0;//Keeps the enemy facing forwad rther than spinning
@@ -283,7 +312,6 @@ public class EnemyScript : MonoBehaviour
         agent.acceleration = iniAcc;
         agent.baseOffset = 0;
         knockBackDistance = knokBackIniDisctance;
-        myAnimator.transform.localPosition = originalAnimationPosition;
     }
 
     public void KnockBackActivated(Transform bomb)
@@ -312,14 +340,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         if (lives < 1)
-        {
-            SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
-            currentState = state.dead;
-            myAnimator.SetBool("Dead", true);
-            agent.enabled = false;
-            this.transform.GetChild(0).tag = "Untagged";
-            this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
-        }
+            ChangeState(state.dead);
         else
             SoundManager.PlayOneShot(SoundManager.EnemyHurtSound, this.transform.position);
     }
@@ -328,13 +349,6 @@ public class EnemyScript : MonoBehaviour
     {
         lives--;
         if (lives < 1)
-        {
-            SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
-            currentState = state.dead;
-            myAnimator.SetBool("Dead", true);
-            agent.enabled = false;
-            this.transform.GetChild(0).tag = "Untagged";
-            this.transform.GetChild(0).GetComponent<BoxCollider>().enabled = false;
-        }
+            ChangeState(state.dead);
     }
 }

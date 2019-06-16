@@ -24,7 +24,7 @@ public class ClimaRandom : MonoBehaviour
         Rain = false;
         Day = false;
         Night = false;
-        random = Random.Range(0, 99);
+        random = Random.Range(0, 101);
 
         if (random >= 0 && random <= 49)
         {

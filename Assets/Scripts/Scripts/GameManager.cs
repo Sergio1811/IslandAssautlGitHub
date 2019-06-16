@@ -193,6 +193,7 @@ public class GameManager : MonoBehaviour
     int secondaryObjectiveID;
     private GameObject[] lights;
 
+
     private void Awake()
     {
         Instance = this;
@@ -211,7 +212,7 @@ public class GameManager : MonoBehaviour
 
         RandomCharacter();
     }
-
+    
 
     void Start()
     {
@@ -238,8 +239,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.L))
-            SoundManager.PlayOneShot(SoundManager.SwordSound, this.transform.position);
         if (startGame)
         {
             if (!gameOver)
@@ -261,25 +260,9 @@ public class GameManager : MonoBehaviour
             }
             else if (movingCamera)
                 UpdateEndCameraPosition();
-
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                totalCoins += 500;
-                saveManager.Save();
-                gameOver = true;
-            }
-
+            
             if (Input.GetKeyDown(KeyCode.P))
-            {
-                totalFabrics += 500;
-                totalFabrics2 += 500;
-                totalRock += 500;
-                totalRock2 += 500;
-                totalWood += 500;
-                totalWood2 += 500;
-                saveManager.Save();
-                gameOver = true;
-            }
+                Motherlode();
         }
         else
             UpdateWaitTimerToStart();
@@ -287,28 +270,6 @@ public class GameManager : MonoBehaviour
         CameraMovement();
     }
 
-    void CameraMovement()
-    {
-        if (gameOver)
-            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
-        else if (startGame)
-        {
-            if (inputManager.GetAxis("CameraZoom") == 0)
-            {
-                if (mainCamera.orthographicSize > 33f)
-                    mainCamera.orthographicSize -= 20f * Time.deltaTime;
-                else if (mainCamera.orthographicSize < 31f)
-                    mainCamera.orthographicSize += 20f * Time.deltaTime;
-            }
-            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(player.transform.position.x, cameraAnchor.transform.position.y, player.transform.position.z), cameraFollowSpeed * Time.deltaTime);
-        }
-
-        if (GetSqrDistanceXZToPosition(cameraAnchor.transform.position, player.transform.position) < 10f && cameraFollowSpeed > 2f)
-            cameraFollowSpeed -= Time.deltaTime * 3f;
-
-        if (cameraFollowSpeed > 1f)
-            cameraFollowSpeed -= Time.deltaTime * 2f;
-    }
 
     //RANDOMIZE METHODS
 
@@ -367,6 +328,7 @@ public class GameManager : MonoBehaviour
     {
         return Random.Range(0, secondaryObjectives.Length);
     }
+
 
     //INITIALIZATION METHODS
 
@@ -521,6 +483,7 @@ public class GameManager : MonoBehaviour
         secondaryObjectiveText.text = secondaryObjectives[secondaryObjectiveID];
     }
 
+
     //UPDATE METHODS
 
     void UpdateWaitTimerToStart()
@@ -570,14 +533,32 @@ public class GameManager : MonoBehaviour
         if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
             movingCamera = false;
     }
-
-    //END LEVEL METHODS
-
-    public void LevelComplete()
+    
+    void CameraMovement()
     {
-        EndLevel();
+        if (gameOver)
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
+        else if (startGame)
+        {
+            if (inputManager.GetAxis("CameraZoom") == 0)
+            {
+                if (mainCamera.orthographicSize > 33f)
+                    mainCamera.orthographicSize -= 20f * Time.deltaTime;
+                else if (mainCamera.orthographicSize < 31f)
+                    mainCamera.orthographicSize += 20f * Time.deltaTime;
+            }
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(player.transform.position.x, cameraAnchor.transform.position.y, player.transform.position.z), cameraFollowSpeed * Time.deltaTime);
+        }
+
+        if (GetSqrDistanceXZToPosition(cameraAnchor.transform.position, player.transform.position) < 10f && cameraFollowSpeed > 2f)
+            cameraFollowSpeed -= Time.deltaTime * 3f;
+
+        if (cameraFollowSpeed > 1f)
+            cameraFollowSpeed -= Time.deltaTime * 2f;
     }
 
+
+    //END LEVEL METHODS
 
     public bool CheckSecondaryObjective()
     {
@@ -805,6 +786,7 @@ public class GameManager : MonoBehaviour
         goldMultiplier = CharacterAbiliities.goldMultiplier;
 
     }
+
     void ApplySwordAbilities(GameObject charac)
     {
         PlayerScript swordAbs = playerScript;
@@ -826,6 +808,7 @@ public class GameManager : MonoBehaviour
         swordAbs.dashActive = CharacterAbiliities.dashActive;
         goldMultiplier = CharacterAbiliities.goldMultiplier;
     }
+
     void ApplyBomberAbilities(GameObject charac)
     {
         PlayerScript bomberAbs = playerScript;
@@ -848,6 +831,7 @@ public class GameManager : MonoBehaviour
         goldMultiplier = CharacterAbiliities.goldMultiplier;
     }
 
+
     //BUTTON METHODS
 
     public void ButtonNextIsland()
@@ -862,6 +846,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
 
     //OTHER METHODS
 
@@ -889,6 +874,19 @@ public class GameManager : MonoBehaviour
         portalExit.transform.GetChild(0).gameObject.SetActive(false);
         portalExit.transform.GetChild(1).gameObject.SetActive(true);
         portalActivated = true;
+    }
+
+    public void Motherlode()
+    {
+        totalCoins += 500;
+        totalFabrics += 500;
+        totalFabrics2 += 500;
+        totalRock += 500;
+        totalRock2 += 500;
+        totalWood += 500;
+        totalWood2 += 500;
+        saveManager.Save();
+        gameOver = true;
     }
 
     private float GetSqrDistanceXZToPosition(Vector3 initialPosition, Vector3 finalPosition)

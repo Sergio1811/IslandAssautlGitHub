@@ -516,7 +516,7 @@ public class PlayerScript : MonoBehaviour
             gameManager.EndLevel();
         else if (hit.gameObject.tag == "Exit")
         {
-            gameManager.LevelComplete();
+            gameManager.EndLevel();
             this.gameObject.SetActive(false);
         }
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))

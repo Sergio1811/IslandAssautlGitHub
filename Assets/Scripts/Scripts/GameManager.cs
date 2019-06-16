@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
     public static bool startGame;
     bool gameOver = false;
     public static bool gameWon;
+    [HideInInspector] public bool ignorePlayer = false;
 
     public static bool movingCamera;
     public GameObject endCameraPosition;
@@ -666,7 +667,7 @@ public class GameManager : MonoBehaviour
                 recursoPrincipalCaughtTier2.text = collectedWood2.ToString();
 
 
-            if (collectedWood >= woodNeeded)
+            if (collectedWood >= woodNeeded && !portalActivated)
             {
                 if (treeTier2)
                 {
@@ -704,7 +705,7 @@ public class GameManager : MonoBehaviour
             if (rockTier2)
                 recursoPrincipalCaughtTier2.text = collectedRock2.ToString();
 
-            if (collectedRock >= rockNeeded)
+            if (collectedRock >= rockNeeded && !portalActivated)
             {
                 if (rockTier2)
                 {
@@ -741,7 +742,7 @@ public class GameManager : MonoBehaviour
             if (enemyTier2)
                 recursoPrincipalCaughtTier2.text = collectedFabrics2.ToString();
 
-            if (collectedFabrics >= fabricNeeded)
+            if (collectedFabrics >= fabricNeeded && !portalActivated)
             {
                 if (enemyTier2)
                 {
@@ -861,6 +862,7 @@ public class GameManager : MonoBehaviour
             {
                 SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
                 playerScript.myAnimator.SetBool("Dead", true);
+                ignorePlayer = true;
                 EndLevel();
             }
             else

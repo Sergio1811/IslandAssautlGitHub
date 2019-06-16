@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
   - component: {fileID: 534669907}
+  - component: {fileID: 534669908}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -228,6 +229,22 @@ MonoBehaviour:
   RainProfile: {fileID: 11400000, guid: 330fddb8662280040b71ec1fd4c08403, type: 2}
   FogProfile: {fileID: 11400000, guid: 6a75ae05478ec404c881d642a94a6219, type: 2}
   RainPS: {fileID: 19800002, guid: 51e0078f8a34b7144b110e107df8f9cc, type: 3}
+--- !u!111 &534669908
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 7eff77233e196f44a859fc6230114a30, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7eff77233e196f44a859fc6230114a30, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &583558307
 GameObject:
   m_ObjectHideFlags: 0
@@ -55021,7 +55038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 135.315, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 135.33, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1 &8167981027919452931

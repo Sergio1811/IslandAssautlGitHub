@@ -575,20 +575,20 @@ public class PlayerScript : MonoBehaviour
 
         Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), enemyForward);
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(ray, out hit, dashDistance))
+        if (Physics.Raycast(ray, out hit, dashDistance/2))
         {
-            if (hit.collider.gameObject.tag == "IslandCollision" || hit.collider.gameObject.tag == "Island")
+            if (hit.collider.gameObject != null)
             {
                 Vector3 newPos = hit.point + hit.normal * 2;
                 transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
             }
 
             else
-                transform.position += transform.forward * dashDistance / 2;
+                transform.position += enemyForward * dashDistance / 2;
         }
 
         else
-            transform.position += transform.forward * dashDistance / 2;
+            transform.position += enemyForward * dashDistance / 2;
 
         characterController.enabled = true;
     }

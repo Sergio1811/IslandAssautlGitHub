@@ -54,11 +54,15 @@ public class MidGameMenuScript : MonoBehaviour
 
     bool inOptions;
     public GameObject optionsScreen;
+    bool inEnding;
+    public GameObject endingScreen;
 
 
     void Start()
     {
         activeCanvas = false;
+        inEnding = false;
+        inOptions = false;
         cameraAnchor = Camera.main.transform.parent.gameObject;
 
         ResultTextsInitialization();
@@ -77,39 +81,48 @@ public class MidGameMenuScript : MonoBehaviour
             BoatPartsInitialization();
             if (GameManager.Instance.Market)
                 buttonMarket.SetActive(true);
+            CheckEnding();
         }
     }
 
 
     void Update()
     {
-        if (!activeCanvas)
+        if (!inEnding)
         {
-            transform.GetChild(0).localPosition = Vector3.MoveTowards(transform.GetChild(0).localPosition, Vector3.zero, GameManager.cameraSpeed * Time.deltaTime * 3.5f);
-            boatParts.transform.localPosition = Vector3.MoveTowards(boatParts.transform.localPosition, positionParts.localPosition, GameManager.cameraSpeed * Time.deltaTime * 0.9f);
-
-            if (!GameManager.movingCamera)
+            if (!activeCanvas)
             {
-                menuArrayNumber = 0;
-                selectedButton = buttonsArray[0];
-                selectedButtonImage = selectedButton.GetComponent<Image>();
-                selectedButtonImage.color = buttonSelectedColor;
-                numberOfButtons = buttonsArray.Length - 1;
+                transform.GetChild(0).localPosition = Vector3.MoveTowards(transform.GetChild(0).localPosition, Vector3.zero, GameManager.cameraSpeed * Time.deltaTime * 3.5f);
+                boatParts.transform.localPosition = Vector3.MoveTowards(boatParts.transform.localPosition, positionParts.localPosition, GameManager.cameraSpeed * Time.deltaTime * 0.9f);
 
-                activeCanvas = true;
+                if (!GameManager.movingCamera)
+                {
+                    menuArrayNumber = 0;
+                    selectedButton = buttonsArray[0];
+                    selectedButtonImage = selectedButton.GetComponent<Image>();
+                    selectedButtonImage.color = buttonSelectedColor;
+                    numberOfButtons = buttonsArray.Length - 1;
+
+                    activeCanvas = true;
+                }
             }
-        }
-        else if (!inOptions)
-            UpdateBetweenIslandMenuButtons();
-        else if (InputManager.Instance.GetInputDown("Cancel"))
-        {
-            SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
-            inOptions = false;
-            optionsScreen.SetActive(false);
-        }
+            else if (!inOptions)
+                UpdateBetweenIslandMenuButtons();
+            else if (InputManager.Instance.GetInputDown("Cancel"))
+            {
+                SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
+                inOptions = false;
+                optionsScreen.SetActive(false);
+            }
 
-        if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.P))
-            TotalTextsInitialization();
+            if (Input.GetKeyDown(KeyCode.M) || Input.GetKeyDown(KeyCode.P))
+                TotalTextsInitialization();
+        }
+        else
+        {
+            if (InputManager.Instance.GetInputDown("Submit") || InputManager.Instance.GetInputDown("Cancel"))
+                GameManager.Instance.ButtonQuit();
+        }
     }
 
 
@@ -358,5 +371,18 @@ public class MidGameMenuScript : MonoBehaviour
 
         if (movementOn)
             timerMovement += Time.deltaTime;
+    }
+
+
+    void CheckEnding()
+    {
+        if (GameManager.timon && GameManager.remos && GameManager.brujula && GameManager.casco && GameManager.cañon && GameManager.mapa && GameManager.mastil && GameManager.velas &&
+            PlayerPrefs.GetInt("EndingReached") != 1)
+        {
+            inEnding = true;
+            endingScreen.SetActive(true);
+            PlayerPrefs.SetInt("EndingReached", 1);
+            PlayerPrefs.Save();
+        }
     }
 }

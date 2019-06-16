@@ -5926,7 +5926,7 @@ GameObject:
   m_TagString: IslandCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2954290129679708669
 Transform:

@@ -32346,6 +32346,7 @@ MonoBehaviour:
   ignorePlayer: 0
   endCameraPosition: {fileID: 1567700715}
   initialCameraSpeed: 150
+  cameraAnchor: {fileID: 0}
   cameraFollowSpeed: 0
   entreIslasCanvas: {fileID: 887935738}
   abilitiesCanvas: {fileID: 7146663376544890209}

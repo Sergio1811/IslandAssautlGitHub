@@ -254,7 +254,7 @@ public class GameManager : MonoBehaviour
                 if (remainingTimeInLevel <= 0f)
                 {
                     livesNumber = 0;
-                    player.GetComponent<PlayerScript>().myAnimator.SetBool("Move", false);
+                    playerScript.myAnimator.SetBool("Move", false);
                     EndLevel();
                     remainingTimeInLevel = timeByLevel;
                 }
@@ -875,7 +875,7 @@ public class GameManager : MonoBehaviour
             if (livesNumber <= 0)
             {
                 SoundManager.PlayOneShot(SoundManager.DeathSound, this.transform.position);
-                player.GetComponent<PlayerScript>().myAnimator.SetBool("Dead", true);
+                playerScript.myAnimator.SetBool("Dead", true);
                 EndLevel();
             }
             else

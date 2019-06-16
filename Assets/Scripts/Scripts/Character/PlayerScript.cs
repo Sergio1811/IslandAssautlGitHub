@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
     private GameManager gameManager;
     private CameraRotation cameraScript;
 
-    public enum playerType { pick, ace, sword }
+    public enum playerType { bomb, axe, sword }
     public playerType actualType;
 
     float xMovement, zMovement;
@@ -109,7 +109,7 @@ public class PlayerScript : MonoBehaviour
         currentCD = swordCooldown;
         iniPressedTime = neededPressedTime;
 
-        if (actualType == playerType.ace && axeTier2)
+        if (actualType == playerType.axe && axeTier2)
             hitDistance *= hitDistanceUpgradeMultiplier;
         if (actualType == playerType.sword && swordTier2)
             hitDistance *= hitDistanceUpgradeMultiplier;
@@ -267,7 +267,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     case "Tree2":
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
-                        if (actualType == playerType.ace)
+                        if (actualType == playerType.axe)
                         {
                             SoundManager.PlayOneShot(SoundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
@@ -287,7 +287,7 @@ public class PlayerScript : MonoBehaviour
                         break;
                     case "Tree":
                         transform.LookAt(new Vector3(actionObject.transform.position.x, transform.position.y, actionObject.transform.position.z));
-                        if (actualType == playerType.ace)
+                        if (actualType == playerType.axe)
                         {
                             SoundManager.PlayOneShot(SoundManager.HitTree, this.transform.position);
                             myAnimator.SetBool("Move", false);
@@ -308,7 +308,7 @@ public class PlayerScript : MonoBehaviour
 
                     case "Enemy2":
                     case "Enemy":
-                        if (actualType == playerType.ace && axePolivalente)
+                        if (actualType == playerType.axe && axePolivalente)
                         {
                             SoundManager.PlayOneShot(SoundManager.HitEnemySword, this.transform.position);
                             myAnimator.SetBool("Move", false);
@@ -316,7 +316,7 @@ public class PlayerScript : MonoBehaviour
                             actionObject.transform.parent.GetComponent<EnemyScript>().GetAttacked(this.gameObject.transform, false);
                         }
 
-                        if (actualType == playerType.ace && axeStun)
+                        if (actualType == playerType.axe && axeStun)
                         {
                             myAnimator.SetBool("Move", false);
                             myAnimator.SetTrigger("Attack");
@@ -324,7 +324,7 @@ public class PlayerScript : MonoBehaviour
                         }
                         break;
                     case "Rock2":
-                        if (actualType == playerType.ace && axePolivalente)
+                        if (actualType == playerType.axe && axePolivalente)
                         {
                             SoundManager.PlayOneShot(SoundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
@@ -343,7 +343,7 @@ public class PlayerScript : MonoBehaviour
                         break;
 
                     case "Rock":
-                        if (actualType == playerType.ace && axePolivalente)
+                        if (actualType == playerType.axe && axePolivalente)
                         {
                             SoundManager.PlayOneShot(SoundManager.SwordStoneSound, this.transform.position);
                             myAnimator.SetBool("Move", false);
@@ -363,7 +363,7 @@ public class PlayerScript : MonoBehaviour
                 }
             }
 
-            if (actualType == playerType.pick)
+            if (actualType == playerType.bomb)
             {
                 Instantiate(psBombPutDown, this.transform.position, Quaternion.identity);
                 bomb.SetActive(true);
@@ -441,31 +441,31 @@ public class PlayerScript : MonoBehaviour
         switch (actionObject.tag)
         {
             case "Rock":
-                if (actualType == playerType.pick)
+                if (actualType == playerType.bomb)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 1);
-                if (actualType == playerType.ace && axePolivalente)
+                if (actualType == playerType.axe && axePolivalente)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 1);
                 if (actualType == playerType.sword && swordPolivalente)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 1);
                 break;
 
             case "Rock2":
-                if (actualType == playerType.pick)
+                if (actualType == playerType.bomb)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 2);
-                if (actualType == playerType.ace && axePolivalente)
+                if (actualType == playerType.axe && axePolivalente)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 2);
                 if (actualType == playerType.sword && swordPolivalente)
                     BreakRock(actionObject.transform.parent.parent.gameObject, 2);
                 break;
 
             case "Tree":
-                if (actualType == playerType.ace)
+                if (actualType == playerType.axe)
                     CutTree(actionObject.transform.parent.parent.gameObject, 1);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject, 1);
                 break;
             case "Tree2":
-                if (actualType == playerType.ace)
+                if (actualType == playerType.axe)
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
                 if (actualType == playerType.sword && swordPolivalente)
                     CutTree(actionObject.transform.parent.parent.gameObject, 2);
@@ -520,31 +520,31 @@ public class PlayerScript : MonoBehaviour
             this.gameObject.SetActive(false);
             gameManager.ignorePlayer = true;
         }
-        else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
+        else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.axe) || (BomberAbilities.Polivalente && actualType == playerType.bomb)))
             PickFabrics(hit.gameObject, 1);
-        else if ((hit.gameObject.tag == "Chest2") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
+        else if ((hit.gameObject.tag == "Chest2") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.axe) || (BomberAbilities.Polivalente && actualType == playerType.bomb)))
             PickFabrics(hit.gameObject, 2);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Rock" && actualType == playerType.pick)
+        if (other.gameObject.tag == "Rock" && actualType == playerType.bomb)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
             BreakRock(other.transform.parent.gameObject, 1);
         }
-        else if (other.gameObject.tag == "Tree" && actualType == playerType.pick)
+        else if (other.gameObject.tag == "Tree" && actualType == playerType.bomb)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
             gameManager.PickWood(1);
             Destroy(other.gameObject);
         }
-        else if (other.gameObject.tag == "Rock2" && actualType == playerType.pick)
+        else if (other.gameObject.tag == "Rock2" && actualType == playerType.bomb)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
             BreakRock(other.transform.parent.gameObject, 2);
         }
-        else if (other.gameObject.tag == "Tree2" && actualType == playerType.pick)
+        else if (other.gameObject.tag == "Tree2" && actualType == playerType.bomb)
         {
             SoundManager.PlayOneShot(SoundManager.PickUpSound, this.transform.position);
             gameManager.PickWood(2);

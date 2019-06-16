@@ -541,6 +541,9 @@ public class GameManager : MonoBehaviour
             cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
         else if (startGame)
         {
+            if (mainCamera.transform.localPosition.y < 105f)
+                mainCamera.transform.localPosition += Vector3.up * cameraFollowSpeed * 5f * Time.deltaTime;
+
             if (inputManager.GetAxis("CameraZoom") == 0)
             {
                 if (mainCamera.orthographicSize > 33f)

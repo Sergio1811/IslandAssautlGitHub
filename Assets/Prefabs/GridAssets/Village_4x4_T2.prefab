@@ -465,6 +465,18 @@ Transform:
   m_Father: {fileID: 4742188506168527661}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8262916291370270048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7003294062095455993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c45103578eb1834c9665a0adf50ad7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1769802127100500528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1003,6 +1015,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0d06a22bb46bf34da4cacf727913c4b, type: 3}
+--- !u!1 &7003294062095455993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 285785057383952210, guid: a0d06a22bb46bf34da4cacf727913c4b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7117936079888546219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8830508354061046074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1088,12 +1106,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 60c7cc4f69efe9640877cf95e7794d3b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6880eababa0ba5740ac01089c503796c, type: 3}
---- !u!1 &8830508354060949406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 6880eababa0ba5740ac01089c503796c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8830508354061046074}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8830508354060949400 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 6880eababa0ba5740ac01089c503796c,
@@ -1103,6 +1115,12 @@ GameObject:
 --- !u!4 &8830508354060913596 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 6880eababa0ba5740ac01089c503796c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8830508354061046074}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8830508354060949406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 6880eababa0ba5740ac01089c503796c,
     type: 3}
   m_PrefabInstance: {fileID: 8830508354061046074}
   m_PrefabAsset: {fileID: 0}

@@ -23,6 +23,7 @@ public class ClimaRandom : MonoBehaviour
        
         Rain = false;
         Day = false;
+        Night = false;
         //RenderSettings.fog = false;
         random = Random.Range(0, 99);
 

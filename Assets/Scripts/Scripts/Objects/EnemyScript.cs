@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class EnemyScript : MonoBehaviour
 {
+    GameManager gameManager;
+
     public GameObject player;
     PlayerScript playerScript;
     public Node patrolPoint;
@@ -56,6 +58,8 @@ public class EnemyScript : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.Instance;
+
         if (patroler)
         {
             availableNodes = Grid.instance.AvailableNodesType(Node.Type.floor, 1, 1, Node.Type.enemy);
@@ -78,7 +82,7 @@ public class EnemyScript : MonoBehaviour
             currentState = state.stay;
         }
 
-        player = GameManager.Instance.player;
+        player = gameManager.player;
         playerScript = player.GetComponent<PlayerScript>();
         agent = GetComponent<NavMeshAgent>();
 
@@ -164,7 +168,7 @@ public class EnemyScript : MonoBehaviour
         {
             case state.stay:
             case state.patrol:
-                if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance)
+                if (GetSqrDistanceXZToPosition(player.transform.position) <= chaseDistance && !gameManager.ignorePlayer)
                 {
                     ChangeState(state.chase);
                     break;
@@ -179,6 +183,15 @@ public class EnemyScript : MonoBehaviour
                 break;
 
             case state.chase:
+                if (gameManager.ignorePlayer)
+                {
+                    if (patroler)
+                        ChangeState(state.patrol);
+                    else
+                        ChangeState(state.stay);
+                    break;
+                }
+
                 if (playerScript.actualType != PlayerScript.playerType.sword && GetSqrDistanceXZToPosition(player.transform.position) > chaseDistance)
                 {
                     if (patroler)
@@ -205,6 +218,15 @@ public class EnemyScript : MonoBehaviour
                 break;
 
             case state.attack:
+                if(gameManager.ignorePlayer)
+                {
+                    if (patroler)
+                        ChangeState(state.patrol);
+                    else
+                        ChangeState(state.stay);
+                    break;
+                }
+
                 transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 
                 if (GetSqrDistanceXZToPosition(player.transform.position) > attackDistance)

@@ -518,6 +518,7 @@ public class PlayerScript : MonoBehaviour
         {
             gameManager.EndLevel();
             this.gameObject.SetActive(false);
+            gameManager.ignorePlayer = true;
         }
         else if ((hit.gameObject.tag == "Chest") && (actualType == playerType.sword || (AxerAbilities.Polivalente && actualType == playerType.ace) || (BomberAbilities.Polivalente && actualType == playerType.pick)))
             PickFabrics(hit.gameObject, 1);

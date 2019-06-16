@@ -127,7 +127,7 @@ public class PlayerScript : MonoBehaviour
         {
             dashTime += Time.deltaTime;
 
-            if(dashTime>=dashCooldown)
+            if (dashTime >= dashCooldown)
             {
                 lastDashButtonReleased = true;
                 dashTime = 0;
@@ -564,8 +564,33 @@ public class PlayerScript : MonoBehaviour
                 knockDirection = direction;
                 StartCoroutine(KnockBack());
             }
+            Pushed(direction);
             gameManager.Damage();
         }
+    }
+    
+    void Pushed(Vector3 enemyForward)
+    {
+        characterController.enabled = false;
+
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), enemyForward);
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(ray, out hit, dashDistance))
+        {
+            if (hit.collider.gameObject.tag == "IslandCollision" || hit.collider.gameObject.tag == "Island")
+            {
+                Vector3 newPos = hit.point + hit.normal * 2;
+                transform.position = new Vector3(newPos.x, transform.position.y, newPos.z);
+            }
+
+            else
+                transform.position += transform.forward * dashDistance / 2;
+        }
+
+        else
+            transform.position += transform.forward * dashDistance / 2;
+
+        characterController.enabled = true;
     }
 
 

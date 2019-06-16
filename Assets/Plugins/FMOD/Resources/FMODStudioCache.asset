@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 114634763067130270}
   StringsBanks:
   - {fileID: 114061222652021000}
-  stringsBankWriteTime: 636961308283004919
+  stringsBankWriteTime: 636962780106469429
   cacheVersion: 3
 --- !u!114 &114039083550126726
 MonoBehaviour:
@@ -119,11 +119,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 636961308283004919
+  lastModified: 636962780106469429
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2796
+    Value: 2840
   Exists: 1
 --- !u!114 &114072186429428048
 MonoBehaviour:
@@ -558,7 +558,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2000
+  Length: 1423
 --- !u!114 &114290027813261482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,7 +897,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 336
+  Length: 231
 --- !u!114 &114505396901645862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1185,11 +1185,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 636961308282925132
+  lastModified: 636962780106190263
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 13779776
+    Value: 13782240
   Exists: 1
 --- !u!114 &114635601403945030
 MonoBehaviour:
@@ -1875,6 +1875,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114954390593927370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/BS/sfx/agafarObjectes/pickup_2
+  m_EditorClassIdentifier: 
+  Path: event:/BS/sfx/agafarObjectes/pickup_2
+  guid: 6655a5d91b4d6144b680d5143ba3793c
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 344
 --- !u!114 &114968380092846254
 MonoBehaviour:
   m_ObjectHideFlags: 0

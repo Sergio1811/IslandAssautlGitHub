@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool rockTier2 = false;
     #endregion
-    #region
+    #region Boat parts
 
     public static bool mastil, casco;
     public static bool cañon, timon;
@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour
             else if (movingCamera)
                 UpdateEndCameraPosition();
             
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.M))
                 Motherlode();
         }
         else

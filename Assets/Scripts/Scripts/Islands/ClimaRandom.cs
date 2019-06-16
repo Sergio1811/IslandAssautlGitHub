@@ -31,20 +31,17 @@ public class ClimaRandom : MonoBehaviour
             ScriptPrincipal.profile = DayProfile;
             Day = true;
         }
-
         else if (random >= 50 && random <= 74)
         {
             ScriptPrincipal.profile = NightProfile;
             Night = true;
         }
-
         else if (random >= 75 && random <= 89)
         {
             ScriptPrincipal.profile = RainProfile;
             Instantiate(RainPS, RainPS.transform.position, RainPS.transform.rotation);
             Rain = true;
         }
-
         else
         {
             ScriptPrincipal.profile = FogProfile;

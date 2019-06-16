@@ -74,6 +74,5 @@ public class SoundManager : MonoBehaviour
     public static void PlayOneShot(string ClipName, Vector3 Position)
     { 
         FMODUnity.RuntimeManager.PlayOneShot(ClipName, Position);
-  
     }
 }

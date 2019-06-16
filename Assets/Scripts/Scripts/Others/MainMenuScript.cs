@@ -45,12 +45,7 @@ public class MainMenuScript : MonoBehaviour
                 switch (arrayNumber)
                 {
                     case 0:
-                        PlayerPrefs.DeleteAll();
-                        PlayerPrefs.Save();
-                        AxerAbilities.initialized = false;
-                        BomberAbilities.initialized = false;
-                        SwordAbilities.initialized = false;
-                        CharacterAbiliities.initialized = false;
+                        ResetAll();
                         loadScene = true;
                         loadingScreen.SetActive(true);
                         StartCoroutine(LoadNewScene(1));
@@ -126,6 +121,26 @@ public class MainMenuScript : MonoBehaviour
 
         if (movementOn)
             timerMovement += Time.deltaTime;
+    }
+
+
+    void ResetAll()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        AxerAbilities.initialized = false;
+        BomberAbilities.initialized = false;
+        SwordAbilities.initialized = false;
+        CharacterAbiliities.initialized = false;
+
+        GameManager.mastil = false;
+        GameManager.timon = false;
+        GameManager.brujula = false;
+        GameManager.casco = false;
+        GameManager.mapa = false;
+        GameManager.velas = false;
+        GameManager.cañon = false;
+        GameManager.remos = false;
     }
 
 

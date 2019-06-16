@@ -667,7 +667,7 @@ public class GameManager : MonoBehaviour
                 recursoPrincipalCaughtTier2.text = collectedWood2.ToString();
 
 
-            if (collectedWood >= woodNeeded)
+            if (collectedWood >= woodNeeded && !portalActivated)
             {
                 if (treeTier2)
                 {
@@ -705,7 +705,7 @@ public class GameManager : MonoBehaviour
             if (rockTier2)
                 recursoPrincipalCaughtTier2.text = collectedRock2.ToString();
 
-            if (collectedRock >= rockNeeded)
+            if (collectedRock >= rockNeeded && !portalActivated)
             {
                 if (rockTier2)
                 {
@@ -742,7 +742,7 @@ public class GameManager : MonoBehaviour
             if (enemyTier2)
                 recursoPrincipalCaughtTier2.text = collectedFabrics2.ToString();
 
-            if (collectedFabrics >= fabricNeeded)
+            if (collectedFabrics >= fabricNeeded && !portalActivated)
             {
                 if (enemyTier2)
                 {

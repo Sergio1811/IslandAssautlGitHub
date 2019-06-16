@@ -233,16 +233,6 @@ public class GameManager : MonoBehaviour
         SecundaryObjectivesInitialization();
 
         player.GetComponent<CharacterController>().enabled = true;
-
-        lights = GameObject.FindGameObjectsWithTag("FireTorch");
-        print(lights.Length);
-        if (ClimaRandom.Day)
-        {
-            foreach (GameObject fire in lights)
-            {
-                fire.gameObject.SetActive(false);
-            }
-        }
     }
 
 

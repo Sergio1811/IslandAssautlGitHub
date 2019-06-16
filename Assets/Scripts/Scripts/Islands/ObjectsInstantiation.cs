@@ -369,15 +369,6 @@ public class ObjectsInstantiation : MonoBehaviour
                 }
             }
         }
-        /*
-        Debug.Log(lights.Length);
-        lights =(GameObject.FindGameObjectsWithTag("FireTorch"));
-        Debug.Log(lights.Length);
-        foreach (GameObject fire in lights)
-        {
-            print(fire.name);
-            fire.SetActive(false);
-        }*/
     }
 
 

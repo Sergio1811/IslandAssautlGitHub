@@ -16,7 +16,8 @@ public class ClimaRandom : MonoBehaviour
     int random;
     public static bool Rain;
     public static bool Day;
-   
+    public static bool Night;
+
     private void Awake()
     {
        
@@ -34,6 +35,7 @@ public class ClimaRandom : MonoBehaviour
         else if (random >= 50 && random <= 74)
         {
             ScriptPrincipal.profile = NightProfile;
+            Night = true;
         }
 
         else if (random >= 75 && random <= 89)

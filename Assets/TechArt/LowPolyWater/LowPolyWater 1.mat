@@ -115,7 +115,7 @@ Material:
     - _Tiling: 4
     - _UVSec: 0
     - _WaveHeight: 5
-    - _WaveSpeed: 0.01
+    - _WaveSpeed: 0.005
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:

@@ -22,7 +22,7 @@ public class characterFall : MonoBehaviour
             movement.y += -9.8f;
         else
         {
-            SoundManager.PlayOneShot(SoundManager.FallingObject, this.transform.position);
+           // SoundManager.PlayOneShot(SoundManager.FallingObject, this.transform.position);
             enabled = false;
         }
         

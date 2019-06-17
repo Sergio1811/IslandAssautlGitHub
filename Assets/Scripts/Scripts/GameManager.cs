@@ -259,6 +259,7 @@ public class GameManager : MonoBehaviour
                 {
                     livesNumber = 0;
                     playerScript.myAnimator.SetBool("Move", false);
+                    ignorePlayer = true;
                     EndLevel();
                     remainingTimeInLevel = timeByLevel;
                 }

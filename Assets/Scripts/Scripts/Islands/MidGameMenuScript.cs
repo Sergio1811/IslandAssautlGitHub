@@ -354,12 +354,12 @@ public class MidGameMenuScript : MonoBehaviour
                 SoundManager.PlayOneShot(SoundManager.ButtonClicked, cameraAnchor.transform.position);
                 selectedButton.GetComponent<Button>().onClick.Invoke();
             }
-        }
 
-        if (hasMoved)
-        {
-            movementOn = true;
-            SoundManager.PlayOneShot(SoundManager.PassButton, cameraAnchor.transform.position);
+            if (hasMoved)
+            {
+                movementOn = true;
+                SoundManager.PlayOneShot(SoundManager.PassButton, cameraAnchor.transform.position);
+            }
         }
 
         if ((vertical <= 0.1f && vertical >= -0.1f && horizontal <= 0.1f && horizontal >= -0.1f && hasMoved) || timerMovement >= 0.3f)

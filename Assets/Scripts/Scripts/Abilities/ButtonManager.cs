@@ -35,6 +35,12 @@ public class ButtonManager : MonoBehaviour
     float timerMovement;
     bool movementOn = false;
 
+    GameObject cameraAnchor;
+
+    private void Start()
+    {
+        cameraAnchor = GameManager.Instance.cameraAnchor;
+    }
 
     private void OnEnable()
     {
@@ -72,7 +78,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (InputManager.Instance.GetInputDown("Cancel"))
         {
-            SoundManager.PlayOneShot(SoundManager.ButtonClicked, this.transform.position);
+            SoundManager.PlayOneShot(SoundManager.ButtonClicked, cameraAnchor.transform.position);
             backMenu.SetActive(true);
             gameObject.SetActive(false);
         }
@@ -200,7 +206,7 @@ public class ButtonManager : MonoBehaviour
 
             if (hasMoved)
             {
-                SoundManager.PlayOneShot(SoundManager.PassButton, this.transform.position);
+                SoundManager.PlayOneShot(SoundManager.PassButton, cameraAnchor.transform.position);
                 movementOn = true;
                 UpdateComponents();
             }
@@ -333,7 +339,7 @@ public class ButtonManager : MonoBehaviour
 
     void BuyAbility()
     {
-        SoundManager.PlayOneShot(SoundManager.UpgradeSkill, this.transform.position);
+        SoundManager.PlayOneShot(SoundManager.UpgradeSkill, cameraAnchor.transform.position);
         canBuy = false;
 
         if (actualAbility.materialNeeded)

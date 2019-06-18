@@ -294,7 +294,7 @@ public class EnemyScript : MonoBehaviour
 
         if (attackTimer >= attackCoolDown)
         {
-            SoundManager.PlayOneShot(SoundManager.HitSound, this.transform.position);
+            
             attackTimer = 0;
             myAnimator.SetTrigger("Attack");
             playerScript.Damage(transform.forward, true);

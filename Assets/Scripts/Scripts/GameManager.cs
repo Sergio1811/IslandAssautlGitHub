@@ -200,7 +200,7 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         startGame = false;
         gameWon = false;
 
@@ -874,7 +874,7 @@ public class GameManager : MonoBehaviour
                 EndLevel();
             }
             else
-                SoundManager.PlayOneShot(SoundManager.PlayerHurtSound, cameraAnchor.transform.position);
+                SoundManager.PlayOneShot(SoundManager.HitSound, this.transform.position);
         }
     }
 

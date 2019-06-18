@@ -29,18 +29,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 21.706089, y: 25.014256, z: 17.836555}
   m_Center: {x: -0.3183408, y: 0.57060426, z: 9.996758}
---- !u!114 &1006394756426080227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3360600806000703472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5680470503818779866
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6246088492467607430}
+  - component: {fileID: 5842027306841287859}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -150,6 +139,18 @@ Transform:
   m_Father: {fileID: 8180682651126957756}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5842027306841287859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579155359180887558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8829530387875484065
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.048999995
+      value: -0.117
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 07c30bf2f38843442b7115c8c86e84d3, type: 3}
       propertyPath: m_LocalPosition.z

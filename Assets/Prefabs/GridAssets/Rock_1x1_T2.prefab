@@ -29,18 +29,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -0.076000005, y: 0.027, z: 0.39800003}
   m_TimeToStationary: 0.5
---- !u!114 &1130805917847907762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1206239292348321585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3342487886038624464
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +115,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2259668513331646241}
+  - component: {fileID: 4817983736244286064}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -150,6 +139,18 @@ Transform:
   m_Father: {fileID: 8180682651126957756}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4817983736244286064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807641455164755620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbda78c1229379248a26edd459f89677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8829530387875484065
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 242c7a7c053aaf2429ee9bd59ab13bf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.014
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 242c7a7c053aaf2429ee9bd59ab13bf9, type: 3}
       propertyPath: m_LocalPosition.z

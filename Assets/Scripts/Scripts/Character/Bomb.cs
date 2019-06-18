@@ -35,7 +35,7 @@ public class Bomb : MonoBehaviour
             {
                 rock = Instantiate(rockPrefab);
                 Instantiate(psRockHit, colliders[k].transform.position, Quaternion.identity);
-                rock.transform.position = colliders[k].transform.position;
+                rock.transform.position = colliders[k].transform.parent.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 
@@ -43,7 +43,7 @@ public class Bomb : MonoBehaviour
             {
                 rock = Instantiate(rock2Prefab);
                 Instantiate(psRockHit, colliders[k].transform);
-                rock.transform.position = colliders[k].transform.position;
+                rock.transform.position = colliders[k].transform.parent.position;
                 Destroy(colliders[k].transform.parent.gameObject);
             }
 

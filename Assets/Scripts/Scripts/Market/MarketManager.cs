@@ -211,7 +211,7 @@ public class MarketManager : MonoBehaviour
         }
 
         if (movementOn)
-            timerMovement += Time.deltaTime;
+            timerMovement += InputManager.deltaTime;
     }
 
     void UpdateComponents()

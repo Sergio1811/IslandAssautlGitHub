@@ -220,7 +220,7 @@ public class ButtonManager : MonoBehaviour
         }
 
         if (movementOn)
-            timerMovement += Time.deltaTime;
+            timerMovement += InputManager.deltaTime;
     }
 
 

@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     [HideInInspector]
     public bool xboxController = false;
 
+    public static float deltaTime;
+
 
     private void Awake()
     {
@@ -20,6 +22,11 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         CheckConnectedController();
+    }
+
+    private void Update()
+    {
+        deltaTime = Time.deltaTime;
     }
 
     void CheckConnectedController()

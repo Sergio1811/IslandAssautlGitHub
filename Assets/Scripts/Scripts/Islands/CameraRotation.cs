@@ -42,7 +42,7 @@ public class CameraRotation : MonoBehaviour
     {
         Vector3 newRotation = new Vector3(transform.eulerAngles.x, GameManager.Instance.player.transform.eulerAngles.y, transform.eulerAngles.z);
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(newRotation), lateralSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(newRotation), lateralSpeed * InputManager.deltaTime);
         yaw = cameraParent.localRotation.eulerAngles.y;
         pitch = cameraParent.localRotation.eulerAngles.x;
 
@@ -57,14 +57,14 @@ public class CameraRotation : MonoBehaviour
         float vertical = inputManager.GetAxis("CameraMovementY");
         float zoom = -inputManager.GetAxis("CameraZoom");
 
-        pitch += vertical * lateralSpeed * Time.deltaTime;
+        pitch += vertical * lateralSpeed * InputManager.deltaTime;
         pitch = Mathf.Clamp(pitch, -maxYRotationAngle, maxYRotationAngle);
 
-        yaw += horizontal * lateralSpeed * Time.deltaTime;
+        yaw += horizontal * lateralSpeed * InputManager.deltaTime;
 
         cameraParent.localRotation = Quaternion.Euler(pitch, yaw, 0);
 
         if ((zoom < 0 && mainCamera.orthographicSize > minZoom) || (zoom > 0 && mainCamera.orthographicSize < maxZoom))
-            mainCamera.orthographicSize += zoom * zoomSpeed * Time.deltaTime;
+            mainCamera.orthographicSize += zoom * zoomSpeed * InputManager.deltaTime;
     }
 }

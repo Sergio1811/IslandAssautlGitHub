@@ -20,7 +20,7 @@ public class ArrowsActivation : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += InputManager.deltaTime;
 
         if (timer >= speed)
         {

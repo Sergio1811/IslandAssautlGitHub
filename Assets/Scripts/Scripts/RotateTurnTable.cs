@@ -13,6 +13,6 @@ public class RotateTurnTable : MonoBehaviour
     
     void Update()
     {
-        this.gameObject.transform.Rotate(this.gameObject.transform.up, speed *Time.deltaTime); 
+        this.gameObject.transform.Rotate(this.gameObject.transform.up, speed *InputManager.deltaTime); 
     }
 }

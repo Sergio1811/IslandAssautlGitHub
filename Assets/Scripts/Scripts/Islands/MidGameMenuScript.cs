@@ -92,8 +92,8 @@ public class MidGameMenuScript : MonoBehaviour
         {
             if (!activeCanvas)
             {
-                transform.GetChild(0).localPosition = Vector3.MoveTowards(transform.GetChild(0).localPosition, Vector3.zero, GameManager.cameraSpeed * Time.deltaTime * 3.5f);
-                boatParts.transform.localPosition = Vector3.MoveTowards(boatParts.transform.localPosition, positionParts.localPosition, GameManager.cameraSpeed * Time.deltaTime * 0.9f);
+                transform.GetChild(0).localPosition = Vector3.MoveTowards(transform.GetChild(0).localPosition, Vector3.zero, GameManager.cameraSpeed * InputManager.deltaTime * 3.5f);
+                boatParts.transform.localPosition = Vector3.MoveTowards(boatParts.transform.localPosition, positionParts.localPosition, GameManager.cameraSpeed * InputManager.deltaTime * 0.9f);
 
                 if (!GameManager.movingCamera)
                 {
@@ -265,7 +265,7 @@ public class MidGameMenuScript : MonoBehaviour
 
     void UpdateBetweenIslandMenuButtons()
     {
-        cameraAnchor.transform.Rotate(new Vector3(0, 5f * Time.deltaTime, 0));
+        cameraAnchor.transform.Rotate(new Vector3(0, 5f * InputManager.deltaTime, 0));
 
         float horizontal = InputManager.Instance.GetAxis("Horizontal");
         float vertical = InputManager.Instance.GetAxis("Vertical");
@@ -370,7 +370,7 @@ public class MidGameMenuScript : MonoBehaviour
         }
 
         if (movementOn)
-            timerMovement += Time.deltaTime;
+            timerMovement += InputManager.deltaTime;
     }
 
 

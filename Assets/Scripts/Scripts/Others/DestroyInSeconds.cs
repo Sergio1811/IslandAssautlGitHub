@@ -8,7 +8,7 @@ public class DestroyInSeconds : MonoBehaviour
    
     void Update()
     {
-        seconds -= Time.deltaTime;
+        seconds -= InputManager.deltaTime;
 
         if (seconds <=0)
             Destroy(this.gameObject);

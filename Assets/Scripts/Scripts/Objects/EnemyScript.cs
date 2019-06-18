@@ -108,7 +108,7 @@ public class EnemyScript : MonoBehaviour
 
         if (stunned)
         {
-            stunnedTimer += Time.deltaTime;
+            stunnedTimer += InputManager.deltaTime;
             if (stunnedTimer >= maxStunnedTimer)
                 OffStun();
         }
@@ -241,9 +241,9 @@ public class EnemyScript : MonoBehaviour
                 break;
 
             case state.dead:
-                transform.position -= Vector3.up * Time.deltaTime;
+                transform.position -= Vector3.up * InputManager.deltaTime;
 
-                deadTime += Time.deltaTime;
+                deadTime += InputManager.deltaTime;
 
                 if (deadTime >= timeToDestroy)
                     Destroy(this.gameObject);
@@ -260,7 +260,7 @@ public class EnemyScript : MonoBehaviour
         {
             agent.isStopped = true;
             myAnimator.SetBool("Move", false);
-            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, Time.deltaTime * 10);
+            transform.rotation = Quaternion.Lerp(transform.rotation, initialRotation, InputManager.deltaTime * 10);
         }
 
         else
@@ -290,7 +290,7 @@ public class EnemyScript : MonoBehaviour
 
     void Attack()
     {
-        attackTimer += Time.deltaTime;
+        attackTimer += InputManager.deltaTime;
 
         if (attackTimer >= attackCoolDown)
         {

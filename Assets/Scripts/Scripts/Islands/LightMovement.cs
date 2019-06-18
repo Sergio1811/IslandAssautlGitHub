@@ -25,9 +25,9 @@ public class LightMovement : MonoBehaviour
         if (GameManager.startGame)
             if (timer < timeToComplete)
             {
-                timer += Time.deltaTime;
+                timer += InputManager.deltaTime;
 
-                currentAngle += Time.deltaTime * speed;
+                currentAngle += InputManager.deltaTime * speed;
                 transform.position = new Vector3(radius * Mathf.Cos(currentAngle), radius * Mathf.Sin(currentAngle), transform.position.z);
 
                 transform.LookAt(Vector3.zero);

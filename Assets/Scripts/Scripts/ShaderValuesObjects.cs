@@ -40,11 +40,11 @@ public class ShaderValuesObjects : MonoBehaviour {
         {
             if (Vector3.Distance(objects[i].transform.position, target.position) < radius)
             {
-                values[i] = Mathf.Lerp(values[i], 1, Time.deltaTime * appearSpeed);
+                values[i] = Mathf.Lerp(values[i], 1, InputManager.deltaTime * appearSpeed);
             }
             else if (!keep)
             {
-                values[i] = Mathf.Lerp(values[i], 0, Time.deltaTime * disappearSpeed);
+                values[i] = Mathf.Lerp(values[i], 0, InputManager.deltaTime * disappearSpeed);
             }
             props.SetFloat("_Moved", values[i]);
             objects[i].SetPropertyBlock(props);

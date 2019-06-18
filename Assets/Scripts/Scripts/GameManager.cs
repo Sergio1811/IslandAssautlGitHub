@@ -248,7 +248,7 @@ public class GameManager : MonoBehaviour
         {
             if (!gameOver)
             {
-                remainingTimeInLevel -= Time.deltaTime;
+                remainingTimeInLevel -= InputManager.deltaTime;
 
                 if (Input.GetKeyDown(KeyCode.N))
                     EndLevel();
@@ -494,14 +494,14 @@ public class GameManager : MonoBehaviour
 
     void UpdateWaitTimerToStart()
     {
-        waitTimer += Time.deltaTime;
+        waitTimer += InputManager.deltaTime;
 
         if (waitTimer >= waitToStartTime)
         {
             if (speedPanels > initialSpeedPanels / 4)
-                speedPanels -= Time.deltaTime * initialSpeedPanels / 3f;
-            rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * 1.5f * Time.deltaTime);
-            leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * Time.deltaTime);
+                speedPanels -= InputManager.deltaTime * initialSpeedPanels / 3f;
+            rightPanel.transform.position = Vector3.MoveTowards(rightPanel.transform.position, positionRight.transform.position, speedPanels * 1.5f * InputManager.deltaTime);
+            leftPanel.transform.position = Vector3.MoveTowards(leftPanel.transform.position, positionLeft.transform.position, speedPanels * InputManager.deltaTime);
 
             if (GetSqrDistanceXZToPosition(rightPanel.transform.position, positionRight.transform.position) <= 0.1 &&
                 GetSqrDistanceXZToPosition(leftPanel.transform.position, positionLeft.transform.position) <= 0.1)
@@ -526,14 +526,14 @@ public class GameManager : MonoBehaviour
     void UpdateEndCameraPosition()
     {
         if (cameraSpeed > initialCameraSpeed / 5)
-            cameraSpeed -= Time.deltaTime * initialCameraSpeed / 2f;
+            cameraSpeed -= InputManager.deltaTime * initialCameraSpeed / 2f;
 
-        mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * Time.deltaTime);
-        mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * Time.deltaTime / 3f);
+        mainCamera.transform.localPosition = Vector3.MoveTowards(mainCamera.transform.localPosition, endCameraPosition.transform.position, cameraSpeed * InputManager.deltaTime);
+        mainCamera.transform.localRotation = Quaternion.RotateTowards(mainCamera.transform.localRotation, endCameraPosition.transform.rotation, cameraSpeed * InputManager.deltaTime / 3f);
 
-        cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * Time.deltaTime / 2f);
+        cameraAnchor.transform.localRotation = Quaternion.RotateTowards(cameraAnchor.transform.localRotation, Quaternion.Euler(new Vector3(0f, 0, 0)), cameraSpeed * InputManager.deltaTime / 2f);
         if (mainCamera.orthographicSize < 80)
-            mainCamera.orthographicSize += cameraSpeed * Time.deltaTime;
+            mainCamera.orthographicSize += cameraSpeed * InputManager.deltaTime;
 
 
         if (GetSqrDistanceXZToPosition(mainCamera.transform.localRotation.eulerAngles, endCameraPosition.transform.rotation.eulerAngles) <= 0.1)
@@ -543,27 +543,27 @@ public class GameManager : MonoBehaviour
     void CameraMovement()
     {
         if (gameOver)
-            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * Time.deltaTime);
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(0, cameraAnchor.transform.position.y, 0), cameraFollowSpeed * InputManager.deltaTime);
         else if (startGame)
         {
             if (mainCamera.transform.localPosition.y < 108f)
-                mainCamera.transform.localPosition += Vector3.up * cameraFollowSpeed * 5f * Time.deltaTime;
+                mainCamera.transform.localPosition += Vector3.up * cameraFollowSpeed * 5f * InputManager.deltaTime;
 
             if (inputManager.GetAxis("CameraZoom") == 0)
             {
                 if (mainCamera.orthographicSize > 33f)
-                    mainCamera.orthographicSize -= 20f * Time.deltaTime;
+                    mainCamera.orthographicSize -= 20f * InputManager.deltaTime;
                 else if (mainCamera.orthographicSize < 31f)
-                    mainCamera.orthographicSize += 20f * Time.deltaTime;
+                    mainCamera.orthographicSize += 20f * InputManager.deltaTime;
             }
-            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(player.transform.position.x, cameraAnchor.transform.position.y, player.transform.position.z), cameraFollowSpeed * Time.deltaTime);
+            cameraAnchor.transform.position = Vector3.Lerp(cameraAnchor.transform.position, new Vector3(player.transform.position.x, cameraAnchor.transform.position.y, player.transform.position.z), cameraFollowSpeed * InputManager.deltaTime);
         }
 
         if (GetSqrDistanceXZToPosition(cameraAnchor.transform.position, player.transform.position) < 10f && cameraFollowSpeed > 2f)
-            cameraFollowSpeed -= Time.deltaTime * 3f;
+            cameraFollowSpeed -= InputManager.deltaTime * 3f;
 
         if (cameraFollowSpeed > 1f)
-            cameraFollowSpeed -= Time.deltaTime * 2f;
+            cameraFollowSpeed -= InputManager.deltaTime * 2f;
     }
 
 

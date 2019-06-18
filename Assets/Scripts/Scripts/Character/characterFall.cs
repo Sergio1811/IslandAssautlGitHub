@@ -26,6 +26,6 @@ public class characterFall : MonoBehaviour
             enabled = false;
         }
         
-        characterController.Move(movement.normalized * fallSpeed * Time.deltaTime);
+        characterController.Move(movement.normalized * fallSpeed * InputManager.deltaTime);
     }
 }

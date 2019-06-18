@@ -125,7 +125,7 @@ public class PlayerScript : MonoBehaviour
 
         if (lastDashButtonReleased == false && inputManager.GetInputUp("Dash"))
         {
-            dashTime += Time.deltaTime;
+            dashTime += InputManager.deltaTime;
 
             if (dashTime >= dashCooldown)
             {
@@ -154,10 +154,10 @@ public class PlayerScript : MonoBehaviour
         if (currentCD >= swordCooldown)
             canAttack = true;
         if (!canAttack)
-            currentCD += Time.deltaTime;
+            currentCD += InputManager.deltaTime;
 
         if (actualType == playerType.sword && psTrial.activeSelf)
-            currentTrialTimer += Time.deltaTime;
+            currentTrialTimer += InputManager.deltaTime;
 
         if (currentTrialTimer >= trialTimer)
         {
@@ -190,7 +190,8 @@ public class PlayerScript : MonoBehaviour
             movement = forward * zMovement + right * xMovement;
             transform.localRotation = Quaternion.LookRotation(movement);
 
-            gameManager.cameraFollowSpeed = 5f;
+            if (gameManager.cameraFollowSpeed < 5f)
+                gameManager.cameraFollowSpeed += InputManager.deltaTime * 2f;
         }
 
         else
@@ -199,9 +200,9 @@ public class PlayerScript : MonoBehaviour
         }
 
         if (!characterController.isGrounded)
-            movement.y = Physics.gravity.y * Time.deltaTime * 10;
+            movement.y = Physics.gravity.y * InputManager.deltaTime * 10;
 
-        Vector3 controllerMovement = movement.normalized * characterSpeed * bootsMovementSpeed * Time.deltaTime;
+        Vector3 controllerMovement = movement.normalized * characterSpeed * bootsMovementSpeed * InputManager.deltaTime;
         characterController.Move(controllerMovement);
     }
 
@@ -381,7 +382,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (knockBack)
         {
-            characterController.Move(knockDirection * 50f * Time.deltaTime);
+            characterController.Move(knockDirection * 50f * InputManager.deltaTime);
         }
     }
 
@@ -392,7 +393,7 @@ public class PlayerScript : MonoBehaviour
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
             canMove = false;
-            pressedTimer += Time.deltaTime;
+            pressedTimer += InputManager.deltaTime;
             actionSphere.fillAmount = pressedTimer / (neededPressedTime * neededTimeMultiplier);
 
             if (pressedTimer >= (neededPressedTime * neededTimeMultiplier))
@@ -410,7 +411,7 @@ public class PlayerScript : MonoBehaviour
 
     void UpdateBomb()
     {
-        pressedTimer += Time.deltaTime;
+        pressedTimer += InputManager.deltaTime;
         if (!bombTier2)
         {
             actionSphere.transform.eulerAngles = new Vector3(actionSphere.transform.eulerAngles.x, cameraAnchor.transform.eulerAngles.y, 0); //Rotación esfera de acción
@@ -504,7 +505,7 @@ public class PlayerScript : MonoBehaviour
 
     void CheckInmortal()
     {
-        inmortalTimer += Time.deltaTime;
+        inmortalTimer += InputManager.deltaTime;
         if (inmortalTimer >= inmortalDurationTime)
             inmortal = false;
     }
@@ -568,14 +569,14 @@ public class PlayerScript : MonoBehaviour
             gameManager.Damage();
         }
     }
-    
+
     void Pushed(Vector3 enemyForward)
     {
         characterController.enabled = false;
 
         Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 1.0f, transform.position.z), enemyForward);
         RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(ray, out hit, dashDistance/2))
+        if (Physics.Raycast(ray, out hit, dashDistance / 2))
         {
             if (hit.collider.gameObject != null)
             {

@@ -72,7 +72,7 @@ public class MainMenuScript : MonoBehaviour
             optionsScreen.SetActive(false);
         }
         else if (loadScene)
-            loadingIcon.localEulerAngles -= new Vector3(0, 0, 200f) * Time.deltaTime;
+            loadingIcon.localEulerAngles -= new Vector3(0, 0, 200f) * InputManager.deltaTime;
     }
 
 
@@ -120,7 +120,7 @@ public class MainMenuScript : MonoBehaviour
         }
 
         if (movementOn)
-            timerMovement += Time.deltaTime;
+            timerMovement += InputManager.deltaTime;
     }
 
 

@@ -185,8 +185,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.32941177, g: 0.3764706, b: 0.4509804, a: 1}
-      maxColor: {r: 0.42745098, g: 0.47058824, b: 0.56078434, a: 1}
+      minColor: {r: 0.01743301, g: 0.5849056, b: 0, a: 1}
+      maxColor: {r: 0, g: 0.7169812, b: 0.29857793, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4680,8 +4680,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.32941177, g: 0.3764706, b: 0.4509804, a: 1}
-      maxColor: {r: 0.42745098, g: 0.47058824, b: 0.56078434, a: 1}
+      minColor: {r: 0.024415897, g: 0.46226418, b: 0, a: 1}
+      maxColor: {r: 0.07963123, g: 0.5882353, b: 0.019607825, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9003,7 +9003,7 @@ GameObject:
   - component: {fileID: 1667593616048185182}
   - component: {fileID: 2244476465150802161}
   m_Layer: 0
-  m_Name: RockHit
+  m_Name: RockDestroy
   m_TagString: FxTemporaire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

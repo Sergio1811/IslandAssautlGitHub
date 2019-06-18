@@ -7,7 +7,7 @@ using FMODUnity;
 public class SoundManager : MonoBehaviour
 {
     [HideInInspector]
-    public static string SwordSound, DashSound, BombDownSound, BombCountDownSound, BombExplosionSound, BombClickSound, HitSound, EnemyHurtSound, PlayerHurtSound;
+    public static string SwordSound, DashSound, BombDownSound, BombCountDownSound, BombExplosionSound, BombClickSound, HitSound, EnemyHurtSound, PlayerHurtSound, StepSound;
 
     [HideInInspector]
     public static string PortalOpenSound, PortalFluctuationSound, FireSound, DeathSound, HitEnemySword, SwordStoneSound, HitTree, BreakTree, HitAir;
@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
         BreakTree = "event:/BS/Character/moviments/pases/caminar/fulles";//done
         HitAir = "event:/BS/sfx/espases/hit_1";//done
         PlayerHurtSound = "event:/";
+        StepSound = "event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once";
 
         OpenChestSound = "event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound";//done
         CoinsSound = "event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound";//done

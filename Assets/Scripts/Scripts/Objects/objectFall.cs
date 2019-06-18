@@ -19,7 +19,7 @@ public class objectFall : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             if (hit.collider.gameObject.tag == "IslandCollision")
-                finalPositionY = hit.point.y;
+                finalPositionY = hit.point.y - Random.Range(0.1f,0.9f);
         }
     }
 

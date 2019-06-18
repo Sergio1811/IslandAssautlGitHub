@@ -17,6 +17,9 @@ public class ClimaRandom : MonoBehaviour
     public static bool Rain;
     public static bool Day;
     public static bool Night;
+    public static bool Fog;
+
+
 
     private void Awake()
     {
@@ -24,6 +27,7 @@ public class ClimaRandom : MonoBehaviour
         Rain = false;
         Day = false;
         Night = false;
+        Fog = false;
         random = Random.Range(0, 101);
 
         if (random >= 0 && random <= 49)
@@ -35,17 +39,21 @@ public class ClimaRandom : MonoBehaviour
         {
             ScriptPrincipal.profile = NightProfile;
             Night = true;
+            GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>().shadowStrength = 0;
         }
         else if (random >= 75 && random <= 89)
         {
             ScriptPrincipal.profile = RainProfile;
             Instantiate(RainPS, RainPS.transform.position, RainPS.transform.rotation);
             Rain = true;
+            GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>().shadowStrength = 0;
         }
         else
         {
             ScriptPrincipal.profile = FogProfile;
             RenderSettings.fog = true;
+            Fog = true;
+            GameObject.FindGameObjectWithTag("MainLight").GetComponent<Light>().shadowStrength = 0;
         }
     }
 }

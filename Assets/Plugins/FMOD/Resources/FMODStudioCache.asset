@@ -53,12 +53,13 @@ MonoBehaviour:
   - {fileID: 114408558466698060}
   - {fileID: 114927806369324336}
   - {fileID: 114314255387612426}
+  - {fileID: 114617750317265004}
   EditorParameters: []
   MasterBanks:
   - {fileID: 114634763067130270}
   StringsBanks:
   - {fileID: 114061222652021000}
-  stringsBankWriteTime: 636964712985419617
+  stringsBankWriteTime: 636964905767233889
   cacheVersion: 3
 --- !u!114 &114039083550126726
 MonoBehaviour:
@@ -76,9 +77,9 @@ MonoBehaviour:
   guid: d1d61333f27536428f531a7d16b9f3bf
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -120,11 +121,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.strings.bank
   SubDir: 
-  lastModified: 636964712985419617
+  lastModified: 636964905767233889
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 2840
+    Value: 2908
   Exists: 1
 --- !u!114 &114072186429428048
 MonoBehaviour:
@@ -188,7 +189,7 @@ MonoBehaviour:
   guid: bc840f5264630d45a3f58905ac8babd3
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -280,7 +281,7 @@ MonoBehaviour:
   guid: 05a7884860e23a4e8288a983b2b3227a
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -399,6 +400,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 2335
+--- !u!114 &114146239445810482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  guid: 636cbe5353fe9248b6af9941baee7671
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 680
 --- !u!114 &114168636027744378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +462,7 @@ MonoBehaviour:
   guid: 296de279249eaa4094c2ec180bd353c9
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -507,7 +531,7 @@ MonoBehaviour:
   guid: 1f8f549c75fa9745944ff01b55f547e2
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -576,7 +600,7 @@ MonoBehaviour:
   guid: 033aaa32b8bfa349b7ba2c429ba5edf5
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -789,7 +813,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 700
+  Length: 750
 --- !u!114 &114422671140092832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1030,7 +1054,7 @@ MonoBehaviour:
   guid: 0a5e916e41ddb94e814a1ee3c3d8bbe3
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -1060,6 +1084,29 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 500
+--- !u!114 &114564612086550534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  guid: 636cbe5353fe9248b6af9941baee7671
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 680
 --- !u!114 &114571753457950722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1122,7 +1169,7 @@ MonoBehaviour:
   guid: b82b49b7e4fa554588802209e59ae10f
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -1172,6 +1219,29 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1094
   Exists: 1
+--- !u!114 &114617750317265004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  m_EditorClassIdentifier: 
+  Path: event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once
+  guid: 636cbe5353fe9248b6af9941baee7671
+  Banks:
+  - {fileID: 114634763067130270}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 680
 --- !u!114 &114624951798426684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,11 +1279,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: C:\Users\sergi\OneDrive\Documentos\GitHub\IslandAssautlGitHub\Assets\FMOD_ProjectsMix\Build\Desktop\Master.bank
   SubDir: 
-  lastModified: 636964712985339195
+  lastModified: 636964905767174306
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 13782240
+    Value: 59757472
   Exists: 1
 --- !u!114 &114635601403945030
 MonoBehaviour:
@@ -1323,13 +1393,13 @@ MonoBehaviour:
   guid: dca3e6c8d70b2c47a6575db6fc8f486e
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 80788
+  Length: 81142
 --- !u!114 &114687457205252306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,7 +1416,7 @@ MonoBehaviour:
   guid: 8ee08889b6f2e44890dd8f19943eb099
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -1369,7 +1439,7 @@ MonoBehaviour:
   guid: 48332d5c133cd541a050624c52f3454c
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -1415,9 +1485,9 @@ MonoBehaviour:
   guid: fbdb9f4d7f600e46a19f2920d802ba08
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
@@ -1484,7 +1554,7 @@ MonoBehaviour:
   guid: 517f85750fd26a4e8b13f5b8070ba349
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 0
   Parameters: []
@@ -1530,7 +1600,7 @@ MonoBehaviour:
   guid: 32e8ae5f38c3ac439e3ecbc2dc412c59
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -1553,7 +1623,7 @@ MonoBehaviour:
   guid: 5e9354f308168241b249c88865d21937
   Banks:
   - {fileID: 114634763067130270}
-  IsStream: 1
+  IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters: []
@@ -1651,7 +1721,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 780
+  Length: 830
 --- !u!114 &114875410232948504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1766,7 +1836,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 0
   MaxDistance: 0
-  Length: 266
+  Length: 426
 --- !u!114 &114908999053605600
 MonoBehaviour:
   m_ObjectHideFlags: 0

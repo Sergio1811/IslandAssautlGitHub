@@ -23,6 +23,7 @@ TagManager:
   - FxTemporaire
   - Chest2
   - FireTorch
+  - MainLight
   layers:
   - Default
   - TransparentFX

@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.7497775, g: 0.7830189, b: 0.77193844, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.01
-  m_LinearFogStart: 929
-  m_LinearFogEnd: 1116
+  m_LinearFogStart: 630
+  m_LinearFogEnd: 1180
   m_AmbientSkyColor: {r: 0.24830824, g: 0.25882354, b: 0.21176471, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -48,7 +48,7 @@ LightmapSettings:
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
-    m_IndirectOutputScale: 1
+    m_IndirectOutputScale: 0
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 0
     m_EnableBakedLightmaps: 0
@@ -3611,7 +3611,7 @@ GameObject:
   - component: {fileID: 170076738}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41363,7 +41363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CollisionTag: 
-  Event: event:/GrupoMusica/Ambient/Jungle/Jungle moai vibes
+  Event: event:/GrupoMusica/Ambient/Maritim/Mar
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1

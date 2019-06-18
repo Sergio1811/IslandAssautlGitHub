@@ -6,7 +6,7 @@ public class FireOn : MonoBehaviour
 {
     void Start()
     {
-        if (!ClimaRandom.Night)
-            gameObject.SetActive(false);
+        if (ClimaRandom.Night||ClimaRandom.Fog)
+            gameObject.SetActive(true);
     }
 }

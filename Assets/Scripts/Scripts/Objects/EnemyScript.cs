@@ -221,7 +221,7 @@ public class EnemyScript : MonoBehaviour
                 break;
 
             case state.attack:
-                if(gameManager.ignorePlayer)
+                if (gameManager.ignorePlayer)
                 {
                     if (patroler)
                         ChangeState(state.patrol);
@@ -274,6 +274,9 @@ public class EnemyScript : MonoBehaviour
 
     void Patrol()
     {
+        if (!myAnimator.GetBool("Move"))
+            myAnimator.SetBool("Move", true);
+
         if (patrolPoint != null)
             agent.SetDestination(patrolPoint.worldPosition);
 
@@ -297,7 +300,7 @@ public class EnemyScript : MonoBehaviour
 
         if (attackTimer >= attackCoolDown)
         {
-            
+
             attackTimer = 0;
             myAnimator.SetTrigger("Attack");
             playerScript.Damage(transform.forward, true);

@@ -77,6 +77,7 @@ public class ObjectsInstantiation : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.eulerAngles = new Vector3(Random.Range(-6f, 6f), objectInstantiation.transform.eulerAngles.y, Random.Range(-6f, 6f));
                     GameManager.Instance.woodInMap += GameManager.Instance.woodByItem;
                 }
 
@@ -112,6 +113,7 @@ public class ObjectsInstantiation : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.eulerAngles = new Vector3(Random.Range(-6f, 6f), objectInstantiation.transform.eulerAngles.y, Random.Range(-6f, 6f));
                     GameManager.Instance.wood2InMap += GameManager.Instance.woodByItem;
                 }
 
@@ -149,6 +151,7 @@ public class ObjectsInstantiation : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.eulerAngles = new Vector3(Random.Range(-6f, 6f), objectInstantiation.transform.eulerAngles.y, Random.Range(-6f, 6f));
                     GameManager.Instance.rockInMap += GameManager.Instance.rockByItem;
                 }
 
@@ -184,6 +187,7 @@ public class ObjectsInstantiation : MonoBehaviour
                             break;
                     }
                     objectInstantiation.transform.position = new Vector3(actualNode.worldPosition.x, instantiationHeight + actualNode.gridPositionY * 100, actualNode.worldPosition.z);
+                    objectInstantiation.transform.eulerAngles = new Vector3(Random.Range(-6f, 6f), objectInstantiation.transform.eulerAngles.y, Random.Range(-6f, 6f));
                     GameManager.Instance.rock2InMap += GameManager.Instance.rockByItem;
                 }
 

@@ -6,6 +6,7 @@ public class AnimationEvents : MonoBehaviour
 {
     public void Step()
     {
-        SoundManager.PlayOneShot(SoundManager.StepSound, GameManager.Instance.cameraAnchor.transform.position);
+        if(this.tag!="Enemy")
+            SoundManager.PlayOneShot(SoundManager.StepSound, GameManager.Instance.cameraAnchor.transform.position);
     }
 }

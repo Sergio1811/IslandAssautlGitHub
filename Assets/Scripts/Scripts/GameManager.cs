@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
     int secondaryObjectiveID;
     private GameObject[] lights;
 
+    public static bool boots;
 
     private void Awake()
     {
@@ -789,6 +790,9 @@ public class GameManager : MonoBehaviour
 
         titan = CharacterAbiliities.Titan;
         axerAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+
+        if (!boots && CharacterAbiliities.bootsMovementMultiplier == 1.25f) boots = true;
+
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
         axerAbs.dashActive = CharacterAbiliities.dashActive;
@@ -812,6 +816,9 @@ public class GameManager : MonoBehaviour
 
         titan = CharacterAbiliities.Titan;
         swordAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+
+        if (!boots && CharacterAbiliities.bootsMovementMultiplier == 1.25f) boots = true;
+
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
         swordAbs.dashActive = CharacterAbiliities.dashActive;
@@ -834,6 +841,9 @@ public class GameManager : MonoBehaviour
 
         titan = CharacterAbiliities.Titan;
         bomberAbs.bootsMovementSpeed = CharacterAbiliities.bootsMovementMultiplier;
+
+        if (!boots && CharacterAbiliities.bootsMovementMultiplier == 1.25f) boots = true;
+
         Market = CharacterAbiliities.market;
         islandTier2 = CharacterAbiliities.islandTier2;
         bomberAbs.dashActive = CharacterAbiliities.dashActive;

@@ -178,6 +178,7 @@ public class PlayerScript : MonoBehaviour
         if (Mathf.Abs(xMovement) > 0 || Mathf.Abs(zMovement) > 0)
         {
             myAnimator.SetBool("Move", true);
+            if(GameManager.boots) myAnimator.SetFloat("Speed", 1.25f);
             cameraScript.cameraRotating = false;
 
             Vector3 forward = cameraAnchor.forward;

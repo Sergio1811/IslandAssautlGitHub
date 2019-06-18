@@ -6,6 +6,6 @@ public class EventHandler : MonoBehaviour
 {
     public void Step()
     {
-        SoundManager.PlayOneShot(SoundManager.StepSound, GameManager.Instance.cameraAnchor.transform.position);
+        //SoundManager.PlayOneShot(SoundManager.StepSound, GameManager.Instance.cameraAnchor.transform.position);
     }
 }

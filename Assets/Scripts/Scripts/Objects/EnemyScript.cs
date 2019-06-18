@@ -67,7 +67,7 @@ public class EnemyScript : MonoBehaviour
 
             if (patrolPoint != null)
             {
-                myAnimator.SetBool("Move", true);
+                myAnimator.SetBool("Move", false);
                 currentState = state.patrol;
             }
             else
@@ -100,17 +100,20 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
-            UpdateState(currentState);
-
-        else
-            player = GameObject.FindGameObjectWithTag("Player");
-
-        if (stunned)
+        if (GameManager.startGame)
         {
-            stunnedTimer += InputManager.deltaTime;
-            if (stunnedTimer >= maxStunnedTimer)
-                OffStun();
+            if (player != null)
+                UpdateState(currentState);
+
+            else
+                player = GameObject.FindGameObjectWithTag("Player");
+
+            if (stunned)
+            {
+                stunnedTimer += InputManager.deltaTime;
+                if (stunnedTimer >= maxStunnedTimer)
+                    OffStun();
+            }
         }
     }
 

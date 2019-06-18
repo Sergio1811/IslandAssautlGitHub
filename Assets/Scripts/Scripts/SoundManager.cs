@@ -43,7 +43,7 @@ public class SoundManager : MonoBehaviour
         BreakTree = "event:/BS/Character/moviments/pases/caminar/fulles";//done
         HitAir = "event:/BS/sfx/espases/hit_1";//done
         PlayerHurtSound = "event:/";
-        StepSound = "event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_Sound_Once";
+        StepSound = "event:/IslandAssault/OnceSound/Steps/Steps_sound_sand/Step_sand _";
 
         OpenChestSound = "event:/IslandAssault/OnceSound/Open_Chest/Open_chest_sound";//done
         CoinsSound = "event:/IslandAssault/OnceSound/Coins/Trading_sound/Trading sound";//done

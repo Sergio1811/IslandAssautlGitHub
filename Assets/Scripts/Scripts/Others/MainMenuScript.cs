@@ -7,9 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuScript : MonoBehaviour
 {
     public Color buttonSelectedColor;
-    public Image[] buttonsArray;
     public GameObject[] buttonsArrayDef;
-    Image actualImage;
     int arrayNumber;
     int numberOfButtons;
 
@@ -23,14 +21,17 @@ public class MainMenuScript : MonoBehaviour
     public GameObject loadingScreen;
     public Transform loadingIcon;
     public GameObject cameraMenu;
+    public GameObject continueText;
+    bool almostCompleted;
+
+
     void Start()
     {
         arrayNumber = 0;
-        numberOfButtons = buttonsArray.Length;
-        actualImage = buttonsArray[0];
-        actualImage.color = buttonSelectedColor;
+        numberOfButtons = buttonsArrayDef.Length;
         hasMoved = false;
         loadScene = false;
+        almostCompleted = false;
     }
 
     void Update()
@@ -105,9 +106,6 @@ public class MainMenuScript : MonoBehaviour
             {
                 SoundManager.PlayOneShot(SoundManager.PassButton, cameraMenu.transform.position);
                 buttonsArrayDef[arrayNumber].SetActive(true);
-                actualImage.color = Color.white;
-                actualImage = buttonsArray[arrayNumber];
-                actualImage.color = buttonSelectedColor;
                 movementOn = true;
             }
         }
@@ -145,11 +143,26 @@ public class MainMenuScript : MonoBehaviour
 
 
     IEnumerator LoadNewScene(int sceneNumber)
-    {        
-        AsyncOperation async = SceneManager.LoadSceneAsync(sceneNumber);
-        
+    {
+        AsyncOperation async = null;
+
+        async = SceneManager.LoadSceneAsync(sceneNumber);
+        async.allowSceneActivation = false;
+
         while (!async.isDone)
         {
+            if (async.progress >= 0.9f)
+            {
+                if (!almostCompleted)
+                {
+                    continueText.SetActive(true);
+                    loadingIcon.parent.gameObject.SetActive(false);
+                    almostCompleted = true;
+                }
+                else if (InputManager.Instance.GetInputDown("Submit") || InputManager.Instance.GetInputDown("Cancel"))
+                    async.allowSceneActivation = true;
+            }
+            
             yield return null;
         }
     }
